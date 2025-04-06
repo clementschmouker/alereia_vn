@@ -1,0 +1,110 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Verdana', sans-serif;
+    background-color: black;
+    color: white;
+  }
+  
+  #game {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  #background {
+    background: url('https://picsum.photos/800/600') no-repeat center center;
+    background-size: cover;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+  
+  #dialogue-box {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    z-index: 2;
+    cursor: pointer;
+  }
+  
+  #name {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #f9d342;
+  }
+  
+  #dialogue {
+    font-size: 18px;
+  }
+
+  .container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  #characters {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* So clicks go through */
+    z-index: 1;
+  }
+  
+  .character-slot {
+    position: absolute;
+    bottom: 0;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  
+  #left-character {
+    left: 0;
+  }
+  
+  #right-character {
+    right: 0;
+  }
+  
+  .character-slot img {
+    max-height: 80%;
+    max-width: 100%;
+    object-fit: contain;
+  }
+  
+  #choices-container {
+    position: absolute;
+    bottom: 20px; /* Place it just above the bottom of the screen */
+    width: 100%;
+    text-align: center;
+    z-index: 2; /* Ensure it's on top of the characters */
+  }
+  
+  #choices-container button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  #choices-container button:hover {
+    background-color: #45a049;
+  }
+  

@@ -2,9 +2,30 @@ type DialogueLine = {
   id: string;  // Unique ID for the line
   name: string;
   text: string;
+  background?: string;
+  music?: string;
+  sound?: string;
+  voice?: string;
+  stopMusic?: boolean;
+  stopSound?: boolean;
+  stopVoice?: boolean;
+  soundFade?: {
+    duration: number;
+    fadeOut: boolean;
+  };
+  voiceFade?: {
+    duration: number;
+    fadeOut: boolean;
+  };
+  musicFade?: {
+    duration: number;
+    fadeOut: boolean;
+  };
   charactersOnScreen?: {
     left?: string;
     right?: string;
+    leftMood?: string;
+    rightMood?: string;
     leftFlip?: boolean;
     rightFlip?: boolean;
   };
@@ -18,16 +39,20 @@ const script: DialogueLine[] = [
   {
     id: "start", // Unique ID for this line
     name: "Aria",
-    text: "Hey there, traveler.",
+    text: "Halte là, voyageur.",
     charactersOnScreen: {
-      left: "aria_serious.png",
-      leftFlip: false
+      left: "aria",
+      leftMood: "serious",
+      right: "aria",
+      rightMood: "happy",
+      leftFlip: false,
+      rightFlip: true
     }
   },
   {
     id: "kai_intro", // Unique ID for this line
     name: "Kai",
-    text: "I'm here too.",
+    text: "SLT LOL.",
     charactersOnScreen: {
       left: "aria_serious.png",
       right: "aria_happy.png",
@@ -37,7 +62,7 @@ const script: DialogueLine[] = [
   {
     id: "story_begin", // Unique ID for this line
     name: "Aria",
-    text: "Let’s begin our story.",
+    text: "On commence.",
     charactersOnScreen: {
       left: "aria_angry.png",
       right: "aria_angry.png",
@@ -48,21 +73,38 @@ const script: DialogueLine[] = [
   {
     id: "where_to_go", // Unique ID for this line
     name: "Aria",
-    text: "Where do you want to go?",
+    text: "Tu veux aller où ?",
     choices: [
-      { text: "Go to the forest", nextLineId: "forest" },
-      { text: "Go to the village", nextLineId: "village" }
+      { text: "La forêt", nextLineId: "forest" },
+      { text: "Le village", nextLineId: "village" },
+      { text : "La montagne", nextLineId: "mountain" }
     ]
   },
   {
     id: "forest", // Unique ID for this line
     name: "Kai",
-    text: "You decided to explore the forest.",
+    text: "Ok c'est partit pour la forêt.",
   },
   {
     id: "village", // Unique ID for this line
     name: "Aria",
-    text: "You decided to visit the village.",
+    text: "Ok c'est partit pour le village.",
+  },
+  {
+    id: "mountain", // Unique ID for this line
+    name: "Aria",
+    text: "Ok c'est partit pour la montagne.",
+  },
+  {
+    id: "end", // Unique ID for this line
+    name: "Aria",
+    text: "Fin de la discussion.",
+    charactersOnScreen: {
+      left: "aria_happy.png",
+      right: "aria_happy.png",
+      leftFlip: false,
+      rightFlip: true
+    }
   }
 ];
 
@@ -105,7 +147,15 @@ function showLine(id: string) {
     // Handle left character
     if (left) {
       const leftImg = document.createElement("img");
-      leftImg.src = `/src/images/${left}`;
+      const leftMood = line.charactersOnScreen.leftMood;
+      const imgBaseUrl = `/src/images/${left}`;
+      let fullImgUrl = imgBaseUrl;
+
+      if (leftMood) {
+        fullImgUrl = `${imgBaseUrl.split(".")[0]}_${leftMood}.png`;
+      }
+      
+      leftImg.src = fullImgUrl;
       leftImg.alt = "left character";
       if (leftFlip) {
         leftImg.style.transform = "scaleX(-1)";
@@ -115,8 +165,15 @@ function showLine(id: string) {
 
     // Handle right character
     if (right) {
+      const rightMood = line.charactersOnScreen.rightMood;
+      const imgBaseUrl = `/src/images/${right}`;
+      let fullImgUrl = imgBaseUrl;
+      if (rightMood) {
+        fullImgUrl = `${imgBaseUrl.split(".")[0]}_${rightMood}.png`;
+      }
+      
       const rightImg = document.createElement("img");
-      rightImg.src = `/src/images/${right}`;
+      rightImg.src = fullImgUrl;
       rightImg.alt = "right character";
       if (rightFlip) {
         rightImg.style.transform = "scaleX(-1)";

@@ -54,8 +54,8 @@ const script: DialogueLine[] = [
     name: "Kai",
     text: "SLT LOL.",
     charactersOnScreen: {
-      left: "aria_serious.png",
-      right: "aria_happy.png",
+      left: "aria_serious",
+      right: "aria_happy",
       rightFlip: true
     }
   },
@@ -64,8 +64,8 @@ const script: DialogueLine[] = [
     name: "Aria",
     text: "On commence.",
     charactersOnScreen: {
-      left: "aria_angry.png",
-      right: "aria_angry.png",
+      left: "aria_angry",
+      right: "aria_angry",
       leftFlip: false,
       rightFlip: true
     }
@@ -100,8 +100,8 @@ const script: DialogueLine[] = [
     name: "Aria",
     text: "Fin de la discussion.",
     charactersOnScreen: {
-      left: "aria_happy.png",
-      right: "aria_happy.png",
+      left: "aria_happy",
+      right: "aria_happy",
       leftFlip: false,
       rightFlip: true
     }
@@ -153,6 +153,8 @@ function showLine(id: string) {
 
       if (leftMood) {
         fullImgUrl = `${imgBaseUrl.split(".")[0]}_${leftMood}.png`;
+      } else {
+        fullImgUrl = `${imgBaseUrl}.png`;
       }
       
       leftImg.src = fullImgUrl;
@@ -170,6 +172,8 @@ function showLine(id: string) {
       let fullImgUrl = imgBaseUrl;
       if (rightMood) {
         fullImgUrl = `${imgBaseUrl.split(".")[0]}_${rightMood}.png`;
+      } else {
+        fullImgUrl = `${imgBaseUrl}.png`;
       }
       
       const rightImg = document.createElement("img");

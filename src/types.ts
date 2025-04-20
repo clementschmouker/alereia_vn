@@ -13,7 +13,7 @@ interface backgroundImageTransitionType {
 
 interface DialogueLine {
     id: string;  // Unique ID for the line
-    name: string;
+    name?: string;
     text: string;
     background?: string;
     backgroundTransition?: backgroundImageTransitionType;

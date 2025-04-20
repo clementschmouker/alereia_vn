@@ -5,7 +5,7 @@ const script: DialogueLine[] = [
     {
       id: "start", // Unique ID for this line
       name: "Aria",
-      text: "Halte là, voyageur.",
+      text: "Halte là, <i>voyageur</i>.",
       background: 'aria_angry.png',
       backgroundTransition: {
         easing: FadeTransitionType.easeIn,

@@ -34,7 +34,7 @@ function showLine(id: string) {
   rightCharacter.innerHTML = "";
 
   nameElem.textContent = line.name;
-  dialogueElem.textContent = line.text;
+  dialogueElem.innerHTML = line.text;
 
   // Set background image if specified
   if (line.background) {

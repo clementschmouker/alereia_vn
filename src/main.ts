@@ -1,6 +1,6 @@
 import scene1 from "./scene1";
 import scene2 from "./scene2";
-import DialogueLine from "./types";
+import { DialogueLine, FadeTransitionType } from "./types";
 
 const script = [...scene1, ...scene2]; // @TODO IMPORTANT: Combine the scripts into one
 
@@ -41,6 +41,14 @@ function showLine(id: string) {
     backgroundElem.style.backgroundImage = `url('/src/images/${line.background}')`;
   } else {
     backgroundElem.style.backgroundImage = ""; // Clear background if none specified
+  }
+
+  // Handle background transition if specified
+  if (line.backgroundTransition) {
+    const { easing, duration, delay } = line.backgroundTransition;
+    backgroundElem.style.transition = `background ${duration ? duration : 300}ms ${delay ? delay : 0}ms ${easing}`;
+  } else {
+    // backgroundElem.style.transition = "";
   }
 
   // Handle characters on screen

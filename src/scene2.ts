@@ -1,4 +1,4 @@
-import DialogueLine from "./types";
+import { DialogueLine } from "./types";
 
 const script : DialogueLine[] = [
     {

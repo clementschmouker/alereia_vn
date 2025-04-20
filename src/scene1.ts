@@ -1,4 +1,4 @@
-import DialogueLine from "./types";
+import { DialogueLine, FadeTransitionType } from "./types";
 
 
 const script: DialogueLine[] = [
@@ -7,6 +7,10 @@ const script: DialogueLine[] = [
       name: "Aria",
       text: "Halte là, voyageur.",
       background: 'aria_angry.png',
+      backgroundTransition: {
+        easing: FadeTransitionType.easeIn,
+        duration: 3000,
+      },
       charactersOnScreen: {
         left: "aria",
         leftMood: "serious",

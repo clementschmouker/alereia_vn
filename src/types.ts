@@ -1,8 +1,22 @@
-type DialogueLine = {
+
+enum FadeTransitionType {
+    easeIn = "ease-in",
+    easeOut = "ease-out",
+    easeInOut = "ease-in-out",
+}
+
+interface backgroundImageTransitionType {
+  easing: FadeTransitionType;
+  duration?: number;
+  delay?: number;
+}
+
+interface DialogueLine {
     id: string;  // Unique ID for the line
     name: string;
     text: string;
     background?: string;
+    backgroundTransition?: backgroundImageTransitionType;
     music?: string;
     sound?: string;
     voice?: string;
@@ -36,4 +50,5 @@ type DialogueLine = {
     nextLineId?: string; // Optional next line ID for direct transitions
 };
 
-  export default DialogueLine;
+export { FadeTransitionType };
+export type { DialogueLine };

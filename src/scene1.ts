@@ -6,6 +6,7 @@ const script: DialogueLine[] = [
       id: "start", // Unique ID for this line
       name: "Aria",
       text: "Halte là, voyageur.",
+      background: 'aria_angry.png',
       charactersOnScreen: {
         left: "aria",
         leftMood: "serious",

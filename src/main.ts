@@ -2,10 +2,7 @@ import scene1 from "./scene1"; // Import the dialogue script
 import scene2 from "./scene2"; // Import the second dialogue script
 import DialogueLine from "./types"; // Import the type for dialogue lines
 
-
-
 const script = [...scene1, ...scene2]; // Combine the two scripts into one
-console.log(script);
 
 let currentLineId = "start"; // The ID of the current line to be displayed
 
@@ -15,7 +12,7 @@ const dialogueBox = document.getElementById("dialogue-box")!;
 
 const leftCharacter = document.getElementById("left-character")!;
 const rightCharacter = document.getElementById("right-character")!;
-
+const backgroundElem = document.getElementById("background")!;
 const choicesContainer = document.getElementById("choices-container")!;
 
 // Function to find a dialogue line by its ID
@@ -38,6 +35,15 @@ function showLine(id: string) {
 
   nameElem.textContent = line.name;
   dialogueElem.textContent = line.text;
+
+  // Set background image if specified
+  if (line.background) {
+    backgroundElem.style.backgroundImage = `url('/src/images/${line.background}')`;
+    backgroundElem.style.backgroundSize = "cover";
+    backgroundElem.style.backgroundPosition = "center";
+  } else {
+    backgroundElem.style.backgroundImage = ""; // Clear background if none specified
+  }
 
   // Handle characters on screen
   if (line.charactersOnScreen) {
@@ -117,7 +123,6 @@ dialogueBox.addEventListener("click", () => {
     }
   }
 });
-
 
 // Helper function to get the next line ID based on current dialogue without choices
 function getNextLineId(): string | undefined {

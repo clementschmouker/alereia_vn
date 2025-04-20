@@ -1,8 +1,8 @@
-import scene1 from "./scene1"; // Import the dialogue script
-import scene2 from "./scene2"; // Import the second dialogue script
-import DialogueLine from "./types"; // Import the type for dialogue lines
+import scene1 from "./scene1";
+import scene2 from "./scene2";
+import DialogueLine from "./types";
 
-const script = [...scene1, ...scene2]; // Combine the two scripts into one
+const script = [...scene1, ...scene2]; // @TODO IMPORTANT: Combine the scripts into one
 
 let currentLineId = "start"; // The ID of the current line to be displayed
 

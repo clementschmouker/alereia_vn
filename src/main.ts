@@ -33,7 +33,7 @@ function showLine(id: string) {
   choicesContainer.innerHTML = "";
   rightCharacter.innerHTML = "";
 
-  nameElem.textContent = line.name;
+  nameElem.textContent = line.name || "PADNOM";
   dialogueElem.innerHTML = line.text;
 
   // Set background image if specified

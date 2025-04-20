@@ -39,8 +39,6 @@ function showLine(id: string) {
   // Set background image if specified
   if (line.background) {
     backgroundElem.style.backgroundImage = `url('/src/images/${line.background}')`;
-    backgroundElem.style.backgroundSize = "cover";
-    backgroundElem.style.backgroundPosition = "center";
   } else {
     backgroundElem.style.backgroundImage = ""; // Clear background if none specified
   }

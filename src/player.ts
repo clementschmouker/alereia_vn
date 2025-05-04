@@ -1,12 +1,17 @@
 import * as THREE from 'three';
+import gsap from 'gsap';
 
 
 class Player {
     position: THREE.Vector3;
     mesh: THREE.Mesh;
+    direction: 1 | 0 | -1;
+    speed: number;
 
     constructor() {
-        this.position = new THREE.Vector3(0, 0, 0);
+        this.position = new THREE.Vector3(0, 0.5, -7.15);
+        this.direction = 0;
+        this.speed = 1;
 
         const planeGeometry = new THREE.PlaneGeometry();
         const material = new THREE.MeshBasicMaterial(0xffffff);
@@ -15,12 +20,16 @@ class Player {
     }
 
 
-    move = (direction: 1 | 0 | -1) => {
-        this.position.x += direction;
+    move = () => {
+        gsap.to(this.position, {
+            x: this.position.x + (this.direction * this.speed),
+            ease: 'Power4.inOut',
+        });
     }
 
     update = () => {
         this.mesh.position.set(this.position.x, this.position.y, this.position.z);
+        this.move();
     }
 }
 

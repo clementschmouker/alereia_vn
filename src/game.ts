@@ -100,10 +100,16 @@ class Game {
 
         addEventListener('keydown', (event) => {
             if (event.key === 'ArrowRight') {
-                this.player.move(1);
+                this.player.direction = 1;
             }
             if (event.key === 'ArrowLeft') {
-                this.player.move(-1);
+                this.player.direction = -1;
+            }
+        });
+
+        addEventListener('keyup', (event) => {
+            if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+                this.player.direction = 0;
             }
         })
     }
@@ -112,7 +118,7 @@ class Game {
         requestAnimationFrame(this.animate);
         this.controls.update();
         this.player.update();
-        this.camera.position.set(this.player.position.x, 2, 5);
+        this.camera.position.set(this.player.position.x, 2, this.player.position.z + 5);
         this.camera.lookAt(this.player.position);
         // this.composer.render();
 

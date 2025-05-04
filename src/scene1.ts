@@ -1,4 +1,5 @@
 import { DialogueLine, FadeTransitionType } from "./types";
+import Game from "./game";
 
 
 const script: DialogueLine[] = [
@@ -78,6 +79,10 @@ const script: DialogueLine[] = [
         right: "aria_happy",
         leftFlip: false,
         rightFlip: true
+      },
+      callback: () => {
+        const game = new Game();
+        game.start();
       }
     }
   ];

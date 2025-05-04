@@ -1,6 +1,6 @@
 import scene1 from "./scene1";
 import scene2 from "./scene2";
-import { DialogueLine, FadeTransitionType } from "./types";
+import { DialogueLine } from "./types";
 
 const script = [...scene1, ...scene2]; // @TODO IMPORTANT: Combine the scripts into one
 
@@ -110,6 +110,10 @@ function showLine(id: string) {
       };
       choicesContainer.appendChild(button);
     });
+  }
+
+  if (line.callback) {
+    line.callback();
   }
 }
 

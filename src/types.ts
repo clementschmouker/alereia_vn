@@ -23,6 +23,7 @@ interface DialogueLine {
     stopMusic?: boolean;
     stopSound?: boolean;
     stopVoice?: boolean;
+    callback?: () => void;
     soundFade?: {
       duration: number;
       fadeOut: boolean;

@@ -11,7 +11,7 @@ class Player {
     constructor() {
         this.position = new THREE.Vector3(0, 0.5, -7.15);
         this.direction = 0;
-        this.speed = 1;
+        this.speed = 0.2;
 
         const planeGeometry = new THREE.PlaneGeometry();
         const material = new THREE.MeshBasicMaterial(0xffffff);

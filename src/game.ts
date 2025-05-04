@@ -17,6 +17,7 @@ class Game {
     controls: OrbitControls;
     composer: EffectComposer;
     player: Player;
+    renderBlack: boolean;
 
     constructor() {
         this.scene = new THREE.Scene();
@@ -26,6 +27,7 @@ class Game {
         this.renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(this.renderer.domElement);
         this.renderer.domElement.id = 'game-canvas';
+        this.renderBlack = false;
 
         // Lighting
         const Dirlight = new THREE.DirectionalLight(0xffffff, 1);
@@ -105,24 +107,36 @@ class Game {
             if (event.key === 'ArrowLeft') {
                 this.player.direction = -1;
             }
+            if (event.key === 'z') {
+                this.renderBlack = true;
+            }
         });
 
         addEventListener('keyup', (event) => {
             if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
                 this.player.direction = 0;
             }
+            if (event.key === 'z') {
+                this.renderBlack = false;
+            }
         })
+
+        
     }
 
     animate = () => {
         requestAnimationFrame(this.animate);
         this.controls.update();
         this.player.update();
-        this.camera.position.set(this.player.position.x, 2, this.player.position.z + 5);
+        this.camera.position.set(this.player.position.x, 0.75, this.player.position.z + 2);
         this.camera.lookAt(this.player.position);
-        // this.composer.render();
 
-        this.renderer.render(this.scene, this.camera);
+        if (this.renderBlack) {
+            this.composer.render();
+        } else {
+            this.renderer.render(this.scene, this.camera);
+
+        }
     }
 }
 

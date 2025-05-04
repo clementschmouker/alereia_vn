@@ -8,6 +8,10 @@ const script: DialogueLine[] = [
       name: "Aria",
       text: "Halte là, <i>voyageur</i>.",
       background: 'aria_angry.png',
+      callback: () => {
+        const game = new Game();
+        game.start();
+      },
       backgroundTransition: {
         easing: FadeTransitionType.easeIn,
         duration: 3000,
@@ -79,10 +83,6 @@ const script: DialogueLine[] = [
         right: "aria_happy",
         leftFlip: false,
         rightFlip: true
-      },
-      callback: () => {
-        const game = new Game();
-        game.start();
       }
     }
   ];

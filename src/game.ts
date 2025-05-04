@@ -7,6 +7,8 @@ import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
 import { SobelOperatorShader } from 'three/examples/jsm/shaders/SobelOperatorShader.js';
 import { OutlinePass } from 'three/examples/jsm/Addons.js';
 
+import Player from './player';
+
 
 class Game {
     scene: THREE.Scene;
@@ -14,6 +16,7 @@ class Game {
     renderer: THREE.WebGLRenderer;
     controls: OrbitControls;
     composer: EffectComposer;
+    player: Player;
 
     constructor() {
         this.scene = new THREE.Scene();
@@ -23,9 +26,6 @@ class Game {
         this.renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(this.renderer.domElement);
         this.renderer.domElement.id = 'game-canvas';
-
-
-        this.camera.position.z = 5;
 
         // Lighting
         const Dirlight = new THREE.DirectionalLight(0xffffff, 1);
@@ -56,6 +56,9 @@ class Game {
         this.composer.addPass(outlinePass);
         this.composer.addPass(sobelPass);
 
+        // Player
+        this.player = new Player();
+        this.scene.add(this.player.mesh);
     }
     
     start = () => {
@@ -94,11 +97,23 @@ class Game {
         }, undefined, (error: any) => {
             console.error('Error loading model:', error);
         });
+
+        addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowRight') {
+                this.player.move(1);
+            }
+            if (event.key === 'ArrowLeft') {
+                this.player.move(-1);
+            }
+        })
     }
 
     animate = () => {
         requestAnimationFrame(this.animate);
         this.controls.update();
+        this.player.update();
+        this.camera.position.set(this.player.position.x, 2, 5);
+        this.camera.lookAt(this.player.position);
         // this.composer.render();
 
         this.renderer.render(this.scene, this.camera);

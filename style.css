@@ -134,3 +134,7 @@
 
   transform: translateX(-50%);
 }
+
+#skip-video.hidden {
+  display: none;
+}

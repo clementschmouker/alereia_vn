@@ -26,6 +26,7 @@ unmuteButton?.addEventListener('click', () => {
 
 skipVideo?.addEventListener('click', () => {
   canPassScreen = true;
+  skipVideo.classList.remove('hidden');
   const nextLineId = getNextLineId();
   if (nextLineId) {
 
@@ -78,12 +79,14 @@ function showLine(id: string) {
   
     if (line.backgroundVideo && backgroundVideo) {
       canPassScreen = false;
+      skipVideo?.classList.remove('hidden');
       backgroundVideo.src = `/src/videos/${line.backgroundVideo}.mp4`;
       backgroundVideo.autoplay = true;
       backgroundVideo.playsInline = true;
       // video.play();
     } else if (video) {
       canPassScreen = true;
+      skipVideo?.classList.add('hidden');
       backgroundVideo.src = '';
     }
   

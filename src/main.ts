@@ -1,8 +1,15 @@
 import scene1 from "./scene1";
 import scene2 from "./scene2";
+import scene3 from "./scene3";
+import scene4 from "./scene4";
+import scene5 from "./scene5";
+import scene6 from "./scene6";
+import scene7 from "./scene7";
+import scene8 from "./scene8";
+import scene9 from "./scene9";
 import { DialogueLine } from "./types";
 
-const script = [...scene1, ...scene2]; // @TODO IMPORTANT: Combine the scripts into one
+const script = [...scene1, ...scene2, ...scene3, ...scene4, ...scene5, ...scene6, ...scene7, ...scene8, ...scene9]; // @TODO IMPORTANT: Combine the scripts into one
 
 let currentLineId = "start"; // The ID of the current line to be displayed
 
@@ -12,6 +19,7 @@ const dialogueBox = document.getElementById("dialogue-box")!;
 
 const leftCharacter = document.getElementById("left-character")!;
 const rightCharacter = document.getElementById("right-character")!;
+const middleCharacter = document.getElementById("middle-character")!;
 const backgroundElem = document.getElementById("background")!;
 const backgroundVideo = document.querySelector('#background-video') as any;
 const choicesContainer = document.getElementById("choices-container")!;
@@ -56,7 +64,7 @@ function showLine(id: string) {
     choicesContainer.innerHTML = "";
     rightCharacter.innerHTML = "";
   
-    nameElem.textContent = line.name || "PADNOM";
+    nameElem.textContent = line.name || "";
     dialogueElem.innerHTML = line.text;
   
       // Handle background transition if specified
@@ -72,7 +80,7 @@ function showLine(id: string) {
   
     // Set background image if specified
     if (line.background) {
-      backgroundElem.style.backgroundImage = `url('/src/images/decors/${line.background}.png')`;
+      backgroundElem.style.backgroundImage = `url('/src/images/decors/${line.background}.jpg')`;
     } else {
       backgroundElem.style.backgroundImage = ""; // Clear background if none specified
     }
@@ -102,7 +110,7 @@ function showLine(id: string) {
   
     // Handle characters on screen
     if (line.charactersOnScreen) {
-      const { left, right, leftFlip, rightFlip } = line.charactersOnScreen;
+      const { left, right, middle, leftFlip, middleFlip, rightFlip } = line.charactersOnScreen;
   
       // Handle left character
       if (left) {
@@ -143,6 +151,28 @@ function showLine(id: string) {
           rightImg.style.transform = "scaleX(-1)";
         }
         rightCharacter.appendChild(rightImg);
+      }
+    
+
+          // Handle middle character
+      if (middle) {
+        const middleImg = document.createElement("img");
+        const middleMood = line.charactersOnScreen.middleMood;
+        const imgBaseUrl = `/src/images/personnages/${middle}`;
+        let fullImgUrl = imgBaseUrl;
+  
+        if (middleMood) {
+          fullImgUrl = `${imgBaseUrl.split(".")[0]}_${middleMood}.png`;
+        } else {
+          fullImgUrl = `${imgBaseUrl}.png`;
+        }
+        
+        middleImg.src = fullImgUrl;
+        middleImg.alt = "middle character";
+        if (middleFlip) {
+          middleImg.style.transform = "scaleX(-1)";
+        }
+        middleCharacter.appendChild(middleImg);
       }
     }
   

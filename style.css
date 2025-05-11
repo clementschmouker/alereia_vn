@@ -79,6 +79,10 @@
   #right-character {
     right: 0;
   }
+
+   #middle-character {
+    left: 25%;
+  }
   
   .character-slot img {
     max-height: 80%;

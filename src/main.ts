@@ -83,6 +83,16 @@ function showLine(id: string) {
       backgroundVideo.src = `/src/videos/${line.backgroundVideo}.mp4`;
       backgroundVideo.autoplay = true;
       backgroundVideo.playsInline = true;
+      console.log(backgroundVideo.duration);
+      backgroundVideo.addEventListener('ended', () => {
+        canPassScreen = true;
+        console.log('ended !!');
+        const nextLineId = getNextLineId();
+        if (nextLineId) {
+          currentLineId = nextLineId;
+          showLine(nextLineId);
+        }
+      })
       // video.play();
     } else if (video) {
       canPassScreen = true;

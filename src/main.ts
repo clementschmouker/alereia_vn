@@ -23,6 +23,7 @@ function findLineById(id: string): DialogueLine | undefined {
 // Function to show dialogue based on ID
 function showLine(id: string) {
   const line = findLineById(id);
+  let video = document.getElementById('background-video');
 
   if (!line) {
     console.error("Line not found:", id);
@@ -41,6 +42,15 @@ function showLine(id: string) {
     backgroundElem.style.backgroundImage = `url('/src/images/${line.background}')`;
   } else {
     backgroundElem.style.backgroundImage = ""; // Clear background if none specified
+  }
+
+  if (line.backgroundVideo) {
+    let video = document.createElement('video');
+    video.id = "background-video";
+    video.src = line.backgroundVideo;
+    backgroundElem.appendChild(video);
+  } else if (video) {
+    backgroundElem.removeChild(video);
   }
 
   // Handle background transition if specified

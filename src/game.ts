@@ -55,8 +55,8 @@ class Game {
 
         this.composer = new EffectComposer(this.renderer);
         this.composer.addPass(renderPass);
-        this.composer.addPass(outlinePass);
         this.composer.addPass(sobelPass);
+        this.composer.addPass(outlinePass);
 
         // Player
         this.player = new Player();

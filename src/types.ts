@@ -15,6 +15,7 @@ interface DialogueLine {
     id: string;  // Unique ID for the line
     name?: string;
     text: string;
+    video?: string;
     background?: string;
     backgroundTransition?: backgroundImageTransitionType;
     music?: string;

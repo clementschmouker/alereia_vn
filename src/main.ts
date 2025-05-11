@@ -38,10 +38,16 @@ function showLine(id: string) {
 
   // Set background image if specified
   if (line.background) {
-    backgroundElem.style.backgroundImage = `url('/src/images/${line.background}')`;
+    backgroundElem.style.backgroundImage = `url('/src/images/decors/${line.background}.png')`;
   } else {
     backgroundElem.style.backgroundImage = ""; // Clear background if none specified
   }
+
+    // Set video if specified
+    if (line.video) {
+      backgroundElem.style.backgroundImage = `url('/src/images/videos/${line.video}.mp4')`;
+    }
+  
 
   // Handle background transition if specified
   if (line.backgroundTransition) {
@@ -59,7 +65,7 @@ function showLine(id: string) {
     if (left) {
       const leftImg = document.createElement("img");
       const leftMood = line.charactersOnScreen.leftMood;
-      const imgBaseUrl = `/src/images/${left}`;
+      const imgBaseUrl = `/src/images/personnages/${left}`;
       let fullImgUrl = imgBaseUrl;
 
       if (leftMood) {
@@ -79,7 +85,7 @@ function showLine(id: string) {
     // Handle right character
     if (right) {
       const rightMood = line.charactersOnScreen.rightMood;
-      const imgBaseUrl = `/src/images/${right}`;
+      const imgBaseUrl = `/src/images/personnages/${right}`;
       let fullImgUrl = imgBaseUrl;
       if (rightMood) {
         fullImgUrl = `${imgBaseUrl.split(".")[0]}_${rightMood}.png`;

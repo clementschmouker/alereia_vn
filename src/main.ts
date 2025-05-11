@@ -1,6 +1,6 @@
 import scene1 from "./scene1";
 import scene2 from "./scene2";
-import { DialogueLine, FadeTransitionType } from "./types";
+import { DialogueLine } from "./types";
 
 const script = [...scene1, ...scene2]; // @TODO IMPORTANT: Combine the scripts into one
 
@@ -36,6 +36,17 @@ function showLine(id: string) {
   nameElem.textContent = line.name || "PADNOM";
   dialogueElem.innerHTML = line.text;
 
+    // Handle background transition if specified
+  if (line.backgroundTransition) {
+    const { easing, duration, delay } = line.backgroundTransition;
+    const string = `background-image ${duration ? duration : 300}ms ${delay ? delay : 0}ms ${easing}`;
+    console.log(string);
+    backgroundElem.style.transition = string;
+    console.log(backgroundElem.style.transition);
+  } else {
+    backgroundElem.style.transition = "";
+  }
+
   // Set background image if specified
   if (line.background) {
     backgroundElem.style.backgroundImage = `url('/src/images/decors/${line.background}.png')`;
@@ -49,13 +60,7 @@ function showLine(id: string) {
     }
   
 
-  // Handle background transition if specified
-  if (line.backgroundTransition) {
-    const { easing, duration, delay } = line.backgroundTransition;
-    backgroundElem.style.transition = `background ${duration ? duration : 300}ms ${delay ? delay : 0}ms ${easing}`;
-  } else {
-    // backgroundElem.style.transition = "";
-  }
+
 
   // Handle characters on screen
   if (line.charactersOnScreen) {
@@ -116,6 +121,10 @@ function showLine(id: string) {
       };
       choicesContainer.appendChild(button);
     });
+  }
+
+  if (line.callback) {
+    line.callback();
   }
 }
 

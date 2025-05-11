@@ -17,6 +17,7 @@ interface DialogueLine {
     text: string;
     video?: string;
     background?: string;
+    backgroundVideo?:string;
     backgroundTransition?: backgroundImageTransitionType;
     music?: string;
     sound?: string;
@@ -24,6 +25,7 @@ interface DialogueLine {
     stopMusic?: boolean;
     stopSound?: boolean;
     stopVoice?: boolean;
+    callback?: () => void;
     soundFade?: {
       duration: number;
       fadeOut: boolean;

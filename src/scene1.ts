@@ -174,6 +174,11 @@ const script: DialogueLine[] = [
         rightFlip: true
       }
     }*/
+    //   callback: () => {
+    //     const game = new Game();
+    //     game.start();
+    //   },
+    // }
   ];
 
   export default script;

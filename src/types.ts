@@ -17,7 +17,7 @@ interface DialogueLine {
     text: string;
     video?: string;
     background?: string;
-    backgroundVideo?:string;
+    backgroundVideo?: string;
     backgroundTransition?: backgroundImageTransitionType;
     music?: string;
     sound?: string;

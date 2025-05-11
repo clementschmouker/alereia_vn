@@ -3,12 +3,12 @@ import { DialogueLine, FadeTransitionType } from "./types";
 
 const script: DialogueLine[] = [
   {
-    id: "vidIntro", // Unique ID for this line
+    id: "start", // Unique ID for this line
     text: "",
-    video: 'Intro',
+    backgroundVideo: 'Intro',
   },
   {
-      id: "start", // Unique ID for this line
+      id: "start2", // Unique ID for this line
       name: "Ilyem",
       text: "Je... (ilyem a l'air méfiante)",
       background: 'bar',

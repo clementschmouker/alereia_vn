@@ -2,45 +2,139 @@ import { DialogueLine, FadeTransitionType } from "./types";
 
 
 const script: DialogueLine[] = [
-    {
+  {
+    id: "vidIntro", // Unique ID for this line
+    text: "",
+    video: 'Intro',
+  },
+  {
       id: "start", // Unique ID for this line
-      name: "Aria",
-      text: "Halte là, <i>voyageur</i>.",
-      background: 'aria_angry.png',
+      name: "Ilyem",
+      text: "Je... (ilyem a l'air méfiante)",
+      background: 'bar',
       backgroundTransition: {
         easing: FadeTransitionType.easeIn,
         duration: 3000,
       },
       charactersOnScreen: {
-        left: "aria",
-        leftMood: "serious",
-        right: "aria",
-        rightMood: "happy",
+        left: "syel",
+        leftMood: "test",
+        right: "ilyem",
+        rightMood: "bras_hesite",
         leftFlip: false,
-        rightFlip: true
-      }
+        rightFlip: false
+      },
     },
     {
-      id: "kai_intro", // Unique ID for this line
-      name: "Kai",
-      text: "SLT LOL.",
+      id: "start1",
+      name: "NODE",
+      text: "... (la femme aussi)",
+      background: 'bar',
       charactersOnScreen: {
-        left: "aria_serious",
-        right: "aria_happy",
-        rightFlip: true
-      }
+        left: "syel",
+        leftMood: "test",
+        right: "ilyem",
+        rightMood: "bras_fuyant",
+        leftFlip: false,
+        rightFlip: false
+      },
     },
     {
-      id: "story_begin", // Unique ID for this line
-      name: "Aria",
-      text: "On commence.",
+      id: "start2",
+      name: "Ilyem",
+      text: "Je pense que ce monde est voué à disparaître...",
+      background: 'bar',
       charactersOnScreen: {
-        left: "aria_angry",
-        right: "aria_angry",
+        left: "syel",
+        leftMood: "test",
+        right: "ilyem",
+        rightMood: "bras_hesite",
         leftFlip: false,
-        rightFlip: true
-      }
+        rightFlip: false
+      },
     },
+    {
+      id: "start3",
+      name: "NODE",
+      text: "(la serveuse se détend)",
+      background: 'bar',
+      charactersOnScreen: {
+        left: "syel",
+        leftMood: "test",
+        right: "ilyem",
+        rightMood: "bras_fuyant",
+        leftFlip: false,
+        rightFlip: false
+      },
+    },
+    {
+      id: "start3.1",
+      name: "NODE",
+      text: "Mais un Nouvel Idéal le fera renaître de ses cendres.",
+      background: 'bar',
+      charactersOnScreen: {
+        left: "syel",
+        leftMood: "test",
+        right: "ilyem",
+        rightMood: "sourire",
+        leftFlip: false,
+        rightFlip: false
+      },
+    },
+    {
+      id: "start4",
+      text: "[La serveuse sort son paquet de cigarette]",
+      background: 'bar',
+      charactersOnScreen: {
+        left: "syel",
+        leftMood: "test",
+        right: "ilyem",
+        rightMood: "sourire",
+        leftFlip: false,
+        rightFlip: false
+      },
+    },
+    {
+      id: "start5",
+      text: "[Elle le tend à Ilyem]",
+      background: 'bar',
+      charactersOnScreen: {
+        left: "syel",
+        leftMood: "test",
+        right: "ilyem",
+        rightMood: "etonnee",
+        leftFlip: false,
+        rightFlip: false
+      },
+    },
+    {
+      id: "start6",
+      text: "[Elles allument toutes les 2 leurs cigarettes]",
+      background: 'bar',
+      charactersOnScreen: {
+        left: "syel",
+        leftMood: "test",
+        right: "ilyem",
+        rightMood: "allume_cig",
+        leftFlip: false,
+        rightFlip: false
+      },
+    },
+    {
+      id: "start7",
+      name: "Ilyem",
+      text: "Je peux vous aider à les trouver",
+      background: 'bar',
+      charactersOnScreen: {
+        left: "syel",
+        leftMood: "test",
+        right: "ilyem",
+        rightMood: "sourire_cig",
+        leftFlip: false,
+        rightFlip: false
+      },
+    },
+    /*
     {
       id: "where_to_go", // Unique ID for this line
       name: "Aria",
@@ -79,7 +173,7 @@ const script: DialogueLine[] = [
         leftFlip: false,
         rightFlip: true
       }
-    }
+    }*/
   ];
 
   export default script;

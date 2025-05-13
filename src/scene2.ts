@@ -3,19 +3,24 @@ import { DialogueLine, FadeTransitionType } from "./types";
 const script : DialogueLine[] = [
     {
         id: "gare", // Unique ID for this line
-        name: "Vangva",
-        text: "<i>Décidément, ça me fera toujours quelque chose de rentrer à Brissa. Un quelque chose coincé entre la nostalgie et le malaise…</i>",
+        text: "Une vidéo montre la ville de Brissa de l'extérieur",
         background: 'gare',
         backgroundTransition: {
           easing: FadeTransitionType.easeIn,
           duration: 3000,
         },
-        charactersOnScreen: {
-            left: "vava",
-            leftMood: "pense",
-            leftFlip: true,
-            rightFlip: true
-        }
+    },
+    {
+      id: "gare0",
+      name: "Vangva",
+      text: "<i>Décidément, ça me fera toujours quelque chose de rentrer à Brissa. Un quelque chose coincé entre la nostalgie et le malaise…</i>",
+      background: 'gare',
+      charactersOnScreen: {
+        left: "vava",
+        leftMood: "pense",
+        leftFlip: true,
+        rightFlip: false
+      },
     },
     {
       id: "gare1",
@@ -178,7 +183,7 @@ const script : DialogueLine[] = [
     },
     {
       id: "gare4",
-      name: "NODE",
+      name: "N.O.D.E.",
       text: "Je vois. Ça me semble crédible.",
       background: 'gareVava',
       charactersOnScreen: {
@@ -206,7 +211,7 @@ const script : DialogueLine[] = [
     },
     {
       id: "gare6",
-      name: "NODE",
+      name: "N.O.D.E.",
       text: "*elle rigole*",
       background: 'gareVava',
       charactersOnScreen: {
@@ -220,7 +225,7 @@ const script : DialogueLine[] = [
     },
     {
       id: "gare7",
-      name: "NODE",
+      name: "N.O.D.E.",
       text: "Merci pour ta collaboration. C'est bon. On l'a déjà repéré.",
       background: 'gareVava',
       charactersOnScreen: {

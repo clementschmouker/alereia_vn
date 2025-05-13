@@ -27,7 +27,7 @@ const script: DialogueLine[] = [
     },
     {
       id: "start1",
-      name: "NODE",
+      name: "N.O.D.E.",
       text: "...",
       background: 'bar',
       charactersOnScreen: {
@@ -55,7 +55,7 @@ const script: DialogueLine[] = [
     },
     {
       id: "start3",
-      name: "NODE",
+      name: "N.O.D.E.",
       text: "...",
       background: 'bar',
       charactersOnScreen: {
@@ -69,7 +69,7 @@ const script: DialogueLine[] = [
     },
     {
       id: "start3.1",
-      name: "NODE",
+      name: "N.O.D.E.",
       text: "... mais un Nouvel Idéal le fera renaître de ses cendres.",
       background: 'bar',
       charactersOnScreen: {
@@ -83,7 +83,7 @@ const script: DialogueLine[] = [
     },
     {
       id: "start5",
-      name: "NODE",
+      name: "N.O.D.E.",
       text: "Tu te joins à moi ?",
       background: 'bar',
       charactersOnScreen: {

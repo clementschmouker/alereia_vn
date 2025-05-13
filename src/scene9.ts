@@ -13,7 +13,7 @@ const script : DialogueLine[] = [
     },
     {
       id: "supercherie1",
-      name: "NODE",
+      name: "N.O.D.E.",
       text: "On te tient ! Frères et soeurs, mobilisez-vous, ce n'est plus le moment de se cacher ! Notre priorité est de l'emmener en lieu sûr !",
       background: 'rues',
       charactersOnScreen: {
@@ -23,8 +23,8 @@ const script : DialogueLine[] = [
         rightMood: "arrogant",
         leftFlip: false,
         rightFlip: false,
-        middle: "syel",
-        middleMood: "attend",
+        middle: "ira",
+        middleMood: "secache",
         middleFlip: false,
       },
     },

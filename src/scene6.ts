@@ -21,7 +21,7 @@ const script : DialogueLine[] = [
     },
     {
       id: "twist1",
-      name: "NODE",
+      name: "N.O.D.E.",
       text: "Ça suffit ! T'es en train de te payer notre tête ?!",
       background: 'impasse',
       charactersOnScreen: {
@@ -109,7 +109,7 @@ const script : DialogueLine[] = [
     },
     {
       id: "twist9",
-      name: "NODE",
+      name: "N.O.D.E.",
       text: "Arrête de faire le malin !! Notre nombre est peut-être réduit, mais tu n'en restes pas moins seul face à cinq personnes !",
       background: 'impasse',
       charactersOnScreen: {

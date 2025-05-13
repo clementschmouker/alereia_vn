@@ -3,7 +3,7 @@ import { DialogueLine, FadeTransitionType } from "./types";
 const script : DialogueLine[] = [
     {
         id: "bagarre", // Unique ID for this line
-        name: "NODE",
+        name: "N.O.D.E.",
         text: "Attends... Qu'est-ce que ça signifie ? On dirait qu'ils ont des pro...",
         background: 'bar',
         charactersOnScreen: {
@@ -21,7 +21,7 @@ const script : DialogueLine[] = [
     },
     {
       id: "bagarre1",
-      name: "NODE",
+      name: "N.O.D.E.",
       text: "Que... ?!",
       background: 'bar',
       charactersOnScreen: {
@@ -57,7 +57,7 @@ const script : DialogueLine[] = [
     },
     {
       id: "bagarre4",
-      name: "NODE",
+      name: "N.O.D.E.",
       text: "... Ah... *elle a l'air très effrayée*",
       background: 'bar',
       charactersOnScreen: {
@@ -93,7 +93,7 @@ const script : DialogueLine[] = [
     },
     {
       id: "bagarre7",
-      name: "NODE",
+      name: "N.O.D.E.",
       text: "Ad... Adrika... ? Je ne vois pas du tout qui...",
       background: 'bar',
       charactersOnScreen: {
@@ -117,7 +117,7 @@ const script : DialogueLine[] = [
     },
     {
       id: "bagarre9",
-      name: "NODE",
+      name: "N.O.D.E.",
       text: "Je... Je te jure... Je n'ai jamais entendu ce prénom...",
       background: 'bar',
       charactersOnScreen: {
@@ -141,7 +141,7 @@ const script : DialogueLine[] = [
     },
     {
       id: "bagarre11",
-      name: "NODE",
+      name: "N.O.D.E.",
       text: "Je jure... Je jure que je n'en sais rien...",
       background: 'bar',
       charactersOnScreen: {

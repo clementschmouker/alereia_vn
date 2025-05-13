@@ -13,7 +13,7 @@ const script : DialogueLine[] = [
     },
     {
       id: "impasse0",
-      name: "NODE",
+      name: "N.O.D.E.",
       text: "Tiens... Tu n'es pas né à Brissa, toi ? C'est quand même malheureux de connaître aussi mal sa propre ville.",
       background: 'impasse',
       charactersOnScreen: {
@@ -41,7 +41,7 @@ const script : DialogueLine[] = [
     },
     {
       id: "impasse2",
-      name: "NODE",
+      name: "N.O.D.E.",
       text: "Peu importe. Tu sais ce qu'on cherche, Vangva. Ou plutôt, <i>qui</i> on cherche. On a entendu ta conversation au téléphone, on sait que tu t'apprêtes à le retrouver... rappelle-toi, on a des yeux et des oreilles partout. Il te suffit juste de nous dire où il se trouve et on te laissera partir indemne.",
       background: 'impasse',
       charactersOnScreen: {
@@ -69,7 +69,7 @@ const script : DialogueLine[] = [
     },
     {
       id: "impasse4",
-      name: "NODE",
+      name: "N.O.D.E.",
       text: "C'est vrai, tu es plus fort que nous.",
       background: 'impasse',
       charactersOnScreen: {
@@ -83,7 +83,7 @@ const script : DialogueLine[] = [
     },
     {
       id: "impasse5",
-      name: "NODE",
+      name: "N.O.D.E.",
       text: "Mais nous, on est plus nombreux. Et surtout capables d'appeler du renfort sans même avoir besoin d'ouvrir la bouche.",
       background: 'impasse',
       charactersOnScreen: {
@@ -97,7 +97,7 @@ const script : DialogueLine[] = [
     },
     {
       id: "impasse6",
-      name: "NODE",
+      name: "N.O.D.E.",
       text: "Alors oui, tu peux faire le fier ! Mais peu importe tes pouvoirs, il restera toujours au moins l'un d'entre nous debout pour t'arrêter...",
       background: 'impasse',
       charactersOnScreen: {
@@ -125,7 +125,7 @@ const script : DialogueLine[] = [
     },
     {
       id: "impasse8",
-      name: "NODE",
+      name: "N.O.D.E.",
       text: "Tu sais, si tu nous disais juste où se trouve Syel...",
       background: 'impasse',
       charactersOnScreen: {
@@ -219,7 +219,7 @@ const script : DialogueLine[] = [
     },
     {
       id: "impasse16",
-      name: "NODE",
+      name: "N.O.D.E.",
       text: "Suivez-le !! Ne le laissez pas s'échapper !!",
       background: 'impasse',
       charactersOnScreen: {
@@ -247,7 +247,7 @@ const script : DialogueLine[] = [
     },
     {
       id: "impasse18",
-      name: "NODE",
+      name: "N.O.D.E.",
       text: "Vangva... On te ralentira le plus longtemps possible. Peu importe la raclée qu'on va se prendre...",
       background: 'impasse',
       charactersOnScreen: {

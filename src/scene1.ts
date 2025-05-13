@@ -42,7 +42,7 @@ const script: DialogueLine[] = [
     {
       id: "start2",
       name: "Ilyem",
-      text: "Je pense que ce monde est voué à disparaître...",
+      text: "Je pense que ce monde de feu et de sang est voué à disparaître...",
       background: 'bar',
       charactersOnScreen: {
         left: "serveuse",
@@ -56,7 +56,7 @@ const script: DialogueLine[] = [
     {
       id: "start3",
       name: "NODE",
-      text: "(la serveuse se détend)",
+      text: "...",
       background: 'bar',
       charactersOnScreen: {
         left: "serveuse",
@@ -70,7 +70,7 @@ const script: DialogueLine[] = [
     {
       id: "start3.1",
       name: "NODE",
-      text: "Mais un Nouvel Idéal le fera renaître de ses cendres.",
+      text: "... mais un Nouvel Idéal le fera renaître de ses cendres.",
       background: 'bar',
       charactersOnScreen: {
         left: "serveuse",
@@ -83,7 +83,8 @@ const script: DialogueLine[] = [
     },
     {
       id: "start5",
-      text: "",
+      name: "NODE",
+      text: "Tu te joins à moi ?",
       background: 'bar',
       charactersOnScreen: {
         left: "serveuse",
@@ -96,6 +97,20 @@ const script: DialogueLine[] = [
     },
     {
       id: "start6",
+      name: "Ilyem",
+      text: "Ah... merci.",
+      background: 'bar',
+      charactersOnScreen: {
+        left: "serveuse",
+        leftMood: "propose_cig",
+        right: "ilyem",
+        rightMood: "etonnee",
+        leftFlip: false,
+        rightFlip: false
+      },
+    },
+    {
+      id: "start6.1",
       text: "",
       background: 'bar',
       charactersOnScreen: {
@@ -110,7 +125,7 @@ const script: DialogueLine[] = [
     {
       id: "start7",
       name: "Ilyem",
-      text: "Je peux vous aider à les trouver",
+      text: "Je peux vous aider à les trouver. Vous savez de qui je parle.",
       background: 'bar',
       charactersOnScreen: {
         left: "serveuse",

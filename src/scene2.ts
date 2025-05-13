@@ -4,7 +4,7 @@ const script : DialogueLine[] = [
     {
         id: "gare", // Unique ID for this line
         name: "Vangva",
-        text: "Décidément, ça me fera toujours quelque chose de rentrer à Brissa. Un quelque chose coincé entre la nostalgie et le malaise…",
+        text: "<i>Décidément, ça me fera toujours quelque chose de rentrer à Brissa. Un quelque chose coincé entre la nostalgie et le malaise…</i>",
         background: 'gare',
         backgroundTransition: {
           easing: FadeTransitionType.easeIn,
@@ -32,7 +32,7 @@ const script : DialogueLine[] = [
     {
       id: "gare2",
       name: "Vangva",
-      text: "Bon. J'espère qu'il va bientôt me répondre...",
+      text: "<i>Bon. J'espère qu'il va bientôt me répondre...</i>",
       background: 'gare',
       charactersOnScreen: {
         left: "vava",
@@ -79,7 +79,7 @@ const script : DialogueLine[] = [
     },
     {
       id: "interlude6",
-      name: "@Ilyly2306 - Hier à 22h24",
+      name: "@Lilas2306 - Hier à 22h24",
       text: "Ouah ! Merci Va ! Je savais qu'on pouvait toujours compter sur toi !",
       background: 'gare',
     },
@@ -91,7 +91,7 @@ const script : DialogueLine[] = [
     },
     {
       id: "interlude8",
-      name: "@Ilyly2306 - Aujourd'hui à 09h54",
+      name: "@Lilas2306 - Aujourd'hui à 09h54",
       text: "Que tout aille bien pour vous aujourd'hui, les gars ! Et soyez prudents... Surtout toi, Va. Tu as beau être un soldat entraîné, tu ne sais pas ce qui t'attend là-bas... *liké par 2 personnes*",
       background: 'gare',
     },
@@ -104,11 +104,11 @@ const script : DialogueLine[] = [
     {
       id: "smartphone", 
       name: "@Vava01",
-      text: "Que répondre à Ilyly2306 ?",
+      text: "Que répondre à Lilas2306 ?",
     background: 'gare',
       choices: [
         { text: "Je gère :)", nextLineId: "positif" },
-        { text: "On sait tous très bien que je ne risque rien... Tu t'en fais trop pour moi Ily, comme toujours.", nextLineId: "negatif" },
+        { text: "On sait tous très bien que je ne risque rien... Tu t'en fais trop pour moi, comme toujours.", nextLineId: "negatif" },
         { text : "Ce n'est pas pour moi qu'il faut s'inquiéter. C'est plutôt pour @StrangerFromTheSky qui ne donne pas de signe de vie depuis hier soir...", nextLineId: "inquiet" }
       ]
     },
@@ -134,7 +134,7 @@ const script : DialogueLine[] = [
     {
       id: "negatif",
       name: "@nuit_rouge - Aujourd'hui à 14h01",
-      text: "T'as pris 4h pour répondre juste pour être désagréable ? Sérieusement",
+      text: "Il t'a fallu 4h avant de répondre juste pour être désagréable ? Sérieusement",
       background: 'gare',
     },
     {
@@ -169,7 +169,7 @@ const script : DialogueLine[] = [
       background: 'gareVava',
       charactersOnScreen: {
         left: "serveuse",
-        leftMood: "sourire_cig",
+        leftMood: "neutre_cig",
         right: "ilyem",
         rightMood: "serieux_cig",
         leftFlip: false,
@@ -211,7 +211,7 @@ const script : DialogueLine[] = [
       background: 'gareVava',
       charactersOnScreen: {
         left: "serveuse",
-        leftMood: "sourire_cig",
+        leftMood: "satisfaite_cig",
         right: "ilyem",
         rightMood: "surprise_cig",
         leftFlip: false,
@@ -225,7 +225,7 @@ const script : DialogueLine[] = [
       background: 'gareVava',
       charactersOnScreen: {
         left: "serveuse",
-        leftMood: "sourire_cig",
+        leftMood: "satisfaite_cig",
         right: "ilyem",
         rightMood: "surprise_cig",
         leftFlip: false,

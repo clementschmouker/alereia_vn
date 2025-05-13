@@ -14,7 +14,7 @@ const script : DialogueLine[] = [
     {
       id: "3js1",
       name: "Vangva",
-      text: "Mmh...",
+      text: "<i>Mmh...</i>",
       background: 'gare2',
       charactersOnScreen: {
         left: "vava",
@@ -74,7 +74,7 @@ const script : DialogueLine[] = [
     {
       id: "3js7",
       name: "Vangva",
-      text: "Je ferais mieux de ne pas rester ici.",
+      text: "<i>Je ferais mieux de ne pas rester ici.</i>",
       background: 'gare2',
       charactersOnScreen: {
         left: "vava",
@@ -92,7 +92,7 @@ const script : DialogueLine[] = [
     {
       id: "3js9",
       name: "Vangva",
-      text: "Les voilà...",
+      text: "<i>Les voilà...</i>",
       background: 'gare2',
       charactersOnScreen: {
         left: "vava",

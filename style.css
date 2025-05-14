@@ -139,6 +139,13 @@
   transform: translateX(-50%);
 }
 
+#go-back {
+  position: fixed;
+  z-index: 10000;
+  top: 1rem;
+  left: 1rem;
+}
+
 #skip-video.hidden {
   display: none;
 }

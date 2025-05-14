@@ -12,6 +12,8 @@ import { DialogueLine } from "./types";
 const script = [...scene1, ...scene2, ...scene3, ...scene4, ...scene5, ...scene6, ...scene7, ...scene8, ...scene9]; // @TODO IMPORTANT: Combine the scripts into one
 
 let currentLineId = "start"; // The ID of the current line to be displayed
+let previousLine: string[] = [];
+let currentLineIndex = 0;
 
 const nameElem = document.getElementById("name")!;
 const dialogueElem = document.getElementById("dialogue")!;
@@ -21,11 +23,17 @@ const leftCharacter = document.getElementById("left-character")!;
 const rightCharacter = document.getElementById("right-character")!;
 const middleCharacter = document.getElementById("middle-character")!;
 const backgroundElem = document.getElementById("background")!;
-const backgroundVideo = document.querySelector('#background-video') as any;
+const backgroundVideo = document.querySelector('#background-video') as HTMLVideoElement;
 const choicesContainer = document.getElementById("choices-container")!;
+
+const audioChannelSound = document.querySelector('#audio-channel--sound') as HTMLAudioElement;
+const audioChannelMusic = document.querySelector('#audio-channel--music') as HTMLAudioElement;
+const audioChannelVoice = document.querySelector('#audio-channel--voice') as HTMLAudioElement;
 
 const unmuteButton = document.querySelector('#mute-sound');
 const skipVideo = document.querySelector('#skip-video')
+const goBackButton = document.querySelector('#go-back');
+
 let canPassScreen = true;
 
 unmuteButton?.addEventListener('click', () => {
@@ -37,11 +45,19 @@ skipVideo?.addEventListener('click', () => {
   skipVideo.classList.remove('hidden');
   const nextLineId = getNextLineId();
   if (nextLineId) {
-
+    previousLine.push(currentLineId)
     currentLineId = nextLineId;
+    currentLineIndex += 1;
     showLine(nextLineId);
   }
 });
+
+goBackButton?.addEventListener('click', () => {
+  if (currentLineIndex <= 0) return;
+  currentLineIndex -= 1;
+  currentLineId = previousLine[currentLineIndex];
+  showLine(previousLine[currentLineIndex]);
+})
 
 // Function to find a dialogue line by its ID
 function findLineById(id: string): DialogueLine | undefined {
@@ -97,7 +113,9 @@ function showLine(id: string) {
         console.log('ended !!');
         const nextLineId = getNextLineId();
         if (nextLineId) {
+          previousLine.push(currentLineId);
           currentLineId = nextLineId;
+          currentLineIndex += 1;
           showLine(nextLineId);
         }
       })
@@ -184,18 +202,108 @@ function showLine(id: string) {
         button.onclick = () => {
           // Clear previous choices and show the next line based on the chosen ID
           choicesContainer.innerHTML = "";
+          previousLine.push(currentLineId);
           currentLineId = choice.nextLineId;
+          currentLineIndex += 1;
           showLine(choice.nextLineId);
         };
         choicesContainer.appendChild(button);
       });
     }
+
+    if (line.sound) {
+      if (audioChannelSound) {
+        audioChannelSound.pause();
+        audioChannelSound.currentTime = 0;
+        audioChannelSound.innerHTML = "";
+        const audioFile = document.createElement('source');
+        audioFile.src = line.sound;
+        audioChannelSound.appendChild(audioFile);
+        audioChannelSound.play();
+      }
+    }
+
+    if (line.voice) {
+      if (audioChannelVoice) {
+        audioChannelVoice.pause();
+        audioChannelVoice.currentTime = 0;
+        audioChannelVoice.innerHTML = "";
+        const audioFile = document.createElement('source');
+        audioFile.src = line.voice;
+        audioChannelVoice.appendChild(audioFile);
+        audioChannelVoice.play();
+      }
+    }
+
+    if (line.music) {
+      crossfadeMusic(audioChannelMusic, line.music, 2000);
+    }
+    
   
     if (line.callback) {
       line.callback();
     }
   }
 }
+
+async function crossfadeMusic(audioElement: HTMLAudioElement, newSrc: string, duration = 1000) {
+  if (!audioElement) return;
+
+  await fadeOut(audioElement, duration / 2);
+
+  audioElement.pause();
+  audioElement.innerHTML = "";
+
+  const source = document.createElement("source");
+  source.src = newSrc;
+  source.type = "audio/mpeg";
+  audioElement.appendChild(source);
+
+  audioElement.load();
+
+  audioElement.volume = 0;
+  try {
+    await audioElement.play();
+    await fadeIn(audioElement, duration / 2);
+  } catch (err) {
+    console.warn("Playback failed:", err);
+  }
+}
+
+function fadeOut(audio: HTMLAudioElement, duration: number) {
+  return new Promise(resolve => {
+    const steps = 20;
+    const interval = duration / steps;
+    const delta = audio.volume / steps;
+    const fade = setInterval(() => {
+      if (audio.volume > delta) {
+        audio.volume -= delta;
+      } else {
+        audio.volume = 0;
+        clearInterval(fade);
+        resolve({});
+      }
+    }, interval);
+  });
+}
+
+function fadeIn(audio: HTMLAudioElement, duration: number) {
+  return new Promise(resolve => {
+    const steps = 20;
+    const interval = duration / steps;
+    const delta = 1 / steps;
+    const fade = setInterval(() => {
+      if (audio.volume < 1 - delta) {
+        audio.volume += delta;
+      } else {
+        audio.volume = 1;
+        clearInterval(fade);
+        resolve({});
+      }
+    }, interval);
+  });
+}
+
 
 // Start the dialogue by showing the first line
 showLine(currentLineId);
@@ -207,8 +315,9 @@ dialogueBox.addEventListener("click", () => {
   if (!currentLine?.choices) {
     const nextLineId = getNextLineId();
     if (nextLineId) {
-
+      previousLine.push(currentLineId);
       currentLineId = nextLineId;
+      currentLineIndex += 1;
       showLine(nextLineId);
     }
   }

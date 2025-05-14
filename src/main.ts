@@ -24,9 +24,9 @@ const backgroundElem = document.getElementById("background")!;
 const backgroundVideo = document.querySelector('#background-video') as any;
 const choicesContainer = document.getElementById("choices-container")!;
 
-const audioChannelSound = document.querySelector('#audio-channel--sound');
-const audioChannelMusic = document.querySelector('#audio-channel--music');
-const audioChannelVoice = document.querySelector('#audio-channel--voice');
+const audioChannelSound = document.querySelector('#audio-channel--sound') as HTMLAudioElement;
+const audioChannelMusic = document.querySelector('#audio-channel--music') as HTMLAudioElement;
+const audioChannelVoice = document.querySelector('#audio-channel--voice') as HTMLAudioElement;
 
 const unmuteButton = document.querySelector('#mute-sound');
 const skipVideo = document.querySelector('#skip-video')
@@ -230,7 +230,7 @@ function showLine(id: string) {
   }
 }
 
-async function crossfadeMusic(audioElement, newSrc, duration = 1000) {
+async function crossfadeMusic(audioElement: HTMLAudioElement, newSrc: string, duration = 1000) {
   if (!audioElement) return;
 
   await fadeOut(audioElement, duration / 2);
@@ -254,7 +254,7 @@ async function crossfadeMusic(audioElement, newSrc, duration = 1000) {
   }
 }
 
-function fadeOut(audio, duration) {
+function fadeOut(audio: HTMLAudioElement, duration: number) {
   return new Promise(resolve => {
     const steps = 20;
     const interval = duration / steps;
@@ -265,13 +265,13 @@ function fadeOut(audio, duration) {
       } else {
         audio.volume = 0;
         clearInterval(fade);
-        resolve();
+        resolve({});
       }
     }, interval);
   });
 }
 
-function fadeIn(audio, duration) {
+function fadeIn(audio: HTMLAudioElement, duration: number) {
   return new Promise(resolve => {
     const steps = 20;
     const interval = duration / steps;
@@ -282,7 +282,7 @@ function fadeIn(audio, duration) {
       } else {
         audio.volume = 1;
         clearInterval(fade);
-        resolve();
+        resolve({});
       }
     }, interval);
   });

@@ -16,6 +16,7 @@ const script: DialogueLine[] = [
         easing: FadeTransitionType.easeIn,
         duration: 3000,
       },
+      music: '/src/audio/music.mp3',
       charactersOnScreen: {
         left: "serveuse",
         leftMood: "mefiante",
@@ -30,6 +31,7 @@ const script: DialogueLine[] = [
       name: "N.O.D.E.",
       text: "...",
       background: 'bar',
+      music: '/src/audio/music2.mp3',
       charactersOnScreen: {
         left: "serveuse",
         leftMood: "mefiante",

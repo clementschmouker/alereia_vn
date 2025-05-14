@@ -20,6 +20,7 @@ interface DialogueLine {
     backgroundVideo?: string;
     backgroundTransition?: backgroundImageTransitionType;
     music?: string;
+    loopMusic?: boolean;
     sound?: string;
     voice?: string;
     stopMusic?: boolean;

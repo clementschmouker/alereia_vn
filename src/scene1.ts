@@ -8,17 +8,17 @@ const script: DialogueLine[] = [
     backgroundVideo: 'Intro',
   },
   {
-      id: "start2", // Unique ID for this line
+      id: "start0", // Unique ID for this line
       name: "Ilyem",
-      text: "Je... (ilyem a l'air méfiante)",
+      text: "Alors, voilà... Je...",
       background: 'bar',
       backgroundTransition: {
         easing: FadeTransitionType.easeIn,
         duration: 3000,
       },
       charactersOnScreen: {
-        left: "syel",
-        leftMood: "test",
+        left: "serveuse",
+        leftMood: "mefiante",
         right: "ilyem",
         rightMood: "bras_hesite",
         leftFlip: false,
@@ -27,12 +27,12 @@ const script: DialogueLine[] = [
     },
     {
       id: "start1",
-      name: "NODE",
-      text: "... (la femme aussi)",
+      name: "N.O.D.E.",
+      text: "...",
       background: 'bar',
       charactersOnScreen: {
-        left: "syel",
-        leftMood: "test",
+        left: "serveuse",
+        leftMood: "mefiante",
         right: "ilyem",
         rightMood: "bras_fuyant",
         leftFlip: false,
@@ -42,11 +42,11 @@ const script: DialogueLine[] = [
     {
       id: "start2",
       name: "Ilyem",
-      text: "Je pense que ce monde est voué à disparaître...",
+      text: "Je pense que ce monde de feu et de sang est voué à disparaître...",
       background: 'bar',
       charactersOnScreen: {
-        left: "syel",
-        leftMood: "test",
+        left: "serveuse",
+        leftMood: "mefiante",
         right: "ilyem",
         rightMood: "bras_hesite",
         leftFlip: false,
@@ -55,12 +55,12 @@ const script: DialogueLine[] = [
     },
     {
       id: "start3",
-      name: "NODE",
-      text: "(la serveuse se détend)",
+      name: "N.O.D.E.",
+      text: "...",
       background: 'bar',
       charactersOnScreen: {
-        left: "syel",
-        leftMood: "test",
+        left: "serveuse",
+        leftMood: "neutre",
         right: "ilyem",
         rightMood: "bras_fuyant",
         leftFlip: false,
@@ -69,25 +69,12 @@ const script: DialogueLine[] = [
     },
     {
       id: "start3.1",
-      name: "NODE",
-      text: "Mais un Nouvel Idéal le fera renaître de ses cendres.",
+      name: "N.O.D.E.",
+      text: "... mais un Nouvel Idéal le fera renaître de ses cendres.",
       background: 'bar',
       charactersOnScreen: {
-        left: "syel",
-        leftMood: "test",
-        right: "ilyem",
-        rightMood: "sourire",
-        leftFlip: false,
-        rightFlip: false
-      },
-    },
-    {
-      id: "start4",
-      text: "[La serveuse sort son paquet de cigarette]",
-      background: 'bar',
-      charactersOnScreen: {
-        left: "syel",
-        leftMood: "test",
+        left: "serveuse",
+        leftMood: "sourire",
         right: "ilyem",
         rightMood: "sourire",
         leftFlip: false,
@@ -96,11 +83,12 @@ const script: DialogueLine[] = [
     },
     {
       id: "start5",
-      text: "[Elle le tend à Ilyem]",
+      name: "N.O.D.E.",
+      text: "Tu te joins à moi ?",
       background: 'bar',
       charactersOnScreen: {
-        left: "syel",
-        leftMood: "test",
+        left: "serveuse",
+        leftMood: "propose_cig",
         right: "ilyem",
         rightMood: "etonnee",
         leftFlip: false,
@@ -109,11 +97,25 @@ const script: DialogueLine[] = [
     },
     {
       id: "start6",
-      text: "[Elles allument toutes les 2 leurs cigarettes]",
+      name: "Ilyem",
+      text: "Ah... merci.",
       background: 'bar',
       charactersOnScreen: {
-        left: "syel",
-        leftMood: "test",
+        left: "serveuse",
+        leftMood: "propose_cig",
+        right: "ilyem",
+        rightMood: "etonnee",
+        leftFlip: false,
+        rightFlip: false
+      },
+    },
+    {
+      id: "start6.1",
+      text: "",
+      background: 'bar',
+      charactersOnScreen: {
+        left: "serveuse",
+        leftMood: "cigarette",
         right: "ilyem",
         rightMood: "allume_cig",
         leftFlip: false,
@@ -123,13 +125,13 @@ const script: DialogueLine[] = [
     {
       id: "start7",
       name: "Ilyem",
-      text: "Je peux vous aider à les trouver",
+      text: "Je peux vous aider à les trouver. Vous savez de qui je parle.",
       background: 'bar',
       charactersOnScreen: {
-        left: "syel",
-        leftMood: "test",
+        left: "serveuse",
+        leftMood: "sourire_cig",
         right: "ilyem",
-        rightMood: "sourire_cig",
+        rightMood: "serieux_cig",
         leftFlip: false,
         rightFlip: false
       },

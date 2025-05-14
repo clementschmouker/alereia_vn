@@ -41,10 +41,13 @@ interface DialogueLine {
     charactersOnScreen?: {
       left?: string;
       right?: string;
+      middle?: string;
       leftMood?: string;
       rightMood?: string;
+      middleMood?: string;
       leftFlip?: boolean;
       rightFlip?: boolean;
+      middleFlip?: boolean;
     };
     choices?: {
       text: string;

@@ -12,6 +12,8 @@ import { DialogueLine } from "./types";
 const script = [...scene1, ...scene2, ...scene3, ...scene4, ...scene5, ...scene6, ...scene7, ...scene8, ...scene9]; // @TODO IMPORTANT: Combine the scripts into one
 
 let currentLineId = "start"; // The ID of the current line to be displayed
+let previousLine: string[] = [];
+let currentLineIndex = 0;
 
 const nameElem = document.getElementById("name")!;
 const dialogueElem = document.getElementById("dialogue")!;
@@ -21,7 +23,7 @@ const leftCharacter = document.getElementById("left-character")!;
 const rightCharacter = document.getElementById("right-character")!;
 const middleCharacter = document.getElementById("middle-character")!;
 const backgroundElem = document.getElementById("background")!;
-const backgroundVideo = document.querySelector('#background-video') as any;
+const backgroundVideo = document.querySelector('#background-video') as HTMLVideoElement;
 const choicesContainer = document.getElementById("choices-container")!;
 
 const audioChannelSound = document.querySelector('#audio-channel--sound') as HTMLAudioElement;
@@ -30,6 +32,8 @@ const audioChannelVoice = document.querySelector('#audio-channel--voice') as HTM
 
 const unmuteButton = document.querySelector('#mute-sound');
 const skipVideo = document.querySelector('#skip-video')
+const goBackButton = document.querySelector('#go-back');
+
 let canPassScreen = true;
 
 unmuteButton?.addEventListener('click', () => {
@@ -41,11 +45,19 @@ skipVideo?.addEventListener('click', () => {
   skipVideo.classList.remove('hidden');
   const nextLineId = getNextLineId();
   if (nextLineId) {
-
+    previousLine.push(currentLineId)
     currentLineId = nextLineId;
+    currentLineIndex += 1;
     showLine(nextLineId);
   }
 });
+
+goBackButton?.addEventListener('click', () => {
+  if (currentLineIndex <= 0) return;
+  currentLineIndex -= 1;
+  currentLineId = previousLine[currentLineIndex];
+  showLine(previousLine[currentLineIndex]);
+})
 
 // Function to find a dialogue line by its ID
 function findLineById(id: string): DialogueLine | undefined {
@@ -101,7 +113,9 @@ function showLine(id: string) {
         console.log('ended !!');
         const nextLineId = getNextLineId();
         if (nextLineId) {
+          previousLine.push(currentLineId);
           currentLineId = nextLineId;
+          currentLineIndex += 1;
           showLine(nextLineId);
         }
       })
@@ -188,7 +202,9 @@ function showLine(id: string) {
         button.onclick = () => {
           // Clear previous choices and show the next line based on the chosen ID
           choicesContainer.innerHTML = "";
+          previousLine.push(currentLineId);
           currentLineId = choice.nextLineId;
+          currentLineIndex += 1;
           showLine(choice.nextLineId);
         };
         choicesContainer.appendChild(button);
@@ -299,8 +315,9 @@ dialogueBox.addEventListener("click", () => {
   if (!currentLine?.choices) {
     const nextLineId = getNextLineId();
     if (nextLineId) {
-
+      previousLine.push(currentLineId);
       currentLineId = nextLineId;
+      currentLineIndex += 1;
       showLine(nextLineId);
     }
   }

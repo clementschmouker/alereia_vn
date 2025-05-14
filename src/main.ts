@@ -24,6 +24,10 @@ const backgroundElem = document.getElementById("background")!;
 const backgroundVideo = document.querySelector('#background-video') as any;
 const choicesContainer = document.getElementById("choices-container")!;
 
+const audioChannelSound = document.querySelector('#audio-channel--sound');
+const audioChannelMusic = document.querySelector('#audio-channel--music');
+const audioChannelVoice = document.querySelector('#audio-channel--voice');
+
 const unmuteButton = document.querySelector('#mute-sound');
 const skipVideo = document.querySelector('#skip-video')
 let canPassScreen = true;
@@ -190,12 +194,100 @@ function showLine(id: string) {
         choicesContainer.appendChild(button);
       });
     }
+
+    if (line.sound) {
+      if (audioChannelSound) {
+        audioChannelSound.pause();
+        audioChannelSound.currentTime = 0;
+        audioChannelSound.innerHTML = "";
+        const audioFile = document.createElement('source');
+        audioFile.src = line.sound;
+        audioChannelSound.appendChild(audioFile);
+        audioChannelSound.play();
+      }
+    }
+
+    if (line.voice) {
+      if (audioChannelVoice) {
+        audioChannelVoice.pause();
+        audioChannelVoice.currentTime = 0;
+        audioChannelVoice.innerHTML = "";
+        const audioFile = document.createElement('source');
+        audioFile.src = line.voice;
+        audioChannelVoice.appendChild(audioFile);
+        audioChannelVoice.play();
+      }
+    }
+
+    if (line.music) {
+      crossfadeMusic(audioChannelMusic, line.music, 2000);
+    }
+    
   
     if (line.callback) {
       line.callback();
     }
   }
 }
+
+async function crossfadeMusic(audioElement, newSrc, duration = 1000) {
+  if (!audioElement) return;
+
+  await fadeOut(audioElement, duration / 2);
+
+  audioElement.pause();
+  audioElement.innerHTML = "";
+
+  const source = document.createElement("source");
+  source.src = newSrc;
+  source.type = "audio/mpeg";
+  audioElement.appendChild(source);
+
+  audioElement.load();
+
+  audioElement.volume = 0;
+  try {
+    await audioElement.play();
+    await fadeIn(audioElement, duration / 2);
+  } catch (err) {
+    console.warn("Playback failed:", err);
+  }
+}
+
+function fadeOut(audio, duration) {
+  return new Promise(resolve => {
+    const steps = 20;
+    const interval = duration / steps;
+    const delta = audio.volume / steps;
+    const fade = setInterval(() => {
+      if (audio.volume > delta) {
+        audio.volume -= delta;
+      } else {
+        audio.volume = 0;
+        clearInterval(fade);
+        resolve();
+      }
+    }, interval);
+  });
+}
+
+function fadeIn(audio, duration) {
+  return new Promise(resolve => {
+    const steps = 20;
+    const interval = duration / steps;
+    const delta = 1 / steps;
+    const fade = setInterval(() => {
+      if (audio.volume < 1 - delta) {
+        audio.volume += delta;
+      } else {
+        audio.volume = 1;
+        clearInterval(fade);
+        resolve();
+      }
+    }, interval);
+  });
+}
+
 
 // Start the dialogue by showing the first line
 showLine(currentLineId);

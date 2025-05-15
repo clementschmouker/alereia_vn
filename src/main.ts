@@ -126,12 +126,17 @@ function showLine(id: string) {
       skipVideo?.classList.add('hidden');
       backgroundVideo.src = '';
     }
-  
+
+    leftCharacter.innerHTML = "";
+
+    rightCharacter.innerHTML = "";
+    middleCharacter.innerHTML = "";
+
     // Handle characters on screen
     if (line.charactersOnScreen) {
       const { left, right, middle, leftFlip, middleFlip, rightFlip } = line.charactersOnScreen;
   
-      leftCharacter.innerHTML = "";
+
       // Handle left character
       if (left) {
         const leftImg = document.createElement("img");
@@ -153,7 +158,6 @@ function showLine(id: string) {
         leftCharacter.appendChild(leftImg);
       }
   
-      rightCharacter.innerHTML = "";
       // Handle right character
       if (right) {
         const rightMood = line.charactersOnScreen.rightMood;
@@ -176,7 +180,6 @@ function showLine(id: string) {
     
           // Handle middle character
           
-      middleCharacter.innerHTML = "";
       if (middle) {
         const middleImg = document.createElement("img");
         const middleMood = line.charactersOnScreen.middleMood;

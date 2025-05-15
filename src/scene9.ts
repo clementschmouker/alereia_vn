@@ -52,7 +52,7 @@ const script : DialogueLine[] = [
       },
     },
     {
-      id: "supercherie2",
+      id: "supercherie2.0",
       name: "N.O.D.E.",
       text: "... Quoi ?!",
       background: 'rues',

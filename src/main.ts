@@ -12,7 +12,7 @@ import { DialogueLine } from "./types";
 
 const script = [...scene1, ...scene2, ...scene3, ...scene4, ...scene5, ...scene6, ...scene7, ...scene8, ...scene9, ...scene10]; // @TODO IMPORTANT: Combine the scripts into one
 
-let currentLineId = "start"; // The ID of the current line to be displayed
+let currentLineId = "supercherie"; // The ID of the current line to be displayed
 let previousLine: string[] = [];
 let currentLineIndex = 0;
 
@@ -131,6 +131,7 @@ function showLine(id: string) {
     if (line.charactersOnScreen) {
       const { left, right, middle, leftFlip, middleFlip, rightFlip } = line.charactersOnScreen;
   
+      leftCharacter.innerHTML = "";
       // Handle left character
       if (left) {
         const leftImg = document.createElement("img");
@@ -152,6 +153,7 @@ function showLine(id: string) {
         leftCharacter.appendChild(leftImg);
       }
   
+      rightCharacter.innerHTML = "";
       // Handle right character
       if (right) {
         const rightMood = line.charactersOnScreen.rightMood;
@@ -173,6 +175,8 @@ function showLine(id: string) {
       }
     
           // Handle middle character
+          
+      middleCharacter.innerHTML = "";
       if (middle) {
         const middleImg = document.createElement("img");
         const middleMood = line.charactersOnScreen.middleMood;

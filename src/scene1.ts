@@ -1,4 +1,4 @@
-import { DialogueLine, FadeTransitionType } from "./types";
+import { DialogueLine, /*FadeTransitionType*/ } from "./types";
 
 
 const script: DialogueLine[] = [
@@ -12,11 +12,11 @@ const script: DialogueLine[] = [
       name: "Ilyem",
       text: "Alors, voilà... Je...",
       background: 'bar',
-      backgroundTransition: {
+      /*backgroundTransition: {
         easing: FadeTransitionType.easeIn,
         duration: 3000,
-      },
-      music: '/src/audio/music.mp3',
+      },*/
+      music: '/src/audio/scene1.mp3',
       charactersOnScreen: {
         left: "serveuse",
         leftMood: "mefiante",
@@ -31,7 +31,6 @@ const script: DialogueLine[] = [
       name: "N.O.D.E.",
       text: "...",
       background: 'bar',
-      music: '/src/audio/music2.mp3',
       charactersOnScreen: {
         left: "serveuse",
         leftMood: "mefiante",

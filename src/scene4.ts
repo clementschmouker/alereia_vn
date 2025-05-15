@@ -10,6 +10,7 @@ const script : DialogueLine[] = [
           easing: FadeTransitionType.easeIn,
           duration: 3000,
         },
+        music: '/src/audio/scene4.mp3',
     },
     {
       id: "impasse0",
@@ -17,8 +18,8 @@ const script : DialogueLine[] = [
       text: "Tiens... Tu n'es pas né à Brissa, toi ? C'est quand même malheureux de connaître aussi mal sa propre ville.",
       background: 'impasse',
       charactersOnScreen: {
-        left: "serveuse",
-        leftMood: "sourire",
+        left: "mechants",
+        leftMood: "moqueur",
         right: "vava",
         rightMood: "regard_froid",
         leftFlip: false,
@@ -31,8 +32,8 @@ const script : DialogueLine[] = [
       text: "...",
       background: 'impasse',
       charactersOnScreen: {
-        left: "serveuse",
-        leftMood: "sourire",
+        left: "mechants",
+        leftMood: "moqueur",
         right: "vava",
         rightMood: "regard_froid",
         leftFlip: false,
@@ -45,8 +46,8 @@ const script : DialogueLine[] = [
       text: "Peu importe. Tu sais ce qu'on cherche, Vangva. Ou plutôt, <i>qui</i> on cherche. On a entendu ta conversation au téléphone, on sait que tu t'apprêtes à le retrouver... rappelle-toi, on a des yeux et des oreilles partout. Il te suffit juste de nous dire où il se trouve et on te laissera partir indemne.",
       background: 'impasse',
       charactersOnScreen: {
-        left: "serveuse",
-        leftMood: "neutre",
+        left: "mechants",
+        leftMood: "menace",
         right: "vava",
         rightMood: "regard_froid",
         leftFlip: false,
@@ -59,8 +60,8 @@ const script : DialogueLine[] = [
       text: "Vous pensez vraiment me faire peur ? Je suis un soldat d'élite, et vous, vous semblez brandir un couteau pour la première fois de votre vie.",
       background: 'impasse',
       charactersOnScreen: {
-        left: "serveuse",
-        leftMood: "mefiante",
+        left: "mechants",
+        leftMood: "fache",
         right: "vava",
         rightMood: "arrogant",
         leftFlip: false,
@@ -73,8 +74,8 @@ const script : DialogueLine[] = [
       text: "C'est vrai, tu es plus fort que nous.",
       background: 'impasse',
       charactersOnScreen: {
-        left: "serveuse",
-        leftMood: "mefiante",
+        left: "mechants",
+        leftMood: "menace",
         right: "vava",
         rightMood: "regard_froid",
         leftFlip: false,
@@ -87,8 +88,8 @@ const script : DialogueLine[] = [
       text: "Mais nous, on est plus nombreux. Et surtout capables d'appeler du renfort sans même avoir besoin d'ouvrir la bouche.",
       background: 'impasse',
       charactersOnScreen: {
-        left: "serveuse",
-        leftMood: "sourire",
+        left: "mechants",
+        leftMood: "moqueur",
         right: "vava",
         rightMood: "regard_froid",
         leftFlip: false,
@@ -101,8 +102,8 @@ const script : DialogueLine[] = [
       text: "Alors oui, tu peux faire le fier ! Mais peu importe tes pouvoirs, il restera toujours au moins l'un d'entre nous debout pour t'arrêter...",
       background: 'impasse',
       charactersOnScreen: {
-        left: "serveuse",
-        leftMood: "neutre",
+        left: "mechants",
+        leftMood: "menace",
         right: "vava",
         rightMood: "regard_froid",
         leftFlip: false,
@@ -115,8 +116,8 @@ const script : DialogueLine[] = [
       text: "...",
       background: 'impasse',
       charactersOnScreen: {
-        left: "serveuse",
-        leftMood: "neutre",
+        left: "mechants",
+        leftMood: "menace",
         right: "vava",
         rightMood: "regard_froid",
         leftFlip: false,
@@ -129,8 +130,8 @@ const script : DialogueLine[] = [
       text: "Tu sais, si tu nous disais juste où se trouve Syel...",
       background: 'impasse',
       charactersOnScreen: {
-        left: "serveuse",
-        leftMood: "neutre",
+        left: "mechants",
+        leftMood: "menace",
         right: "vava",
         rightMood: "regard_froid",
         leftFlip: false,
@@ -143,8 +144,8 @@ const script : DialogueLine[] = [
       text: "...",
       background: 'impasse',
       charactersOnScreen: {
-        left: "serveuse",
-        leftMood: "mefiante",
+        left: "mechants",
+        leftMood: "menace",
         right: "vava",
         rightMood: "moqueur",
         leftFlip: false,
@@ -157,8 +158,8 @@ const script : DialogueLine[] = [
       text: "Franchement, il va falloir plus que ça pour m'impressionner...",
       background: 'impasse',
       charactersOnScreen: {
-        left: "serveuse",
-        leftMood: "peur",
+        left: "mechants",
+        leftMood: "fache",
         right: "vava",
         rightMood: "arrogant",
         leftFlip: false,
@@ -177,10 +178,9 @@ const script : DialogueLine[] = [
       text: "Vangva !!",
       background: 'impasse3',
       charactersOnScreen: {
-        left: "syel",
-        leftMood: "etonne",
-        leftFlip: false,
-        rightFlip: false
+        middle: "ira",
+        middleMood: "stresse",
+        middleFlip: false
       },
     },
     {
@@ -189,7 +189,7 @@ const script : DialogueLine[] = [
       text: "Syel !",
       background: 'impasse',
       charactersOnScreen: {
-        left: "serveuse",
+        left: "mechants",
         leftMood: "peur",
         right: "vava",
         rightMood: "choque",
@@ -203,8 +203,8 @@ const script : DialogueLine[] = [
       text: "Idiot ! Je t'avais dit de rester caché !! Va-t'en !!",
       background: 'impasse',
       charactersOnScreen: {
-        left: "serveuse",
-        leftMood: "satisfaite",
+        left: "mechants",
+        leftMood: "moqueur",
         right: "vava",
         rightMood: "panique",
         leftFlip: true,
@@ -223,10 +223,10 @@ const script : DialogueLine[] = [
       text: "Suivez-le !! Ne le laissez pas s'échapper !!",
       background: 'impasse',
       charactersOnScreen: {
-        left: "serveuse",
-        leftMood: "peur",
+        left: "mechants",
+        leftMood: "fache",
         right: "vava",
-        rightMood: "panique",
+        rightMood: "choque",
         leftFlip: true,
         rightFlip: false
       },
@@ -237,8 +237,8 @@ const script : DialogueLine[] = [
       text: "*La moitié des Nodistes part*",
       background: 'impasse',
       charactersOnScreen: {
-        left: "serveuse",
-        leftMood: "satisfaite",
+        left: "mechants",
+        leftMood: "moqueur",
         right: "vava",
         rightMood: "pense",
         leftFlip: false,
@@ -251,8 +251,8 @@ const script : DialogueLine[] = [
       text: "Vangva... On te ralentira le plus longtemps possible. Peu importe la raclée qu'on va se prendre...",
       background: 'impasse',
       charactersOnScreen: {
-        left: "serveuse",
-        leftMood: "mefiante",
+        left: "mechants",
+        leftMood: "menace",
         right: "vava",
         rightMood: "regard_froid",
         leftFlip: false,

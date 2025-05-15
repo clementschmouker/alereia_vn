@@ -9,6 +9,7 @@ const script : DialogueLine[] = [
           easing: FadeTransitionType.easeIn,
           duration: 3000,
         },
+        music: '/src/audio/scene2.mp3',
     },
     {
       id: "gare0",
@@ -180,6 +181,7 @@ const script : DialogueLine[] = [
         leftFlip: false,
         rightFlip: false
       },
+      music: '/src/audio/scene3.mp3',
     },
     {
       id: "gare4",

@@ -7,9 +7,10 @@ import scene6 from "./scene6";
 import scene7 from "./scene7";
 import scene8 from "./scene8";
 import scene9 from "./scene9";
+import scene10 from "./scene10";
 import { DialogueLine } from "./types";
 
-const script = [...scene1, ...scene2, ...scene3, ...scene4, ...scene5, ...scene6, ...scene7, ...scene8, ...scene9]; // @TODO IMPORTANT: Combine the scripts into one
+const script = [...scene1, ...scene2, ...scene3, ...scene4, ...scene5, ...scene6, ...scene7, ...scene8, ...scene9, ...scene10]; // @TODO IMPORTANT: Combine the scripts into one
 
 let currentLineId = "start"; // The ID of the current line to be displayed
 let previousLine: string[] = [];
@@ -171,7 +172,6 @@ function showLine(id: string) {
         rightCharacter.appendChild(rightImg);
       }
     
-
           // Handle middle character
       if (middle) {
         const middleImg = document.createElement("img");

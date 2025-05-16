@@ -1,4 +1,5 @@
 import { DialogueLine, FadeTransitionType } from "./types";
+import Game from "./game";
 
 const script : DialogueLine[] = [
     {
@@ -10,6 +11,10 @@ const script : DialogueLine[] = [
           easing: FadeTransitionType.easeIn,
           duration: 3000,
         },
+      //   callback: () => {
+      //     const game = new Game();
+      //   game.start();
+      // },
     },
     {
       id: "supercherie1",

@@ -1,5 +1,5 @@
 import { DialogueLine, /*FadeTransitionType*/ } from "./types";
-
+import Game from "./game";
 
 const script: DialogueLine[] = [
   {
@@ -16,7 +16,7 @@ const script: DialogueLine[] = [
         easing: FadeTransitionType.easeIn,
         duration: 3000,
       },*/
-      music: '/src/audio/scene1.mp3',
+      // music: '/src/audio/scene1.mp3',
       charactersOnScreen: {
         left: "serveuse",
         leftMood: "mefiante",
@@ -24,6 +24,10 @@ const script: DialogueLine[] = [
         rightMood: "bras_hesite",
         leftFlip: false,
         rightFlip: false
+      },
+      callback: () => {
+        const game = new Game();
+        game.start();
       },
     },
     {

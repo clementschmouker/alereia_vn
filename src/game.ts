@@ -18,6 +18,8 @@ class Game {
     composer: EffectComposer;
     player: Player;
     renderBlack: boolean;
+    raycaster: THREE.Raycaster;
+    cityModel: THREE.Object3D;
 
     constructor() {
         this.scene = new THREE.Scene();
@@ -28,6 +30,8 @@ class Game {
         document.body.appendChild(this.renderer.domElement);
         this.renderer.domElement.id = 'game-canvas';
         this.renderBlack = false;
+        this.raycaster = new THREE.Raycaster();
+
 
         // Lighting
         const Dirlight = new THREE.DirectionalLight(0xffffff, 1);
@@ -72,28 +76,37 @@ class Game {
                 if ((child as THREE.Mesh).isMesh) {
                     const mesh = child as THREE.Mesh;
                     const originalMaterial = mesh.material as THREE.MeshStandardMaterial;
-            
-                    // Clone the material to avoid affecting shared instances
+                
+                    // --- Toon shading (your code)
                     const newMaterial = originalMaterial.clone();
-            
                     newMaterial.onBeforeCompile = (shader) => {
-                        // Inject custom toon-like lighting logic into fragment shader
                         shader.fragmentShader = shader.fragmentShader.replace(
                             '#include <lights_phong_fragment>',
                             `
                             vec3 lightDir = normalize(directionalLights[0].direction);
                             float diff = max(dot(normal, lightDir), 0.0);
-                            diff = floor(diff * 4.0) / 4.0; // posterize
+                            diff = floor(diff * 4.0) / 4.0;
                             vec3 lighting = diff * directionalLights[0].color.rgb;
                             reflectedLight.directDiffuse = lighting;
                             `
                         );
                     };
-            
                     mesh.material = newMaterial;
+                
+                    // --- Outline mesh
+                    const outlineMaterial = new THREE.MeshBasicMaterial({
+                        color: 0x000000,
+                        side: THREE.BackSide
+                    });
+                    const outlineMesh = new THREE.Mesh(mesh.geometry, outlineMaterial);
+                    outlineMesh.position.copy(mesh.position);
+                    outlineMesh.rotation.copy(mesh.rotation);
+                    outlineMesh.scale.copy(mesh.scale).multiplyScalar(1.03);
+                    this.scene.add(outlineMesh);
                 }
             });
             
+            this.cityModel = gltf.scene;
             this.scene.add(gltf.scene);
             this.animate();
         }, undefined, (error: any) => {
@@ -130,6 +143,20 @@ class Game {
         this.player.update();
         this.camera.position.set(this.player.position.x, 0.75, this.player.position.z + 2);
         this.camera.lookAt(this.player.position);
+
+        const origin = new THREE.Vector3(this.player.position.x, this.player.position.y, this.player.position.z);
+        const direction = new THREE.Vector3(0, -1, 0);
+        this.raycaster.set(origin, direction);
+        
+        const intersects = this.raycaster.intersectObject(this.cityModel, true);
+        
+        if (intersects.length > 0) {
+            const currentY = this.player.position.y - (this.player.size.y / 2);
+            const targetY = intersects[0].point.y + 0.05;
+            this.player.position.y += (targetY - currentY) * 0.1; // interpolate
+        }
+        
+
 
         if (this.renderBlack) {
             this.composer.render();

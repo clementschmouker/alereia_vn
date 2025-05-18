@@ -129,8 +129,8 @@ const script : DialogueLine[] = [
       text: "Quant à Vangva, il est le plus grand frein à nos plans. L'idéal serait d'en faire l'un des nôtres pour profiter de sa force... sinon, nous n'aurons pas d'autre choix que de l'éliminer.",
       background: 'impasse',
       charactersOnScreen: {
-        left: "serveuse",
-        leftMood: "peur",
+        left: "mechants",
+        leftMood: "menace",
         right: "vava",
         rightMood: "arrogant",
         leftFlip: false,

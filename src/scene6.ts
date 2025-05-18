@@ -7,8 +7,8 @@ const script : DialogueLine[] = [
         text: "...",
         background: 'impasse',
         charactersOnScreen: {
-          left: "serveuse",
-          leftMood: "mefiante",
+          left: "mechants",
+          leftMood: "menace",
           right: "vava",
           rightMood: "moqueur",
           leftFlip: false,
@@ -18,6 +18,7 @@ const script : DialogueLine[] = [
           easing: FadeTransitionType.easeIn,
           duration: 3000,
         },
+        music: '/src/audio/scene6.mp3',
     },
     {
       id: "twist1",
@@ -25,8 +26,8 @@ const script : DialogueLine[] = [
       text: "Ça suffit ! T'es en train de te payer notre tête ?!",
       background: 'impasse',
       charactersOnScreen: {
-        left: "serveuse",
-        leftMood: "peur",
+        left: "mechants",
+        leftMood: "fache",
         right: "vava",
         rightMood: "arrogant",
         leftFlip: false,
@@ -39,7 +40,7 @@ const script : DialogueLine[] = [
       text: "J'espère que tu profites bien du spectacle depuis ton bureau.",
       background: 'impasse',
       charactersOnScreen: {
-        left: "serveuse",
+        left: "mechants",
         leftMood: "peur",
         right: "vava",
         rightMood: "met_ecouteurs",
@@ -59,7 +60,7 @@ const script : DialogueLine[] = [
       text: "Merci... Je t'avoue que je ne m'attendais pas à ce que ton plan marche aussi bien, Sanji. C'était presque trop facile.",
       background: 'impasse',
       charactersOnScreen: {
-        left: "serveuse",
+        left: "mechants",
         leftMood: "peur",
         right: "vava",
         rightMood: "se_moque",
@@ -73,7 +74,7 @@ const script : DialogueLine[] = [
       text: "Évidemment que ça a marché, tu me connais. Fais quand même attention à toi gamin... Et ne les tape pas trop fort, ils ont l'air morts de trouille les pauvres.",
       background: 'impasse',
       charactersOnScreen: {
-        left: "serveuse",
+        left: "mechants",
         leftMood: "peur",
         right: "vava",
         rightMood: "detendu",
@@ -99,8 +100,8 @@ const script : DialogueLine[] = [
       text: "Désolé, je vous ai fait attendre.",
       background: 'impasse',
       charactersOnScreen: {
-        left: "serveuse",
-        leftMood: "mefiante",
+        left: "mechants",
+        leftMood: "fache",
         right: "vava",
         rightMood: "sourire_combat",
         leftFlip: false,
@@ -113,7 +114,7 @@ const script : DialogueLine[] = [
       text: "Arrête de faire le malin !! Notre nombre est peut-être réduit, mais tu n'en restes pas moins seul face à cinq personnes !",
       background: 'impasse',
       charactersOnScreen: {
-        left: "serveuse",
+        left: "mechants",
         leftMood: "peur",
         right: "vava",
         rightMood: "serieux_combat",
@@ -127,7 +128,7 @@ const script : DialogueLine[] = [
       text: "Seul ?",
       background: 'impasse',
       charactersOnScreen: {
-        left: "serveuse",
+        left: "mechants",
         leftMood: "peur",
         right: "vava",
         rightMood: "serieux_combat",
@@ -147,8 +148,8 @@ const script : DialogueLine[] = [
       text: "Mais vous savez... Je ne suis pas <i>seul</i>...",
       background: 'impasse',
       charactersOnScreen: {
-        left: "serveuse",
-        leftMood: "mefiante",
+        left: "mechants",
+        leftMood: "menace",
         right: "vava",
         rightMood: "sourire_combat",
         leftFlip: false,

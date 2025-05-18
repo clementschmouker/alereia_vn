@@ -65,23 +65,24 @@
   .character-slot {
     position: absolute;
     bottom: 0;
-    width: 50%;
-    height: 100%;
+    /* width: 700px; */
+    height: 700px;
     display: flex;
     align-items: flex-end;
     justify-content: center;
   }
   
   #left-character {
-    left: 0;
+    left: 10%;
   }
   
   #right-character {
-    right: 0;
+    right: 10%;
   }
 
    #middle-character {
-    left: 25%;
+    left: 50%;
+    transform: translateX(-50%);
   }
   
   .character-slot img {

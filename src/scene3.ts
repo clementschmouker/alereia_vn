@@ -104,7 +104,7 @@ const script : DialogueLine[] = [
     {
       id: "3js10",
       name: "",
-      text: "*une pose où il range ses écouteurs. Puis course poursuite dans Three.js*",
+      text: "*Course poursuite dans Three.js*",
       background: 'gare2',
     },
 ];

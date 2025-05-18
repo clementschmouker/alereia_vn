@@ -6,6 +6,10 @@ const script: DialogueLine[] = [
     id: "start", // Unique ID for this line
     text: "",
     backgroundVideo: 'Intro',
+    callback: () => {
+      // const game = new Game();
+      // game.start();
+    },
   },
   {
       id: "start0", // Unique ID for this line
@@ -24,10 +28,6 @@ const script: DialogueLine[] = [
         rightMood: "bras_hesite",
         leftFlip: false,
         rightFlip: false
-      },
-      callback: () => {
-        const game = new Game();
-        game.start();
       },
     },
     {

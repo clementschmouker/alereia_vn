@@ -20,6 +20,7 @@ class Game {
     renderBlack: boolean;
     raycaster: THREE.Raycaster;
     cityModel: THREE.Object3D;
+    outlinePass: OutlinePass;
 
     constructor() {
         this.scene = new THREE.Scene();
@@ -35,9 +36,9 @@ class Game {
 
         // Lighting
         const Dirlight = new THREE.DirectionalLight(0xffffff, 1);
-        const light = new THREE.AmbientLight(0xffffff, 0.1);
+        const light = new THREE.AmbientLight(0xffffff, 1);
         Dirlight.position.set(5, 10, 7.5);
-        // this.scene.add(light);
+        this.scene.add(light);
         this.scene.add(Dirlight);
 
 
@@ -51,16 +52,16 @@ class Game {
         sobelPass.uniforms['resolution'].value.x = window.innerWidth * window.devicePixelRatio;
         sobelPass.uniforms['resolution'].value.y = window.innerHeight * window.devicePixelRatio;
 
-        const outlinePass = new OutlinePass(new THREE.Vector2(window.innerWidth, window.innerHeight), this.scene, this.camera);
-        outlinePass.edgeStrength = 10;  // Control the thickness of the outline
-        outlinePass.edgeGlow = 1.0;     // Glow around the outline (set to 0 for no glow)
-        outlinePass.visibleEdgeColor.set(0x000000);  // Black color for the outline
-        outlinePass.hiddenEdgeColor.set(0x000000);   // Set hidden edge color to black as well
+        // const outlinePass = new OutlinePass(new THREE.Vector2(window.innerWidth, window.innerHeight), this.scene, this.camera);
+        // outlinePass.edgeStrength = 10.0;  // Control the thickness of the outline
+        // outlinePass.edgeGlow = 0.0;     // Glow around the outline (set to 0 for no glow)
+        // outlinePass.visibleEdgeColor.set(0xff0000);  // Black color for the outline
+        // outlinePass.hiddenEdgeColor.set(0x000000);   // Set hidden edge color to black as well
 
-        this.composer = new EffectComposer(this.renderer);
-        this.composer.addPass(renderPass);
-        this.composer.addPass(sobelPass);
-        this.composer.addPass(outlinePass);
+        // this.composer = new EffectComposer(this.renderer);
+        // this.composer.addPass(renderPass);
+        // // this.composer.addPass(sobelPass);
+        // this.composer.addPass(outlinePass);
 
         // Player
         this.player = new Player();
@@ -72,42 +73,66 @@ class Game {
 
         // Replace this path with your actual model path
         loader.load('models/town4new.glb', (gltf: any) => {
-            gltf.scene.traverse((child) => {
-                if ((child as THREE.Mesh).isMesh) {
-                    const mesh = child as THREE.Mesh;
-                    const originalMaterial = mesh.material as THREE.MeshStandardMaterial;
+            // gltf.scene.traverse((child) => {
+            //     if ((child as THREE.Mesh).isMesh) {
+                    // const mesh = child as THREE.Mesh;
+                    // const originalMaterial = mesh.material as THREE.MeshStandardMaterial;
                 
                     // --- Toon shading (your code)
-                    const newMaterial = originalMaterial.clone();
-                    newMaterial.onBeforeCompile = (shader) => {
-                        shader.fragmentShader = shader.fragmentShader.replace(
-                            '#include <lights_phong_fragment>',
-                            `
-                            vec3 lightDir = normalize(directionalLights[0].direction);
-                            float diff = max(dot(normal, lightDir), 0.0);
-                            diff = floor(diff * 4.0) / 4.0;
-                            vec3 lighting = diff * directionalLights[0].color.rgb;
-                            reflectedLight.directDiffuse = lighting;
-                            `
-                        );
-                    };
-                    mesh.material = newMaterial;
+                    // const newMaterial = originalMaterial.clone();
+                    // newMaterial.onBeforeCompile = (shader) => {
+                    //     shader.fragmentShader = shader.fragmentShader.replace(
+                    //         '#include <lights_phong_fragment>',
+                    //         `
+                    //         vec3 lightDir = normalize(directionalLights[0].direction);
+                    //         float diff = max(dot(normal, lightDir), 0.0);
+                    //         diff = floor(diff * 4.0) / 4.0;
+                    //         vec3 lighting = diff * directionalLights[0].color.rgb;
+                    //         reflectedLight.directDiffuse = lighting;
+                    //         `
+                    //     );
+                    // };
+                    // mesh.material = newMaterial;
                 
                     // --- Outline mesh
-                    const outlineMaterial = new THREE.MeshBasicMaterial({
-                        color: 0x000000,
-                        side: THREE.BackSide
-                    });
-                    const outlineMesh = new THREE.Mesh(mesh.geometry, outlineMaterial);
-                    outlineMesh.position.copy(mesh.position);
-                    outlineMesh.rotation.copy(mesh.rotation);
-                    outlineMesh.scale.copy(mesh.scale).multiplyScalar(1.03);
-                    this.scene.add(outlineMesh);
-                }
-            });
+                    // const outlineMaterial = new THREE.MeshBasicMaterial({
+                    //     color: 0x000000,
+                    //     side: THREE.BackSide
+                    // });
+                    // const outlineMesh = new THREE.Mesh(mesh.geometry, outlineMaterial);
+                    // outlineMesh.position.copy(mesh.position);
+                    // outlineMesh.rotation.copy(mesh.rotation);
+                    // outlineMesh.scale.copy(mesh.scale).multiplyScalar(1.03);
+                    // this.scene.add(outlineMesh);
+            //     }
+            // });
             
             this.cityModel = gltf.scene;
             this.scene.add(gltf.scene);
+            // In constructor after setting up composer:
+            this.outlinePass = new OutlinePass(
+                new THREE.Vector2(window.innerWidth, window.innerHeight),
+                this.scene,
+                this.camera
+            );
+            this.outlinePass.edgeStrength = 10;
+            this.outlinePass.edgeGlow = 0;
+            this.outlinePass.visibleEdgeColor.set(0xff0000);
+            this.outlinePass.hiddenEdgeColor.set(0x000000);
+
+            this.composer = new EffectComposer(this.renderer);
+            this.composer.addPass(new RenderPass(this.scene, this.camera));
+            this.composer.addPass(this.outlinePass);
+
+            // Then after loading model:
+            const selectedObjects: THREE.Object3D[] = [];
+            gltf.scene.traverse((child) => {
+                if ((child as THREE.Mesh).isMesh) {
+                    // child.material = new THREE.MeshToonMaterial({ color: 0xffffff });
+                    selectedObjects.push(child);
+                }
+            });
+            this.outlinePass.selectedObjects = selectedObjects;
             this.animate();
         }, undefined, (error: any) => {
             console.error('Error loading model:', error);
@@ -139,6 +164,8 @@ class Game {
 
     animate = () => {
         requestAnimationFrame(this.animate);
+        // this.renderer.setSize(window.innerWidth, window.innerHeight);
+        // this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         this.controls.update();
         this.player.update();
         this.camera.position.set(this.player.position.x, 0.75, this.player.position.z + 2);
@@ -155,14 +182,11 @@ class Game {
             const targetY = intersects[0].point.y + 0.05;
             this.player.position.y += (targetY - currentY) * 0.1; // interpolate
         }
-        
 
-
-        if (this.renderBlack) {
+        if (!this.renderBlack) {
             this.composer.render();
         } else {
             this.renderer.render(this.scene, this.camera);
-
         }
     }
 }

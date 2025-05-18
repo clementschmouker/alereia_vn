@@ -56,7 +56,7 @@ const script : DialogueLine[] = [
     {
       id: "toit8",
       name: "Syel",
-      text: "<i> Ça devrait lui suffire... </i>",
+      text: "<i> Ça devrait lui suffire... Ensuite, Prisme fera le reste.</i>",
       background: 'syel_blase',
     },
 ];

@@ -101,6 +101,23 @@ const script : DialogueLine[] = [
       },
     },
     {
+      id: "supercherie3.5",
+      name: "N.O.D.E.",
+      text: "T'es le frère jumeau ?!",
+      background: 'rues',
+      charactersOnScreen: {
+        left: "mechants",
+        leftMood: "peur",
+        right: "mechants",
+        rightMood: "fache",
+        leftFlip: false,
+        rightFlip: true,
+        middle: "ira",
+        middleMood: "etonne",
+        middleFlip: false,
+      },
+    },
+    {
       id: "supercherie4",
       name: "Ira",
       text: "Si tu voyais ta tête, mec...",

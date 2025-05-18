@@ -73,11 +73,11 @@
   }
   
   #left-character {
-    left: 0;
+    left: 10%;
   }
   
   #right-character {
-    right: 0;
+    right: 10%;
   }
 
    #middle-character {

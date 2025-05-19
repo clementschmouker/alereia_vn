@@ -9,6 +9,14 @@
     background-color: black;
     color: white;
   }
+
+  img {
+    image-rendering: auto;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+  }
+  
   
   #game {
     height: 100vh;

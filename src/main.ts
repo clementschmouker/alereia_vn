@@ -35,6 +35,12 @@ const unmuteButton = document.querySelector('#mute-sound');
 const skipVideo = document.querySelector('#skip-video')
 const goBackButton = document.querySelector('#go-back');
 
+let currentCharacters = {
+  left: { name: "", mood: "", flip: false },
+  right: { name: "", mood: "", flip: false },
+  middle: { name: "", mood: "", flip: false },
+};
+
 let canPassScreen = true;
 
 unmuteButton?.addEventListener('click', () => {
@@ -65,6 +71,54 @@ function findLineById(id: string): DialogueLine | undefined {
   return script.find(line => line.id === id);
 }
 
+function updateCharacterImage(
+  container: HTMLElement,
+  position: 'left' | 'right' | 'middle',
+  name?: string,
+  mood?: string,
+  flip?: boolean
+) {
+  const current = currentCharacters[position];
+  const shouldUpdate =
+    current.name !== name || current.mood !== mood || current.flip !== flip;
+
+  if (!name) {
+    container.innerHTML = "";
+    currentCharacters[position] = { name: "", mood: "", flip: false };
+    return;
+  }
+
+  const baseUrl = `/src/images/personnages/${name}`;
+  const newSrc = mood
+    ? `${baseUrl.split(".")[0]}_${mood}.png`
+    : `${baseUrl}.png`;
+
+  if (!shouldUpdate) return;
+
+  let img = container.querySelector("img") as HTMLImageElement | null;
+
+  if (!img) {
+    img = document.createElement("img");
+    container.appendChild(img);
+  }
+
+  // Preload offscreen image first
+  const preloader = new Image();
+  preloader.src = newSrc;
+
+  preloader.onload = () => {
+    img!.src = newSrc;
+    img!.alt = `${position} character`;
+    img!.style.transform = flip ? "scaleX(-1)" : "none";
+
+    currentCharacters[position] = { name, mood: mood || "", flip: !!flip };
+  };
+}
+
+
+
+
+
 // Function to show dialogue based on ID
 function showLine(id: string) {
   const line = findLineById(id);
@@ -75,7 +129,6 @@ function showLine(id: string) {
   dialogueBox.classList.remove('right');
   dialogueBox.classList.remove('narrator');
   dialogueBox.classList.add(line?.textPosition as string);
-  console.log(dialogueBox);
 
 
   if (canPassScreen) {
@@ -137,78 +190,33 @@ function showLine(id: string) {
       backgroundVideo.src = '';
     }
 
-    leftCharacter.innerHTML = "";
-
-    rightCharacter.innerHTML = "";
-    middleCharacter.innerHTML = "";
-
-    // Handle characters on screen
     if (line.charactersOnScreen) {
-      const { left, right, middle, leftFlip, middleFlip, rightFlip } = line.charactersOnScreen;
-  
-
-      // Handle left character
-      if (left) {
-        const leftImg = document.createElement("img");
-        const leftMood = line.charactersOnScreen.leftMood;
-        const imgBaseUrl = `/src/images/personnages/${left}`;
-        let fullImgUrl = imgBaseUrl;
-  
-        if (leftMood) {
-          fullImgUrl = `${imgBaseUrl.split(".")[0]}_${leftMood}.png`;
-        } else {
-          fullImgUrl = `${imgBaseUrl}.png`;
-        }
-        
-        leftImg.src = fullImgUrl;
-        leftImg.alt = "left character";
-        if (leftFlip) {
-          leftImg.style.transform = "scaleX(-1)";
-        }
-        leftCharacter.appendChild(leftImg);
-      }
-  
-      // Handle right character
-      if (right) {
-        const rightMood = line.charactersOnScreen.rightMood;
-        const imgBaseUrl = `/src/images/personnages/${right}`;
-        let fullImgUrl = imgBaseUrl;
-        if (rightMood) {
-          fullImgUrl = `${imgBaseUrl.split(".")[0]}_${rightMood}.png`;
-        } else {
-          fullImgUrl = `${imgBaseUrl}.png`;
-        }
-        
-        const rightImg = document.createElement("img");
-        rightImg.src = fullImgUrl;
-        rightImg.alt = "right character";
-        if (rightFlip) {
-          rightImg.style.transform = "scaleX(-1)";
-        }
-        rightCharacter.appendChild(rightImg);
-      }
+      const {
+        left,
+        right,
+        middle,
+        leftMood,
+        rightMood,
+        middleMood,
+        leftFlip,
+        rightFlip,
+        middleFlip
+      } = line.charactersOnScreen;
     
-          // Handle middle character
-          
-      if (middle) {
-        const middleImg = document.createElement("img");
-        const middleMood = line.charactersOnScreen.middleMood;
-        const imgBaseUrl = `/src/images/personnages/${middle}`;
-        let fullImgUrl = imgBaseUrl;
-  
-        if (middleMood) {
-          fullImgUrl = `${imgBaseUrl.split(".")[0]}_${middleMood}.png`;
-        } else {
-          fullImgUrl = `${imgBaseUrl}.png`;
-        }
-        
-        middleImg.src = fullImgUrl;
-        middleImg.alt = "middle character";
-        if (middleFlip) {
-          middleImg.style.transform = "scaleX(-1)";
-        }
-        middleCharacter.appendChild(middleImg);
-      }
+      updateCharacterImage(leftCharacter, 'left', left, leftMood, leftFlip);
+      updateCharacterImage(rightCharacter, 'right', right, rightMood, rightFlip);
+      updateCharacterImage(middleCharacter, 'middle', middle, middleMood, middleFlip);
+    } else {
+      // No characters on screen: clear all and reset cache
+      leftCharacter.innerHTML = "";
+      rightCharacter.innerHTML = "";
+      middleCharacter.innerHTML = "";
+    
+      currentCharacters = {
+        left: { name: "", mood: "", flip: false },
+        right: { name: "", mood: "", flip: false },
+        middle: { name: "", mood: "", flip: false },
+      };
     }
   
     // Show choices if they exist

@@ -15,6 +15,7 @@ interface DialogueLine {
     id: string;  // Unique ID for the line
     name?: string;
     text: string;
+    textPosition?: 'right' | 'left' | 'center' | 'narrator';
     video?: string;
     background?: string;
     backgroundVideo?: string;

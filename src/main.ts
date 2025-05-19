@@ -12,7 +12,7 @@ import { DialogueLine } from "./types";
 
 const script = [...scene1, ...scene2, ...scene3, ...scene4, ...scene5, ...scene6, ...scene7, ...scene8, ...scene9, ...scene10]; // @TODO IMPORTANT: Combine the scripts into one
 
-let currentLineId = "supercherie"; // The ID of the current line to be displayed
+let currentLineId = "start"; // The ID of the current line to be displayed
 let previousLine: string[] = [];
 let currentLineIndex = 0;
 
@@ -67,9 +67,19 @@ function findLineById(id: string): DialogueLine | undefined {
 
 // Function to show dialogue based on ID
 function showLine(id: string) {
+  const line = findLineById(id);
+  if (line && !line.textPosition) {
+    line.textPosition = "narrator";
+  }
+  dialogueBox.classList.remove('left');
+  dialogueBox.classList.remove('right');
+  dialogueBox.classList.remove('narrator');
+  dialogueBox.classList.add(line?.textPosition as string);
+  console.log(dialogueBox);
+
+
   if (canPassScreen) {
 
-    const line = findLineById(id);
     let video = document.getElementById('background-video');
   
     if (!line) {
@@ -315,11 +325,10 @@ function fadeIn(audio: HTMLAudioElement, duration: number) {
 // Start the dialogue by showing the first line
 showLine(currentLineId);
 
-// This handler for dialogue box should not be used when there are choices. Only allow it to advance when there are no choices.
-dialogueBox.addEventListener("click", () => {
+const skipLine = () => {
   const currentLine = findLineById(currentLineId);
 
-  if (!currentLine?.choices) {
+  if (!currentLine?.choices && !currentLine?.backgroundVideo) {
     const nextLineId = getNextLineId();
     if (nextLineId) {
       previousLine.push(currentLineId);
@@ -327,6 +336,17 @@ dialogueBox.addEventListener("click", () => {
       currentLineIndex += 1;
       showLine(nextLineId);
     }
+  }
+}
+
+// This handler for dialogue box should not be used when there are choices. Only allow it to advance when there are no choices.
+dialogueBox.addEventListener("click", () =>  {
+  skipLine();
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === ' ') {
+    skipLine();
   }
 });
 

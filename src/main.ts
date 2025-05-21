@@ -9,6 +9,7 @@ import scene8 from "./scene8";
 import scene9 from "./scene9";
 import scene10 from "./scene10";
 import { DialogueLine } from "./types";
+import gsap from "gsap";
 
 const script = [...scene1, ...scene2, ...scene3, ...scene4, ...scene5, ...scene6, ...scene7, ...scene8, ...scene9, ...scene10]; // @TODO IMPORTANT: Combine the scripts into one
 
@@ -371,3 +372,46 @@ function getNextLineId(): string | undefined {
   }
   return undefined; // End of script
 }
+
+
+document.addEventListener("mousemove", (event) => {
+  const { clientX, clientY } = event;
+  const { innerWidth, innerHeight } = window;
+
+  const xOffset = -(clientX / innerWidth - 0.5) * 10;
+  const yOffset = -(clientY / innerHeight - 0.5) * 10;
+
+  const characterXOffset = (clientX / innerWidth - 0.5) * 10;
+  const characterYOffset = (clientY / innerHeight - 0.5) * 10;
+
+  gsap.to(backgroundElem, {
+    duration: 0.5,
+    x: xOffset,
+    y: yOffset,
+    ease: "power2.out",
+  });
+
+  gsap.to(leftCharacter, {
+    duration: 0.5,
+    x: characterXOffset,
+    y: characterYOffset,
+    ease: "power2.out",
+  });
+  gsap.to(rightCharacter, {
+    duration: 0.5,
+    x: characterXOffset,
+    y: characterYOffset,
+    ease: "power2.out",
+  });
+  gsap.to(middleCharacter, {
+    duration: 0.5,
+    x: characterXOffset,
+    y: characterYOffset,
+    ease: "power2.out",
+  });
+});
+
+// Reset parallax effect on window resize
+window.addEventListener("resize", () => {
+  backgroundElem.style.transform = "translate(0, 0)";
+});

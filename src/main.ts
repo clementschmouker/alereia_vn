@@ -9,10 +9,11 @@ import scene8 from "./scene8";
 import scene9 from "./scene9";
 import scene10 from "./scene10";
 import { DialogueLine } from "./types";
+import gsap from "gsap";
 
 const script = [...scene1, ...scene2, ...scene3, ...scene4, ...scene5, ...scene6, ...scene7, ...scene8, ...scene9, ...scene10]; // @TODO IMPORTANT: Combine the scripts into one
 
-let currentLineId = "supercherie"; // The ID of the current line to be displayed
+let currentLineId = "start"; // The ID of the current line to be displayed
 let previousLine: string[] = [];
 let currentLineIndex = 0;
 
@@ -26,6 +27,7 @@ const middleCharacter = document.getElementById("middle-character")!;
 const backgroundElem = document.getElementById("background")!;
 const backgroundVideo = document.querySelector('#background-video') as HTMLVideoElement;
 const choicesContainer = document.getElementById("choices-container")!;
+const characterNameElement = document.getElementById("name")!;
 
 const audioChannelSound = document.querySelector('#audio-channel--sound') as HTMLAudioElement;
 const audioChannelMusic = document.querySelector('#audio-channel--music') as HTMLAudioElement;
@@ -34,6 +36,12 @@ const audioChannelVoice = document.querySelector('#audio-channel--voice') as HTM
 const unmuteButton = document.querySelector('#mute-sound');
 const skipVideo = document.querySelector('#skip-video')
 const goBackButton = document.querySelector('#go-back');
+
+let currentCharacters = {
+  left: { name: "", mood: "", flip: false },
+  right: { name: "", mood: "", flip: false },
+  middle: { name: "", mood: "", flip: false },
+};
 
 let canPassScreen = true;
 
@@ -64,12 +72,54 @@ goBackButton?.addEventListener('click', () => {
 function findLineById(id: string): DialogueLine | undefined {
   return script.find(line => line.id === id);
 }
+function updateCharacterImage(
+  container: HTMLElement,
+  position: 'left' | 'right' | 'middle',
+  name?: string,
+  mood?: string,
+  flip?: boolean
+) {
+  const current = currentCharacters[position];
+  const shouldUpdate =
+    current.name !== name || current.mood !== mood || current.flip !== flip;
+
+  if (!name) {
+    container.style.backgroundImage = ""; // Clear the image if no name is provided
+    currentCharacters[position] = { name: "", mood: "", flip: false };
+    return;
+  }
+
+  const baseUrl = `/src/images/personnages/${name}`;
+  const newSrc = mood
+    ? `${baseUrl.split(".")[0]}_${mood}.png`
+    : `${baseUrl}.png`;
+
+  if (!shouldUpdate) return;
+
+  const preloader = new Image();
+  preloader.src = newSrc;
+
+  preloader.onload = () => {
+    currentCharacters[position] = { name, mood: mood || "", flip: !!flip };
+    console.log(currentCharacters[position]);
+    container.style.backgroundImage = `url(${newSrc})`;
+  };
+}
+
 
 // Function to show dialogue based on ID
 function showLine(id: string) {
-  if (canPassScreen) {
+  const line = findLineById(id);
+  if (line && !line.textPosition) {
+    line.textPosition = "narrator";
+  }
+  dialogueBox.classList.remove('left');
+  dialogueBox.classList.remove('right');
+  dialogueBox.classList.remove('narrator');
+  dialogueBox.classList.add(line?.textPosition as string);
 
-    const line = findLineById(id);
+
+  if (canPassScreen) {
     let video = document.getElementById('background-video');
   
     if (!line) {
@@ -83,6 +133,12 @@ function showLine(id: string) {
   
     nameElem.textContent = line.name || "";
     dialogueElem.innerHTML = line.text;
+
+    if (line.name) {
+      characterNameElement.classList.add('displayed');
+    } else {
+      characterNameElement.classList.remove('displayed');
+    }
   
       // Handle background transition if specified
     if (line.backgroundTransition) {
@@ -108,10 +164,8 @@ function showLine(id: string) {
       backgroundVideo.src = `/src/videos/${line.backgroundVideo}.mp4`;
       backgroundVideo.autoplay = true;
       backgroundVideo.playsInline = true;
-      console.log(backgroundVideo.duration);
       backgroundVideo.addEventListener('ended', () => {
         canPassScreen = true;
-        console.log('ended !!');
         const nextLineId = getNextLineId();
         if (nextLineId) {
           previousLine.push(currentLineId);
@@ -127,78 +181,33 @@ function showLine(id: string) {
       backgroundVideo.src = '';
     }
 
-    leftCharacter.innerHTML = "";
-
-    rightCharacter.innerHTML = "";
-    middleCharacter.innerHTML = "";
-
-    // Handle characters on screen
     if (line.charactersOnScreen) {
-      const { left, right, middle, leftFlip, middleFlip, rightFlip } = line.charactersOnScreen;
-  
-
-      // Handle left character
-      if (left) {
-        const leftImg = document.createElement("img");
-        const leftMood = line.charactersOnScreen.leftMood;
-        const imgBaseUrl = `/src/images/personnages/${left}`;
-        let fullImgUrl = imgBaseUrl;
-  
-        if (leftMood) {
-          fullImgUrl = `${imgBaseUrl.split(".")[0]}_${leftMood}.png`;
-        } else {
-          fullImgUrl = `${imgBaseUrl}.png`;
-        }
-        
-        leftImg.src = fullImgUrl;
-        leftImg.alt = "left character";
-        if (leftFlip) {
-          leftImg.style.transform = "scaleX(-1)";
-        }
-        leftCharacter.appendChild(leftImg);
-      }
-  
-      // Handle right character
-      if (right) {
-        const rightMood = line.charactersOnScreen.rightMood;
-        const imgBaseUrl = `/src/images/personnages/${right}`;
-        let fullImgUrl = imgBaseUrl;
-        if (rightMood) {
-          fullImgUrl = `${imgBaseUrl.split(".")[0]}_${rightMood}.png`;
-        } else {
-          fullImgUrl = `${imgBaseUrl}.png`;
-        }
-        
-        const rightImg = document.createElement("img");
-        rightImg.src = fullImgUrl;
-        rightImg.alt = "right character";
-        if (rightFlip) {
-          rightImg.style.transform = "scaleX(-1)";
-        }
-        rightCharacter.appendChild(rightImg);
-      }
+      const {
+        left,
+        right,
+        middle,
+        leftMood,
+        rightMood,
+        middleMood,
+        leftFlip,
+        rightFlip,
+        middleFlip
+      } = line.charactersOnScreen;
     
-          // Handle middle character
-          
-      if (middle) {
-        const middleImg = document.createElement("img");
-        const middleMood = line.charactersOnScreen.middleMood;
-        const imgBaseUrl = `/src/images/personnages/${middle}`;
-        let fullImgUrl = imgBaseUrl;
-  
-        if (middleMood) {
-          fullImgUrl = `${imgBaseUrl.split(".")[0]}_${middleMood}.png`;
-        } else {
-          fullImgUrl = `${imgBaseUrl}.png`;
-        }
-        
-        middleImg.src = fullImgUrl;
-        middleImg.alt = "middle character";
-        if (middleFlip) {
-          middleImg.style.transform = "scaleX(-1)";
-        }
-        middleCharacter.appendChild(middleImg);
-      }
+      updateCharacterImage(leftCharacter, 'left', left, leftMood, leftFlip);
+      updateCharacterImage(rightCharacter, 'right', right, rightMood, rightFlip);
+      updateCharacterImage(middleCharacter, 'middle', middle, middleMood, middleFlip);
+    } else {
+      // No characters on screen: clear all and reset cache
+      leftCharacter.innerHTML = "";
+      rightCharacter.innerHTML = "";
+      middleCharacter.innerHTML = "";
+    
+      currentCharacters = {
+        left: { name: "", mood: "", flip: false },
+        right: { name: "", mood: "", flip: false },
+        middle: { name: "", mood: "", flip: false },
+      };
     }
   
     // Show choices if they exist
@@ -312,14 +321,10 @@ function fadeIn(audio: HTMLAudioElement, duration: number) {
 }
 
 
-// Start the dialogue by showing the first line
-showLine(currentLineId);
-
-// This handler for dialogue box should not be used when there are choices. Only allow it to advance when there are no choices.
-dialogueBox.addEventListener("click", () => {
+const skipLine = () => {
   const currentLine = findLineById(currentLineId);
 
-  if (!currentLine?.choices) {
+  if (!currentLine?.choices && !currentLine?.backgroundVideo) {
     const nextLineId = getNextLineId();
     if (nextLineId) {
       previousLine.push(currentLineId);
@@ -327,6 +332,17 @@ dialogueBox.addEventListener("click", () => {
       currentLineIndex += 1;
       showLine(nextLineId);
     }
+  }
+}
+
+// This handler for dialogue box should not be used when there are choices. Only allow it to advance when there are no choices.
+dialogueBox.addEventListener("click", () =>  {
+  skipLine();
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === ' ') {
+    skipLine();
   }
 });
 
@@ -341,3 +357,50 @@ function getNextLineId(): string | undefined {
   }
   return undefined; // End of script
 }
+
+
+document.addEventListener("mousemove", (event) => {
+  const { clientX, clientY } = event;
+  const { innerWidth, innerHeight } = window;
+
+  const xOffset = -(clientX / innerWidth - 0.5) * 10;
+  const yOffset = -(clientY / innerHeight - 0.5) * 10;
+
+  const characterXOffset = (clientX / innerWidth - 0.5) * 10;
+  const characterYOffset = (clientY / innerHeight - 0.5) * 10;
+
+  gsap.to(backgroundElem, {
+    duration: 0.3,
+    x: xOffset,
+    y: yOffset,
+    ease: "power4.out",
+  });
+
+  gsap.to(leftCharacter, {
+    duration: 0.3,
+    x: characterXOffset,
+    y: characterYOffset,
+    ease: "power4.out",
+  });
+  gsap.to(rightCharacter, {
+    duration: 0.3,
+    x: characterXOffset,
+    y: characterYOffset,
+    ease: "power4.out",
+  });
+  gsap.to(middleCharacter, {
+    duration: 0.3,
+    x: characterXOffset,
+    y: characterYOffset,
+    ease: "power4.out",
+  });
+});
+
+// Reset parallax effect on window resize
+window.addEventListener("resize", () => {
+  backgroundElem.style.transform = "translate(0, 0)";
+});
+
+
+// Start the dialogue by showing the first line
+showLine(currentLineId);

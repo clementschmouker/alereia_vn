@@ -11,6 +11,7 @@ const script: DialogueLine[] = [
       id: "start0", // Unique ID for this line
       name: "Ilyem",
       text: "Alors, voilà... Je...",
+      textPosition: 'right',
       background: 'bar',
       /*backgroundTransition: {
         easing: FadeTransitionType.easeIn,
@@ -30,6 +31,7 @@ const script: DialogueLine[] = [
       id: "start1",
       name: "N.O.D.E.",
       text: "...",
+      textPosition: 'left',
       background: 'bar',
       charactersOnScreen: {
         left: "serveuse",
@@ -44,6 +46,7 @@ const script: DialogueLine[] = [
       id: "start2",
       name: "Ilyem",
       text: "Je pense que ce monde de feu et de sang est voué à disparaître...",
+      textPosition: 'right',
       background: 'bar',
       charactersOnScreen: {
         left: "serveuse",
@@ -58,6 +61,7 @@ const script: DialogueLine[] = [
       id: "start3",
       name: "N.O.D.E.",
       text: "...",
+      textPosition: 'narrator',
       background: 'bar',
       charactersOnScreen: {
         left: "serveuse",
@@ -72,6 +76,7 @@ const script: DialogueLine[] = [
       id: "start3.1",
       name: "N.O.D.E.",
       text: "... mais un Nouvel Idéal le fera renaître de ses cendres.",
+      textPosition: 'narrator',
       background: 'bar',
       charactersOnScreen: {
         left: "serveuse",
@@ -86,6 +91,7 @@ const script: DialogueLine[] = [
       id: "start5",
       name: "N.O.D.E.",
       text: "Tu te joins à moi ?",
+      textPosition: 'narrator',
       background: 'bar',
       charactersOnScreen: {
         left: "serveuse",
@@ -100,6 +106,7 @@ const script: DialogueLine[] = [
       id: "start6",
       name: "Ilyem",
       text: "Ah... merci.",
+      textPosition: 'right',
       background: 'bar',
       charactersOnScreen: {
         left: "serveuse",

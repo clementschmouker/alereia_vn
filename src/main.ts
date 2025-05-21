@@ -27,6 +27,7 @@ const middleCharacter = document.getElementById("middle-character")!;
 const backgroundElem = document.getElementById("background")!;
 const backgroundVideo = document.querySelector('#background-video') as HTMLVideoElement;
 const choicesContainer = document.getElementById("choices-container")!;
+const characterNameElement = document.getElementById("name")!;
 
 const audioChannelSound = document.querySelector('#audio-channel--sound') as HTMLAudioElement;
 const audioChannelMusic = document.querySelector('#audio-channel--music') as HTMLAudioElement;
@@ -95,7 +96,6 @@ function updateCharacterImage(
 
   if (!shouldUpdate) return;
 
-  // Preload offscreen image first
   const preloader = new Image();
   preloader.src = newSrc;
 
@@ -105,9 +105,6 @@ function updateCharacterImage(
     container.style.backgroundImage = `url(${newSrc})`;
   };
 }
-
-
-
 
 
 // Function to show dialogue based on ID
@@ -136,6 +133,12 @@ function showLine(id: string) {
   
     nameElem.textContent = line.name || "";
     dialogueElem.innerHTML = line.text;
+
+    if (line.name) {
+      characterNameElement.classList.add('displayed');
+    } else {
+      characterNameElement.classList.remove('displayed');
+    }
   
       // Handle background transition if specified
     if (line.backgroundTransition) {
@@ -318,9 +321,6 @@ function fadeIn(audio: HTMLAudioElement, duration: number) {
 }
 
 
-// Start the dialogue by showing the first line
-showLine(currentLineId);
-
 const skipLine = () => {
   const currentLine = findLineById(currentLineId);
 
@@ -400,3 +400,7 @@ document.addEventListener("mousemove", (event) => {
 window.addEventListener("resize", () => {
   backgroundElem.style.transform = "translate(0, 0)";
 });
+
+
+// Start the dialogue by showing the first line
+showLine(currentLineId);

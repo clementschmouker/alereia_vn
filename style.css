@@ -117,6 +117,7 @@
   }
   
   #name {
+    display: none;
     position: absolute;
     top: -80px;
     left: 0;
@@ -129,6 +130,10 @@
     border-width: 10px;
     border-style: solid;
     border-image: url('src/images/dialogbubble.svg') 7 fill stretch;
+  }
+
+  #name.displayed {
+    display: block;
   }
   
   #dialogue {

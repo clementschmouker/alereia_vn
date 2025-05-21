@@ -31,7 +31,7 @@ const script: DialogueLine[] = [
       id: "start1",
       name: "N.O.D.E.",
       text: "...",
-      textPosition: 'center',
+      textPosition: 'left',
       background: 'bar',
       charactersOnScreen: {
         left: "serveuse",

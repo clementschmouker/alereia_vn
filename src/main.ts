@@ -71,7 +71,6 @@ goBackButton?.addEventListener('click', () => {
 function findLineById(id: string): DialogueLine | undefined {
   return script.find(line => line.id === id);
 }
-
 function updateCharacterImage(
   container: HTMLElement,
   position: 'left' | 'right' | 'middle',
@@ -84,7 +83,7 @@ function updateCharacterImage(
     current.name !== name || current.mood !== mood || current.flip !== flip;
 
   if (!name) {
-    container.style.backgroundImage;
+    container.style.backgroundImage = ""; // Clear the image if no name is provided
     currentCharacters[position] = { name: "", mood: "", flip: false };
     return;
   }
@@ -96,22 +95,11 @@ function updateCharacterImage(
 
   if (!shouldUpdate) return;
 
-  // let img = container.querySelector("img") as HTMLImageElement | null;
-
-  // if (!img) {
-    // img = document.createElement("img");
-    // container.appendChild(img);
-  // }
-
   // Preload offscreen image first
   const preloader = new Image();
   preloader.src = newSrc;
 
   preloader.onload = () => {
-    // img!.src = newSrc;
-    // img!.alt = `${position} character`;
-    // img!.style.transform = flip ? "scaleX(-1)" : "none";
-
     currentCharacters[position] = { name, mood: mood || "", flip: !!flip };
     console.log(currentCharacters[position]);
     container.style.backgroundImage = `url(${newSrc})`;
@@ -135,7 +123,6 @@ function showLine(id: string) {
 
 
   if (canPassScreen) {
-
     let video = document.getElementById('background-video');
   
     if (!line) {
@@ -174,10 +161,8 @@ function showLine(id: string) {
       backgroundVideo.src = `/src/videos/${line.backgroundVideo}.mp4`;
       backgroundVideo.autoplay = true;
       backgroundVideo.playsInline = true;
-      console.log(backgroundVideo.duration);
       backgroundVideo.addEventListener('ended', () => {
         canPassScreen = true;
-        console.log('ended !!');
         const nextLineId = getNextLineId();
         if (nextLineId) {
           previousLine.push(currentLineId);
@@ -385,29 +370,29 @@ document.addEventListener("mousemove", (event) => {
   const characterYOffset = (clientY / innerHeight - 0.5) * 10;
 
   gsap.to(backgroundElem, {
-    duration: 0.5,
+    duration: 0.3,
     x: xOffset,
     y: yOffset,
-    ease: "power2.out",
+    ease: "power4.out",
   });
 
   gsap.to(leftCharacter, {
-    duration: 0.5,
+    duration: 0.3,
     x: characterXOffset,
     y: characterYOffset,
-    ease: "power2.out",
+    ease: "power4.out",
   });
   gsap.to(rightCharacter, {
-    duration: 0.5,
+    duration: 0.3,
     x: characterXOffset,
     y: characterYOffset,
-    ease: "power2.out",
+    ease: "power4.out",
   });
   gsap.to(middleCharacter, {
-    duration: 0.5,
+    duration: 0.3,
     x: characterXOffset,
     y: characterYOffset,
-    ease: "power2.out",
+    ease: "power4.out",
   });
 });
 

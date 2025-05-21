@@ -4,20 +4,12 @@
   <defs>
     <style>
       .st0 {
-        stroke-width: 3px;
-      }
-
-      .st0, .st1 {
         fill: #fff;
         stroke: #010101;
         stroke-miterlimit: 10;
-      }
-
-      .st1 {
-        stroke-width: 6px;
+        stroke-width: 10px;
       }
     </style>
   </defs>
-  <polyline class="st1" points="71.81 7 107.68 105 9 22.31"/>
-  <line class="st0" x1="29.19" y1="26" x2="73.28" y2="64"/>
+  <polyline class="st0" points="71.81 7 107.68 105 9 22.31"/>
 </svg>

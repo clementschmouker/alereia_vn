@@ -83,7 +83,7 @@ function updateCharacterImage(
     current.name !== name || current.mood !== mood || current.flip !== flip;
 
   if (!name) {
-    container.innerHTML = "";
+    container.style.backgroundImage;
     currentCharacters[position] = { name: "", mood: "", flip: false };
     return;
   }
@@ -95,23 +95,25 @@ function updateCharacterImage(
 
   if (!shouldUpdate) return;
 
-  let img = container.querySelector("img") as HTMLImageElement | null;
+  // let img = container.querySelector("img") as HTMLImageElement | null;
 
-  if (!img) {
-    img = document.createElement("img");
-    container.appendChild(img);
-  }
+  // if (!img) {
+    // img = document.createElement("img");
+    // container.appendChild(img);
+  // }
 
   // Preload offscreen image first
   const preloader = new Image();
   preloader.src = newSrc;
 
   preloader.onload = () => {
-    img!.src = newSrc;
-    img!.alt = `${position} character`;
-    img!.style.transform = flip ? "scaleX(-1)" : "none";
+    // img!.src = newSrc;
+    // img!.alt = `${position} character`;
+    // img!.style.transform = flip ? "scaleX(-1)" : "none";
 
     currentCharacters[position] = { name, mood: mood || "", flip: !!flip };
+    console.log(currentCharacters[position]);
+    container.style.backgroundImage = `url(${newSrc})`;
   };
 }
 

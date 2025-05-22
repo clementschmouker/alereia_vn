@@ -15,6 +15,7 @@ const script : DialogueLine[] = [
       id: "gare0",
       name: "Vangva",
       text: "<i>Décidément, ça me fera toujours quelque chose de rentrer à Brissa. Un quelque chose coincé entre la nostalgie et le malaise…</i>",
+      textPosition: 'left', // Vangva is on the left
       background: 'gare',
       charactersOnScreen: {
         left: "vava",
@@ -27,6 +28,7 @@ const script : DialogueLine[] = [
       id: "gare1",
       name: "Vangva",
       text: "...",
+      textPosition: 'left', // Vangva is on the left
       background: 'gare',
       charactersOnScreen: {
         left: "vava",
@@ -39,6 +41,7 @@ const script : DialogueLine[] = [
       id: "gare2",
       name: "Vangva",
       text: "<i>Bon. J'espère qu'il va bientôt me répondre...</i>",
+      textPosition: 'left', // Vangva is on the left
       background: 'gare',
       charactersOnScreen: {
         left: "vava",
@@ -172,6 +175,7 @@ const script : DialogueLine[] = [
       id: "gare3",
       name: "Ilyem",
       text: "Syel et Vangva, ils sont de retour à Brissa. La ville est grande et ne dort jamais, ils comptent sur la foule pour rester discrets.",
+      textPosition: 'right', // Ilyem is on the right
       background: 'gareVava',
       charactersOnScreen: {
         left: "serveuse",

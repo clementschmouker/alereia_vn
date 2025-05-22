@@ -34,7 +34,7 @@ const audioChannelMusic = document.querySelector('#audio-channel--music') as HTM
 const audioChannelVoice = document.querySelector('#audio-channel--voice') as HTMLAudioElement;
 
 const unmuteButton = document.querySelector('#mute-sound');
-const skipVideo = document.querySelector('#skip-video')
+const skipVideo = document.querySelector('#skip-video');
 const goBackButton = document.querySelector('#go-back');
 
 let currentCharacters = {
@@ -43,10 +43,16 @@ let currentCharacters = {
   middle: { name: "", mood: "", flip: false },
 };
 
+let isWritting = false;
+
 let canPassScreen = true;
 
 unmuteButton?.addEventListener('click', () => {
-  backgroundVideo.muted = false;
+  audioChannelMusic.muted = !audioChannelMusic.muted;
+  audioChannelSound.muted = !audioChannelSound.muted;
+  audioChannelVoice.muted = !audioChannelVoice.muted;
+  backgroundVideo.muted = !backgroundVideo.muted;
+  unmuteButton.classList.toggle('muted');
 });
 
 skipVideo?.addEventListener('click', () => {
@@ -62,10 +68,12 @@ skipVideo?.addEventListener('click', () => {
 });
 
 goBackButton?.addEventListener('click', () => {
-  if (currentLineIndex <= 0) return;
+  if (currentLineIndex <= 1) return;
   currentLineIndex -= 1;
   currentLineId = previousLine[currentLineIndex];
   showLine(previousLine[currentLineIndex]);
+  previousLine.pop();
+  
 })
 
 // Function to find a dialogue line by its ID
@@ -101,11 +109,57 @@ function updateCharacterImage(
 
   preloader.onload = () => {
     currentCharacters[position] = { name, mood: mood || "", flip: !!flip };
-    console.log(currentCharacters[position]);
     container.style.backgroundImage = `url(${newSrc})`;
   };
 }
 
+let typingInterval: NodeJS.Timeout | null = null;
+
+const typeText = (text: string, element: HTMLElement, speed: number) => {
+  clearTyping(); // Ensure no overlapping typing intervals
+  let index = 0;
+  isWritting = true;
+  typingInterval = setInterval(() => {
+    if (index < text.length) {
+      const char = text[index];
+      if (char === "<") {
+        const endIndex = text.indexOf(">", index);
+        if (endIndex !== -1) {
+          element.innerHTML += text.substring(index, endIndex + 1);
+          index = endIndex + 1;
+        } else {
+          element.innerHTML += char;
+          index++;
+        }
+      } else {
+        element.innerHTML += char;
+        index++;
+      }
+    } else {
+      isWritting = false;
+      clearTyping();
+    }
+  }, speed);
+};
+
+const clearTyping = () => {
+  if (typingInterval) {
+    clearInterval(typingInterval);
+    typingInterval = null;
+  }
+  isWritting = false;
+};
+
+const stopTyping = (event: KeyboardEvent) => {
+  event.preventDefault();
+  if ((event.key === ' ' || event.target === goBackButton) && typingInterval) {
+    clearTyping();
+    dialogueElem.innerHTML = currentLineText; // Display full text
+    document.removeEventListener('keydown', stopTyping); // Remove listener
+  }
+};
+
+let currentLineText = ""; // Track the current line's text
 
 // Function to show dialogue based on ID
 function showLine(id: string) {
@@ -116,48 +170,53 @@ function showLine(id: string) {
   dialogueBox.classList.remove('left');
   dialogueBox.classList.remove('right');
   dialogueBox.classList.remove('narrator');
+  dialogueBox.classList.remove('center');
   dialogueBox.classList.add(line?.textPosition as string);
-
 
   if (canPassScreen) {
     let video = document.getElementById('background-video');
-  
+
     if (!line) {
       console.error("Line not found:", id);
       return;
     }
-  
+
     leftCharacter.innerHTML = "";
     choicesContainer.innerHTML = "";
     rightCharacter.innerHTML = "";
-  
+
     nameElem.textContent = line.name || "";
-    dialogueElem.innerHTML = line.text;
+    dialogueElem.innerHTML = ""; // Clear dialogue before typing
+    clearTyping(); // Ensure no ongoing typing from the previous line
 
     if (line.name) {
       characterNameElement.classList.add('displayed');
     } else {
       characterNameElement.classList.remove('displayed');
     }
-  
-      // Handle background transition if specified
+
+    // Display text letter by letter with interruption support
+    if (line.text) {
+      currentLineText = line.text; // Update the current line's text
+      typeText(line.text, dialogueElem, 20); // Adjust speed as needed
+      document.removeEventListener('keydown', stopTyping); // Ensure no duplicate listeners
+      document.addEventListener('keydown', stopTyping);
+    }
+
     if (line.backgroundTransition) {
       const { easing, duration, delay } = line.backgroundTransition;
       const string = `background-image ${duration ? duration : 300}ms ${delay ? delay : 0}ms ${easing}`;
-      console.log(string);
       backgroundElem.style.transition = string;
-      console.log(backgroundElem.style.transition);
     } else {
       backgroundElem.style.transition = "";
     }
-  
-    // Set background image if specified
+
     if (line.background) {
       backgroundElem.style.backgroundImage = `url('/src/images/decors/${line.background}.jpg')`;
     } else {
       backgroundElem.style.backgroundImage = ""; // Clear background if none specified
     }
-  
+
     if (line.backgroundVideo && backgroundVideo) {
       canPassScreen = false;
       skipVideo?.classList.remove('hidden');
@@ -173,8 +232,7 @@ function showLine(id: string) {
           currentLineIndex += 1;
           showLine(nextLineId);
         }
-      })
-      // video.play();
+      });
     } else if (video) {
       canPassScreen = true;
       skipVideo?.classList.add('hidden');
@@ -193,7 +251,7 @@ function showLine(id: string) {
         rightFlip,
         middleFlip
       } = line.charactersOnScreen;
-    
+
       updateCharacterImage(leftCharacter, 'left', left, leftMood, leftFlip);
       updateCharacterImage(rightCharacter, 'right', right, rightMood, rightFlip);
       updateCharacterImage(middleCharacter, 'middle', middle, middleMood, middleFlip);
@@ -202,14 +260,14 @@ function showLine(id: string) {
       leftCharacter.innerHTML = "";
       rightCharacter.innerHTML = "";
       middleCharacter.innerHTML = "";
-    
+
       currentCharacters = {
         left: { name: "", mood: "", flip: false },
         right: { name: "", mood: "", flip: false },
         middle: { name: "", mood: "", flip: false },
       };
     }
-  
+
     // Show choices if they exist
     if (line.choices) {
       line.choices.forEach(choice => {
@@ -254,8 +312,7 @@ function showLine(id: string) {
     if (line.music) {
       crossfadeMusic(audioChannelMusic, line.music, 2000);
     }
-    
-  
+
     if (line.callback) {
       line.callback();
     }
@@ -324,7 +381,7 @@ function fadeIn(audio: HTMLAudioElement, duration: number) {
 const skipLine = () => {
   const currentLine = findLineById(currentLineId);
 
-  if (!currentLine?.choices && !currentLine?.backgroundVideo) {
+  if (!currentLine?.choices && !currentLine?.backgroundVideo && !isWritting) {
     const nextLineId = getNextLineId();
     if (nextLineId) {
       previousLine.push(currentLineId);
@@ -342,6 +399,7 @@ dialogueBox.addEventListener("click", () =>  {
 
 document.addEventListener('keydown', (event) => {
   if (event.key === ' ') {
+    event.preventDefault();
     skipLine();
   }
 });

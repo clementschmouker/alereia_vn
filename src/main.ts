@@ -12,7 +12,7 @@ import { DialogueLine } from "./types";
 
 const script = [...scene1, ...scene2, ...scene3, ...scene4, ...scene5, ...scene6, ...scene7, ...scene8, ...scene9, ...scene10]; // @TODO IMPORTANT: Combine the scripts into one
 
-let currentLineId = "supercherie"; // The ID of the current line to be displayed
+let currentLineId = "start"; // The ID of the current line to be displayed
 let previousLine: string[] = [];
 let currentLineIndex = 0;
 

@@ -21,6 +21,7 @@ const script : DialogueLine[] = [
       id: "toit2",
       name: "Syel",
       text: "<i>Il a raison. C'est trop facile...</i>",
+      textPosition: 'left', // Syel is on the left
       background: 'syel_blase',
     },
     {
@@ -33,6 +34,7 @@ const script : DialogueLine[] = [
       id: "toit4",
       name: "Syel",
       text: "<i> Il va bientôt pleuvoir... et c'est mon frère qui a ma veste. Bouclons cette affaire rapidement. Je me sens un peu fatigué... </i>",
+      textPosition: 'left', // Syel is on the left
       background: 'syel_leve_yeux',
     },
     {

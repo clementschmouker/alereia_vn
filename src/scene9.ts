@@ -15,6 +15,7 @@ const script : DialogueLine[] = [
       id: "supercherie1",
       name: "N.O.D.E.",
       text: "On te tient ! Frères et soeurs, mobilisez-vous, ce n'est plus le moment de se cacher ! Notre priorité est de l'emmener en lieu sûr !",
+      textPosition: 'left', // N.O.D.E. is on the left
       background: 'rues',
       charactersOnScreen: {
         left: "mechants",
@@ -116,6 +117,7 @@ const script : DialogueLine[] = [
       id: "supercherie4",
       name: "Ira",
       text: "Si tu voyais ta tête, mec...",
+      textPosition: 'center', // Ira is in the middle
       background: 'rues',
       charactersOnScreen: {
         left: "mechants",

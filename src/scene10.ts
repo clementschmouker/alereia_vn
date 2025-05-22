@@ -16,6 +16,7 @@ const script : DialogueLine[] = [
       id: "fin1",
       name: "Syel",
       text: "Tu leur a pas fait de cadeau dis donc... Ils ont l'air complètement sonnés.",
+      textPosition: 'right', // Syel is on the right
       background: 'impasse',
       charactersOnScreen: {
         left: "vava",
@@ -30,6 +31,7 @@ const script : DialogueLine[] = [
       id: "fin2",
       name: "Vangva",
       text: "Je n'ai fait que me défendre ! Après tout, ils étaient armés de couteaux.",
+      textPosition: 'left', // Vangva is on the left
       background: 'impasse',
       charactersOnScreen: {
         left: "vava",
@@ -44,6 +46,7 @@ const script : DialogueLine[] = [
       id: "fin3",
       name: "Syel",
       text: "Haha... Je ne peux pas croire une seconde que tu te sois senti menacé.",
+      textPosition: 'right', // Syel is on the right
       background: 'impasse',
       charactersOnScreen: {
         left: "vava",
@@ -71,6 +74,7 @@ const script : DialogueLine[] = [
       id: "fin4",
       name: "Vangva",
       text: "Au fait... Quelque chose ne va pas ? J'ai ressenti beaucoup de colère... quand tu m'as prêté ton énergie.",
+      textPosition: 'left', // Vangva is on the left
       background: 'impasse',
       charactersOnScreen: {
         left: "vava",
@@ -85,6 +89,7 @@ const script : DialogueLine[] = [
       id: "fin5",
       name: "Syel",
       text: "...",
+      textPosition: 'right', // Syel is on the right
       background: 'impasse',
       charactersOnScreen: {
         left: "vava",
@@ -99,6 +104,7 @@ const script : DialogueLine[] = [
       id: "fin6",
       name: "Syel",
       text: "Ce n'est rien...",
+      textPosition: 'right', // Syel is on the right
       background: 'impasse',
       charactersOnScreen: {
         left: "vava",
@@ -113,6 +119,7 @@ const script : DialogueLine[] = [
       id: "fin7",
       name: "Vangva",
       text: "Mmh...",
+      textPosition: 'left', // Vangva is on the left
       background: 'impasse',
       charactersOnScreen: {
         left: "vava",
@@ -140,6 +147,7 @@ const script : DialogueLine[] = [
       id: "fin9",
       name: "Syel",
       text: "C'est juste que... Écoute, je comprends pourquoi on fait tout ça... pourquoi on arrête ces personnes. Ça ne me plait juste pas trop d'utiliser ce genre de stratagème pour les piéger. Et puis...",
+      textPosition: 'right', // Syel is on the right
       background: 'impasse',
       charactersOnScreen: {
         left: "vava",
@@ -167,6 +175,7 @@ const script : DialogueLine[] = [
       id: "fin12",
       name: "Vangva",
       text: "C'est Ilyem ! Excuse-moi...",
+      textPosition: 'left', // Vangva is on the left
       background: 'impasse',
       charactersOnScreen: {
         left: "vava",
@@ -181,6 +190,7 @@ const script : DialogueLine[] = [
       id: "fin13",
       name: "Vangva",
       text: "Ily ! Tout va bien de ton côté ?!",
+      textPosition: 'left', // Vangva is on the left
       background: 'impasse',
       charactersOnScreen: {
         left: "vava",
@@ -195,6 +205,7 @@ const script : DialogueLine[] = [
       id: "fin14",
       name: "Ilyem",
       text: "Oui, oui, pas de problème pour moi. Ils m'ont laissée partir sans insister.",
+      textPosition: 'left', // Ilyem is on the left
       background: 'impasse',
       charactersOnScreen: {
         left: "vava",
@@ -209,6 +220,7 @@ const script : DialogueLine[] = [
       id: "fin15",
       name: "Vangva",
       text: "Je suis soulagé. C'est grâce à toi qu'on a pu arrêter autant de monde, mais... De nous tous, c'est toi qui étais la plus exposée. Y aller seule était vraiment risqué, tu sais...",
+      textPosition: 'left', // Vangva is on the left
       background: 'impasse',
       charactersOnScreen: {
         left: "vava",
@@ -223,6 +235,7 @@ const script : DialogueLine[] = [
       id: "fin16",
       name: "Ilyem",
       text: "Allons bon ? C'est toi qui t'inquiètes pour moi maintenant ? C'est le monde à l'envers !",
+      textPosition: 'left', // Ilyem is on the left
       background: 'impasse',
       charactersOnScreen: {
         left: "vava",
@@ -237,6 +250,7 @@ const script : DialogueLine[] = [
       id: "fin17",
       name: "Vangva",
       text: "Ily, je suis sérieux... Je sais quels sont les enjeux pour toi... Mais tu ferais mieux de ne plus prendre autant de risque à l'avenir. Tu as eu les informations que tu recherchais au moins ?",
+      textPosition: 'left', // Vangva is on the left
       background: 'impasse',
       charactersOnScreen: {
         left: "vava",
@@ -251,6 +265,7 @@ const script : DialogueLine[] = [
       id: "fin18",
       name: "Ilyem",
       text: "... Non. Ils ne savent rien... Ce ne sont pas les Nodistes qui ont ma sœur, Vangva, ou alors ils mentent vraiment très bien sous la menace.",
+      textPosition: 'left', // Ilyem is on the left
       background: 'impasse',
       charactersOnScreen: {
         left: "vava",
@@ -265,6 +280,7 @@ const script : DialogueLine[] = [
       id: "fin19",
       name: "Vangva",
       text: "Ah... Je suis désolé.",
+      textPosition: 'left', // Vangva is on the left
       background: 'impasse',
       charactersOnScreen: {
         left: "vava",
@@ -279,6 +295,7 @@ const script : DialogueLine[] = [
       id: "fin20",
       name: "Ilyem",
       text: "On finira bien par retrouver sa trace, hein ? Il faut juste que je parvienne à rester patiente...",
+      textPosition: 'left', // Ilyem is on the left
       background: 'impasse',
       charactersOnScreen: {
         left: "vava",
@@ -293,6 +310,7 @@ const script : DialogueLine[] = [
       id: "fin21",
       name: "Vangva",
       text: "Oui. On y arrivera, j'en suis convaincu. Je te laisse, on en reparle ce soir.",
+      textPosition: 'left', // Vangva is on the left
       background: 'impasse',
       charactersOnScreen: {
         left: "vava",
@@ -307,6 +325,7 @@ const script : DialogueLine[] = [
       id: "fin22",
       name: "Vangva",
       text: "Désolé, je t'ai coupé.",
+      textPosition: 'left', // Vangva is on the left
       background: 'impasse',
       charactersOnScreen: {
         left: "vava",
@@ -321,6 +340,7 @@ const script : DialogueLine[] = [
       id: "fin23",
       name: "Syel",
       text: "Ne t'en fais pas. En gros, ce que je veux dire, c'est que...",
+      textPosition: 'right', // Syel is on the right
       background: 'impasse',
       charactersOnScreen: {
         left: "vava",
@@ -350,6 +370,7 @@ const script : DialogueLine[] = [
       id: "fin25",
       name: "Ira",
       text: "C'est la dernière fois que je joue les appâts ! Je savais bien que ce serait un plan foireux...",
+      textPosition: 'left', // Ira is on the left
       background: 'impasse',
       charactersOnScreen: {
         left: "ira",
@@ -367,6 +388,7 @@ const script : DialogueLine[] = [
       id: "fin26",
       name: "Vangva",
       text: "De quoi tu te plains ? Tu viens de permettre l'arrestation de près d'une vingtaine de Nodistes qui vont tous être envoyés en centre de décontamination. Qu'est-ce qu'il te faut de plus ?",
+      textPosition: 'center', // Vangva is in the middle
       background: 'impasse',
       charactersOnScreen: {
         left: "ira",
@@ -384,6 +406,7 @@ const script : DialogueLine[] = [
       id: "fin27",
       name: "Ira",
       text: "C'est facile à dire pour toi, c'est toujours toi qui passes pour le héros !",
+      textPosition: 'left', // Ira is on the left
       background: 'impasse',
       charactersOnScreen: {
         left: "ira",
@@ -401,6 +424,7 @@ const script : DialogueLine[] = [
       id: "fin28",
       name: "Vangva",
       text: "Tu veux qu'on échange nos rôles la prochaine fois ? Je te laisse gérer une dizaine de personnes armées et hostiles tout seul avec plaisir ! Crois-moi, tu en serais ressorti avec plus qu'un simple bleu sur la joue !",
+      textPosition: 'center', // Vangva is in the middle
       background: 'impasse',
       charactersOnScreen: {
         left: "ira",
@@ -418,6 +442,7 @@ const script : DialogueLine[] = [
       id: "fin29",
       name: "Ira",
       text: "Pft ! Écoute-toi parler, monsieur “je suis un super soldat”. Je te rappelle que tes pouvoirs cheatés, c'est à Syel que tu les dois ! C'est lui qui...",
+      textPosition: 'left', // Ira is on the left
       background: 'impasse',
       charactersOnScreen: {
         left: "ira",
@@ -435,6 +460,7 @@ const script : DialogueLine[] = [
       id: "fin30",
       name: "Syel",
       text: "Ça suffit !",
+      textPosition: 'right', // Syel is on the right
       background: 'impasse',
       charactersOnScreen: {
         left: "ira",
@@ -452,6 +478,7 @@ const script : DialogueLine[] = [
       id: "fin31",
       name: "Syel",
       text: "Tous les deux, vous êtes vraiment des abrutis ! Ça vous fait pas plaisir qu'on ait réussi la mission ?? Vous devriez être en train de vous féliciter l'un l'autre plutôt que de vous engueuler encore ! J'en ai assez d'entendre vos histoires !",
+      textPosition: 'right', // Syel is on the right
       background: 'impasse',
       charactersOnScreen: {
         left: "ira",
@@ -483,6 +510,7 @@ const script : DialogueLine[] = [
       id: "fin33",
       name: "Ira",
       text: "Ouch... C'est moi où il est vraiment de mauvaise humeur, ces derniers temps ?",
+      textPosition: 'center', // Ira is in the middle
       background: 'impasse',
       charactersOnScreen: {
         middle: "ira",
@@ -497,6 +525,7 @@ const script : DialogueLine[] = [
       id: "fin34",
       name: "Vangva",
       text: "Non, c'est pas toi. Il est vraiment de mauvaise humeur...",
+      textPosition: 'right', // Vangva is on the right
       background: 'impasse',
       charactersOnScreen: {
         middle: "ira",

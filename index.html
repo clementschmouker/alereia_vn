@@ -11,6 +11,7 @@
       <div id="background">
         <video id="background-video" muted></video>
       </div>
+      <div class="view-bar top-bar"></div>
       <div id="characters">
         <div id="left-character" class="character-slot"></div>
         <div id="middle-character" class="character-slot"></div>
@@ -26,14 +27,15 @@
 
       <div id="choices-container"></div>
 
-      <audio id="audio-channel--music"></audio>
-      <audio id="audio-channel--sound"></audio>
-      <audio id="audio-channel--voice"></audio>
+      <audio id="audio-channel--music" muted></audio>
+      <audio id="audio-channel--sound" muted></audio>
+      <audio id="audio-channel--voice" muted></audio>
 
-      <button id="mute-sound">Unmute sound</button>
+      <button id="mute-sound" class="muted">Unmute sound</button>
       <button id="skip-video">Skip Video</button>
       <button id="go-back">Back</button>
 
+      <div class="view-bar bottom-bar"></div>
     </div>
     <script type="module" src="/src/main.ts"></script>
   </body>

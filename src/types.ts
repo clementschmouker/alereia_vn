@@ -11,6 +11,15 @@ interface backgroundImageTransitionType {
   delay?: number;
 }
 
+interface SmartphoneMessage {
+  id: string;
+  name: string;
+  message: string;
+  date: string;
+  reaction?: string;
+  reactionNumber?: number;
+}
+
 interface DialogueLine {
     id: string;  // Unique ID for the line
     name?: string;
@@ -18,6 +27,13 @@ interface DialogueLine {
     textPosition?: 'right' | 'left' | 'center' | 'narrator';
     video?: string;
     background?: string;
+    smartphone?: boolean;
+    smartphoneMessages?: SmartphoneMessage[];
+    smartphoneChoices?: {
+        text: string;
+        nextLineId: string;
+    }[];
+    smartphoneResponses?: SmartphoneMessage[];
     backgroundVideo?: string;
     backgroundTransition?: backgroundImageTransitionType;
     music?: string;

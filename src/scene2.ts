@@ -61,64 +61,67 @@ const script : DialogueLine[] = [
       name: "@StrangerFromTheSky - Hier à 22h21",
       text: "???",
       background: 'gare',
-    },
-    {
-      id: "interlude2",
-      name: "@StrangerFromTheSky - Hier à 22h21",
-      text: "Oh Vangva ! C'est cool, merci !",
-      background: 'gare',
-    },
-    {
-      id: "interlude3",
-      name: "@nuit_rouge - Hier à 22h21",
-      text: "Uh",
-      background: 'gare',
-    },
-    {
-      id: "interlude4",
-      name: "@nuit_rouge - Hier à 22h21",
-      text: "Ça me tue de dire ça, mais merci mec",
-      background: 'gare',
-    },
-    {
-      id: "interlude5",
-      name: "@freal - Hier à 22h22",
-      text: "Ho ho ho, on dirait qu'on a trouvé une solution",
-      background: 'gare',
-    },
-    {
-      id: "interlude6",
-      name: "@Lilas2306 - Hier à 22h24",
-      text: "Ouah ! Merci Va ! Je savais qu'on pouvait toujours compter sur toi !",
-      background: 'gare',
-    },
-    {
-      id: "interlude7",
-      name: "@Vava01 - Hier à 22h24",
-      text: "Dites, vous n'en feriez pas un peu trop... ? *emoji rire de la part d'Ilyem en dessous*",
-      background: 'gare',
-    },
-    {
-      id: "interlude8",
-      name: "@Lilas2306 - Aujourd'hui à 09h54",
-      text: "Que tout aille bien pour vous aujourd'hui, les gars ! Et soyez prudents... Surtout toi, Va. Tu as beau être un soldat entraîné, tu ne sais pas ce qui t'attend là-bas... *liké par 2 personnes*",
-      background: 'gare',
-    },
-    {
-      id: "interlude9",
-      name: "@Vava01 - Aujourd'hui à 14h01",
-      text: "> Écrire une réponse <",
-      background: 'gare',
-    },
-    {
-      id: "smartphone", 
-      name: "@Vava01",
-      text: "Que répondre à Lilas2306 ?",
-    background: 'gare',
-      choices: [
+      smartphone: true,
+      smartphoneMessages: [
+        {
+          id: "passtMessage1",
+          name: "@StrangerFromTheSky",
+          message: "Salut ! Je suis de retour !",
+          date: "Hier à 22h21",
+        },
+        {
+          id: "passtMessage2",
+          name: "@StrangerFromTheSky",
+          message: "Oh Vangva ! C'est cool, merci !",
+          date: "Hier à 22h21",
+        },
+        {
+          id: "passtMessage3",
+          name: "@nuit_rouge",
+          message: "Uh",
+          date: "Hier à 22h21",
+        },
+        {
+          id: "passtMessage4",
+          name: "@nuit_rouge",
+          message: "Ça me tue de dire ça, mais merci mec",
+          date: "Hier à 22h21",
+        },
+        {
+          id: "passtMessage5",
+          name: "@freal",
+          message: "Ho ho ho, on dirait qu'on a trouvé une solution",
+          date: "Hier à 22h22",
+        },
+        {
+          id: "passtMessage6",
+          name: "@Lilas2306",
+          message: "Ouah ! Merci Va ! Je savais qu'on pouvait toujours compter sur toi !",
+          date: "Hier à 22h24",
+        },
+        {
+          id: "passtMessage7",
+          name: "@Vava01",
+          message: "Dites, vous n'en feriez pas un peu trop... ?",
+          date: "Hier à 22h24",
+          reaction: "laugh",
+        },
+        {
+          id: "passtMessage8",
+          name: "@Lilas2306",
+          message: "Que tout aille bien pour vous aujourd'hui, les gars ! Et soyez prudents... Surtout toi, Va. Tu as beau être un soldat entraîné, tu ne sais pas ce qui t'attend là-bas...",
+          date: "Aujourd'hui à 09h54",
+          reaction: "like",
+          reactionNumber: 2,
+        },
+      ],
+      smartphoneChoices: [
         { text: "Je gère :)", nextLineId: "positif" },
         { text: "On sait tous très bien que je ne risque rien... Tu t'en fais trop pour moi, comme toujours.", nextLineId: "negatif" },
         { text : "Ce n'est pas pour moi qu'il faut s'inquiéter. C'est plutôt pour @StrangerFromTheSky qui ne donne pas de signe de vie depuis hier soir...", nextLineId: "inquiet" }
+      ],
+      smartphoneResponses: [
+        
       ]
     },
     {

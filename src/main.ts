@@ -68,7 +68,7 @@ skipVideo?.addEventListener('click', () => {
 });
 
 goBackButton?.addEventListener('click', () => {
-  if (currentLineIndex <= 0) return;
+  if (currentLineIndex <= 1) return;
   currentLineIndex -= 1;
   currentLineId = previousLine[currentLineIndex];
   showLine(previousLine[currentLineIndex]);
@@ -163,7 +163,6 @@ let currentLineText = ""; // Track the current line's text
 
 // Function to show dialogue based on ID
 function showLine(id: string) {
-  console.log(id);
   const line = findLineById(id);
   if (line && !line.textPosition) {
     line.textPosition = "narrator";
@@ -171,6 +170,7 @@ function showLine(id: string) {
   dialogueBox.classList.remove('left');
   dialogueBox.classList.remove('right');
   dialogueBox.classList.remove('narrator');
+  dialogueBox.classList.remove('center');
   dialogueBox.classList.add(line?.textPosition as string);
 
   if (canPassScreen) {

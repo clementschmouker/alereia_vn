@@ -5,7 +5,8 @@
   body, html {
     margin: 0;
     padding: 0;
-    font-family: 'Verdana', sans-serif;
+    font-family: 'Raleway', sans-serif;
+    line-height: 160%;
     background-color: black;
     color: white;
   }
@@ -24,6 +25,7 @@
     width: 100%;
     height: 100px;
     background-image: url('src/images/bar.svg');
+    background-repeat: repeat-x;
   }
 
   .top-bar {
@@ -55,7 +57,7 @@
   #dialogue-box {
     display: none;
     position: absolute;
-    bottom: 0;
+    z-index: 100000000 !important;
     max-width: 25%;
     min-width: 20%;
     height: auto;
@@ -72,12 +74,14 @@
     width: 100%;
     height: 100%;
     padding: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 
   .comic-bubble {
-    border-width: 40px;
+    border-width: 20px;
     border-style: solid;
-    border-image: url('src/images/dialogbubble.svg') 40 fill;
+    border-image: url('src/images/dialogbubble.svg') 30 fill;
     min-width: 300px;
     height: 200px;
     padding: 20px;
@@ -87,7 +91,7 @@
     position: absolute;
     width: 50px;
     height: 50px;
-    bottom: -72px;
+    bottom: -52px;
     left: 80%;
     transform: translateX(-50%);
     background-image: url('src/images/dialogbubble-arrow.svg');
@@ -112,9 +116,18 @@
     transform: translateX(-50%) scaleX(-1);
   }
 
+  #dialogue-box.center .comic-bubble__tail {
+    left: 50%;
+    transform: scaleX(-1);
+  }
+
+  #dialogue-box.narrator .comic-bubble__tail {
+    display: none;
+  }
+
   #dialogue-box.center {
     display: block;
-    bottom: 50%;
+    bottom: 750px;
     left: 50%;
     transform: translateY(50%) translateX(-50%);
   }
@@ -122,6 +135,7 @@
   #dialogue-box.narrator {
     display: block;
     position: absolute;
+    z-index: 1 !important;
     bottom: 40px;
     left: 50%;
     width: 100%;
@@ -145,16 +159,18 @@
   #name {
     display: none;
     position: absolute;
-    top: -80px;
-    left: 0;
+    top: -120px;
+    left: -75px;
     font-weight: bold;
+    font-size: 2rem;
     margin-bottom: 5px;
+    text-transform: uppercase;
     color: #f9d342;
-    border: 3px solid black;
+    /* border: 3px solid black; */
     padding: 1rem;
-    border-width: 10px;
+    /* border-width: 10px;
     border-style: solid;
-    border-image: url('src/images/dialogbubble.svg') 7 fill;
+    border-image: url('src/images/dialogbubble.svg') 7 fill; */
   }
 
   #name.displayed {
@@ -272,11 +288,22 @@
 
 #skip-video {
   position: fixed;
-  z-index: 10000;
-  top: 1rem;
-  left: 50%;
+  z-index: 1000000;
+  bottom: 1rem;
+  right: 1rem;
 
-  transform: translateX(-50%);
+  padding-top: 0.8rem;
+  text-transform: uppercase;
+  background: transparent;
+  color: white;
+  border-width: 20px;
+  border-image: url('src/images/dialogbubble-black.svg') 20 fill;
+
+  transition: all .3s ease;
+}
+
+#skip-video:hover {
+  cursor: pointer;
 }
 
 #go-back {
@@ -284,8 +311,8 @@
   z-index: 10000;
   top: 1rem;
   left: 1rem;
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   background: transparent;
   background-image: url('src/images/back.svg');
   background-size: contain;

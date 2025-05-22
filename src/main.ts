@@ -399,6 +399,7 @@ dialogueBox.addEventListener("click", () =>  {
 
 document.addEventListener('keydown', (event) => {
   if (event.key === ' ') {
+    event.preventDefault();
     skipLine();
   }
 });

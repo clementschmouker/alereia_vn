@@ -34,7 +34,7 @@ const audioChannelMusic = document.querySelector('#audio-channel--music') as HTM
 const audioChannelVoice = document.querySelector('#audio-channel--voice') as HTMLAudioElement;
 
 const unmuteButton = document.querySelector('#mute-sound');
-const skipVideo = document.querySelector('#skip-video')
+const skipVideo = document.querySelector('#skip-video');
 const goBackButton = document.querySelector('#go-back');
 
 let currentCharacters = {
@@ -72,6 +72,8 @@ goBackButton?.addEventListener('click', () => {
   currentLineIndex -= 1;
   currentLineId = previousLine[currentLineIndex];
   showLine(previousLine[currentLineIndex]);
+  previousLine.pop();
+  
 })
 
 // Function to find a dialogue line by its ID
@@ -111,9 +113,57 @@ function updateCharacterImage(
   };
 }
 
+let typingInterval: NodeJS.Timeout | null = null;
+
+const typeText = (text: string, element: HTMLElement, speed: number) => {
+  clearTyping(); // Ensure no overlapping typing intervals
+  let index = 0;
+  isWritting = true;
+  typingInterval = setInterval(() => {
+    if (index < text.length) {
+      const char = text[index];
+      if (char === "<") {
+        const endIndex = text.indexOf(">", index);
+        if (endIndex !== -1) {
+          element.innerHTML += text.substring(index, endIndex + 1);
+          index = endIndex + 1;
+        } else {
+          element.innerHTML += char;
+          index++;
+        }
+      } else {
+        element.innerHTML += char;
+        index++;
+      }
+    } else {
+      isWritting = false;
+      clearTyping();
+    }
+  }, speed);
+};
+
+const clearTyping = () => {
+  if (typingInterval) {
+    clearInterval(typingInterval);
+    typingInterval = null;
+  }
+  isWritting = false;
+};
+
+const stopTyping = (event: KeyboardEvent) => {
+  event.preventDefault();
+  if ((event.key === ' ' || event.target === goBackButton) && typingInterval) {
+    clearTyping();
+    dialogueElem.innerHTML = currentLineText; // Display full text
+    document.removeEventListener('keydown', stopTyping); // Remove listener
+  }
+};
+
+let currentLineText = ""; // Track the current line's text
 
 // Function to show dialogue based on ID
 function showLine(id: string) {
+  console.log(id);
   const line = findLineById(id);
   if (line && !line.textPosition) {
     line.textPosition = "narrator";
@@ -137,6 +187,7 @@ function showLine(id: string) {
 
     nameElem.textContent = line.name || "";
     dialogueElem.innerHTML = ""; // Clear dialogue before typing
+    clearTyping(); // Ensure no ongoing typing from the previous line
 
     if (line.name) {
       characterNameElement.classList.add('displayed');
@@ -145,48 +196,10 @@ function showLine(id: string) {
     }
 
     // Display text letter by letter with interruption support
-    let typingInterval: NodeJS.Timeout | null = null;
-    const typeText = (text: string, element: HTMLElement, speed: number) => {
-      let index = 0;
-      isWritting = true;
-      typingInterval = setInterval(() => {
-        if (index < text.length) {
-          const char = text[index];
-          if (char === "<") {
-            const endIndex = text.indexOf(">", index);
-            if (endIndex !== -1) {
-              element.innerHTML += text.substring(index, endIndex + 1);
-              index = endIndex + 1;
-            } else {
-              element.innerHTML += char;
-              index++;
-            }
-          } else {
-            element.innerHTML += char;
-            index++;
-          }
-        } else {
-          isWritting = false;
-          clearInterval(typingInterval!);
-          typingInterval = null;
-        }
-      }, speed);
-    };
-
     if (line.text) {
+      currentLineText = line.text; // Update the current line's text
       typeText(line.text, dialogueElem, 20); // Adjust speed as needed
-
-      // Add event listener to interrupt typing and display full text
-      const stopTyping = (event: KeyboardEvent) => {
-        event.preventDefault();
-        if (event.key === ' ' && typingInterval) {
-          clearInterval(typingInterval);
-          typingInterval = null;
-          dialogueElem.innerHTML = line.text; // Display full text
-          document.removeEventListener('keydown', stopTyping); // Remove listener
-          isWritting = false; // Reset typing state
-        }
-      };
+      document.removeEventListener('keydown', stopTyping); // Ensure no duplicate listeners
       document.addEventListener('keydown', stopTyping);
     }
 
@@ -385,7 +398,6 @@ dialogueBox.addEventListener("click", () =>  {
 });
 
 document.addEventListener('keydown', (event) => {
-  event.preventDefault();
   if (event.key === ' ') {
     skipLine();
   }

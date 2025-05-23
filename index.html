@@ -5,33 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Visual Novel</title>
     <link rel="stylesheet" href="/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   </head>
   <body>
     <div id="game">
       <div id="background">
         <video id="background-video" muted></video>
       </div>
+      <div class="view-bar top-bar"></div>
       <div id="characters">
         <div id="left-character" class="character-slot"></div>
         <div id="middle-character" class="character-slot"></div>
         <div id="right-character" class="character-slot"></div>
       </div>
-      <div id="dialogue-box">
-        <div class="container">
-          <p id="name"></p>
-          <p id="dialogue"></p>  
+      <div id="dialogue-box" class="comic-bubble">
+        <div class="dialog__wrapper">
+          <p id="name" class="displayed"></p>
+          <p id="dialogue"></p>
         </div>
+        <div class="comic-bubble__tail"></div>
       </div>
+
       <div id="choices-container"></div>
 
-      <audio id="audio-channel--music"></audio>
-      <audio id="audio-channel--sound"></audio>
-      <audio id="audio-channel--voice"></audio>
+      <audio id="audio-channel--music" muted></audio>
+      <audio id="audio-channel--sound" muted></audio>
+      <audio id="audio-channel--voice" muted></audio>
 
-      <button id="mute-sound">Unmute sound</button>
+      <button id="mute-sound" class="muted">Unmute sound</button>
       <button id="skip-video">Skip Video</button>
       <button id="go-back">Back</button>
 
+      <div class="view-bar bottom-bar"></div>
     </div>
     <script type="module" src="/src/main.ts"></script>
   </body>

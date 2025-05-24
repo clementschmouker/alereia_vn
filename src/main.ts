@@ -8,7 +8,7 @@ import scene7 from "./scene7";
 import scene8 from "./scene8";
 import scene9 from "./scene9";
 import scene10 from "./scene10";
-import { DialogueLine } from "./types";
+import { DialogueLine, SmartphoneMessage } from "./types";
 import gsap from "gsap";
 
 const script = [
@@ -37,10 +37,11 @@ const rightCharacter = document.getElementById("right-character")!;
 const middleCharacter = document.getElementById("middle-character")!;
 const backgroundElem = document.getElementById("background")!;
 const backgroundVideo = document.querySelector("#background-video") as HTMLVideoElement;
-const choicesContainer = document.getElementById("choices-container")!;
 const characterNameElement = document.getElementById("name")!;
 const smartPhoneElement = document.getElementById("smartphone")!;
 const smartPhoneMessagesListElem = document.querySelector('.smartphone__screen__messages') as HTMLUListElement;
+const smartPhoneWrittingElem = document.querySelector('.smartphone__screen__writting') as HTMLDivElement;
+const smartPhoneContentElem = document.querySelector('.smartphone__screen__content') as HTMLDivElement;
 
 const audioChannelSound = document.querySelector("#audio-channel--sound") as HTMLAudioElement;
 const audioChannelMusic = document.querySelector("#audio-channel--music") as HTMLAudioElement;
@@ -58,6 +59,7 @@ let currentCharacters = {
 
 let isWritting = false;
 let canPassScreen = true;
+let canSkipSmartphone = true;
 
 unmuteButton?.addEventListener("click", () => {
     audioChannelMusic.muted = !audioChannelMusic.muted;
@@ -174,29 +176,24 @@ function showLine(id: string) {
     if (line && !line.textPosition) {
         line.textPosition = "narrator";
     }
-    if (!line?.smartphone) {
-        dialogueBox.classList.remove("left", "right", "narrator", "center");
-        dialogueBox.classList.add(line?.textPosition as string);
-    } else {
+    if (line?.smartphone) {
         smartPhoneElement.classList.add('visible');
-        console.log(line.smartphoneMessages);
-        line.smartphoneMessages?.forEach((message, index) => {
-          console.log(message, index);
+        line.smartphoneMessages?.forEach((message: SmartphoneMessage, index) => {
           const messageElem = document.createElement("li");
           messageElem.classList.add("message");
           messageElem.setAttribute("data-sender", message.name);
-
-          let hideAvatar = false;
           
           if (message.sender) {
             messageElem.classList.add("sender");
           } else {
             messageElem.classList.add("other");
-            if (index < line?.smartphoneMessages?.length && message.name === line.smartphoneMessages[index + 1].name) {
+            if (line?.smartphoneMessages[index + 1] &&
+                index < line?.smartphoneMessages?.length &&
+                message.name === line.smartphoneMessages[index + 1].name
+            ) {
               messageElem.classList.add("hidden-avatar");
             }
           }
-
           messageElem.innerHTML = `
               <div class="message__avatar"></div>
               <div class="message__content">
@@ -204,7 +201,7 @@ function showLine(id: string) {
                   <span class="message__sender">${message.name}</span>
                   <span class="message__time">${message.date}</span>
                 </div>
-                <p class="message__text">${message.message}</p>
+                <p class="message__text">${message.content}</p>
                 <ul class="message__reactions">
                   <li class="like"></li>
                   <li class="laugh"></li>
@@ -212,6 +209,82 @@ function showLine(id: string) {
             `;
 
           smartPhoneMessagesListElem.appendChild(messageElem);
+        });
+        smartPhoneContentElem.scrollTop = smartPhoneContentElem.scrollHeight;
+    } else {
+        canSkipSmartphone = true;
+        smartPhoneElement.classList.remove('visible');
+        dialogueBox.classList.remove("left", "right", "narrator", "center");
+        dialogueBox.classList.add(line?.textPosition as string);
+    }
+
+    if (line?.smartphoneChoices) {
+        canSkipSmartphone = false;
+        dialogueBox.classList.add('narrator');
+        const choiceWrapper = dialogueBox.querySelector('#choices');
+        const list = document.createElement('div');
+        list.classList.add('smartphone-choices');
+        choiceWrapper?.appendChild(list);
+        line.smartphoneChoices.forEach((choice) => {
+            const button = document.createElement("button");
+            button.classList.add("smartphone-choice");
+            button.textContent = choice.text;
+            button.setAttribute("data-next-line-id", choice.nextLineId);
+            list.appendChild(button);
+            button.onclick = () => {
+                const messageElem = document.createElement("li");
+                messageElem.classList.add("message", "sender");
+                messageElem.setAttribute("data-sender", "@Moi");
+                messageElem.innerHTML = `
+                    <div class="message__avatar"></div>
+                    <div class="message__content">
+                        <div class="message__header">
+                            <span class="message__sender">@Moi</span>
+                            <span class="message__time">à l'instant</span>
+                        </div>
+                        <p class="message__text">${choice.text}</p>
+                    </div>
+                `;
+                smartPhoneMessagesListElem.appendChild(messageElem);
+                smartPhoneContentElem.scrollTop = smartPhoneContentElem.scrollHeight;
+                choiceWrapper.innerHTML = ""; // Clear choices after selection
+
+                if (line.smartphoneResponses && choice.nextLineId) {
+                    const response = line.smartphoneResponses.find(r => r.id === choice.nextLineId);
+                    if (response) {
+                        let count = 0;
+                        response.messages.forEach((message: SmartphoneMessage, index: number) => {
+                            const responseMessageElem = document.createElement("li");
+                            responseMessageElem.classList.add("message", message.sender ? "sender" : "other");
+                            responseMessageElem.setAttribute("data-sender", message.name);
+                            responseMessageElem.innerHTML = `
+                                <div class="message__avatar"></div>
+                                <div class="message__content">
+                                    <div class="message__header">
+                                        <span class="message__sender">${message.name}</span>
+                                        <span class="message__time">${message.date}</span>
+                                    </div>
+                                    <p class="message__text">${message.content}</p>
+                                </div>
+                            `;
+                            smartPhoneContentElem.scrollTop = smartPhoneContentElem.scrollHeight;
+                            smartPhoneWrittingElem.classList.remove('hidden');
+                            setTimeout(() => {
+                                count += 1;
+                                smartPhoneMessagesListElem.appendChild(responseMessageElem);
+                                smartPhoneContentElem.scrollTop = smartPhoneContentElem.scrollHeight;
+                                smartPhoneWrittingElem.classList.add('hidden');
+
+                                if (count === response.messages.length) {
+                                    canSkipSmartphone = true;
+                                } else {
+                                    smartPhoneWrittingElem.classList.remove('hidden');
+                                }
+                            }, 2000 * (index + 1));
+                        });
+                    }
+                }
+            }
         });
     }
 
@@ -224,7 +297,6 @@ function showLine(id: string) {
         }
 
         leftCharacter.innerHTML = "";
-        choicesContainer.innerHTML = "";
         rightCharacter.innerHTML = "";
 
         nameElem.textContent = line.name || "";
@@ -306,21 +378,6 @@ function showLine(id: string) {
                 right: { name: "", mood: "", flip: false },
                 middle: { name: "", mood: "", flip: false },
             };
-        }
-
-        if (line.choices) {
-            line.choices.forEach((choice) => {
-                const button = document.createElement("button");
-                button.textContent = choice.text;
-                button.onclick = () => {
-                    choicesContainer.innerHTML = "";
-                    previousLine.push(currentLineId);
-                    currentLineId = choice.nextLineId;
-                    currentLineIndex += 1;
-                    showLine(choice.nextLineId);
-                };
-                choicesContainer.appendChild(button);
-            });
         }
 
         if (line.sound) {
@@ -418,7 +475,7 @@ function fadeIn(audio: HTMLAudioElement, duration: number) {
 const skipLine = () => {
     const currentLine = findLineById(currentLineId);
 
-    if (!currentLine?.choices && !currentLine?.backgroundVideo && !isWritting) {
+    if (!currentLine?.backgroundVideo && !isWritting && canSkipSmartphone) {
         const nextLineId = getNextLineId();
         if (nextLineId) {
             previousLine.push(currentLineId);

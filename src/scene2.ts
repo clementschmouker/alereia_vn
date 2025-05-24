@@ -52,63 +52,55 @@ const script : DialogueLine[] = [
     },
     {
       id: "interlude",
-      name: "",
-      text: "Ici se trouve tout le gameplay avec le smartphone. On voit les discussions précédentes.",
-      background: 'gare',
-    },
-    {
-      id: "interlude1",
-      name: "@StrangerFromTheSky - Hier à 22h21",
-      text: "???",
       background: 'gare',
       smartphone: true,
       smartphoneMessages: [
         {
           id: "passtMessage1",
           name: "@StrangerFromTheSky",
-          message: "Salut ! Je suis de retour !",
+          content: "Salut ! Je suis de retour !",
           date: "Hier à 22h21",
           sender: false,
         },
         {
           id: "passtMessage2",
           name: "@StrangerFromTheSky",
-          message: "Oh Vangva ! C'est cool, merci !",
+          content: "Oh Vangva ! C'est cool, merci !",
           date: "Hier à 22h21",
           sender: false,
         },
         {
           id: "passtMessage3",
           name: "@nuit_rouge",
-          message: "Uh",
+          content: "Uh",
           date: "Hier à 22h21",
           sender: false,
         },
         {
           id: "passtMessage4",
           name: "@nuit_rouge",
-          message: "Ça me tue de dire ça, mais merci mec",
+          content: "Ça me tue de dire ça, mais merci mec",
           date: "Hier à 22h21",
           sender: false,
         },
         {
           id: "passtMessage5",
           name: "@freal",
-          message: "Ho ho ho, on dirait qu'on a trouvé une solution",
+          content: "Ho ho ho, on dirait qu'on a trouvé une solution",
           date: "Hier à 22h22",
           sender: false,
         },
         {
           id: "passtMessage6",
           name: "@Lilas2306",
-          message: "Ouah ! Merci Va ! Je savais qu'on pouvait toujours compter sur toi !",
+          content: "Ouah ! Merci Va ! Je savais qu'on pouvait toujours compter sur toi !",
           date: "Hier à 22h24",
           sender: false,
         },
         {
           id: "passtMessage7",
-          name: "@Vava01",
-          message: "Dites, vous n'en feriez pas un peu trop... ?",
+          name: "@Moi",
+          content: "Dites, vous n'en feriez pas un peu trop... ?",
           date: "Hier à 22h24",
           reaction: "laugh",
           sender: true,
@@ -116,7 +108,7 @@ const script : DialogueLine[] = [
         {
           id: "passtMessage8",
           name: "@Lilas2306",
-          message: "Que tout aille bien pour vous aujourd'hui, les gars ! Et soyez prudents... Surtout toi, Va. Tu as beau être un soldat entraîné, tu ne sais pas ce qui t'attend là-bas...",
+          content: "Que tout aille bien pour vous aujourd'hui, les gars ! Et soyez prudents... Surtout toi, Va. Même toi tu as tes limites...",
           date: "Aujourd'hui à 09h54",
           reaction: "like",
           reactionNumber: 2,
@@ -129,59 +121,83 @@ const script : DialogueLine[] = [
         { text : "Ce n'est pas pour moi qu'il faut s'inquiéter. C'est plutôt pour @StrangerFromTheSky qui ne donne pas de signe de vie depuis hier soir...", nextLineId: "inquiet" }
       ],
       smartphoneResponses: [
+        {
+            id: 'positif',
+            messages: [
+                {
+                    id: "positif1",
+                    name: "@nuit_rouge",
+                    date: "Aujourd'hui à 14h01",
+                    sender: false,
+                    content: "Y a intérêt. J'sais pas pourquoi, mais ça me rassure pas cette histoire",
+                  },
+                  {
+                    id: "positif2",
+                    name: "@freal",
+                    date: "Aujourd'hui à 14h01",
+                    sender: false,
+                    content: "Tu devrais apprendre à avoir plus foi en tes compagnons, jeune homme !",
+                  },
+                  {
+                    id: "positif3",
+                    name: "@nuit_rouge",
+                    sender: false,
+                    date: "Aujourd'hui à 14h01",
+                    content: "Eh ho c'est bon, j't'ai pas sonné toi",
+                  },
+            ],
+            nextLineId: "gare3"
+        },
+        {
+            id: 'negatif',
+            messages: [
+                {
+                    id: "negatif1",
+                    name: "@nuit_rouge",
+                    date: "Aujourd'hui à 14h01",
+                    sender: false,
+                    content: "Il t'a fallu 4h avant de répondre juste pour être désagréable ? Sérieusement",
+                  },
+                  {
+                    id: "negatif2",
+                    name: "@freal",
+                    date: "Aujourd'hui à 14h01",
+                    sender: false,
+                    content: "Allons, allons. Il vaut mieux qu'il soit sûr de lui dans des moments pareils ! Vas-y gamin, montre-leur ;)) ",
+                  },
+                  {
+                    id: "negatif3",
+                    date: "Aujourd'hui à 14h02",
+                    sender: false,
+                    name: "@nuit_rouge",
+                    content: "Pffff",
+                  },
+            ],
+            nextLineId: "gare3"
+        },
+        {
+            id: 'inquiet',
+            messages: [
+                {
+                    id: "inquiet1",
+                    name: "@nuit_rouge",
+                    date: "Aujourd'hui à 14h01",
+                    sender: false,
+                    content: "C'bon, décoince-toi un peu. Il est avec moi",
+                  },
+                  {
+                    id: "inquiet2",
+                    name: "@freal",
+                    date: "Aujourd'hui à 14h01",
+                    sender: false,
+                    content: "Sorry Va, il semblerait que la communication soit mal passée.",
+                  },
+            ],
+            nextLineId: "gare3"
+        }
         
       ]
-    },
-    {
-      id: "positif",
-      name: "@nuit_rouge - Aujourd'hui à 14h01",
-      text: "Y a intérêt. J'sais pas pourquoi, mais ça me rassure pas cette histoire",
-      background: 'gare',
-    },
-    {
-      id: "positif1",
-      name: "@freal - Aujourd'hui à 14h01",
-      text: "Tu devrais apprendre à avoir plus foi en tes compagnons, jeune homme !",
-      background: 'gare',
-    },
-    {
-      id: "positif2",
-      name: "@nuit_rouge - Aujourd'hui à 14h01",
-      text: "Eh ho c'est bon, j't'ai pas sonné toi",
-      background: 'gare',
-      nextLineId: "gare3"
-    },
-    {
-      id: "negatif",
-      name: "@nuit_rouge - Aujourd'hui à 14h01",
-      text: "Il t'a fallu 4h avant de répondre juste pour être désagréable ? Sérieusement",
-      background: 'gare',
-    },
-    {
-      id: "negatif1",
-      name: "@freal - Aujourd'hui à 14h01",
-      text: "Allons, allons. Il vaut mieux qu'il soit sûr de lui dans des moments pareils ! Vas-y gamin, montre-leur ;)) ",
-      background: 'gare',
-    },
-    {
-      id: "negatif2",
-      name: "@nuit_rouge - Aujourd'hui à 14h02",
-      text: "Pffff",
-      background: 'gare',
-      nextLineId: "gare3"
-    },
-    {
-      id: "inquiet",
-      name: "@nuit_rouge - Aujourd'hui à 14h01",
-      text: "C'bon, décoince-toi un peu. Il est avec moi",
-      background: 'gare',
-    },
-    {
-      id: "inquiet1",
-      name: "@freal - Aujourd'hui à 14h01",
-      text: "Sorry Va, il semblerait que la communication soit mal passée.",
-      background: 'gare',
-    },
+    },    
     {
       id: "gare3",
       name: "Ilyem",

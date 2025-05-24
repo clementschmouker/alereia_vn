@@ -24,8 +24,17 @@ body, html {
     z-index: 10000;
     width: 100%;
     height: 100px;
-    background-image: url('src/images/bar.svg');
-    background-repeat: repeat-x;
+    background: black;
+
+    &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        bottom: -5rem;
+        background-image: url('src/images/bar.svg');
+        background-repeat: repeat-x;
+    }
 }
 
 .top-bar {
@@ -65,6 +74,26 @@ body, html {
     z-index: 2;
     cursor: pointer;
     padding: 0;
+
+    .smartphone-choices {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+    
+        .smartphone-choice {
+            max-width: 300px;
+            background: transparent;
+            border-image: url('src/images/button-border.svg') 5 fill;
+            border-width: 10px;
+            padding: 1.5rem;
+            transition: all .3s ease;
+    
+            &:hover {
+                cursor: pointer;
+                transform: scale(1.05);
+            }
+        }
+    }
 }
 
 .dialog__wrapper {
@@ -135,7 +164,7 @@ body, html {
 #dialogue-box.narrator {
     display: block;
     position: absolute;
-    z-index: 1 !important;
+    z-index: 1000000 !important;
     bottom: 40px;
     left: 50%;
     width: 100%;
@@ -228,29 +257,6 @@ body, html {
     max-height: 80%;
     max-width: 100%;
     object-fit: contain;
-  }
-  
-  #choices-container {
-    position: absolute;
-    bottom: 20px; /* Place it just above the bottom of the screen */
-    width: 100%;
-    text-align: center;
-    z-index: 2; /* Ensure it's on top of the characters */
-  }
-  
-  #choices-container button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    margin: 5px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  #choices-container button:hover {
-    background-color: #45a049;
   }
   
   #game-canvas {
@@ -356,6 +362,24 @@ body, html {
     width: 100%;
     height: 100%;
     border-radius: 20px;
+
+    .smartphone__screen__writting {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 75px;
+        height: 50px;
+        color: black;
+        background: rgba(230, 230, 230, 1);
+        border-radius: 10px;
+        margin-left: 1rem;
+        margin-top: 1rem;
+        font-size: 2rem;
+
+        &.hidden {
+            display: none;
+        }
+    }
 }
 
 .smartphone__screen__top-bar {
@@ -383,7 +407,7 @@ body, html {
   width: 100%;
   height: 100%;
   overflow-y: scroll;
-  padding-bottom: 50px;
+  padding-bottom: 60px;
   padding-top: 50px;
 
   .smartphone__screen__messages {
@@ -391,6 +415,7 @@ body, html {
     padding: 0 1rem;
     margin: 0 auto;
     font-size: 0.8rem;
+    line-height: 120%;
 
     .message {
       display: flex;
@@ -402,6 +427,24 @@ body, html {
 
       &.hidden-avatar {
         margin-bottom: 0;
+
+        .message__content {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+      }
+
+      .hidden-avatar + & {
+        .message__content {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+      }
+
+      &.hidden-name {
+        .message__header {
+          display: none;
+        }
       }
 
       .message__avatar {
@@ -436,20 +479,25 @@ body, html {
 
         .sender & {
           margin-left: 6rem;
-          background: rgba(50, 150, 150, 1);
+          color: white;
+          background: rgba(50, 110, 110, 1);
         }
 
         .message__header {
-          font-size: 0.6rem;
-          margin-bottom: 0;
+            font-size: 0.6rem;
+            margin-bottom: 0;
+        }
+
+        .message__text {
+            margin-bottom: 0;
         }
       }
     }
 
     .message__reactions {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+        list-style: none;
+        padding: 0;
+        margin: 0;
     }
   }
 }

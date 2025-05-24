@@ -18,6 +18,7 @@ interface SmartphoneMessage {
   date: string;
   reaction?: string;
   reactionNumber?: number;
+  sender?: boolean;
 }
 
 interface DialogueLine {

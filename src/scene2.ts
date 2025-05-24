@@ -68,36 +68,42 @@ const script : DialogueLine[] = [
           name: "@StrangerFromTheSky",
           message: "Salut ! Je suis de retour !",
           date: "Hier à 22h21",
+          sender: false,
         },
         {
           id: "passtMessage2",
           name: "@StrangerFromTheSky",
           message: "Oh Vangva ! C'est cool, merci !",
           date: "Hier à 22h21",
+          sender: false,
         },
         {
           id: "passtMessage3",
           name: "@nuit_rouge",
           message: "Uh",
           date: "Hier à 22h21",
+          sender: false,
         },
         {
           id: "passtMessage4",
           name: "@nuit_rouge",
           message: "Ça me tue de dire ça, mais merci mec",
           date: "Hier à 22h21",
+          sender: false,
         },
         {
           id: "passtMessage5",
           name: "@freal",
           message: "Ho ho ho, on dirait qu'on a trouvé une solution",
           date: "Hier à 22h22",
+          sender: false,
         },
         {
           id: "passtMessage6",
           name: "@Lilas2306",
           message: "Ouah ! Merci Va ! Je savais qu'on pouvait toujours compter sur toi !",
           date: "Hier à 22h24",
+          sender: false,
         },
         {
           id: "passtMessage7",
@@ -105,6 +111,7 @@ const script : DialogueLine[] = [
           message: "Dites, vous n'en feriez pas un peu trop... ?",
           date: "Hier à 22h24",
           reaction: "laugh",
+          sender: true,
         },
         {
           id: "passtMessage8",
@@ -113,6 +120,7 @@ const script : DialogueLine[] = [
           date: "Aujourd'hui à 09h54",
           reaction: "like",
           reactionNumber: 2,
+          sender: false,
         },
       ],
       smartphoneChoices: [

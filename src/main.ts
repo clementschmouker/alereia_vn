@@ -40,6 +40,7 @@ const backgroundVideo = document.querySelector("#background-video") as HTMLVideo
 const choicesContainer = document.getElementById("choices-container")!;
 const characterNameElement = document.getElementById("name")!;
 const smartPhoneElement = document.getElementById("smartphone")!;
+const smartPhoneMessagesListElem = document.querySelector('.smartphone__screen__messages') as HTMLUListElement;
 
 const audioChannelSound = document.querySelector("#audio-channel--sound") as HTMLAudioElement;
 const audioChannelMusic = document.querySelector("#audio-channel--music") as HTMLAudioElement;
@@ -178,6 +179,40 @@ function showLine(id: string) {
         dialogueBox.classList.add(line?.textPosition as string);
     } else {
         smartPhoneElement.classList.add('visible');
+        console.log(line.smartphoneMessages);
+        line.smartphoneMessages?.forEach((message, index) => {
+          console.log(message, index);
+          const messageElem = document.createElement("li");
+          messageElem.classList.add("message");
+          messageElem.setAttribute("data-sender", message.name);
+
+          let hideAvatar = false;
+          
+          if (message.sender) {
+            messageElem.classList.add("sender");
+          } else {
+            messageElem.classList.add("other");
+            if (index < line?.smartphoneMessages?.length && message.name === line.smartphoneMessages[index + 1].name) {
+              messageElem.classList.add("hidden-avatar");
+            }
+          }
+
+          messageElem.innerHTML = `
+              <div class="message__avatar"></div>
+              <div class="message__content">
+                <div class="message__header">
+                  <span class="message__sender">${message.name}</span>
+                  <span class="message__time">${message.date}</span>
+                </div>
+                <p class="message__text">${message.message}</p>
+                <ul class="message__reactions">
+                  <li class="like"></li>
+                  <li class="laugh"></li>
+                </ul>
+            `;
+
+          smartPhoneMessagesListElem.appendChild(messageElem);
+        });
     }
 
     if (canPassScreen) {

@@ -19,6 +19,11 @@ body, html {
     overflow: hidden;
 }
 
+#game-container {
+    position: relative;
+    z-index: 0;
+}
+
 .view-bar {
     position: fixed;
     z-index: 10000;

@@ -1,6 +1,9 @@
 import { DialogueLine, /*FadeTransitionType*/ } from "./types";
 import Game from "./game";
 
+const game = new Game();
+
+
 const script: DialogueLine[] = [
   {
     id: "start", // Unique ID for this line
@@ -27,7 +30,6 @@ const script: DialogueLine[] = [
       rightFlip: false
     },
     callback: () => {
-      const game = new Game();
       game.start(); // Start the game after the introduction
     }
   },
@@ -52,6 +54,9 @@ const script: DialogueLine[] = [
     text: "Je pense que ce monde de feu et de sang est voué à disparaître...",
     textPosition: 'right', // Ilyem is on the right
     background: 'bar',
+    callback: () => {
+      game.stop();
+    },
     charactersOnScreen: {
       left: "serveuse",
       leftMood: "mefiante",

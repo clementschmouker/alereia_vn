@@ -43,6 +43,7 @@ class Game {
     renderBlack: boolean;
     raycaster: THREE.Raycaster;
     collidableObjects: THREE.Object3D[];
+    paused: boolean;
 
     constructor() {
         this.scene = new THREE.Scene();
@@ -50,9 +51,11 @@ class Game {
         this.camera.position.y = 1;
         this.renderer = new THREE.WebGLRenderer({ antialias: true });
         this.renderer.setSize(window.innerWidth, window.innerHeight);
-        document.body.appendChild(this.renderer.domElement);
+        document.querySelector('#game-container').appendChild(this.renderer.domElement);
+        console.log(this.renderer.domElement);
         this.renderer.domElement.id = 'game-canvas';
         this.renderBlack = false;
+        this.paused = false;
 
         this.raycaster = new THREE.Raycaster();
         this.collidableObjects = [];
@@ -68,27 +71,26 @@ class Game {
         // Controls
         this.controls = new OrbitControls(this.camera, this.renderer.domElement);
 
-        // Shader
-        // const renderPass = new RenderPass(this.scene, this.camera);
-
-        // const sobelPass = new ShaderPass(SobelOperatorShader);
-        // sobelPass.uniforms['resolution'].value.x = window.innerWidth * window.devicePixelRatio;
-        // sobelPass.uniforms['resolution'].value.y = window.innerHeight * window.devicePixelRatio;
-
-        // const outlinePass = new OutlinePass(new THREE.Vector2(window.innerWidth, window.innerHeight), this.scene, this.camera);
-        // outlinePass.edgeStrength = 10;  // Control the thickness of the outline
-        // outlinePass.edgeGlow = 1.0;     // Glow around the outline (set to 0 for no glow)
-        // outlinePass.visibleEdgeColor.set(0x000000);  // Black color for the outline
-        // outlinePass.hiddenEdgeColor.set(0x000000);   // Set hidden edge color to black as well
-
-        // this.composer = new EffectComposer(this.renderer);
-        // this.composer.addPass(renderPass);
-        // this.composer.addPass(sobelPass);
-        // this.composer.addPass(outlinePass);
-
         // Player
         this.player = new Player();
         this.scene.add(this.player.mesh);
+    }
+
+    pause = () => {
+        this.paused = true;
+    }
+
+    play = () => {
+        this.paused = false;
+    }
+
+    stop = () => {
+        this.paused = true;
+        this.scene.clear(); // Clear the scene
+        this.renderer.dispose(); // Dispose of the renderer
+        this.controls.dispose(); // Dispose of controls
+        this.collidableObjects = []; // Clear collidable objects
+        document.querySelector('#game-container').innerHTML = '';
     }
     
     start = () => {
@@ -98,12 +100,11 @@ class Game {
         loader.load('models/town4new.glb', (gltf: any) => {
             this.cityModel = gltf.scene;
             gltf.scene.traverse((child) => {
-                console.log(child);
                 const material = new THREE.MeshToonMaterial({
                     color: 0xffffff,
                 })
                 const outline = solidify(child);
-                child.material = material;
+                // child.material = material;
                 this.scene.add(outline);
 
                 if ((child as THREE.Mesh).isMesh) {
@@ -156,6 +157,7 @@ class Game {
     }
 
     animate = () => {
+        if (this.paused) return;
         requestAnimationFrame(this.animate);
         this.controls.update();
         this.player.update();

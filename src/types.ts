@@ -19,6 +19,7 @@ interface SmartphoneMessage {
   reaction?: string;
   reactionNumber?: number;
   sender?: boolean;
+  avatar?: string;
 }
 
 interface SmartphoneResponses {

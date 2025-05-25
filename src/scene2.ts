@@ -60,6 +60,7 @@ const script : DialogueLine[] = [
           name: "@StrangerFromTheSky",
           content: "Salut ! Je suis de retour !",
           date: "Hier à 22h21",
+          avatar: "src/images/bar.jpg",
           sender: false,
         },
         {
@@ -67,6 +68,7 @@ const script : DialogueLine[] = [
           name: "@StrangerFromTheSky",
           content: "Oh Vangva ! C'est cool, merci !",
           date: "Hier à 22h21",
+          avatar: "src/images/bar.jpg",
           sender: false,
         },
         {
@@ -74,6 +76,7 @@ const script : DialogueLine[] = [
           name: "@nuit_rouge",
           content: "Uh",
           date: "Hier à 22h21",
+          avatar: "src/images/bar.jpg",
           sender: false,
         },
         {

@@ -393,9 +393,48 @@ body, html {
     position: absolute;
     bottom: 0;
     left: 0;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
     height: 50px;
     width: 100%;
-    background: red;
+    background: black;
+
+    .button-square {
+        width: 30px;
+        height: 30px;
+        background: rgba(230, 230, 230, 1);
+        border-radius: 10px;
+        margin: 0 10px;
+    }
+
+    .button-circle {
+        width: 30px;
+        height: 30px;
+        background: rgba(230, 230, 230, 1);
+        border-radius: 50%;
+        margin: 0 10px;
+
+        &.hidden {
+            display: none;
+        }
+    }
+
+    .button-triangle {
+        width: 0;
+        height: 0;
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-bottom: 30px solid rgba(230, 230, 230, 1);
+        margin: 0 10px;
+
+        transform: rotate(-90deg);
+
+        &.hidden {
+            display: none;
+        }
+    }
 }
 
 .smartphone__screen__content {
@@ -447,7 +486,6 @@ body, html {
         height: 40px;
         border-radius: 50%;
         background-size: cover;
-        background-position: center;
         display: block;
         margin-right: 10px;
         background-color: red;
@@ -466,6 +504,7 @@ body, html {
         border-radius: 10px;
         padding: 1rem;
         width: 100%;
+        animation: slideIn 0.3s ease forwards;
 
         .other & {
           margin-right: 3rem;
@@ -496,3 +535,14 @@ body, html {
     }
   }
 }
+
+@keyframes slideIn {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }

@@ -194,8 +194,9 @@ function showLine(id: string) {
               messageElem.classList.add("hidden-avatar");
             }
           }
+          console.log(message.avatar);
           messageElem.innerHTML = `
-              <div class="message__avatar"></div>
+              <div class="message__avatar" style="background-image: url('${message.avatar}')"></div>
               <div class="message__content">
                 <div class="message__header">
                   <span class="message__sender">${message.name}</span>
@@ -236,7 +237,6 @@ function showLine(id: string) {
                 messageElem.classList.add("message", "sender");
                 messageElem.setAttribute("data-sender", "@Moi");
                 messageElem.innerHTML = `
-                    <div class="message__avatar"></div>
                     <div class="message__content">
                         <div class="message__header">
                             <span class="message__sender">@Moi</span>
@@ -258,7 +258,7 @@ function showLine(id: string) {
                             responseMessageElem.classList.add("message", message.sender ? "sender" : "other");
                             responseMessageElem.setAttribute("data-sender", message.name);
                             responseMessageElem.innerHTML = `
-                                <div class="message__avatar"></div>
+                                <div class="message__avatar" style="background-image: url('${message.avatar}')"></div>
                                 <div class="message__content">
                                     <div class="message__header">
                                         <span class="message__sender">${message.name}</span>

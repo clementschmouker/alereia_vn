@@ -24,7 +24,7 @@ const script = [
     ...scene10,
 ];
 
-let currentLineId = "interlude";
+let currentLineId = "start0";
 let previousLine: string[] = [];
 let currentLineIndex = 0;
 
@@ -187,7 +187,7 @@ function showLine(id: string) {
             messageElem.classList.add("sender");
           } else {
             messageElem.classList.add("other");
-            if (line?.smartphoneMessages[index + 1] &&
+            if (line && line.smartphoneMessages && line?.smartphoneMessages[index + 1] &&
                 index < line?.smartphoneMessages?.length &&
                 message.name === line.smartphoneMessages[index + 1].name
             ) {
@@ -247,7 +247,9 @@ function showLine(id: string) {
                 `;
                 smartPhoneMessagesListElem.appendChild(messageElem);
                 smartPhoneContentElem.scrollTop = smartPhoneContentElem.scrollHeight;
-                choiceWrapper.innerHTML = ""; // Clear choices after selection
+                if (choiceWrapper) {
+                    choiceWrapper.innerHTML = "";
+                }
 
                 if (line.smartphoneResponses && choice.nextLineId) {
                     const response = line.smartphoneResponses.find(r => r.id === choice.nextLineId);

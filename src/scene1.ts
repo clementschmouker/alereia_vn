@@ -26,6 +26,10 @@ const script: DialogueLine[] = [
       leftFlip: false,
       rightFlip: false
     },
+    callback: () => {
+      const game = new Game();
+      game.start(); // Start the game after the introduction
+    }
   },
   {
     id: "start1",

@@ -202,7 +202,7 @@ const script : DialogueLine[] = [
                   {
                     id: "inquiet2",
                     name: "@freal",
-                    avatar: "/src/images/avatars/freal.jpg",
+                    avatar: "/src/images/avatars/freal.png",
                     date: "Aujourd'hui à 14h01",
                     sender: false,
                     content: "Sorry Va, il semblerait que la communication soit mal passée.",

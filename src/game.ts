@@ -189,8 +189,8 @@ class Game {
             this.player.position.y += (targetY - currentY) * 0.1; // interpolate
         }
         
-        this.camera.position.set(this.player.position.x, 0.75, this.player.position.z + 2);
-        this.camera.lookAt(this.player.position);
+        // this.camera.position.set(this.player.position.x, 0.75, this.player.position.z + 2);
+        // this.camera.lookAt(this.player.position);
         this.player.update();
         this.triggers.forEach(trigger => {
             if (trigger.isColliding(this.player.position) && trigger.triggered === false) {

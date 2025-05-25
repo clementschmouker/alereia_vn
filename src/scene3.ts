@@ -98,6 +98,7 @@ const script : DialogueLine[] = [
       name: "",
       text: "*Course poursuite dans Three.js*",
       background: 'gare2',
+      unpauseGame: true,
     },
 ];
 

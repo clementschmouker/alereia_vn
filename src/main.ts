@@ -27,7 +27,7 @@ const script = [
     ...scene10,
 ];
 
-let currentLineId = "start0";
+let currentLineId = "gare3";
 let previousLine: string[] = [];
 let currentLineIndex = 0;
 
@@ -174,7 +174,7 @@ const stopTyping = (event: KeyboardEvent) => {
 
 let currentLineText = "";
 
-function showLine(id: string) {
+export function showLine(id: string) {
     const line = findLineById(id);
     if (line && !line.textPosition) {
         line.textPosition = "narrator";

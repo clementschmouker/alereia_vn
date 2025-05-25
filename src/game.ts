@@ -5,6 +5,10 @@ import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer
 
 import Player from './player';
 
+import Trigger from './trigger';
+
+import triggersList from './triggersList';
+
 
 const solidify = (mesh: THREE.Mesh) => {
     const THICKNESS = 0.02;
@@ -45,6 +49,7 @@ class Game {
     collidableObjects: THREE.Object3D[];
     paused: boolean;
     stoped: boolean;
+    triggers: Trigger[];
 
     constructor() {
         this.scene = new THREE.Scene();
@@ -58,6 +63,7 @@ class Game {
         this.renderBlack = false;
         this.paused = false;
         this.stoped = true;
+        this.triggers = [];
 
         this.raycaster = new THREE.Raycaster();
         this.collidableObjects = [];
@@ -76,6 +82,13 @@ class Game {
         // Player
         this.player = new Player();
         this.scene.add(this.player.mesh);
+
+        // Triggers
+        triggersList.forEach(triggerData => {
+            let newTrigger = new Trigger(new THREE.Vector3(triggerData.position, 0.5, -7.15), new THREE.Vector3(1, 1, 1), triggerData.action);
+            this.triggers.push(newTrigger);
+            this.scene.add(newTrigger.mesh);
+        });
     }
 
     pause = () => {
@@ -179,6 +192,14 @@ class Game {
         this.camera.position.set(this.player.position.x, 0.75, this.player.position.z + 2);
         this.camera.lookAt(this.player.position);
         this.player.update();
+        this.triggers.forEach(trigger => {
+            if (trigger.isColliding(this.player.position) && trigger.triggered === false) {
+                // Handle collision logic here
+                trigger.triggered = true;
+                trigger.action();
+                this.scene.remove(trigger.mesh);
+            }
+        });
 
         if (this.renderBlack) {
             // this.composer.render();

@@ -11,13 +11,37 @@ interface backgroundImageTransitionType {
   delay?: number;
 }
 
+interface SmartphoneMessage {
+  id: string;
+  name: string;
+  content: string;
+  date: string;
+  reaction?: string;
+  reactionNumber?: number;
+  sender?: boolean;
+  avatar?: string;
+}
+
+interface SmartphoneResponses {
+  id: string;
+  messages: SmartphoneMessage[];
+  nextLineId: string;
+}
+
 interface DialogueLine {
     id: string;  // Unique ID for the line
     name?: string;
-    text: string;
+    text?: string;
     textPosition?: 'right' | 'left' | 'center' | 'narrator';
     video?: string;
     background?: string;
+    smartphone?: boolean;
+    smartphoneMessages?: SmartphoneMessage[];
+    smartphoneChoices?: {
+        text: string;
+        nextLineId: string;
+    }[];
+    smartphoneResponses?: SmartphoneResponses[];
     backgroundVideo?: string;
     backgroundTransition?: backgroundImageTransitionType;
     music?: string;
@@ -59,4 +83,4 @@ interface DialogueLine {
 };
 
 export { FadeTransitionType };
-export type { DialogueLine };
+export type { DialogueLine, SmartphoneMessage };

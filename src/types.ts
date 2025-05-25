@@ -32,7 +32,7 @@ interface DialogueLine {
     id: string;  // Unique ID for the line
     name?: string;
     text?: string;
-    textPosition?: 'right' | 'left' | 'center' | 'narrator';
+    textPosition?: 'right' | 'left' | 'center' | 'narrator' | 'none';
     video?: string;
     background?: string;
     smartphone?: boolean;
@@ -51,7 +51,10 @@ interface DialogueLine {
     stopMusic?: boolean;
     stopSound?: boolean;
     stopVoice?: boolean;
-    callback?: () => void;
+    startGame?: boolean;
+    pauseGame?: boolean;
+    unpauseGame?: boolean;
+    stopGame?: boolean;
     soundFade?: {
       duration: number;
       fadeOut: boolean;

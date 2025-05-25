@@ -44,6 +44,7 @@ class Game {
     raycaster: THREE.Raycaster;
     collidableObjects: THREE.Object3D[];
     paused: boolean;
+    stoped: boolean;
 
     constructor() {
         this.scene = new THREE.Scene();
@@ -56,6 +57,7 @@ class Game {
         this.renderer.domElement.id = 'game-canvas';
         this.renderBlack = false;
         this.paused = false;
+        this.stoped = true;
 
         this.raycaster = new THREE.Raycaster();
         this.collidableObjects = [];
@@ -78,25 +80,28 @@ class Game {
 
     pause = () => {
         this.paused = true;
+        this.player.canMove = false;
     }
 
     play = () => {
         this.paused = false;
+        this.player.canMove = true;
     }
 
     stop = () => {
         this.paused = true;
-        this.scene.clear(); // Clear the scene
-        this.renderer.dispose(); // Dispose of the renderer
-        this.controls.dispose(); // Dispose of controls
-        this.collidableObjects = []; // Clear collidable objects
+        this.stoped = true;
+        this.player.canMove = false;
+        this.scene.clear();
+        this.renderer.dispose();
+        this.controls.dispose();
+        this.collidableObjects = [];
         document.querySelector('#game-container').innerHTML = '';
     }
     
     start = () => {
+        this.stoped = false;
         const loader = new GLTFLoader();
-
-        // Replace this path with your actual model path
         loader.load('models/town4new.glb', (gltf: any) => {
             this.cityModel = gltf.scene;
             gltf.scene.traverse((child) => {
@@ -109,7 +114,7 @@ class Game {
 
                 if ((child as THREE.Mesh).isMesh) {
                     const mesh = child as THREE.Mesh;
-                    this.collidableObjects.push(mesh); // Add mesh to collidable objects
+                    this.collidableObjects.push(mesh);
                 }
             })
             
@@ -151,16 +156,13 @@ class Game {
 
         const intersects = this.raycaster.intersectObjects(this.collidableObjects, true);
         if (intersects.length > 0) {
-            // console.log('Collision detected with:', intersects[0].object.name);
             this.player.position.y += 0.1; // Move the player up slightly
         }
     }
 
     animate = () => {
-        if (this.paused) return;
         requestAnimationFrame(this.animate);
         this.controls.update();
-        this.player.update();
 
         const origin = new THREE.Vector3(this.player.position.x, this.player.position.y, this.player.position.z);
         const direction = new THREE.Vector3(0, -1, 0);
@@ -173,15 +175,15 @@ class Game {
             const targetY = intersects[0].point.y + 0.05;
             this.player.position.y += (targetY - currentY) * 0.1; // interpolate
         }
-
+        
         this.camera.position.set(this.player.position.x, 0.75, this.player.position.z + 2);
         this.camera.lookAt(this.player.position);
+        this.player.update();
 
         if (this.renderBlack) {
             // this.composer.render();
         } else {
             this.renderer.render(this.scene, this.camera);
-
         }
     }
 }

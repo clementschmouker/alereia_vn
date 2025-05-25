@@ -10,6 +10,9 @@ import scene9 from "./scene9";
 import scene10 from "./scene10";
 import { DialogueLine, SmartphoneMessage } from "./types";
 import gsap from "gsap";
+import Game from "./game";
+
+export const game = new Game();
 
 const script = [
     ...scene1,
@@ -176,6 +179,25 @@ function showLine(id: string) {
     if (line && !line.textPosition) {
         line.textPosition = "narrator";
     }
+
+    if (line?.startGame) {
+        console.log("Starting game...");
+        game.start();
+    }
+
+    if (line?.pauseGame) {
+        console.log("Pausing game...");
+        game.pause();
+    }
+    if (line?.unpauseGame) {
+        console.log("Unpausing game...");
+        game.play();
+    }
+    if (line?.stopGame) {
+        console.log("Stopping game...");
+        game.stop();
+    }
+
     if (line?.smartphone) {
         smartPhoneElement.classList.add('visible');
         line.smartphoneMessages?.forEach((message: SmartphoneMessage, index) => {
@@ -477,7 +499,7 @@ function fadeIn(audio: HTMLAudioElement, duration: number) {
 const skipLine = () => {
     const currentLine = findLineById(currentLineId);
 
-    if (!currentLine?.backgroundVideo && !isWritting && canSkipSmartphone) {
+    if (!currentLine?.backgroundVideo && !isWritting && canSkipSmartphone && (game.stoped || game.paused)) {
         const nextLineId = getNextLineId();
         if (nextLineId) {
             previousLine.push(currentLineId);
@@ -493,7 +515,7 @@ dialogueBox.addEventListener("click", () => {
 });
 
 document.addEventListener("keydown", (event) => {
-    if (event.key === " ") {
+    if (event.key === " " && (game.stoped || game.paused)) {
         event.preventDefault();
         skipLine();
     }

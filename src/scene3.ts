@@ -2,21 +2,10 @@ import { DialogueLine, FadeTransitionType } from "./types";
 
 const script : DialogueLine[] = [
     {
-        id: "3js", // Unique ID for this line
-        name: "",
-        text: "*on arrive dans l'environnement Three.js, la caméra zoom légèrement sur Vangva pour donner un affichage jeu vidéo*",
-        background: 'gare2',
-        backgroundTransition: {
-          easing: FadeTransitionType.easeIn,
-          duration: 3000,
-        },
-    },
-    {
       id: "3js1",
       name: "Vangva",
       text: "<i>Mmh...</i>",
-      textPosition: 'left', // Vangva is on the left
-      background: 'gare2',
+      textPosition: 'left',
       charactersOnScreen: {
         left: "vava",
         leftMood: "alerte_tel",
@@ -28,14 +17,12 @@ const script : DialogueLine[] = [
       id: "3js2",
       name: "",
       text: "*une mosaïque d'yeux regarde son sprite*",
-      background: 'gare2',
     },
     {
       id: "3js3",
       name: "Vangva",
       text: "Syel, c'est toi ? Tu vas bien ? Où es-tu ? *l'image se pause quelques secondes, on entend la voix de Syel qui répond en giberish*",
-      textPosition: 'left', // Vangva is on the left
-      background: 'gare2',
+      textPosition: 'left',
       charactersOnScreen: {
         left: "vava",
         leftMood: "au_tel_ouvert",
@@ -48,7 +35,6 @@ const script : DialogueLine[] = [
       name: "Vangva",
       text: "Ça marche. J'arrive bientôt, juste le temps de vérifier quelque chose... Quoi qu'il arrive, ne te montre surtout pas, d'accord ? *même courte pause*",
       textPosition: 'left', // Vangva is on the left
-      background: 'gare2',
       charactersOnScreen: {
         left: "vava",
         leftMood: "au_tel_ferme",
@@ -61,7 +47,6 @@ const script : DialogueLine[] = [
       name: "Vangva",
       text: "Parfait. Sois prudent... À tout de suite.",
       textPosition: 'left', // Vangva is on the left
-      background: 'gare2',
       charactersOnScreen: {
         left: "vava",
         leftMood: "au_tel_ouvert",
@@ -73,14 +58,12 @@ const script : DialogueLine[] = [
       id: "3js6",
       name: "",
       text: "*la mosaïque d'yeux réapparait*",
-      background: 'gare2',
     },
     {
       id: "3js7",
       name: "Vangva",
       text: "<i>Je ferais mieux de ne pas rester ici.</i>",
       textPosition: 'left', // Vangva is on the left
-      background: 'gare2',
       charactersOnScreen: {
         left: "vava",
         leftMood: "embete",
@@ -89,10 +72,13 @@ const script : DialogueLine[] = [
       },
     },
     {
-      id: "3js8",
-      name: "",
-      text: "*ici, on prend le contrôle de Vangva et on marche vers la droite jusqu'à une nouvelle mosaïque d'yeux qui devient vraiment très envahissante*",
-      background: 'gare2',
+      id: "gare8",
+      unpauseGame: true,
+      textPosition: 'none',
+      charactersOnScreen: {
+          left: "",
+          right: "",
+        },
     },
     {
       id: "3js9",

@@ -8,6 +8,7 @@ class Player {
     mesh: THREE.Mesh;
     direction: 1 | 0 | -1;
     speed: number;
+    canMove: boolean = true;
 
     constructor() {
         this.position = new THREE.Vector3(0, 0.5, -7.15);
@@ -31,7 +32,9 @@ class Player {
 
     update = () => {
         this.mesh.position.set(this.position.x, this.position.y, this.position.z);
-        this.move();
+        if (this.canMove) {
+            this.move();
+        }
     }
 }
 

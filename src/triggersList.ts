@@ -2,12 +2,14 @@ import { game, showLine } from './main';
 
 interface Trigger {
     position: number;
+    debug?: boolean;
     action: () => void;
 }
 
 const triggersList: Trigger[] = [
     {
         position: 5,
+        debug: true,
         action: () => {
             game.pause();
             showLine('3js9');

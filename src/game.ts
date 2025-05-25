@@ -85,7 +85,12 @@ class Game {
 
         // Triggers
         triggersList.forEach(triggerData => {
-            let newTrigger = new Trigger(new THREE.Vector3(triggerData.position, 0.5, -7.15), new THREE.Vector3(1, 1, 1), triggerData.action);
+            let newTrigger = new Trigger(
+                new THREE.Vector3(triggerData.position, 0.5, -7.15),
+                new THREE.Vector3(1, 1, 1),
+                triggerData.action,
+                triggerData.debug
+            );
             this.triggers.push(newTrigger);
             this.scene.add(newTrigger.mesh);
         });

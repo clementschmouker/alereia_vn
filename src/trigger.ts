@@ -5,17 +5,19 @@ class Trigger {
     size: THREE.Vector3;
     mesh: THREE.Mesh;
     triggered: boolean = false;
+    debug: boolean = false;
     action: () => void;
 
-    constructor(position: THREE.Vector3, size: THREE.Vector3, action: () => void) {
+    constructor(position: THREE.Vector3, size: THREE.Vector3, action: () => void, debug: boolean = false) {
         this.position = new THREE.Vector3();
         this.size = new THREE.Vector3();
         this.size.copy(size);
         this.position.copy(position);
         this.action = action;
+        this.debug = debug;
 
         const geometry = new THREE.BoxGeometry(size.x, size.y, size.z);
-        const material = new THREE.MeshBasicMaterial({ color: 0xff0000, transparent: true, opacity: 0.5 });
+        const material = new THREE.MeshBasicMaterial({ color: 0xff0000, transparent: true, opacity: debug ? 0.5 : 0 });
         this.mesh = new THREE.Mesh(geometry, material);
         this.mesh.position.copy(this.position);
     }

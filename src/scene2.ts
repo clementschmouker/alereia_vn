@@ -142,7 +142,7 @@ const script : DialogueLine[] = [
                   {
                     id: "positif2",
                     name: "@freal",
-                    avatar: "/src/images/avatars/freal.jpg",
+                    avatar: "/src/images/avatars/freal.png",
                     date: "Aujourd'hui à 14h01",
                     sender: false,
                     content: "Tu devrais apprendre à avoir plus foi en tes compagnons, jeune homme !",
@@ -172,7 +172,7 @@ const script : DialogueLine[] = [
                   {
                     id: "negatif2",
                     name: "@freal",
-                    avatar: "/src/images/avatars/freal.jpg",
+                    avatar: "/src/images/avatars/freal.png",
                     date: "Aujourd'hui à 14h01",
                     sender: false,
                     content: "Allons, allons. Il vaut mieux qu'il soit sûr de lui dans des moments pareils ! Vas-y gamin, montre-leur ;)) ",

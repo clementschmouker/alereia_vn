@@ -33,6 +33,7 @@ interface DialogueLine {
     name?: string;
     text?: string;
     textPosition?: 'right' | 'left' | 'center' | 'narrator' | 'none';
+    dontSave?: boolean,
     video?: string;
     isOverUi?: boolean;
     background?: string;
@@ -84,6 +85,7 @@ interface DialogueLine {
       nextLineId: string; // Reference to the next line by ID
     }[];
     nextLineId?: string; // Optional next line ID for direct transitions
+    noNextLine?: boolean;
 };
 
 export { FadeTransitionType };

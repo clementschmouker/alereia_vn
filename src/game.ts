@@ -116,10 +116,12 @@ class Game {
         this.controls.dispose();
         this.collidableObjects = [];
         document.querySelector('#game-container').innerHTML = '';
+        document.querySelector('#go-back')!.classList.remove('hidden');
     }
     
     start = () => {
         this.stoped = false;
+        document.querySelector('#go-back')?.classList.add('hidden');
         const loader = new GLTFLoader();
         loader.load('models/town4new.glb', (gltf: any) => {
             this.cityModel = gltf.scene;

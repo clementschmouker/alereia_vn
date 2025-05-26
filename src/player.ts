@@ -22,7 +22,6 @@ class Player {
         this.mesh = new THREE.Mesh(planeGeometry, material);
     }
 
-
     move = () => {
         gsap.to(this.position, {
             x: this.position.x + (this.direction * this.speed),

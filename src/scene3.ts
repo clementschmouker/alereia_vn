@@ -84,20 +84,24 @@ const script : DialogueLine[] = [
     {
       id: 'pas-par-la',
       name: "Vangva",
-      text: "<i>Ce n'est pas par là que je dois aller....</i>",
+      text: "<i>Je viens de la gare, je ne vais pas y retourner...</i>",
+      pauseGame: true,
+      dontSave: true,
       charactersOnScreen: {
         left: "vava",
-        leftMood: "alerte_tel",
+        leftMood: "embete",
       },
       textPosition: 'left',
+      nextLineId: 'restart-game',
     },
     {
       id: 'restart-game',
       charactersOnScreen: {
         left: '',
       },
+      dontSave: true,
       unpauseGame: true,
-      nextLineId: 'pas-par-la',
+      noNextLine: true,
     },
     {
       id: "3js9",
@@ -105,6 +109,8 @@ const script : DialogueLine[] = [
       text: "<i>Les voilà...</i>",
       textPosition: 'left', // Vangva is on the left
       background: 'gare2',
+      nextLineId: '3js10',
+      pauseGame: true,
       charactersOnScreen: {
         left: "vava",
         leftMood: "regard_froid",

@@ -1,4 +1,4 @@
-import { game, showLine } from './main';
+import { showLine } from './main';
 
 interface Trigger {
     position: number;
@@ -13,7 +13,7 @@ const triggersList: Trigger[] = [
         debug: true,
         stays: true,
         action: () => {
-            game.pause();
+            console.log('trigger pas par là');
             showLine('pas-par-la');
         }
     },
@@ -21,7 +21,7 @@ const triggersList: Trigger[] = [
         position: 5,
         debug: true,
         action: () => {
-            game.pause();
+            console.log('trigger gare8');
             showLine('3js9');
         }
     },

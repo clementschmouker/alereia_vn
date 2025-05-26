@@ -27,7 +27,7 @@ const script = [
     ...scene10,
 ];
 
-let currentLineId = "gare";
+let currentLineId = "gare3";
 let previousLine: string[] = [];
 let currentLineIndex = 0;
 
@@ -89,20 +89,16 @@ unmuteButton?.addEventListener("click", () => {
 skipVideo?.addEventListener("click", () => {
     canPassScreen = true;
     skipVideo.classList.remove("hidden");
+    const currentLine = findLineById(currentLineId);
     const nextLineId = getNextLineId();
-    if (nextLineId) {
-        previousLine.push(currentLineId);
-        currentLineId = nextLineId;
-        currentLineIndex += 1;
+    if (nextLineId && !currentLine?.noNextLine) {
         showLine(nextLineId);
     }
 });
 
 goBackButton?.addEventListener("click", () => {
     if (currentLineIndex <= 1) return;
-    currentLineIndex -= 1;
-    currentLineId = previousLine[currentLineIndex];
-    showLine(previousLine[currentLineIndex]);
+    showLine(previousLine[currentLineIndex], true);
     previousLine.pop();
 });
 
@@ -117,10 +113,8 @@ smartPhoneWrittingBarElem.addEventListener('click', () => {
 
 smartPhoneCloseElem.addEventListener('click', () => {
     const nextLineId = getNextLineId();
-    if (nextLineId) {
-        previousLine.push(currentLineId);
-        currentLineId = nextLineId;
-        currentLineIndex += 1;
+    const currentLine = findLineById(currentLineId);
+    if (nextLineId && !currentLine?.noNextLine) {
         showLine(nextLineId);
     }
 })
@@ -198,7 +192,7 @@ const clearTyping = () => {
 
 const stopTyping = (event: KeyboardEvent) => {
     event.preventDefault();
-    if ((event.key === " " || event.target === goBackButton) && typingInterval) {
+    if ((event.key === " " || event.target === goBackButton) && typingInterval && (!game.stoped || !game.paused)) {
         clearTyping();
         dialogueElem.innerHTML = currentLineText;
         document.removeEventListener("keydown", stopTyping);
@@ -207,8 +201,10 @@ const stopTyping = (event: KeyboardEvent) => {
 
 let currentLineText = "";
 
-export function showLine(id: string) {
+export function showLine(id: string, backward: boolean = false) {
     const line = findLineById(id);
+    console.log(previousLine[currentLineIndex - 1]);
+    console.log(getNextLineId());
     if (line && !line.textPosition) {
         line.textPosition = "narrator";
     }
@@ -403,10 +399,11 @@ export function showLine(id: string) {
                 canPassScreen = true;
                 const nextLineId = getNextLineId();
                 if (nextLineId) {
-                    previousLine.push(currentLineId);
                     currentLineId = nextLineId;
                     currentLineIndex += 1;
-                    showLine(nextLineId);
+                    if (!line.noNextLine) {
+                        showLine(nextLineId);
+                    }
                 }
             });
         } else if (video) {
@@ -476,10 +473,16 @@ export function showLine(id: string) {
         if (line.music) {
             crossfadeMusic(audioChannelMusic, line.music, 2000);
         }
-
-        if (line.callback) {
-            line.callback();
+    }
+    if (!backward) {
+        currentLineId = id;
+        currentLineIndex += 1;
+        if (!line?.dontSave) {
+            previousLine.push(currentLineId);
         }
+    } else {
+        currentLineIndex -= 1;
+        currentLineId = previousLine[currentLineIndex];
     }
 }
 
@@ -546,10 +549,7 @@ const skipLine = () => {
 
     if (!currentLine?.backgroundVideo && !isWritting && canSkipSmartphone && (game.stoped || game.paused)) {
         const nextLineId = getNextLineId();
-        if (nextLineId) {
-            previousLine.push(currentLineId);
-            currentLineId = nextLineId;
-            currentLineIndex += 1;
+        if (nextLineId && !currentLine?.noNextLine) {
             showLine(nextLineId);
         }
     }
@@ -560,7 +560,7 @@ dialogueBox.addEventListener("click", () => {
 });
 
 document.addEventListener("keydown", (event) => {
-    if (event.key === " " && (game.stoped || game.paused)) {
+    if (event.key === " " && (!game.stoped || !game.paused)) {
         event.preventDefault();
         skipLine();
     }

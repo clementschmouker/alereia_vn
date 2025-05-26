@@ -27,7 +27,7 @@ const script = [
     ...scene10,
 ];
 
-let currentLineId = "gare3";
+let currentLineId = "start";
 let previousLine: string[] = [];
 let currentLineIndex = 0;
 
@@ -98,7 +98,7 @@ skipVideo?.addEventListener("click", () => {
 
 goBackButton?.addEventListener("click", () => {
     if (currentLineIndex <= 1) return;
-    showLine(previousLine[currentLineIndex], true);
+    showLine(previousLine[currentLineIndex - 2], true);
     previousLine.pop();
 });
 
@@ -203,8 +203,6 @@ let currentLineText = "";
 
 export function showLine(id: string, backward: boolean = false) {
     const line = findLineById(id);
-    console.log(previousLine[currentLineIndex - 1]);
-    console.log(getNextLineId());
     if (line && !line.textPosition) {
         line.textPosition = "narrator";
     }
@@ -400,7 +398,6 @@ export function showLine(id: string, backward: boolean = false) {
                 const nextLineId = getNextLineId();
                 if (nextLineId) {
                     currentLineId = nextLineId;
-                    currentLineIndex += 1;
                     if (!line.noNextLine) {
                         showLine(nextLineId);
                     }

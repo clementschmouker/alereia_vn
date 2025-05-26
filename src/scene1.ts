@@ -5,6 +5,11 @@ const script: DialogueLine[] = [
     id: "start", // Unique ID for this line
     text: "",
     backgroundVideo: 'Intro',
+    charactersOnScreen: {
+      left: "",
+      right: "",
+      middle: "",
+    },
   },
   {
     id: "start0", // Unique ID for this line
@@ -12,10 +17,6 @@ const script: DialogueLine[] = [
     text: "Alors, voilà... Je...",
     textPosition: 'right', // Ilyem is on the right
     background: 'bar',
-    /*backgroundTransition: {
-      easing: FadeTransitionType.easeIn,
-      duration: 3000,
-    },*/
     music: '/src/audio/scene1.mp3',
     charactersOnScreen: {
       left: "serveuse",

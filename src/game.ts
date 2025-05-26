@@ -72,7 +72,7 @@ class Game {
         const Dirlight = new THREE.DirectionalLight(0xffffff, 1);
         const light = new THREE.AmbientLight(0xffffff, 0.1);
         Dirlight.position.set(5, 10, 7.5);
-        // this.scene.add(light);
+        this.scene.add(light);
         this.scene.add(Dirlight);
 
 

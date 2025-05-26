@@ -1,4 +1,5 @@
 import { DialogueLine, FadeTransitionType } from "./types";
+import { game } from './main';
 
 const script : DialogueLine[] = [
     {
@@ -79,6 +80,24 @@ const script : DialogueLine[] = [
           left: "",
           right: "",
         },
+    },
+    {
+      id: 'pas-par-la',
+      name: "Vangva",
+      text: "<i>Ce n'est pas par là que je dois aller....</i>",
+      charactersOnScreen: {
+        left: "vava",
+        leftMood: "alerte_tel",
+      },
+      textPosition: 'left',
+    },
+    {
+      id: 'restart-game',
+      charactersOnScreen: {
+        left: '',
+      },
+      unpauseGame: true,
+      nextLineId: 'pas-par-la',
     },
     {
       id: "3js9",

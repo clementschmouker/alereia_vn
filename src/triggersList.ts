@@ -3,10 +3,20 @@ import { game, showLine } from './main';
 interface Trigger {
     position: number;
     debug?: boolean;
+    stays?: boolean;
     action: () => void;
 }
 
 const triggersList: Trigger[] = [
+    {
+        position: -3,
+        debug: true,
+        stays: true,
+        action: () => {
+            game.pause();
+            showLine('pas-par-la');
+        }
+    },
     {
         position: 5,
         debug: true,

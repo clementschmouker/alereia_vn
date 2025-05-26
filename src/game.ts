@@ -89,7 +89,8 @@ class Game {
                 new THREE.Vector3(triggerData.position, 0.5, -7.15),
                 new THREE.Vector3(1, 1, 1),
                 triggerData.action,
-                triggerData.debug
+                triggerData.debug,
+                triggerData.stays
             );
             this.triggers.push(newTrigger);
             this.scene.add(newTrigger.mesh);
@@ -180,6 +181,7 @@ class Game {
 
     animate = () => {
         requestAnimationFrame(this.animate);
+        this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         this.controls.update();
 
         const origin = new THREE.Vector3(this.player.position.x, this.player.position.y, this.player.position.z);
@@ -197,12 +199,19 @@ class Game {
         this.camera.position.set(this.player.position.x, 0.75, this.player.position.z + 2);
         this.camera.lookAt(this.player.position);
         this.player.update();
-        this.triggers.forEach(trigger => {
+        this.triggers.forEach((trigger: Trigger) => {
             if (trigger.isColliding(this.player.position) && trigger.triggered === false) {
                 // Handle collision logic here
                 trigger.triggered = true;
+                
+                if (!trigger.stays) {
+                    this.scene.remove(trigger.mesh);
+                } else {
+                    this.player.position.x = this.player.position.x + 1;
+                    trigger.triggered = false;
+                }
+
                 trigger.action();
-                this.scene.remove(trigger.mesh);
             }
         });
 

@@ -34,6 +34,7 @@ interface DialogueLine {
     text?: string;
     textPosition?: 'right' | 'left' | 'center' | 'narrator' | 'none';
     video?: string;
+    isOverUi?: boolean;
     background?: string;
     smartphone?: boolean;
     smartphoneMessages?: SmartphoneMessage[];

@@ -1,7 +1,5 @@
 import { DialogueLine, FadeTransitionType } from "./types";
 
-import { game } from "./main";
-
 const script : DialogueLine[] = [
     {
         id: "gare", // Unique ID for this line
@@ -20,9 +18,9 @@ const script : DialogueLine[] = [
       textPosition: 'left', // Vangva is on the left
       background: 'gare',
       charactersOnScreen: {
-        left: "vava",
-        leftMood: "pense",
-        leftFlip: true,
+        middle: "vava",
+        middleMood: "pense",
+        middleFlip: true,
         rightFlip: false
       },
     },
@@ -33,10 +31,9 @@ const script : DialogueLine[] = [
       textPosition: 'left', // Vangva is on the left
       background: 'gare',
       charactersOnScreen: {
-        left: "vava",
-        leftMood: "pense_tel",
-        leftFlip: true,
-        rightFlip: false
+        middle: "vava",
+        middleMood: "pense_tel",
+        middleFlip: true,
       },
     },
     {
@@ -46,10 +43,8 @@ const script : DialogueLine[] = [
       textPosition: 'left', // Vangva is on the left
       background: 'gare',
       charactersOnScreen: {
-        left: "vava",
-        leftMood: "pense_tel",
-        leftFlip: true,
-        rightFlip: false
+        middle: "vava",
+        middleMood: "pense_tel",
       },
     },
     {
@@ -219,6 +214,7 @@ const script : DialogueLine[] = [
       name: "Ilyem",
       text: "Syel et Vangva, ils sont de retour à Brissa. La ville est grande et ne dort jamais, ils comptent sur la foule pour rester discrets.",
       textPosition: 'right', // Ilyem is on the right
+      isOverUi: true,
       charactersOnScreen: {
         left: "serveuse",
         leftMood: "neutre_cig",
@@ -235,6 +231,7 @@ const script : DialogueLine[] = [
       id: "gare4",
       name: "N.O.D.E.",
       text: "Je vois. Ça me semble crédible.",
+      isOverUi: true,
       charactersOnScreen: {
         left: "serveuse",
         leftMood: "sourire_cig",
@@ -248,6 +245,7 @@ const script : DialogueLine[] = [
       id: "gare5",
       name: "Ilyem",
       text: "Ils ont voyagé en train, séparément pour ne pas être aperçus. Je pense, à l'heure qu'il est, que Vangva doit se trouver quelque part dans le quartier de la gare.",
+      isOverUi: true,
       charactersOnScreen: {
         left: "serveuse",
         leftMood: "sourire_cig",
@@ -261,6 +259,7 @@ const script : DialogueLine[] = [
       id: "gare6",
       name: "N.O.D.E.",
       text: "*elle rigole*",
+      isOverUi: true,
       charactersOnScreen: {
         left: "serveuse",
         leftMood: "satisfaite_cig",
@@ -274,6 +273,7 @@ const script : DialogueLine[] = [
       id: "gare7",
       name: "N.O.D.E.",
       text: "Merci pour ta collaboration. C'est bon. On l'a déjà repéré.",
+      isOverUi: true,
       charactersOnScreen: {
         left: "serveuse",
         leftMood: "satisfaite_cig",

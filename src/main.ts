@@ -27,13 +27,14 @@ const script = [
     ...scene10,
 ];
 
-let currentLineId = "gare3";
+let currentLineId = "gare";
 let previousLine: string[] = [];
 let currentLineIndex = 0;
 
 const nameElem = document.getElementById("name")!;
 const dialogueElem = document.getElementById("dialogue")!;
 const dialogueBox = document.getElementById("dialogue-box")!;
+const choiceWrapper = dialogueBox.querySelector('#choices');
 
 const leftCharacter = document.getElementById("left-character")!;
 const rightCharacter = document.getElementById("right-character")!;
@@ -41,10 +42,13 @@ const middleCharacter = document.getElementById("middle-character")!;
 const backgroundElem = document.getElementById("background")!;
 const backgroundVideo = document.querySelector("#background-video") as HTMLVideoElement;
 const characterNameElement = document.getElementById("name")!;
+
 const smartPhoneElement = document.getElementById("smartphone")!;
 const smartPhoneMessagesListElem = document.querySelector('.smartphone__screen__messages') as HTMLUListElement;
 const smartPhoneWrittingElem = document.querySelector('.smartphone__screen__writting') as HTMLDivElement;
 const smartPhoneContentElem = document.querySelector('.smartphone__screen__content') as HTMLDivElement;
+const smartPhoneWrittingBarElem = document.querySelector('.smartphone__screen__writting-bar') as HTMLDivElement;
+const smartPhoneCloseElem = document.querySelector('#smartphone-close') as HTMLDivElement;
 
 const audioChannelSound = document.querySelector("#audio-channel--sound") as HTMLAudioElement;
 const audioChannelMusic = document.querySelector("#audio-channel--music") as HTMLAudioElement;
@@ -53,6 +57,16 @@ const audioChannelVoice = document.querySelector("#audio-channel--voice") as HTM
 const unmuteButton = document.querySelector("#mute-sound");
 const skipVideo = document.querySelector("#skip-video");
 const goBackButton = document.querySelector("#go-back");
+
+const startScreen = document.querySelector("#start-screen") as HTMLDivElement;
+const startButton = document.querySelector("#start-button") as HTMLButtonElement;
+const gameScreen = document.querySelector("#game") as HTMLDivElement;
+
+startButton?.addEventListener("click", () => {
+    startScreen.classList.add("hidden");
+    gameScreen.classList.remove("hidden");
+    showLine(currentLineId);
+});
 
 let currentCharacters = {
     left: { name: "", mood: "", flip: false },
@@ -91,6 +105,25 @@ goBackButton?.addEventListener("click", () => {
     showLine(previousLine[currentLineIndex]);
     previousLine.pop();
 });
+
+smartPhoneWrittingBarElem.addEventListener('click', () => {
+    document.querySelector('.smartphone-choices')?.querySelectorAll('.smartphone-choice').forEach((button, index) => {
+        setTimeout(() => {
+            button.classList.remove('hidden');
+        }, index * 100);
+    });
+    smartPhoneWrittingBarElem.classList.remove('blinking');
+});
+
+smartPhoneCloseElem.addEventListener('click', () => {
+    const nextLineId = getNextLineId();
+    if (nextLineId) {
+        previousLine.push(currentLineId);
+        currentLineId = nextLineId;
+        currentLineIndex += 1;
+        showLine(nextLineId);
+    }
+})
 
 function findLineById(id: string): DialogueLine | undefined {
     return script.find((line) => line.id === id);
@@ -244,13 +277,15 @@ export function showLine(id: string) {
     if (line?.smartphoneChoices) {
         canSkipSmartphone = false;
         dialogueBox.classList.add('narrator');
-        const choiceWrapper = dialogueBox.querySelector('#choices');
+        dialogueBox.classList.add('right');
+        dialogueBox.classList.remove('left');
         const list = document.createElement('div');
         list.classList.add('smartphone-choices');
         choiceWrapper?.appendChild(list);
         line.smartphoneChoices.forEach((choice) => {
             const button = document.createElement("button");
             button.classList.add("smartphone-choice");
+            button.classList.add('hidden');
             button.textContent = choice.text;
             button.setAttribute("data-next-line-id", choice.nextLineId);
             list.appendChild(button);
@@ -303,6 +338,10 @@ export function showLine(id: string) {
                                     canSkipSmartphone = true;
                                 } else {
                                     smartPhoneWrittingElem.classList.remove('hidden');
+                                }
+
+                                if (index === response.messages.length - 1) {
+                                    smartPhoneCloseElem.classList.remove('hidden');
                                 }
                             }, 2000 * (index + 1));
                         });
@@ -374,6 +413,12 @@ export function showLine(id: string) {
             canPassScreen = true;
             skipVideo?.classList.add("hidden");
             backgroundVideo.src = "";
+        }
+
+        if (line.isOverUi) {
+            document.querySelector('#characters')?.classList.add('over');
+        } else {
+            document.querySelector('#characters')?.classList.remove('over');
         }
 
         if (line.charactersOnScreen) {
@@ -572,5 +617,3 @@ document.addEventListener("mousemove", (event) => {
 window.addEventListener("resize", () => {
     backgroundElem.style.transform = "translate(0, 0)";
 });
-
-showLine(currentLineId);

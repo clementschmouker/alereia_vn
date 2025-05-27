@@ -10,8 +10,8 @@ class Player {
     speed: number;
     canMove: boolean = true;
 
-    constructor() {
-        this.position = new THREE.Vector3(0, 0.5, -7.15);
+    constructor(startingPosition: THREE.Vector3 = new THREE.Vector3(0, 0.5, -7.15)) {
+        this.position = startingPosition.clone();
         this.size = new THREE.Vector3(1, 1, 1);
         this.direction = 0;
         this.speed = 0.2;

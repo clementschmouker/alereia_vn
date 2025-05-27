@@ -64,6 +64,9 @@ class Game {
         this.paused = false;
         this.stoped = true;
         this.triggers = [];
+        const textureLoader = new THREE.TextureLoader();
+        const backgroundTexture = textureLoader.load('src/images/decors/skybox.png');
+        this.scene.background = backgroundTexture;
 
         this.raycaster = new THREE.Raycaster();
         this.collidableObjects = [];
@@ -80,7 +83,8 @@ class Game {
         this.controls = new OrbitControls(this.camera, this.renderer.domElement);
 
         // Player
-        this.player = new Player();
+        const startingPlayerPosition = new THREE.Vector3(-58, 0.5, -7.15);
+        this.player = new Player(startingPlayerPosition);
         this.scene.add(this.player.mesh);
 
         // Triggers
@@ -126,9 +130,44 @@ class Game {
         loader.load('models/town4new.glb', (gltf: any) => {
             this.cityModel = gltf.scene;
             gltf.scene.traverse((child) => {
-                const material = new THREE.MeshToonMaterial({
-                    color: 0xffffff,
-                })
+                if ((child as THREE.Mesh).isMesh) {
+                    const mesh = child as THREE.Mesh;
+                    const originalMaterial = mesh.material as THREE.MeshStandardMaterial;
+
+                    const shaderMaterial = new THREE.ShaderMaterial({
+                        uniforms: {
+                            baseTexture: { value: originalMaterial.map },
+                            lightIntensity: { value: 1.0 }
+                        },
+                        vertexShader: `
+                            varying vec3 vNormal;
+                            varying vec2 vUv;
+                            void main() {
+                                vNormal = normalize(normalMatrix * normal);
+                                vUv = uv;
+                                gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+                            }
+                        `,
+                        fragmentShader: `
+                            uniform sampler2D baseTexture;
+                            varying vec3 vNormal;
+                            varying vec2 vUv;
+
+                            void main() {
+                                vec3 lightDirection = normalize(vec3(0.5, 1.0, 0.75));
+                                float lightFactor = max(dot(vNormal, lightDirection), 0.0);
+
+                                vec4 baseColor = texture2D(baseTexture, vUv);
+                                vec3 litColor = mix(vec3(1.0, 0.0, 1.0), vec3(0.0, 1.0, 1.0), lightFactor);
+
+                                gl_FragColor = vec4(baseColor.rgb * litColor, baseColor.a);
+                            }
+                        `,
+                        side: THREE.DoubleSide,
+                    });
+
+                    mesh.material = shaderMaterial;
+                }
                 const outline = solidify(child);
                 // child.material = material;
                 this.scene.add(outline);

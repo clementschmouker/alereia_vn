@@ -27,7 +27,7 @@ const script = [
     ...scene10,
 ];
 
-let currentLineId = "start";
+let currentLineId = "gare3";
 let previousLine: string[] = [];
 let currentLineIndex = 0;
 

@@ -9,7 +9,7 @@ interface Trigger {
 
 const triggersList: Trigger[] = [
     {
-        position: -3,
+        position: -60,
         debug: true,
         stays: true,
         action: () => {

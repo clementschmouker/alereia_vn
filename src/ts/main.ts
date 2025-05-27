@@ -22,7 +22,7 @@ import {
     lineHandler,
 } from "./globals";
 
-import '../style.scss';
+import '../scss/main.scss';
 
 const DEFAULT_STARTING_LINE_ID = "start"; // Ici tu change l'ID que tu veux pour commencer
 

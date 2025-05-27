@@ -1,0 +1,70 @@
+
+#start-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('./images/accueil.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    &.hidden {
+        display: none;
+    }
+
+    .start-screen__container {
+        position: absolute;
+        top: 50%;
+        right: 4rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Tablon';
+
+        transform: translateY(-50%);
+    }
+
+    #logo {
+        width: 900px;
+    }
+
+    #start-button {
+        position: relative;
+        margin-top: 2rem;
+        padding: 6rem;
+        padding-top: 2rem;
+        padding-bottom: 1rem;
+        text-transform: uppercase;
+        background: transparent;
+        color: white;
+        border-width: 20px;
+        border-image: url('./images/dialogbubble-black.svg') 20 fill;
+        cursor: pointer;
+        font-size: 1.8rem;
+        font-family: 'Tablon';
+
+        .cyan, .magenta {
+            transition: all .3s ease;
+        }
+
+        &:hover {
+            .cyan, .magenta {
+                z-index: -1;
+                position: absolute;
+                top: -5px;
+                left: -20px;
+                width: 100%;
+                height: 100%;
+                background: cyan;
+            }
+
+            .magenta {
+                left: 20px;
+                top: 20px;
+                background: magenta;
+            }
+        }
+    }
+}

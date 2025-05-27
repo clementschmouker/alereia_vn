@@ -32,8 +32,10 @@ interface DialogueLine {
     id: string;  // Unique ID for the line
     name?: string;
     text?: string;
-    textPosition?: 'right' | 'left' | 'center' | 'narrator';
+    textPosition?: 'right' | 'left' | 'center' | 'narrator' | 'none';
+    dontSave?: boolean,
     video?: string;
+    isOverUi?: boolean;
     background?: string;
     smartphone?: boolean;
     smartphoneMessages?: SmartphoneMessage[];
@@ -51,7 +53,10 @@ interface DialogueLine {
     stopMusic?: boolean;
     stopSound?: boolean;
     stopVoice?: boolean;
-    callback?: () => void;
+    startGame?: boolean;
+    pauseGame?: boolean;
+    unpauseGame?: boolean;
+    stopGame?: boolean;
     soundFade?: {
       duration: number;
       fadeOut: boolean;
@@ -80,6 +85,7 @@ interface DialogueLine {
       nextLineId: string; // Reference to the next line by ID
     }[];
     nextLineId?: string; // Optional next line ID for direct transitions
+    noNextLine?: boolean;
 };
 
 export { FadeTransitionType };

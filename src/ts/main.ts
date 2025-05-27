@@ -1,15 +1,21 @@
-import scene1 from "./scene1";
-import scene2 from "./scene2";
-import scene3 from "./scene3";
-import scene4 from "./scene4";
-import scene5 from "./scene5";
-import scene6 from "./scene6";
-import scene7 from "./scene7";
-import scene8 from "./scene8";
-import scene9 from "./scene9";
-import scene10 from "./scene10";
+import scene1 from "./scenes/scene1";
+import scene2 from "./scenes/scene2";
+import scene3 from "./scenes/scene3";
+import scene4 from "./scenes/scene4";
+import scene5 from "./scenes/scene5";
+import scene6 from "./scenes/scene6";
+import scene7 from "./scenes/scene7";
+import scene8 from "./scenes/scene8";
+import scene9 from "./scenes/scene9";
+import scene10 from "./scenes/scene10";
 import { DialogueLine, SmartphoneMessage } from "./types";
 import gsap from "gsap";
+import Game from "./game";
+
+import '../style.scss';
+const game = new Game();
+
+export { game };
 
 const script = [
     ...scene1,
@@ -24,13 +30,14 @@ const script = [
     ...scene10,
 ];
 
-let currentLineId = "interlude";
+let currentLineId = "gare3";
 let previousLine: string[] = [];
 let currentLineIndex = 0;
 
 const nameElem = document.getElementById("name")!;
 const dialogueElem = document.getElementById("dialogue")!;
 const dialogueBox = document.getElementById("dialogue-box")!;
+const choiceWrapper = dialogueBox.querySelector('#choices');
 
 const leftCharacter = document.getElementById("left-character")!;
 const rightCharacter = document.getElementById("right-character")!;
@@ -38,10 +45,13 @@ const middleCharacter = document.getElementById("middle-character")!;
 const backgroundElem = document.getElementById("background")!;
 const backgroundVideo = document.querySelector("#background-video") as HTMLVideoElement;
 const characterNameElement = document.getElementById("name")!;
+
 const smartPhoneElement = document.getElementById("smartphone")!;
 const smartPhoneMessagesListElem = document.querySelector('.smartphone__screen__messages') as HTMLUListElement;
 const smartPhoneWrittingElem = document.querySelector('.smartphone__screen__writting') as HTMLDivElement;
 const smartPhoneContentElem = document.querySelector('.smartphone__screen__content') as HTMLDivElement;
+const smartPhoneWrittingBarElem = document.querySelector('.smartphone__screen__writting-bar') as HTMLDivElement;
+const smartPhoneCloseElem = document.querySelector('#smartphone-close') as HTMLDivElement;
 
 const audioChannelSound = document.querySelector("#audio-channel--sound") as HTMLAudioElement;
 const audioChannelMusic = document.querySelector("#audio-channel--music") as HTMLAudioElement;
@@ -50,6 +60,16 @@ const audioChannelVoice = document.querySelector("#audio-channel--voice") as HTM
 const unmuteButton = document.querySelector("#mute-sound");
 const skipVideo = document.querySelector("#skip-video");
 const goBackButton = document.querySelector("#go-back");
+
+const startScreen = document.querySelector("#start-screen") as HTMLDivElement;
+const startButton = document.querySelector("#start-button") as HTMLButtonElement;
+const gameScreen = document.querySelector("#game") as HTMLDivElement;
+
+startButton?.addEventListener("click", () => {
+    startScreen.classList.add("hidden");
+    gameScreen.classList.remove("hidden");
+    showLine(currentLineId);
+});
 
 let currentCharacters = {
     left: { name: "", mood: "", flip: false },
@@ -72,22 +92,35 @@ unmuteButton?.addEventListener("click", () => {
 skipVideo?.addEventListener("click", () => {
     canPassScreen = true;
     skipVideo.classList.remove("hidden");
+    const currentLine = findLineById(currentLineId);
     const nextLineId = getNextLineId();
-    if (nextLineId) {
-        previousLine.push(currentLineId);
-        currentLineId = nextLineId;
-        currentLineIndex += 1;
+    if (nextLineId && !currentLine?.noNextLine) {
         showLine(nextLineId);
     }
 });
 
 goBackButton?.addEventListener("click", () => {
     if (currentLineIndex <= 1) return;
-    currentLineIndex -= 1;
-    currentLineId = previousLine[currentLineIndex];
-    showLine(previousLine[currentLineIndex]);
+    showLine(previousLine[currentLineIndex - 2], true);
     previousLine.pop();
 });
+
+smartPhoneWrittingBarElem.addEventListener('click', () => {
+    document.querySelector('.smartphone-choices')?.querySelectorAll('.smartphone-choice').forEach((button, index) => {
+        setTimeout(() => {
+            button.classList.remove('hidden');
+        }, index * 100);
+    });
+    smartPhoneWrittingBarElem.classList.remove('blinking');
+});
+
+smartPhoneCloseElem.addEventListener('click', () => {
+    const nextLineId = getNextLineId();
+    const currentLine = findLineById(currentLineId);
+    if (nextLineId && !currentLine?.noNextLine) {
+        showLine(nextLineId);
+    }
+})
 
 function findLineById(id: string): DialogueLine | undefined {
     return script.find((line) => line.id === id);
@@ -109,7 +142,7 @@ function updateCharacterImage(
         return;
     }
 
-    const baseUrl = `/src/images/personnages/${name}`;
+    const baseUrl = `images/personnages/${name}`;
     const newSrc = mood ? `${baseUrl.split(".")[0]}_${mood}.png` : `${baseUrl}.png`;
 
     if (!shouldUpdate) return;
@@ -162,7 +195,7 @@ const clearTyping = () => {
 
 const stopTyping = (event: KeyboardEvent) => {
     event.preventDefault();
-    if ((event.key === " " || event.target === goBackButton) && typingInterval) {
+    if ((event.key === " " || event.target === goBackButton) && typingInterval && (!game.stoped || !game.paused)) {
         clearTyping();
         dialogueElem.innerHTML = currentLineText;
         document.removeEventListener("keydown", stopTyping);
@@ -171,11 +204,26 @@ const stopTyping = (event: KeyboardEvent) => {
 
 let currentLineText = "";
 
-function showLine(id: string) {
+export function showLine(id: string, backward: boolean = false) {
     const line = findLineById(id);
     if (line && !line.textPosition) {
         line.textPosition = "narrator";
     }
+
+    if (line?.startGame) {
+        game.start();
+    }
+
+    if (line?.pauseGame) {
+        game.pause();
+    }
+    if (line?.unpauseGame) {
+        game.play();
+    }
+    if (line?.stopGame) {
+        game.stop();
+    }
+
     if (line?.smartphone) {
         smartPhoneElement.classList.add('visible');
         line.smartphoneMessages?.forEach((message: SmartphoneMessage, index) => {
@@ -187,14 +235,13 @@ function showLine(id: string) {
             messageElem.classList.add("sender");
           } else {
             messageElem.classList.add("other");
-            if (line?.smartphoneMessages[index + 1] &&
+            if (line && line.smartphoneMessages && line?.smartphoneMessages[index + 1] &&
                 index < line?.smartphoneMessages?.length &&
                 message.name === line.smartphoneMessages[index + 1].name
             ) {
               messageElem.classList.add("hidden-avatar");
             }
           }
-          console.log(message.avatar);
           messageElem.innerHTML = `
               <div class="message__avatar" style="background-image: url('${message.avatar}')"></div>
               <div class="message__content">
@@ -222,13 +269,15 @@ function showLine(id: string) {
     if (line?.smartphoneChoices) {
         canSkipSmartphone = false;
         dialogueBox.classList.add('narrator');
-        const choiceWrapper = dialogueBox.querySelector('#choices');
+        dialogueBox.classList.add('right');
+        dialogueBox.classList.remove('left');
         const list = document.createElement('div');
         list.classList.add('smartphone-choices');
         choiceWrapper?.appendChild(list);
         line.smartphoneChoices.forEach((choice) => {
             const button = document.createElement("button");
             button.classList.add("smartphone-choice");
+            button.classList.add('hidden');
             button.textContent = choice.text;
             button.setAttribute("data-next-line-id", choice.nextLineId);
             list.appendChild(button);
@@ -247,7 +296,9 @@ function showLine(id: string) {
                 `;
                 smartPhoneMessagesListElem.appendChild(messageElem);
                 smartPhoneContentElem.scrollTop = smartPhoneContentElem.scrollHeight;
-                choiceWrapper.innerHTML = ""; // Clear choices after selection
+                if (choiceWrapper) {
+                    choiceWrapper.innerHTML = "";
+                }
 
                 if (line.smartphoneResponses && choice.nextLineId) {
                     const response = line.smartphoneResponses.find(r => r.id === choice.nextLineId);
@@ -279,6 +330,10 @@ function showLine(id: string) {
                                     canSkipSmartphone = true;
                                 } else {
                                     smartPhoneWrittingElem.classList.remove('hidden');
+                                }
+
+                                if (index === response.messages.length - 1) {
+                                    smartPhoneCloseElem.classList.remove('hidden');
                                 }
                             }, 2000 * (index + 1));
                         });
@@ -340,16 +395,22 @@ function showLine(id: string) {
                 canPassScreen = true;
                 const nextLineId = getNextLineId();
                 if (nextLineId) {
-                    previousLine.push(currentLineId);
                     currentLineId = nextLineId;
-                    currentLineIndex += 1;
-                    showLine(nextLineId);
+                    if (!line.noNextLine) {
+                        showLine(nextLineId);
+                    }
                 }
             });
         } else if (video) {
             canPassScreen = true;
             skipVideo?.classList.add("hidden");
             backgroundVideo.src = "";
+        }
+
+        if (line.isOverUi) {
+            document.querySelector('#characters')?.classList.add('over');
+        } else {
+            document.querySelector('#characters')?.classList.remove('over');
         }
 
         if (line.charactersOnScreen) {
@@ -407,10 +468,16 @@ function showLine(id: string) {
         if (line.music) {
             crossfadeMusic(audioChannelMusic, line.music, 2000);
         }
-
-        if (line.callback) {
-            line.callback();
+    }
+    if (!backward) {
+        currentLineId = id;
+        currentLineIndex += 1;
+        if (!line?.dontSave) {
+            previousLine.push(currentLineId);
         }
+    } else {
+        currentLineIndex -= 1;
+        currentLineId = previousLine[currentLineIndex];
     }
 }
 
@@ -475,12 +542,9 @@ function fadeIn(audio: HTMLAudioElement, duration: number) {
 const skipLine = () => {
     const currentLine = findLineById(currentLineId);
 
-    if (!currentLine?.backgroundVideo && !isWritting && canSkipSmartphone) {
+    if (!currentLine?.backgroundVideo && !isWritting && canSkipSmartphone && (game.stoped || game.paused)) {
         const nextLineId = getNextLineId();
-        if (nextLineId) {
-            previousLine.push(currentLineId);
-            currentLineId = nextLineId;
-            currentLineIndex += 1;
+        if (nextLineId && !currentLine?.noNextLine) {
             showLine(nextLineId);
         }
     }
@@ -491,7 +555,7 @@ dialogueBox.addEventListener("click", () => {
 });
 
 document.addEventListener("keydown", (event) => {
-    if (event.key === " ") {
+    if (event.key === " " && (!game.stoped || !game.paused)) {
         event.preventDefault();
         skipLine();
     }
@@ -548,5 +612,3 @@ document.addEventListener("mousemove", (event) => {
 window.addEventListener("resize", () => {
     backgroundElem.style.transform = "translate(0, 0)";
 });
-
-showLine(currentLineId);

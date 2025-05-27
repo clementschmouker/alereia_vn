@@ -1,78 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Surveillance | Aleréia</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <div id="start-screen">
-      <div class="start-screen__container">
-        <img id="logo" src="images/logoBlack.svg" alt="Alereia Logo" />
-        <h1>Surveillance</h1>
-        <button id="start-button">
-          <div class="cyan"></div>
-          <div class="magenta"></div>
-          Jouer
-        </button>
-      </div>
-    </div>
-    <div id="game" class="hidden">
-      <div id="background">
-        <video id="background-video"></video>
-      </div>
-      
-      <div id="game-container"></div>
-
-      <div class="view-bar top-bar"></div>
-      <div id="characters">
-        <div id="left-character" class="character-slot"></div>
-        <div id="middle-character" class="character-slot"></div>
-        <div id="right-character" class="character-slot"></div>
-      </div>
-      <div id="dialogue-box" class="comic-bubble">
-        <div class="dialog__wrapper">
-          <p id="name" class="displayed"></p>
-          <p id="dialogue"></p>
-          <div id="choices" class="hidden"></div>
-        </div>
-        <div class="comic-bubble__tail"></div>
-      </div>
-
-      <audio id="audio-channel--music"></audio>
-      <audio id="audio-channel--sound"></audio>
-      <audio id="audio-channel--voice"></audio>
-
-      <button id="mute-sound">Unmute sound</button>
-      <button id="skip-video">Skip Video</button>
-      <button id="go-back">Back</button>
-
-      <div class="view-bar bottom-bar"></div>
-
-      <div id="smartphone">
-        <div class="smartphone__screen">
-          <div class="smartphone__screen__top-bar"></div>
-          <div class="smartphone__screen__content">
-            <ul class="smartphone__screen__messages">
-
-            </ul>
-            <div class="smartphone__screen__writting hidden">...</div>
-            <div class="smartphone__screen__writting-bar blinking">
-              <div class="arrow"></div>
-              <p>Ecrivez un message...</p>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Surveillance | Aleréia</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <div id="start-screen">
+            <div class="start-screen__container">
+                <img id="logo" src="images/logoBlack.svg" alt="Alereia Logo" />
+                <h1>Surveillance</h1>
+                <button id="start-button">
+                    <div class="cyan"></div>
+                    <div class="magenta"></div>
+                    Jouer
+                </button>
             </div>
-          </div>
-          <div class="smartphone__screen__bottom-bar">
-            <div class="button-square"></div>
-            <div class="button-circle"></div>
-            <div class="button-triangle"></div>
-          </div>
-      </div>
-      <button id="smartphone-close" class="hidden">Fermer le téléphone</button>
-    </div>
-    <script type="module" src="/src/ts/main.ts"></script>
-  </body>
+        </div>
+        <div id="game" class="hidden">
+            <div id="background">
+                <video id="background-video"></video>
+            </div>
+
+            <div id="game-container"></div>
+
+            <div class="view-bar top-bar"></div>
+            <div id="characters">
+                <div id="left-character" class="character-slot"></div>
+                <div id="middle-character" class="character-slot"></div>
+                <div id="right-character" class="character-slot"></div>
+            </div>
+            <div id="dialogue-box" class="comic-bubble">
+                <div class="dialog__wrapper">
+                    <p id="name" class="displayed"></p>
+                    <p id="dialogue"></p>
+                    <div id="choices" class="hidden"></div>
+                </div>
+                <div class="comic-bubble__tail"></div>
+            </div>
+
+            <audio id="audio-channel--music" muted></audio>
+            <audio id="audio-channel--sound"></audio>
+            <audio id="audio-channel--voice"></audio>
+
+            <button id="mute-sound">Unmute sound</button>
+            <button id="skip-video">Skip Video</button>
+            <button id="go-back">Back</button>
+
+            <div class="view-bar bottom-bar"></div>
+
+            <div id="smartphone">
+                <div class="smartphone__screen">
+                    <div class="smartphone__screen__top-bar"></div>
+                    <div class="smartphone__screen__content">
+                        <ul class="smartphone__screen__messages"></ul>
+                        <div class="smartphone__screen__writting hidden">...</div>
+                        <div class="smartphone__screen__writting-bar blinking">
+                            <div class="arrow"></div>
+                            <p>Ecrivez un message...</p>
+                        </div>
+                    </div>
+                    <div class="smartphone__screen__bottom-bar">
+                        <div class="button-square"></div>
+                        <div class="button-circle"></div>
+                        <div class="button-triangle"></div>
+                    </div>
+                </div>
+                <button id="smartphone-close" class="hidden">Fermer le téléphone</button>
+            </div>
+        </div>
+        <script type="module" src="/src/ts/main.ts"></script>
+    </body>
 </html>

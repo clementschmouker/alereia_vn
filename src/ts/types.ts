@@ -29,7 +29,7 @@ interface SmartphoneResponses {
 }
 
 interface DialogueLine {
-    id: string;  // Unique ID for the line
+    id: string;
     name?: string;
     text?: string;
     textPosition?: 'right' | 'left' | 'center' | 'narrator' | 'none';
@@ -82,9 +82,9 @@ interface DialogueLine {
     };
     choices?: {
       text: string;
-      nextLineId: string; // Reference to the next line by ID
+      nextLineId: string;
     }[];
-    nextLineId?: string; // Optional next line ID for direct transitions
+    nextLineId?: string;
     noNextLine?: boolean;
 };
 

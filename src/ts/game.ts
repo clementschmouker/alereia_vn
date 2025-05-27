@@ -12,7 +12,7 @@ import triggersList from './triggersList';
 
 const solidify = (mesh: THREE.Mesh) => {
     const THICKNESS = 0.02;
-    const geometry = mesh.geometry;
+    const geometry = mesh.geometry?.clone();
     const material = new THREE.ShaderMaterial({
         vertexShader: `
             void main() {
@@ -29,7 +29,11 @@ const solidify = (mesh: THREE.Mesh) => {
     });
 
     const solidifiedMesh = new THREE.Mesh(geometry, material);
-    solidifiedMesh.rotation.x = Math.PI / 2; // Adjust rotation as needed
+    solidifiedMesh.position.copy(mesh.position);
+    if (mesh.name === "Cylinder002_Material001_0") {
+        solidifiedMesh.geometry.scale(0.213, 0.213, 0.213);
+    }
+    solidifiedMesh.rotation.x = Math.PI / 2;
 
     solidifiedMesh.scale.setScalar(1.0001);
     return solidifiedMesh;
@@ -57,6 +61,8 @@ class Game {
         this.renderer.setSize(window.innerWidth, window.innerHeight);
         document.querySelector('#game-container')?.appendChild(this.renderer.domElement);
         this.renderer.domElement.id = 'game-canvas';
+        this.renderer.shadowMap.enabled = true;
+        this.renderer.shadowMap.type = THREE.PCFSoftShadowMap; // or PCFShadowMap
         this.paused = false;
         this.stoped = true;
         this.triggers = [];
@@ -71,6 +77,7 @@ class Game {
         // Lighting
         const Dirlight = new THREE.DirectionalLight(0xffffff, 1);
         const light = new THREE.AmbientLight(0xffffff, 0.1);
+        light.position.y = 10;
         Dirlight.position.set(5, 10, 7.5);
         this.scene.add(light);
         this.scene.add(Dirlight);
@@ -152,7 +159,7 @@ class Game {
 
                             void main() {
                                 vec3 lightDirection = normalize(vec3(0.5, 1.0, 0.75));
-                                float lightFactor = max(dot(vNormal, lightDirection), 0.0);
+                                float lightFactor = max(dot(vNormal, lightDirection), 0.4);
 
                                 vec4 baseColor = texture2D(baseTexture, vUv);
                                 vec3 litColor = mix(vec3(1.0, 0.0, 1.0), vec3(0.0, 1.0, 1.0), lightFactor);
@@ -166,11 +173,13 @@ class Game {
                     mesh.material = shaderMaterial;
                 }
                 const outline = solidify(child);
-                // child.material = material;
                 this.scene.add(outline);
 
                 if ((child as THREE.Mesh).isMesh) {
                     const mesh = child as THREE.Mesh;
+
+                    mesh.castShadow = true;
+                    mesh.receiveShadow = true;
                     this.collidableObjects.push(mesh);
                 }
             })
@@ -202,18 +211,18 @@ class Game {
 
     checkCollisions = () => {
         const playerPosition = this.player.position.clone();
-        const direction = new THREE.Vector3(0, 0, -0.1); // Adjust direction as needed
+        const direction = new THREE.Vector3(0, 0, -0.1);
         this.raycaster.set(playerPosition, direction);
 
         const intersects = this.raycaster.intersectObjects(this.collidableObjects, true);
         if (intersects.length > 0) {
-            this.player.position.y += 0.1; // Move the player up slightly
+            this.player.position.y += 0.1;
         }
     }
 
     animate = () => {
         requestAnimationFrame(this.animate);
-        this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        // this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         this.controls.update();
 
         const origin = new THREE.Vector3(this.player.position.x, this.player.position.y, this.player.position.z);
@@ -229,15 +238,14 @@ class Game {
         if (intersects.length > 0) {
             const currentY = this.player.position.y - (this.player.size.y / 2);
             const targetY = intersects[0].point.y + 0.05;
-            this.player.position.y += (targetY - currentY) * 0.1; // interpolate
+            this.player.position.y += (targetY - currentY) * 0.1;
         }
         
-        this.camera.position.set(this.player.position.x, 0.75, this.player.position.z + 2);
-        this.camera.lookAt(this.player.position);
+        // this.camera.position.set(this.player.position.x, 0.75, this.player.position.z + 2);
+        // this.camera.lookAt(this.player.position);
         this.player.update();
         this.triggers.forEach((trigger: Trigger) => {
             if (trigger.isColliding(this.player.position) && trigger.triggered === false) {
-                // Handle collision logic here
                 trigger.triggered = true;
                 
                 if (!trigger.stays) {

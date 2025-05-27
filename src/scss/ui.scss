@@ -72,7 +72,7 @@
     position: fixed;
     z-index: 10000;
     width: 100%;
-    height: 100px;
+    height: 50px;
     background: black;
 
     &::after {
@@ -80,9 +80,17 @@
         position: absolute;
         width: 100%;
         height: 100%;
-        bottom: -4.5rem;
+        bottom: -2.5rem;
         background-image: url('./images/bar.svg');
         background-repeat: repeat-x;
+    }
+
+    @media screen and (min-width: 1500px) {
+        height: 100px;
+
+        &::after {
+            bottom: -4.5rem;
+        }
     }
 }
 

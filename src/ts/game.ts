@@ -61,7 +61,7 @@ class Game {
         this.stoped = true;
         this.triggers = [];
         const textureLoader = new THREE.TextureLoader();
-        const backgroundTexture = textureLoader.load('src/images/decors/skybox.png');
+        const backgroundTexture = textureLoader.load('images/decors/skybox.png');
         this.scene.background = backgroundTexture;
         this.cityModel = null;
 

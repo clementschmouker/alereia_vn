@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Tablon';
-    src: url('src/fonts/Tablon-Regular.ttf') format('woff2');
+    src: url('./fonts/Tablon-Regular.ttf') format('woff2');
     font-weight: 400;
     font-style: normal;
 }
@@ -24,7 +24,7 @@ body, html {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-image: url('src/images/accueil.webp');
+    background-image: url('./images/accueil.webp');
     background-repeat: no-repeat;
     background-size: cover;
 
@@ -58,7 +58,7 @@ body, html {
         background: transparent;
         color: white;
         border-width: 20px;
-        border-image: url('src/images/dialogbubble-black.svg') 20 fill;
+        border-image: url('./images/dialogbubble-black.svg') 20 fill;
         cursor: pointer;
         font-size: 1.8rem;
 
@@ -121,7 +121,7 @@ body, html {
         width: 100%;
         height: 100%;
         bottom: -4.5rem;
-        background-image: url('src/images/bar.svg');
+        background-image: url('./images/bar.svg');
         background-repeat: repeat-x;
     }
 }
@@ -176,7 +176,7 @@ body, html {
             position: relative;
             max-width: 300px;
             background: transparent;
-            border-image: url('src/images/button-border.svg') 5 fill;
+            border-image: url('./images/button-border.svg') 5 fill;
             border-width: 10px;
             padding: 1.5rem;
             transition: all .3s ease;
@@ -210,7 +210,7 @@ body, html {
 .comic-bubble {
     border-width: 20px;
     border-style: solid;
-    border-image: url('src/images/dialogbubble.svg') 30 fill;
+    border-image: url('./images/dialogbubble.svg') 30 fill;
     min-width: 300px;
     height: 200px;
     padding: 20px;
@@ -223,7 +223,7 @@ body, html {
     bottom: -52px;
     left: 80%;
     transform: translateX(-50%);
-    background-image: url('src/images/dialogbubble-arrow.svg');
+    background-image: url('./images/dialogbubble-arrow.svg');
 }
 
 #dialogue-box.right {
@@ -392,7 +392,7 @@ body, html {
   height: 100px;
   z-index: 100000;
   background: transparent;
-  background-image: url('src/images/glitched-sound.svg');
+  background-image: url('./images/glitched-sound.svg');
   background-size: contain;
   text-indent: -9999px;
   border: 0;
@@ -403,7 +403,7 @@ body, html {
 }
 
 #mute-sound.muted {
-  background-image: url('src/images/glitched-sound-mute.svg');
+  background-image: url('./images/glitched-sound-mute.svg');
 }
 
 
@@ -418,7 +418,7 @@ body, html {
   background: transparent;
   color: white;
   border-width: 20px;
-  border-image: url('src/images/dialogbubble-black.svg') 20 fill;
+  border-image: url('./images/dialogbubble-black.svg') 20 fill;
 
   transition: all .3s ease;
 }
@@ -435,7 +435,7 @@ body, html {
   width: 70px;
   height: 70px;
   background: transparent;
-  background-image: url('src/images/back.svg');
+  background-image: url('./images/back.svg');
   background-size: contain;
   background-repeat: no-repeat;
   border: none;
@@ -518,7 +518,7 @@ body, html {
             display: block;
             width: 30px;
             height: 20px;
-            background-image: url('src/images/arrowRight.svg');
+            background-image: url('./images/arrowRight.svg');
             background-size: contain;
             background-repeat: no-repeat;
         }
@@ -729,7 +729,7 @@ body, html {
     transform: translateX(-50%);
     cursor: pointer;
 
-    border-image: url('src/images/button-border.svg') 10 fill;
+    border-image: url('./images/button-border.svg') 10 fill;
     border-width: 30px;
     padding: 1rem;
 

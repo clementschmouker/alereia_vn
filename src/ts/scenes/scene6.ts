@@ -1,4 +1,4 @@
-import { DialogueLine, FadeTransitionType } from "./types";
+import { DialogueLine, FadeTransitionType } from "../types";
 
 const script : DialogueLine[] = [
     {
@@ -18,7 +18,7 @@ const script : DialogueLine[] = [
           easing: FadeTransitionType.easeIn,
           duration: 3000,
         },
-        music: '/src/audio/scene6.mp3',
+        music: 'audio/scene6.mp3',
     },
     {
       id: "twist1",

@@ -1,4 +1,4 @@
-import { DialogueLine, /*FadeTransitionType*/ } from "./types";
+import { DialogueLine, /*FadeTransitionType*/ } from "../types";
 
 const script: DialogueLine[] = [
   {
@@ -17,7 +17,7 @@ const script: DialogueLine[] = [
     text: "Alors, voilà... Je...",
     textPosition: 'right', // Ilyem is on the right
     background: 'bar',
-    music: '/src/audio/scene1.mp3',
+    music: 'audio/scene1.mp3',
     charactersOnScreen: {
       left: "serveuse",
       leftMood: "mefiante",

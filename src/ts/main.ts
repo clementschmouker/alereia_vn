@@ -1,18 +1,21 @@
-import scene1 from "./scene1";
-import scene2 from "./scene2";
-import scene3 from "./scene3";
-import scene4 from "./scene4";
-import scene5 from "./scene5";
-import scene6 from "./scene6";
-import scene7 from "./scene7";
-import scene8 from "./scene8";
-import scene9 from "./scene9";
-import scene10 from "./scene10";
+import scene1 from "./scenes/scene1";
+import scene2 from "./scenes/scene2";
+import scene3 from "./scenes/scene3";
+import scene4 from "./scenes/scene4";
+import scene5 from "./scenes/scene5";
+import scene6 from "./scenes/scene6";
+import scene7 from "./scenes/scene7";
+import scene8 from "./scenes/scene8";
+import scene9 from "./scenes/scene9";
+import scene10 from "./scenes/scene10";
 import { DialogueLine, SmartphoneMessage } from "./types";
 import gsap from "gsap";
 import Game from "./game";
 
-export const game = new Game();
+import '../style.scss';
+const game = new Game();
+
+export { game };
 
 const script = [
     ...scene1,
@@ -139,7 +142,7 @@ function updateCharacterImage(
         return;
     }
 
-    const baseUrl = `/src/images/personnages/${name}`;
+    const baseUrl = `images/personnages/${name}`;
     const newSrc = mood ? `${baseUrl.split(".")[0]}_${mood}.png` : `${baseUrl}.png`;
 
     if (!shouldUpdate) return;

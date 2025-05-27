@@ -1,10 +1,11 @@
 import * as THREE from 'three';
+// @ts-ignore
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from 'three/examples/jsm/Addons.js';
 
-import Player from './player';
+import Player from './components/player';
 
-import Trigger from './trigger';
+import Trigger from './components/trigger';
 
 import triggersList from './triggersList';
 
@@ -40,7 +41,7 @@ class Game {
     camera: THREE.PerspectiveCamera;
     renderer: THREE.WebGLRenderer;
     controls: OrbitControls;
-    cityModel: THREE.Object3D;
+    cityModel: THREE.Object3D | null;
     player: Player;
     raycaster: THREE.Raycaster;
     collidableObjects: THREE.Object3D[];
@@ -115,7 +116,7 @@ class Game {
         this.renderer.dispose();
         this.controls.dispose();
         this.collidableObjects = [];
-        document.querySelector('#game-container').innerHTML = '';
+        document.querySelector('#game-container')!.innerHTML = '';
         document.querySelector('#go-back')!.classList.remove('hidden');
     }
     
@@ -125,8 +126,8 @@ class Game {
         const loader = new GLTFLoader();
         loader.load('models/town4new.glb', (gltf: any) => {
             this.cityModel = gltf.scene;
-            gltf.scene.traverse((child) => {
-                if ((child as THREE.Mesh).isMesh) {
+            gltf.scene.traverse((child: THREE.Mesh) => {
+                if ((child).isMesh) {
                     const mesh = child as THREE.Mesh;
                     const originalMaterial = mesh.material as THREE.MeshStandardMaterial;
 
@@ -219,7 +220,11 @@ class Game {
         const direction = new THREE.Vector3(0, -1, 0);
         this.raycaster.set(origin, direction);
         
-        const intersects = this.raycaster.intersectObject(this.cityModel, true);
+        let intersects: any[] = [];
+
+        if (this.cityModel) {
+            intersects = this.raycaster.intersectObject(this.cityModel, true);
+        }
         
         if (intersects.length > 0) {
             const currentY = this.player.position.y - (this.player.size.y / 2);

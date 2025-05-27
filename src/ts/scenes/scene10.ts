@@ -1,4 +1,4 @@
-import { DialogueLine, FadeTransitionType } from "./types";
+import { DialogueLine, FadeTransitionType } from "../types";
 
 const script : DialogueLine[] = [
     {
@@ -10,7 +10,7 @@ const script : DialogueLine[] = [
           easing: FadeTransitionType.easeIn,
           duration: 3000,
         },
-        music: '/src/audio/scene101.mp3',
+        music: 'audio/scene101.mp3',
     },
     {
       id: "fin1",
@@ -364,7 +364,7 @@ const script : DialogueLine[] = [
         leftFlip: false,
         rightFlip: true,
       },
-        music: '/src/audio/scene102.mp3',
+        music: 'audio/scene102.mp3',
     },
    {
       id: "fin25",
@@ -504,7 +504,7 @@ const script : DialogueLine[] = [
         middleFlip: true,
         rightFlip: false,
       },
-        music: '/src/audio/SJOLY.mp3',
+        music: 'audio/SJOLY.mp3',
     },
    {
       id: "fin33",

@@ -1,7 +1,6 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from 'three/examples/jsm/Addons.js';
-import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
 
 import Player from './player';
 
@@ -42,9 +41,7 @@ class Game {
     renderer: THREE.WebGLRenderer;
     controls: OrbitControls;
     cityModel: THREE.Object3D;
-    composer: EffectComposer;
     player: Player;
-    renderBlack: boolean;
     raycaster: THREE.Raycaster;
     collidableObjects: THREE.Object3D[];
     paused: boolean;
@@ -57,16 +54,15 @@ class Game {
         this.camera.position.y = 1;
         this.renderer = new THREE.WebGLRenderer({ antialias: true });
         this.renderer.setSize(window.innerWidth, window.innerHeight);
-        document.querySelector('#game-container').appendChild(this.renderer.domElement);
-        console.log(this.renderer.domElement);
+        document.querySelector('#game-container')?.appendChild(this.renderer.domElement);
         this.renderer.domElement.id = 'game-canvas';
-        this.renderBlack = false;
         this.paused = false;
         this.stoped = true;
         this.triggers = [];
         const textureLoader = new THREE.TextureLoader();
         const backgroundTexture = textureLoader.load('src/images/decors/skybox.png');
         this.scene.background = backgroundTexture;
+        this.cityModel = null;
 
         this.raycaster = new THREE.Raycaster();
         this.collidableObjects = [];
@@ -192,17 +188,11 @@ class Game {
             if (event.key === 'ArrowLeft') {
                 this.player.direction = -1;
             }
-            if (event.key === 'z') {
-                this.renderBlack = true;
-            }
         });
 
         addEventListener('keyup', (event) => {
             if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
                 this.player.direction = 0;
-            }
-            if (event.key === 'z') {
-                this.renderBlack = false;
             }
         })
 
@@ -256,11 +246,7 @@ class Game {
             }
         });
 
-        if (this.renderBlack) {
-            // this.composer.render();
-        } else {
-            this.renderer.render(this.scene, this.camera);
-        }
+        this.renderer.render(this.scene, this.camera);
     }
 }
 

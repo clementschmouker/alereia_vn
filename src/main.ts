@@ -208,20 +208,16 @@ export function showLine(id: string, backward: boolean = false) {
     }
 
     if (line?.startGame) {
-        console.log("Starting game...");
         game.start();
     }
 
     if (line?.pauseGame) {
-        console.log("Pausing game...");
         game.pause();
     }
     if (line?.unpauseGame) {
-        console.log("Unpausing game...");
         game.play();
     }
     if (line?.stopGame) {
-        console.log("Stopping game...");
         game.stop();
     }
 
@@ -243,7 +239,6 @@ export function showLine(id: string, backward: boolean = false) {
               messageElem.classList.add("hidden-avatar");
             }
           }
-          console.log(message.avatar);
           messageElem.innerHTML = `
               <div class="message__avatar" style="background-image: url('${message.avatar}')"></div>
               <div class="message__content">

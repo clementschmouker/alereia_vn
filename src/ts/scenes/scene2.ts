@@ -57,7 +57,7 @@ const script : DialogueLine[] = [
           name: "@StrangerFromTheSky",
           content: "Salut ! Je suis de retour !",
           date: "Hier à 22h21",
-          avatar: "/src/images/avatars/stranger.jpg",
+          avatar: "images/avatars/stranger.jpg",
           sender: false,
         },
         {
@@ -65,7 +65,7 @@ const script : DialogueLine[] = [
           name: "@StrangerFromTheSky",
           content: "Oh Vangva ! C'est cool, merci !",
           date: "Hier à 22h21",
-          avatar: "/src/images/avatars/stranger.jpg",
+          avatar: "images/avatars/stranger.jpg",
           sender: false,
         },
         {
@@ -73,21 +73,21 @@ const script : DialogueLine[] = [
           name: "@nuit_rouge",
           content: "Uh",
           date: "Hier à 22h21",
-          avatar: "/src/images/avatars/night.jpg",
+          avatar: "images/avatars/night.jpg",
           sender: false,
         },
         {
           id: "passtMessage4",
           name: "@nuit_rouge",
           content: "Ça me tue de dire ça, mais merci mec",
-          avatar: "/src/images/avatars/night.jpg",
+          avatar: "images/avatars/night.jpg",
           date: "Hier à 22h21",
           sender: false,
         },
         {
           id: "passtMessage5",
           name: "@freal",
-          avatar: "/src/images/avatars/freal.png",
+          avatar: "images/avatars/freal.png",
           content: "Ho ho ho, on dirait qu'on a trouvé une solution",
           date: "Hier à 22h22",
           sender: false,
@@ -95,7 +95,7 @@ const script : DialogueLine[] = [
         {
           id: "passtMessage6",
           name: "@Lilas2306",
-          avatar: "/src/images/avatars/lilas.jpg",
+          avatar: "images/avatars/lilas.jpg",
           content: "Ouah ! Merci Va ! Je savais qu'on pouvait toujours compter sur toi !",
           date: "Hier à 22h24",
           sender: false,
@@ -111,7 +111,7 @@ const script : DialogueLine[] = [
         {
           id: "passtMessage8",
           name: "@Lilas2306",
-          avatar: "/src/images/avatars/lilas.jpg",
+          avatar: "images/avatars/lilas.jpg",
           content: "Que tout aille bien pour vous aujourd'hui, les gars ! Et soyez prudents... Surtout toi, Va. Même toi tu as tes limites...",
           date: "Aujourd'hui à 09h54",
           reaction: "like",
@@ -131,7 +131,7 @@ const script : DialogueLine[] = [
                 {
                     id: "positif1",
                     name: "@nuit_rouge",
-                    avatar: "/src/images/avatars/night.jpg",
+                    avatar: "images/avatars/night.jpg",
                     date: "Aujourd'hui à 14h01",
                     sender: false,
                     content: "Y a intérêt. J'sais pas pourquoi, mais ça me rassure pas cette histoire",
@@ -139,7 +139,7 @@ const script : DialogueLine[] = [
                   {
                     id: "positif2",
                     name: "@freal",
-                    avatar: "/src/images/avatars/freal.png",
+                    avatar: "images/avatars/freal.png",
                     date: "Aujourd'hui à 14h01",
                     sender: false,
                     content: "Tu devrais apprendre à avoir plus foi en tes compagnons, jeune homme !",
@@ -147,7 +147,7 @@ const script : DialogueLine[] = [
                   {
                     id: "positif3",
                     name: "@nuit_rouge",
-                    avatar: "/src/images/avatars/night.jpg",
+                    avatar: "images/avatars/night.jpg",
                     sender: false,
                     date: "Aujourd'hui à 14h01",
                     content: "Eh ho c'est bon, j't'ai pas sonné toi",
@@ -161,7 +161,7 @@ const script : DialogueLine[] = [
                 {
                     id: "negatif1",
                     name: "@nuit_rouge",
-                    avatar: "/src/images/avatars/night.jpg",
+                    avatar: "images/avatars/night.jpg",
                     date: "Aujourd'hui à 14h01",
                     sender: false,
                     content: "Il t'a fallu 4h avant de répondre juste pour être désagréable ? Sérieusement",
@@ -169,7 +169,7 @@ const script : DialogueLine[] = [
                   {
                     id: "negatif2",
                     name: "@freal",
-                    avatar: "/src/images/avatars/freal.png",
+                    avatar: "images/avatars/freal.png",
                     date: "Aujourd'hui à 14h01",
                     sender: false,
                     content: "Allons, allons. Il vaut mieux qu'il soit sûr de lui dans des moments pareils ! Vas-y gamin, montre-leur ;)) ",
@@ -177,7 +177,7 @@ const script : DialogueLine[] = [
                   {
                     id: "negatif3",
                     date: "Aujourd'hui à 14h02",
-                    avatar: "/src/images/avatars/night.jpg",
+                    avatar: "images/avatars/night.jpg",
                     sender: false,
                     name: "@nuit_rouge",
                     content: "Pffff",
@@ -191,7 +191,7 @@ const script : DialogueLine[] = [
                 {
                     id: "inquiet1",
                     name: "@nuit_rouge",
-                    avatar: "/src/images/avatars/night.jpg",
+                    avatar: "images/avatars/night.jpg",
                     date: "Aujourd'hui à 14h01",
                     sender: false,
                     content: "C'bon, décoince-toi un peu. Il est avec moi",
@@ -199,7 +199,7 @@ const script : DialogueLine[] = [
                   {
                     id: "inquiet2",
                     name: "@freal",
-                    avatar: "/src/images/avatars/freal.png",
+                    avatar: "images/avatars/freal.png",
                     date: "Aujourd'hui à 14h01",
                     sender: false,
                     content: "Sorry Va, il semblerait que la communication soit mal passée.",

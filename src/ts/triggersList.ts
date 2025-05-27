@@ -1,4 +1,5 @@
-import { showLine } from './main';
+
+import { lineHandler } from './globals';
 
 interface Trigger {
     position: number;
@@ -14,7 +15,7 @@ const triggersList: Trigger[] = [
         stays: true,
         action: () => {
             console.log('trigger pas par là');
-            showLine('pas-par-la');
+            lineHandler.showLine('pas-par-la');
         }
     },
     {
@@ -22,7 +23,7 @@ const triggersList: Trigger[] = [
         debug: true,
         action: () => {
             console.log('trigger gare8');
-            showLine('3js9');
+            lineHandler.showLine('3js9');
         }
     },
     {

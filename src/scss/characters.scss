@@ -1,0 +1,55 @@
+
+#characters {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    
+    &.over {
+        z-index: 10000000;
+    }
+}
+  
+.character-slot {
+    position: absolute;
+    bottom: 0;
+    height: 700px;
+    width: 700px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    transition: all .3s ease;
+}
+  
+#left-character {
+    left: 10%;
+}
+ 
+#right-character {
+    right: 10%;
+}
+
+#middle-character {
+    left: 50%;
+    transform: translateX(-50%);
+}
+  
+.character-slot img {
+    max-height: 80%;
+    max-width: 100%;
+    object-fit: contain;
+}
+  
+#game-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100vw;
+    height: 100vh;
+}

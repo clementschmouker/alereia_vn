@@ -1,0 +1,70 @@
+@import url('./smartphone.scss');
+@import url('./dialogs.scss');
+@import url('./ui.scss');
+@import url('./characters.scss');
+@import url('./startscreen.scss');
+
+@font-face {
+    font-family: 'Tablon';
+    src: url('fonts/Tablon-Black.ttf') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Raleway', sans-serif;
+    line-height: 160%;
+    background-color: black;
+    color: white;
+}
+
+#game {
+    height: 100vh;
+    width: 100vw;
+    z-index: 1;
+    position: relative;
+    overflow: hidden;
+
+    &.hidden {
+        visibility: hidden;
+    }
+}
+
+#game-container {
+    position: relative;
+    z-index: 0;
+    font-family: 'Tablon', sans-serif;
+    font-weight: 400;
+}
+
+
+#background {
+    background: black no-repeat center center;
+    background-size: cover;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+#background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+
+.container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+

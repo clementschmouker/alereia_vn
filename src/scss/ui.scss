@@ -1,0 +1,96 @@
+#mute-sound {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    width: 100px;
+    height: 100px;
+    z-index: 100000;
+    background: transparent;
+    background-image: url('./images/glitched-sound.svg');
+    background-size: contain;
+    text-indent: -9999px;
+    border: 0;
+}
+  
+#mute-sound:hover {
+    cursor: pointer;
+}
+  
+#mute-sound.muted {
+    background-image: url('./images/glitched-sound-mute.svg');
+}
+  
+  
+#skip-video {
+    position: fixed;
+    z-index: 1000000;
+    bottom: 1rem;
+    right: 1rem;
+  
+    padding-top: 0.8rem;
+    text-transform: uppercase;
+    background: transparent;
+    color: white;
+    border-width: 20px;
+    border-image: url('./images/dialogbubble-black.svg') 20 fill;
+  
+    transition: all .3s ease;
+}
+  
+#skip-video:hover {
+    cursor: pointer;
+}
+
+#go-back {
+    position: fixed;
+    z-index: 10000;
+    top: 1rem;
+    left: 1rem;
+    width: 70px;
+    height: 70px;
+    background: transparent;
+    background-image: url('./images/back.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: none;
+    text-indent: -9999px;
+  
+    &.hidden {
+      display: none;
+    }
+}
+  
+#go-back:hover {
+    cursor: pointer;
+}
+  
+#skip-video.hidden {
+    display: none;
+}
+
+.view-bar {
+    position: fixed;
+    z-index: 10000;
+    width: 100%;
+    height: 100px;
+    background: black;
+
+    &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        bottom: -4.5rem;
+        background-image: url('./images/bar.svg');
+        background-repeat: repeat-x;
+    }
+}
+
+.top-bar {
+    top: 0;
+}
+
+.bottom-bar {
+    bottom: 0;
+    transform: scaleY(-1);
+}

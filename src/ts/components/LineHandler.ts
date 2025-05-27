@@ -30,7 +30,7 @@ export default class LineHandler {
     canPassScreen: boolean = true;
     previousLines: string[] = [];
     currentLineIndex: number = 0;
-    currentLineId: string = 'start';
+    currentLineId: string = '';
     currentLineText: string = '';
     typingInterval: NodeJS.Timeout | null = null;
     script: any[];

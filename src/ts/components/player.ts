@@ -17,7 +17,7 @@ class Player {
         this.speed = 0.2;
 
         const planeGeometry = new THREE.PlaneGeometry(this.size.x, this.size.y);
-        const material = new THREE.MeshBasicMaterial({ color: 0xffffff });
+        const material = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0 });
 
         this.mesh = new THREE.Mesh(planeGeometry, material);
     }

@@ -24,7 +24,7 @@ import {
 
 import '../scss/main.scss';
 
-const DEFAULT_STARTING_LINE_ID = "start"; // Ici tu change l'ID que tu veux pour commencer
+const DEFAULT_STARTING_LINE_ID = "gare"; // Ici tu change l'ID que tu veux pour commencer
 
 
 startButton?.addEventListener("click", () => {
@@ -89,42 +89,42 @@ document.addEventListener("keydown", (event) => {
 
 
 
-document.addEventListener("mousemove", (event) => {
-    const { clientX, clientY } = event;
-    const { innerWidth, innerHeight } = window;
+// document.addEventListener("mousemove", (event) => {
+//     const { clientX, clientY } = event;
+//     const { innerWidth, innerHeight } = window;
 
-    const xOffset = -(clientX / innerWidth - 0.5) * 10;
-    const yOffset = -(clientY / innerHeight - 0.5) * 10;
+//     const xOffset = -(clientX / innerWidth - 0.5) * 10;
+//     const yOffset = -(clientY / innerHeight - 0.5) * 10;
 
-    const characterXOffset = (clientX / innerWidth - 0.5) * 10;
-    const characterYOffset = (clientY / innerHeight - 0.5) * 10;
+//     const characterXOffset = (clientX / innerWidth - 0.5) * 10;
+//     const characterYOffset = (clientY / innerHeight - 0.5) * 10;
 
-    gsap.to(backgroundElem, {
-        duration: 0.3,
-        x: xOffset,
-        y: yOffset,
-        ease: "power4.out",
-    });
+//     gsap.to(backgroundElem, {
+//         duration: 0.3,
+//         x: xOffset,
+//         y: yOffset,
+//         ease: "power4.out",
+//     });
 
-    gsap.to(leftCharacter, {
-        duration: 0.3,
-        x: characterXOffset,
-        y: characterYOffset,
-        ease: "power4.out",
-    });
-    gsap.to(rightCharacter, {
-        duration: 0.3,
-        x: characterXOffset,
-        y: characterYOffset,
-        ease: "power4.out",
-    });
-    gsap.to(middleCharacter, {
-        duration: 0.3,
-        x: characterXOffset,
-        y: characterYOffset,
-        ease: "power4.out",
-    });
-});
+//     gsap.to(leftCharacter, {
+//         duration: 0.3,
+//         x: characterXOffset,
+//         y: characterYOffset,
+//         ease: "power4.out",
+//     });
+//     gsap.to(rightCharacter, {
+//         duration: 0.3,
+//         x: characterXOffset,
+//         y: characterYOffset,
+//         ease: "power4.out",
+//     });
+//     gsap.to(middleCharacter, {
+//         duration: 0.3,
+//         x: characterXOffset,
+//         y: characterYOffset,
+//         ease: "power4.out",
+//     });
+// });
 
 window.addEventListener("resize", () => {
     backgroundElem.style.transform = "translate(0, 0)";

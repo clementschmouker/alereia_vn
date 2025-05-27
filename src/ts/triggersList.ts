@@ -11,7 +11,7 @@ interface Trigger {
 const triggersList: Trigger[] = [
     {
         position: -60,
-        debug: true,
+        // debug: true,
         stays: true,
         action: () => {
             console.log('trigger pas par là');
@@ -20,7 +20,7 @@ const triggersList: Trigger[] = [
     },
     {
         position: 5,
-        debug: true,
+        // debug: true,
         action: () => {
             console.log('trigger gare8');
             lineHandler.showLine('3js9');

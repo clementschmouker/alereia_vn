@@ -74,15 +74,15 @@
 
 #dialogue-box.right {
 	display: block;
-	bottom: 700px;
-	right: 650px;
+	bottom: 64.81%;
+	right: 33%;
 	transform: translateY(50%);
 }
 
 #dialogue-box.left {
 	display: block;
-	bottom: 700px;
-	left: 650px;
+	bottom: 64.81%;
+	left: 33%;
 	transform: translateY(50%);
 }
 
@@ -93,7 +93,7 @@
 
 #dialogue-box.center .comic-bubble__tail {
 	left: 50%;
-	transform: scaleX(-1);
+	transform: translateX(-20%) scaleX(1);
 }
 
 #dialogue-box.narrator .comic-bubble__tail {
@@ -102,8 +102,8 @@
 
 #dialogue-box.center {
 	display: block;
-	bottom: 750px;
-	left: 50%;
+	bottom: 70.81%;
+	left: 40%;
 	transform: translateY(50%) translateX(-50%);
 }
 
@@ -125,7 +125,7 @@
 	transform: translateX(-50%);
 
 	&.right {
-		left: 600px;
+		left: 20%;
 		right: auto;
 		top: 0;
 		bottom: 0;

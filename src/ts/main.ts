@@ -1,6 +1,3 @@
-
-import gsap from "gsap";
-
 import { 
     game,
     dialogueBox,
@@ -21,7 +18,7 @@ import {
 
 import '../scss/main.scss';
 
-const DEFAULT_STARTING_LINE_ID = "gare"; // Ici tu change l'ID que tu veux pour commencer
+const DEFAULT_STARTING_LINE_ID = "start"; // Ici tu change l'ID que tu veux pour commencer
 
 
 startButton?.addEventListener("click", () => {

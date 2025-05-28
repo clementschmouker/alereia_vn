@@ -56,17 +56,28 @@ export default class LineHandler {
         this.isWritting = value;
     }
 
-    typeText = (text: string, element: HTMLElement, speed: number) => {
+    typeText = (text: string, element: HTMLElement, speed: number, voice: string = 'low') => {
+        console.log(voice);
         this.clearTyping();
         let index = 0;
         this.isWritting = true;
         this.typingInterval = setInterval(() => {
+            audioChannelVoice.pause();
+            if (index % 3 === 0) {
+                let randomizedStart = Math.floor(Math.random() * 3) + 1;
+                console.log(randomizedStart);
+                audioChannelVoice.src = `audio/voices/${voice}/voice${randomizedStart}.wav`;
+                audioChannelVoice.currentTime = 0;
+                audioChannelVoice.volume = 1;
+                audioChannelVoice.play();
+            }
             if (index < text.length) {
                 const char = text[index];
                 if (char === "<") {
                     const endIndex = text.indexOf(">", index);
                     if (endIndex !== -1) {
                         element.innerHTML += text.substring(index, endIndex + 1);
+                        console.log(text.substring(index, endIndex + 1))
                         index = endIndex + 1;
                     } else {
                         element.innerHTML += char;
@@ -77,6 +88,7 @@ export default class LineHandler {
                     index++;
                 }
             } else {
+                audioChannelVoice.pause();
                 this.isWritting = false;
                 this.clearTyping();
             }
@@ -161,7 +173,7 @@ export default class LineHandler {
         source.src = newSrc;
         source.type = "audio/mpeg";
         audioElement.appendChild(source);
-        source.setAttribute('loop', String(loop));
+        audioElement.setAttribute('loop', String(loop));
     
         audioElement.load();
     
@@ -221,6 +233,7 @@ export default class LineHandler {
 
     showLine = (id: string, backward: boolean = false) => {
         const line = this.findLineById(id);
+
         if (line && !line.textPosition) {
             line.textPosition = "narrator";
         }
@@ -277,8 +290,9 @@ export default class LineHandler {
         } else {
             this.canSkipSmartphone = true;
             smartPhoneElement.classList.remove('visible');
-            dialogueBox.classList.remove("left", "right", "narrator", "center");
+            dialogueBox.classList.remove("left", "right", "narrator", "center", "thinking", "speech");
             dialogueBox.classList.add(line?.textPosition as string);
+            dialogueBox.classList.add(line?.style as string);
         }
 
         choiceWrapper!.innerHTML = "";
@@ -383,7 +397,7 @@ export default class LineHandler {
     
             if (line.text) {
                 this.currentLineText = line.text;
-                this.typeText(line.text, dialogueElem, 20);
+                this.typeText(line.text, dialogueElem, 20, line.voice);
                 document.removeEventListener("keydown", this.stopTyping);
                 document.addEventListener("keydown", this.stopTyping);
             }
@@ -483,6 +497,7 @@ export default class LineHandler {
             }
     
             if (line.music) {
+                console.log('music');
                 this.crossfadeMusic(audioChannelMusic, line.music, 2000, line.loopMusic);
             }
         }

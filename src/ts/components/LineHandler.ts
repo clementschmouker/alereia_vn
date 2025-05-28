@@ -57,7 +57,6 @@ export default class LineHandler {
     }
 
     typeText = (text: string, element: HTMLElement, speed: number, voice: string = 'low') => {
-        console.log(voice);
         this.clearTyping();
         let index = 0;
         this.isWritting = true;
@@ -65,7 +64,6 @@ export default class LineHandler {
             audioChannelVoice.pause();
             if (index % 3 === 0) {
                 let randomizedStart = Math.floor(Math.random() * 3) + 1;
-                console.log(randomizedStart);
                 audioChannelVoice.src = `audio/voices/${voice}/voice${randomizedStart}.wav`;
                 audioChannelVoice.currentTime = 0;
                 audioChannelVoice.volume = 1;
@@ -77,7 +75,6 @@ export default class LineHandler {
                     const endIndex = text.indexOf(">", index);
                     if (endIndex !== -1) {
                         element.innerHTML += text.substring(index, endIndex + 1);
-                        console.log(text.substring(index, endIndex + 1))
                         index = endIndex + 1;
                     } else {
                         element.innerHTML += char;
@@ -497,22 +494,18 @@ export default class LineHandler {
             }
     
             if (line.music) {
-                console.log('music');
                 this.crossfadeMusic(audioChannelMusic, line.music, 2000, line.loopMusic);
             }
         }
         if (!backward) {
-            console.log('save line ', id);
             this.currentLineId = id;
             this.currentLineIndex += 1;
         } else {
-            console.log('pop line ', id);
             this.currentLineId = id;
             this.currentLineIndex -= 1;
         }
         if (!line?.dontSave) {
             this.previousLines[this.currentLineIndex] = this.currentLineId;
         }
-        console.log(this.currentLineId, this.currentLineIndex);
     }
 }

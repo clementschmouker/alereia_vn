@@ -41,17 +41,18 @@ const solidify = (mesh: THREE.Mesh) => {
 
 
 class Game {
-    scene: THREE.Scene;
-    camera: THREE.PerspectiveCamera;
-    renderer: THREE.WebGLRenderer;
-    controls: OrbitControls;
-    cityModel: THREE.Object3D | null;
-    player: Player;
-    raycaster: THREE.Raycaster;
-    collidableObjects: THREE.Object3D[];
-    paused: boolean;
-    stoped: boolean;
-    triggers: Trigger[];
+    public paused: boolean;
+    public stoped: boolean;
+    private scene: THREE.Scene;
+    private camera: THREE.PerspectiveCamera;
+    private renderer: THREE.WebGLRenderer;
+    private controls: OrbitControls;
+    private cityModel: THREE.Object3D | null;
+    private player: Player;
+    private raycaster: THREE.Raycaster;
+    private collidableObjects: THREE.Object3D[];
+    private triggers: Trigger[];
+    private clock: THREE.Clock;
 
     constructor() {
         this.scene = new THREE.Scene();
@@ -70,6 +71,7 @@ class Game {
         const backgroundTexture = textureLoader.load('images/decors/skybox.png');
         this.scene.background = backgroundTexture;
         this.cityModel = null;
+        this.clock = new THREE.Clock();
 
         this.raycaster = new THREE.Raycaster();
         this.collidableObjects = [];
@@ -90,6 +92,8 @@ class Game {
         const startingPlayerPosition = new THREE.Vector3(-58, 0.5, -7.15);
         this.player = new Player(startingPlayerPosition);
         this.scene.add(this.player.mesh);
+
+        this.player.loop([0], 1.5);
 
         // Triggers
         triggersList.forEach(triggerData => {
@@ -194,15 +198,27 @@ class Game {
         addEventListener('keydown', (event) => {
             if (event.key === 'ArrowRight') {
                 this.player.direction = 1;
+                this.player.facingDirection = 1;
+                if (this.player.isRunning === false) {
+                    this.player.loop([0, 1, 2, 3, 4, 5, 6, 7], 0.8);
+                }
+                this.player.isRunning = true;
             }
             if (event.key === 'ArrowLeft') {
                 this.player.direction = -1;
+                this.player.facingDirection = -1;
+                if (this.player.isRunning === false) {
+                    this.player.loop([0, 1, 2, 3, 4, 5, 6, 7], 0.8);
+                }
+                this.player.isRunning = true;
             }
         });
 
         addEventListener('keyup', (event) => {
             if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
                 this.player.direction = 0;
+                this.player.loop([0, 1], 0.8);
+                this.player.isRunning = false;
             }
         })
 
@@ -224,6 +240,7 @@ class Game {
         requestAnimationFrame(this.animate);
         this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         this.controls.update();
+        let deltaTime = this.clock.getDelta();
 
         const origin = new THREE.Vector3(this.player.position.x, this.player.position.y, this.player.position.z);
         const direction = new THREE.Vector3(0, -1, 0);
@@ -243,7 +260,7 @@ class Game {
         
         this.camera.position.set(this.player.position.x, 0.75, this.player.position.z + 2);
         this.camera.lookAt(this.player.position);
-        this.player.update();
+        this.player.update(deltaTime);
         this.triggers.forEach((trigger: Trigger) => {
             if (trigger.isColliding(this.player.position) && trigger.triggered === false) {
                 trigger.triggered = true;

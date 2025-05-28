@@ -149,7 +149,7 @@ export default class LineHandler {
     
     
     
-    crossfadeMusic = async (audioElement: HTMLAudioElement, newSrc: string, duration = 1000) => {
+    crossfadeMusic = async (audioElement: HTMLAudioElement, newSrc: string, duration = 1000, loop: boolean = false) => {
         if (!audioElement) return;
     
         await this.fadeOut(audioElement, duration / 2);
@@ -161,6 +161,7 @@ export default class LineHandler {
         source.src = newSrc;
         source.type = "audio/mpeg";
         audioElement.appendChild(source);
+        source.setAttribute('loop', String(loop));
     
         audioElement.load();
     
@@ -220,9 +221,6 @@ export default class LineHandler {
 
     showLine = (id: string, backward: boolean = false) => {
         const line = this.findLineById(id);
-        console.log(line);
-        console.log('LINE INDEX::', id);
-        console.log('PREVIOUS LINE ARRAY::', this.previousLines);
         if (line && !line.textPosition) {
             line.textPosition = "narrator";
         }
@@ -485,7 +483,7 @@ export default class LineHandler {
             }
     
             if (line.music) {
-                this.crossfadeMusic(audioChannelMusic, line.music, 2000);
+                this.crossfadeMusic(audioChannelMusic, line.music, 2000, line.loopMusic);
             }
         }
         if (!backward) {

@@ -56,15 +56,17 @@ export default class LineHandler {
         this.isWritting = value;
     }
 
-    typeText = (text: string, element: HTMLElement, speed: number) => {
+    typeText = (text: string, element: HTMLElement, speed: number, voice: string = '') => {
+        console.log(voice);
         this.clearTyping();
         let index = 0;
         this.isWritting = true;
         this.typingInterval = setInterval(() => {
-            audioChannelVoice.currentTime = 0;
-            audioChannelVoice.volume = 0.1;
-            audioChannelVoice.playbackRate = 1 + (Math.random() * 0.9 - 0.1); // Randomize pitch slightly
-            audioChannelVoice.play();
+            if (index % 3 === 0) {
+                audioChannelVoice.currentTime = 0;
+                audioChannelVoice.volume = 0.1;
+                audioChannelVoice.play();
+            }
             if (index < text.length) {
                 const char = text[index];
                 if (char === "<") {
@@ -387,7 +389,7 @@ export default class LineHandler {
     
             if (line.text) {
                 this.currentLineText = line.text;
-                this.typeText(line.text, dialogueElem, 50);
+                this.typeText(line.text, dialogueElem, 20, line.voice);
                 document.removeEventListener("keydown", this.stopTyping);
                 document.addEventListener("keydown", this.stopTyping);
             }

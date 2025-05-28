@@ -222,7 +222,7 @@ class Game {
 
     animate = () => {
         requestAnimationFrame(this.animate);
-        // this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         this.controls.update();
 
         const origin = new THREE.Vector3(this.player.position.x, this.player.position.y, this.player.position.z);
@@ -241,8 +241,8 @@ class Game {
             this.player.position.y += (targetY - currentY) * 0.1;
         }
         
-        // this.camera.position.set(this.player.position.x, 0.75, this.player.position.z + 2);
-        // this.camera.lookAt(this.player.position);
+        this.camera.position.set(this.player.position.x, 0.75, this.player.position.z + 2);
+        this.camera.lookAt(this.player.position);
         this.player.update();
         this.triggers.forEach((trigger: Trigger) => {
             if (trigger.isColliding(this.player.position) && trigger.triggered === false) {

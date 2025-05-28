@@ -32,6 +32,7 @@ interface DialogueLine {
     id: string;
     name?: string;
     text?: string;
+    style?: 'speech' | 'thinking';
     textPosition?: 'right' | 'left' | 'center' | 'narrator' | 'none';
     dontSave?: boolean,
     video?: string;

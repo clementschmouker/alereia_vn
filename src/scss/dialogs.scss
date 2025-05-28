@@ -10,6 +10,19 @@
 	cursor: pointer;
 	padding: 0;
 
+	&.thinking {
+		font-style: italic;
+
+		.comic-bubble__tail {
+			width: 70px;
+			height: 70px;
+			bottom: -73px;
+			background-image: url('./images/dialogbubble-circles.svg');
+			background-size: contain;
+			background-repeat: no-repeat;
+		}
+	}
+
 	.smartphone-choices {
 		position: relative;
 		display: flex;

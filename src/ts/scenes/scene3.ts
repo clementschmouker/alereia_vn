@@ -80,28 +80,6 @@ const script : DialogueLine[] = [
         },
     },
     {
-      id: 'pas-par-la',
-      name: "Vangva",
-      text: "<i>Je viens de la gare, je ne vais pas y retourner...</i>",
-      pauseGame: true,
-      dontSave: true,
-      charactersOnScreen: {
-        left: "vava",
-        leftMood: "embete",
-      },
-      textPosition: 'left',
-      nextLineId: 'restart-game',
-    },
-    {
-      id: 'restart-game',
-      charactersOnScreen: {
-        left: '',
-      },
-      dontSave: true,
-      unpauseGame: true,
-      noNextLine: true,
-    },
-    {
       id: "3js9",
       name: "Vangva",
       text: "<i>Les voilà...</i>",

@@ -1,4 +1,5 @@
 import Game from './game';
+import scenesTHREE from './scenes/scenesTHREE';
 import scene1 from "./scenes/scene1";
 import scene2 from "./scenes/scene2";
 import scene3 from "./scenes/scene3";
@@ -13,6 +14,7 @@ import scene10 from "./scenes/scene10";
 import LineHandler from './components/LineHandler';
 
 const script = [
+    ...scenesTHREE,
     ...scene1,
     ...scene2,
     ...scene3,

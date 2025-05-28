@@ -56,15 +56,19 @@ export default class LineHandler {
         this.isWritting = value;
     }
 
-    typeText = (text: string, element: HTMLElement, speed: number, voice: string = '') => {
+    typeText = (text: string, element: HTMLElement, speed: number, voice: string = 'low') => {
         console.log(voice);
         this.clearTyping();
         let index = 0;
         this.isWritting = true;
         this.typingInterval = setInterval(() => {
+            audioChannelVoice.pause();
             if (index % 3 === 0) {
+                let randomizedStart = Math.floor(Math.random() * 3) + 1;
+                console.log(randomizedStart);
+                audioChannelVoice.src = `audio/voices/${voice}/voice${randomizedStart}.wav`;
                 audioChannelVoice.currentTime = 0;
-                audioChannelVoice.volume = 0.1;
+                audioChannelVoice.volume = 1;
                 audioChannelVoice.play();
             }
             if (index < text.length) {
@@ -83,6 +87,7 @@ export default class LineHandler {
                     index++;
                 }
             } else {
+                audioChannelVoice.pause();
                 this.isWritting = false;
                 this.clearTyping();
             }

@@ -10,7 +10,6 @@ const script : DialogueLine[] = [
         left: "vava",
         leftMood: "alerte_tel",
         leftFlip: true,
-        rightFlip: false
       },
     },
     {

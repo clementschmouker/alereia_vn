@@ -10,6 +10,8 @@ const script: DialogueLine[] = [
       right: "",
       middle: "",
     },
+    music: 'audio/scene1.mp3',
+    loopMusic: true,
   },
   {
     id: "start0", // Unique ID for this line
@@ -17,7 +19,6 @@ const script: DialogueLine[] = [
     text: "Alors, voilà... Je...",
     textPosition: 'right', // Ilyem is on the right
     background: 'bar',
-    music: 'audio/scene1.mp3',
     charactersOnScreen: {
       left: "serveuse",
       leftMood: "mefiante",

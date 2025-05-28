@@ -27,7 +27,7 @@ const script: DialogueLine[] = [
         dontSave: true,
         unpauseGame: true,
         noNextLine: true,
-    },
+    }
 ]
 
 export default script;

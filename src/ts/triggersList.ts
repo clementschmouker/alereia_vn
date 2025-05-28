@@ -19,10 +19,9 @@ const triggersList: Trigger[] = [
         }
     },
     {
-        position: 5,
-        // debug: true,
+        position: -47,
+        debug: true,
         action: () => {
-            console.log('trigger gare8');
             lineHandler.showLine('3js9');
         }
     },

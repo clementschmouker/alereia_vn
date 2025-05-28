@@ -28,7 +28,9 @@ const script : DialogueLine[] = [
       background: 'bar',
       charactersOnScreen: {
         left: "serveuse",
-        leftMood: "coutal",
+        leftMood: "peur",
+        right: "ilyem",
+        rightMood: "fachee",
         leftFlip: false,
         rightFlip: false
       },
@@ -38,12 +40,9 @@ const script : DialogueLine[] = [
       name: "Ilyem",
       text: "Si tu cries, je n'hésiterai pas à le planter dans ta gorge ! Et je te préviens, s'il m'arrive quoi que ce soit, Prisme nous surveille en ce moment-même.",
       textPosition: 'right', // Ilyem is on the right
-      background: 'bar',
+      background: 'coutal',
       charactersOnScreen: {
-        left: "serveuse",
-        leftMood: "coutal",
-        leftFlip: false,
-        rightFlip: false
+        left: "",
       },
     },
     {

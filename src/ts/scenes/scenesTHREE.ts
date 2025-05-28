@@ -18,6 +18,7 @@ const script: DialogueLine[] = [
         id: 'endgame',
         stopGame: true,
         nextLineId: 'impasse',
+        // rajouter un background
     },
     {
         id: 'restart-game',

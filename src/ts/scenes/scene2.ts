@@ -1,4 +1,4 @@
-import { DialogueLine, FadeTransitionType } from "../types";
+import { DialogueLine } from "../types";
 
 const script : DialogueLine[] = [
     {

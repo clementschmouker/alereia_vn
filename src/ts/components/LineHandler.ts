@@ -142,6 +142,7 @@ export default class LineHandler {
         preloader.onload = () => {
             this.currentCharacters[position] = { name, mood: mood || "", flip: !!flip };
             container.style.backgroundImage = `url(${newSrc})`;
+            if (flip) { container.classList.add('flipped') }
         };
     }
     
@@ -219,6 +220,9 @@ export default class LineHandler {
 
     showLine = (id: string, backward: boolean = false) => {
         const line = this.findLineById(id);
+        console.log(line);
+        console.log('LINE INDEX::', id);
+        console.log('PREVIOUS LINE ARRAY::', this.previousLines);
         if (line && !line.textPosition) {
             line.textPosition = "narrator";
         }
@@ -278,6 +282,8 @@ export default class LineHandler {
             dialogueBox.classList.remove("left", "right", "narrator", "center");
             dialogueBox.classList.add(line?.textPosition as string);
         }
+
+        choiceWrapper!.innerHTML = "";
     
         if (line?.smartphoneChoices) {
             this.canSkipSmartphone = false;
@@ -483,14 +489,17 @@ export default class LineHandler {
             }
         }
         if (!backward) {
+            console.log('save line ', id);
             this.currentLineId = id;
             this.currentLineIndex += 1;
-            if (!line?.dontSave) {
-                this.previousLines.push(this.currentLineId);
-            }
         } else {
+            console.log('pop line ', id);
+            this.currentLineId = id;
             this.currentLineIndex -= 1;
-            this.currentLineId = this.previousLines[this.currentLineIndex];
         }
+        if (!line?.dontSave) {
+            this.previousLines[this.currentLineIndex] = this.currentLineId;
+        }
+        console.log(this.currentLineId, this.currentLineIndex);
     }
 }

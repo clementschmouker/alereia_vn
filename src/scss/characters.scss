@@ -24,6 +24,10 @@
     justify-content: center;
 
     transition: all .3s ease;
+
+    &.flipped {
+        transform: scaleX(-1);
+    }
 }
   
 #left-character {
@@ -37,6 +41,10 @@
 #middle-character {
     left: 50%;
     transform: translateX(-50%);
+    
+    &.flipped {
+        transform: translateX(-50%) scaleX(-1);
+    }
 }
   
 .character-slot img {

@@ -5,9 +5,6 @@ import {
     game,
     dialogueBox,
     smartPhoneCloseElem,
-    leftCharacter,
-    rightCharacter,
-    middleCharacter,
     backgroundElem,
     skipVideo,
     backgroundVideo,
@@ -53,9 +50,8 @@ skipVideo?.addEventListener("click", () => {
 });
 
 goBackButton?.addEventListener("click", () => {
-    if (lineHandler.currentLineIndex <= 1) return;
-    lineHandler.showLine(lineHandler.previousLines[lineHandler.currentLineIndex - 2], true);
-    lineHandler.previousLines.pop();
+    if (lineHandler.previousLines.length <= 1) return;
+    lineHandler.showLine(lineHandler.previousLines[lineHandler.currentLineIndex - 1], true);
 });
 
 smartPhoneWrittingBarElem.addEventListener('click', () => {

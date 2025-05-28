@@ -16,6 +16,7 @@ const script : DialogueLine[] = [
       id: "gare00",
       name: "Vangva",
       text: "<i>...</i>",
+      style: 'thinking',
       textPosition: 'center', // Vangva is on the left
       background: 'gare',
       charactersOnScreen: {
@@ -28,6 +29,7 @@ const script : DialogueLine[] = [
       id: "gare01",
       name: "Vangva",
       text: "<i>Brissa...</i>",
+      style: 'thinking',
       textPosition: 'center', // Vangva is on the left
       background: 'gare',
       charactersOnScreen: {
@@ -40,6 +42,7 @@ const script : DialogueLine[] = [
       id: "gare0",
       name: "Vangva",
       text: "<i>Décidément, ça me fera toujours quelque chose de rentrer. Un quelque chose coincé entre la nostalgie et le malaise...</i>",
+      style: 'thinking',
       textPosition: 'center', // Vangva is on the left
       background: 'gare',
       charactersOnScreen: {
@@ -64,6 +67,7 @@ const script : DialogueLine[] = [
       id: "gare1.1",
       name: "Vangva",
       text: "<i>Bon. Il n'y a plus qu'à attendre.</i>",
+      style: 'thinking',
       textPosition: 'center', // Vangva is on the left
       background: 'gare',
       charactersOnScreen: {
@@ -76,6 +80,7 @@ const script : DialogueLine[] = [
       id: "gare2",
       name: "Vangva",
       text: "<i>J'espère qu'il va bientôt me répondre...</i>",
+      style: 'thinking',
       textPosition: 'center', // Vangva is on the left
       background: 'gare',
       charactersOnScreen: {
@@ -94,7 +99,7 @@ const script : DialogueLine[] = [
           name: "@StrangerFromTheSky",
           content: "Alors ! Qu'est-ce que j'ai raté ?",
           date: "Hier à 22h21",
-          avatar: "images/avatars/stranger.jpg",
+          avatar: "images/avatars/stranger.png",
           sender: false,
         },
         {
@@ -102,7 +107,7 @@ const script : DialogueLine[] = [
           name: "@StrangerFromTheSky",
           content: "... Oh mais Vangva ! C'est cool, merci !",
           date: "Hier à 22h21",
-          avatar: "images/avatars/stranger.jpg",
+          avatar: "images/avatars/stranger.png",
           sender: false,
         },
         {
@@ -124,7 +129,7 @@ const script : DialogueLine[] = [
         {
           id: "passtMessage5",
           name: "@freal",
-          avatar: "images/avatars/freal.png",
+          avatar: "images/avatars/freal.jpg",
           content: "Ho ho ho, on dirait qu'on a trouvé une solution",
           date: "Hier à 22h22",
           sender: false,
@@ -184,7 +189,7 @@ const script : DialogueLine[] = [
                   {
                     id: "positif2",
                     name: "@freal",
-                    avatar: "images/avatars/freal.png",
+                    avatar: "images/avatars/freal.jpg",
                     date: "Aujourd'hui à 14h01",
                     sender: false,
                     content: "Tu devrais apprendre à avoir plus foi en tes compagnons, jeune homme !",
@@ -200,7 +205,7 @@ const script : DialogueLine[] = [
                   {
                     id: "positif4",
                     name: "@freal",
-                    avatar: "images/avatars/freal.png",
+                    avatar: "images/avatars/freal.jpg",
                     date: "Aujourd'hui à 14h02",
                     sender: false,
                     content: "... et le respect de tes aînés, dans tout ça ?",
@@ -216,7 +221,7 @@ const script : DialogueLine[] = [
                   {
                     id: "positif6",
                     name: "@freal",
-                    avatar: "images/avatars/freal.png",
+                    avatar: "images/avatars/freal.jpg",
                     date: "Aujourd'hui à 14h02",
                     sender: false,
                     content: "Bref. On sait tous que notre Va est un champion. :)",
@@ -238,7 +243,7 @@ const script : DialogueLine[] = [
                   {
                     id: "negatif2",
                     name: "@freal",
-                    avatar: "images/avatars/freal.png",
+                    avatar: "images/avatars/freal.jpg",
                     date: "Aujourd'hui à 14h01",
                     sender: false,
                     content: "Allons, allons. Il vaut mieux qu'il soit sûr de lui dans des moments pareils ! Vas-y gamin, montre-leur ;)) ",
@@ -254,7 +259,7 @@ const script : DialogueLine[] = [
                   {
                     id: "negatif4",
                     name: "@freal",
-                    avatar: "images/avatars/freal.png",
+                    avatar: "images/avatars/freal.jpg",
                     date: "Aujourd'hui à 14h02",
                     sender: false,
                     content: "Monsieur serait-il jaloux ? :3 ",
@@ -278,7 +283,7 @@ const script : DialogueLine[] = [
                   {
                     id: "negatif7",
                     name: "@freal",
-                    avatar: "images/avatars/freal.png",
+                    avatar: "images/avatars/freal.jpg",
                     date: "Aujourd'hui à 14h02",
                     sender: false,
                     content: ":o",
@@ -300,7 +305,7 @@ const script : DialogueLine[] = [
                   {
                     id: "inquiet2",
                     name: "@freal",
-                    avatar: "images/avatars/freal.png",
+                    avatar: "images/avatars/freal.jpg",
                     date: "Aujourd'hui à 14h01",
                     sender: false,
                     content: "Sorry Va, il semblerait que la communication soit mal passée.",
@@ -324,7 +329,7 @@ const script : DialogueLine[] = [
                 {
                     id: "inquiet5",
                     name: "@StrangerFromTheSky",
-                    avatar: "images/avatars/stranger.jpg",
+                    avatar: "images/avatars/stranger.png",
                     date: "Aujourd'hui à 14h01",
                     sender: false,
                     content: "Pfff bon je l'écris moi-même alors ! T'es un champion Va, tu vas tout défoncer ! :D",

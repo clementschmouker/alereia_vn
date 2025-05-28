@@ -4,7 +4,8 @@ const script: DialogueLine[] = [
     {
         id: 'pas-par-la',
         name: "Vangva",
-        text: "<i>Je viens de la gare, je ne vais pas y retourner...</i>",
+        text: "<i>Je n'ai pas besoin de retourner à la gare...</i>",
+        style: 'thinking',
         pauseGame: true,
         dontSave: true,
         charactersOnScreen: {
@@ -18,7 +19,7 @@ const script: DialogueLine[] = [
         id: 'endgame',
         stopGame: true,
         nextLineId: 'impasse',
-        // rajouter un background
+        background: 'impasse',
     },
     {
         id: 'restart-game',

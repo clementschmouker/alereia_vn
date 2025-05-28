@@ -47,7 +47,6 @@ const script: DialogueLine[] = [
     id: "start2",
     name: "Ilyem",
     text: "Je pense que ce monde de feu et de sang est voué à disparaître...",
-    style: 'thinking',
     textPosition: 'right', // Ilyem is on the right
     background: 'bar',
     charactersOnScreen: {

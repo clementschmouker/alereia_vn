@@ -20,29 +20,24 @@ const triggersList: Trigger[] = [
     },
     {
         position: -47,
-        debug: true,
+        //debug: true,
         action: () => {
             lineHandler.showLine('3js9');
         }
     },
     {
-        position: 10,
+        position: 8,
         action: () => {
             console.log('second trigger');
         }
     },
     {
-        position: 15,
+        position: 12,
         action: () => {
             console.log('third trigger');
+            lineHandler.showLine('endgame');
         }
     },
-    {
-        position: 20,
-        action: () => {
-            console.log('fourth trigger');
-        }
-    }
 ];
 
 export default triggersList;

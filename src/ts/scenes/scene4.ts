@@ -4,13 +4,14 @@ const script : DialogueLine[] = [
     {
         id: "impasse", // Unique ID for this line
         name: "",
-        text: "*cinématique qui montre l'impasse, le mur sans issue et l'escalier. Va se tourne vers ses assaillants*",
+        text: "",
         background: 'impasse',
         backgroundTransition: {
           easing: FadeTransitionType.easeIn,
           duration: 3000,
         },
         music: 'audio/scene4.mp3',
+        loopMusic: true,
     },
     {
       id: "impasse0",
@@ -23,7 +24,7 @@ const script : DialogueLine[] = [
         leftMood: "moqueur",
         right: "vava",
         rightMood: "regard_froid",
-        leftFlip: false,
+        leftFlip: true,
         rightFlip: false
       },
     },
@@ -45,7 +46,37 @@ const script : DialogueLine[] = [
     {
       id: "impasse2",
       name: "N.O.D.E.",
-      text: "Peu importe. Tu sais ce qu'on cherche, Vangva. Ou plutôt, <i>qui</i> on cherche. On a entendu ta conversation au téléphone, on sait que tu t'apprêtes à le retrouver... rappelle-toi, on a des yeux et des oreilles partout. Il te suffit juste de nous dire où il se trouve et on te laissera partir indemne.",
+      text: "Peu importe. Tu sais ce qu'on cherche, Vangva. Ou plutôt, <i>qui</i> on cherche.",
+      textPosition: 'left', // N.O.D.E. is on the left
+      background: 'impasse',
+      charactersOnScreen: {
+        left: "mechants",
+        leftMood: "menace",
+        right: "vava",
+        rightMood: "regard_froid",
+        leftFlip: false,
+        rightFlip: false
+      },
+    },
+    {
+      id: "impasse2.0",
+      name: "N.O.D.E.",
+      text: "On a entendu ta conversation au téléphone, on sait que tu t'apprêtes à le retrouver... rappelle-toi, on a des yeux et des oreilles partout. ",
+      textPosition: 'left', // N.O.D.E. is on the left
+      background: 'impasse',
+      charactersOnScreen: {
+        left: "mechants",
+        leftMood: "menace",
+        right: "vava",
+        rightMood: "regard_froid",
+        leftFlip: false,
+        rightFlip: false
+      },
+    },
+    {
+      id: "impasse2.1",
+      name: "N.O.D.E.",
+      text: "Il te suffit juste de nous dire où il se trouve et on te laissera partir indemne.",
       textPosition: 'left', // N.O.D.E. is on the left
       background: 'impasse',
       charactersOnScreen: {
@@ -178,10 +209,19 @@ const script : DialogueLine[] = [
       },
     },
     {
-      id: "impasse11",
-      name: "",
-      text: "*La caméra change de décor. On voit Syel à l'entrée de l'impasse.*",
-      background: 'impasse3',
+      id: "impasse10",
+      name: "Vangva",
+      text: "? (*on entend un bruit de pas pressés*)",
+      textPosition: 'right', // Vangva is on the right
+      background: 'impasse',
+      charactersOnScreen: {
+        left: "mechants",
+        leftMood: "peur",
+        right: "vava",
+        rightMood: "choque",
+        leftFlip: false,
+        rightFlip: true
+      },
     },
     {
       id: "impasse12",
@@ -190,6 +230,8 @@ const script : DialogueLine[] = [
       textPosition: 'center', // ??? is in the middle
       background: 'impasse3',
       charactersOnScreen: {
+        left: "",
+        right: "",
         middle: "ira",
         middleMood: "stresse",
         middleFlip: false
@@ -207,7 +249,7 @@ const script : DialogueLine[] = [
         right: "vava",
         rightMood: "choque",
         leftFlip: true,
-        rightFlip: false
+        rightFlip: true
       },
     },
     {
@@ -230,6 +272,13 @@ const script : DialogueLine[] = [
       name: "",
       text: "*On voit 'Syel' qui hésite, et qui s'enfuit",
       background: 'impasse3',
+      charactersOnScreen: {
+        left: "",
+        right: "",
+        middle: "ira",
+        middleMood: "secache_panique",
+        middleFlip: false
+      },
     },
     {
       id: "impasse16",

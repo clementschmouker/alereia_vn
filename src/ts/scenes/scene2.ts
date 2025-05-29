@@ -1,10 +1,14 @@
-import { DialogueLine } from "../types";
+import { DialogueLine, FadeTransitionType } from "../types";
 
 const script : DialogueLine[] = [
     {
       id: "gare", // Unique ID for this line
-      text: "Brissa, Ville du Vent",
+      text: "",
       background: 'vue',
+      backgroundTransition: {
+        easing: FadeTransitionType.easeIn,
+        duration: 3000,
+      },
       music: 'audio/scene2.mp3',
       loopMusic: true,
       charactersOnScreen: {
@@ -12,11 +16,30 @@ const script : DialogueLine[] = [
         right: "",
       },
     },
+      {
+      id: "gare000",
+      name: "Vangva",
+      text: "<i>...</i>",
+      style: 'thinking',
+      backgroundTransition: {
+        easing: FadeTransitionType.easeIn,
+        duration: 3000,
+      },
+      textPosition: 'center', // Vangva is on the left
+      background: 'gare',
+      voice: "medium",
+      charactersOnScreen: {
+        middle: "vava",
+        middleMood: "pense",
+        middleFlip: false,
+      },
+    },
     {
       id: "gare00",
       name: "Vangva",
       text: "<i>...</i>",
       style: 'thinking',
+      voice: "medium",
       textPosition: 'center', // Vangva is on the left
       background: 'gare',
       charactersOnScreen: {
@@ -30,6 +53,7 @@ const script : DialogueLine[] = [
       name: "Vangva",
       text: "<i>Brissa...</i>",
       style: 'thinking',
+      voice: "medium",
       textPosition: 'center', // Vangva is on the left
       background: 'gare',
       charactersOnScreen: {
@@ -43,6 +67,7 @@ const script : DialogueLine[] = [
       name: "Vangva",
       text: "<i>Décidément, ça me fera toujours quelque chose de rentrer. Un quelque chose coincé entre la nostalgie et le malaise...</i>",
       style: 'thinking',
+      voice: "medium",
       textPosition: 'center', // Vangva is on the left
       background: 'gare',
       charactersOnScreen: {
@@ -55,6 +80,8 @@ const script : DialogueLine[] = [
       id: "gare1",
       name: "Vangva",
       text: "...",
+      style: 'thinking',
+      voice: "medium",
       textPosition: 'center', // Vangva is on the left
       background: 'gare',
       charactersOnScreen: {
@@ -68,6 +95,7 @@ const script : DialogueLine[] = [
       name: "Vangva",
       text: "<i>Bon. Il n'y a plus qu'à attendre.</i>",
       style: 'thinking',
+      voice: "medium",
       textPosition: 'center', // Vangva is on the left
       background: 'gare',
       charactersOnScreen: {
@@ -81,6 +109,7 @@ const script : DialogueLine[] = [
       name: "Vangva",
       text: "<i>J'espère qu'il va bientôt me répondre...</i>",
       style: 'thinking',
+      voice: "medium",
       textPosition: 'center', // Vangva is on the left
       background: 'gare',
       charactersOnScreen: {
@@ -352,8 +381,10 @@ const script : DialogueLine[] = [
       name: "Ilyem",
       text: "Syel et Vangva, ils sont de retour à Brissa. La ville est grande et ne dort jamais, ils comptent sur la foule pour rester discrets.",
       textPosition: 'right', // Ilyem is on the right
-      //isOverUi: true,
-      background: 'bar',
+      voice: "high",
+      isOverUi: true,
+      startGame: true,
+      pauseGame: true,
       charactersOnScreen: {
         left: "serveuse",
         leftMood: "neutre_cig",
@@ -364,16 +395,14 @@ const script : DialogueLine[] = [
       },
       music: 'audio/scene3.mp3',
       loopMusic: true,
-      startGame: true,
-      pauseGame: true,
     },
     {
       id: "gare4",
       name: "N.O.D.E.",
       text: "Je vois. Ça me semble crédible.",
       textPosition: 'left', 
-      //isOverUi: true,
-      background: 'bar',
+      voice: "medium",
+      isOverUi: true,
       charactersOnScreen: {
         left: "serveuse",
         leftMood: "sourire_cig",
@@ -388,8 +417,8 @@ const script : DialogueLine[] = [
       name: "Ilyem",
       text: "Ils ont voyagé en train, séparément pour ne pas être aperçus. Je pense, à l'heure qu'il est, que Vangva doit se trouver quelque part dans le quartier de la gare.",
       textPosition: 'right', 
-      //isOverUi: true,
-      background: 'bar',
+      voice: "high",
+      isOverUi: true,
       charactersOnScreen: {
         left: "serveuse",
         leftMood: "sourire_cig",
@@ -404,8 +433,8 @@ const script : DialogueLine[] = [
       name: "N.O.D.E.",
       text: "*elle rigole*",
       textPosition: 'left', 
-      //isOverUi: true,
-      background: 'bar',
+      voice: "medium",
+      isOverUi: true,
       charactersOnScreen: {
         left: "serveuse",
         leftMood: "satisfaite_cig",
@@ -420,8 +449,8 @@ const script : DialogueLine[] = [
       name: "N.O.D.E.",
       text: "Merci pour ta collaboration. C'est bon. On l'a déjà repéré.",
       textPosition: 'left', 
-      //isOverUi: true,
-      background: 'bar',
+      voice: "medium",
+      isOverUi: true,
       charactersOnScreen: {
         left: "serveuse",
         leftMood: "satisfaite_cig",

@@ -13,7 +13,7 @@ const script: DialogueLine[] = [
           leftMood: "embete",
         },
         textPosition: 'left',
-        nextLineId: 'endgame',
+        nextLineId: 'restart-game',
     },
     {
         id: 'endgame',

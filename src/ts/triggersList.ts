@@ -10,7 +10,7 @@ interface Trigger {
 
 const triggersList: Trigger[] = [
     {
-        position: -60,
+        position: -55,
         // debug: true,
         stays: true,
         action: () => {
@@ -19,20 +19,20 @@ const triggersList: Trigger[] = [
         }
     },
     {
-        position: -47,
+        position: -20,
         //debug: true,
         action: () => {
             lineHandler.showLine('3js9');
         }
     },
     {
-        position: 8,
+        position: 10,
         action: () => {
             console.log('second trigger');
         }
     },
     {
-        position: 12,
+        position: 13,
         action: () => {
             console.log('third trigger');
             lineHandler.showLine('endgame');

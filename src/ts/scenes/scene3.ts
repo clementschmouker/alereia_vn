@@ -5,6 +5,8 @@ const script : DialogueLine[] = [
       id: "3js1",
       name: "Vangva",
       text: "<i>Mmh...</i>",
+      style: 'thinking',
+      voice: "medium",
       textPosition: 'left',
       charactersOnScreen: {
         left: "vava",
@@ -16,6 +18,18 @@ const script : DialogueLine[] = [
       id: "3js2",
       name: "",
       text: "*une mosaïque d'yeux regarde son sprite*",
+      charactersOnScreen: {
+        left: "",
+      },
+    },
+    {
+      id: "3js2.1",
+      name: "",
+      text: "*son téléphone sonne*",
+      charactersOnScreen: {
+        left: "vava",
+        leftMood: "alerte_tel",
+      },
     },
     {
       id: "3js3",
@@ -56,6 +70,9 @@ const script : DialogueLine[] = [
     {
       id: "3js6",
       name: "",
+      charactersOnScreen: {
+        left: "",
+      },
       text: "*la mosaïque d'yeux réapparait*",
     },
     {
@@ -82,9 +99,8 @@ const script : DialogueLine[] = [
     {
       id: "3js9",
       name: "Vangva",
-      text: "<i>Les voilà...</i>",
+      text: "<i>Ils sont derrière moi...</i>",
       textPosition: 'left', // Vangva is on the left
-      background: 'gare2',
       nextLineId: '3js10',
       pauseGame: true,
       charactersOnScreen: {
@@ -97,9 +113,11 @@ const script : DialogueLine[] = [
     {
       id: "3js10",
       name: "",
-      text: "*Course poursuite dans Three.js*",
-      background: 'gare2',
+      text: "",
       unpauseGame: true,
+      charactersOnScreen: {
+        left: "",
+      },
     },
 ];
 

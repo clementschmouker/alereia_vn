@@ -17,6 +17,7 @@ const script: DialogueLine[] = [
     id: "start0", // Unique ID for this line
     name: "Ilyem",
     text: "Alors, voilà... Je...",
+    voice: "high",
     textPosition: 'right', // Ilyem is on the right
     background: 'bar',
     charactersOnScreen: {
@@ -34,6 +35,7 @@ const script: DialogueLine[] = [
     text: "...",
     textPosition: 'left', // N.O.D.E. is on the left
     background: 'bar',
+    voice: "medium",
     charactersOnScreen: {
       left: "serveuse",
       leftMood: "mefiante",
@@ -49,6 +51,7 @@ const script: DialogueLine[] = [
     text: "Je pense que ce monde de feu et de sang est voué à disparaître...",
     textPosition: 'right', // Ilyem is on the right
     background: 'bar',
+    voice: "high",
     charactersOnScreen: {
       left: "serveuse",
       leftMood: "mefiante",
@@ -64,6 +67,7 @@ const script: DialogueLine[] = [
     text: "...",
     textPosition: 'left', // N.O.D.E. is on the left
     background: 'bar',
+    voice: "medium",
     charactersOnScreen: {
       left: "serveuse",
       leftMood: "neutre",
@@ -79,6 +83,7 @@ const script: DialogueLine[] = [
     text: "... mais un Nouvel Idéal le fera renaître de ses cendres.",
     textPosition: 'left', // N.O.D.E. is on the left
     background: 'bar',
+    voice: "medium",
     charactersOnScreen: {
       left: "serveuse",
       leftMood: "sourire",
@@ -94,6 +99,7 @@ const script: DialogueLine[] = [
     text: "Tu te joins à moi ?",
     textPosition: 'left', // N.O.D.E. is on the left
     background: 'bar',
+    voice: "medium",
     charactersOnScreen: {
       left: "serveuse",
       leftMood: "propose_cig",
@@ -109,6 +115,7 @@ const script: DialogueLine[] = [
     text: "Ah... merci.",
     textPosition: 'right', // Ilyem is on the right
     background: 'bar',
+    voice: "high",
     charactersOnScreen: {
       left: "serveuse",
       leftMood: "propose_cig",
@@ -138,6 +145,7 @@ const script: DialogueLine[] = [
     text: "Je peux vous aider à les trouver. Vous savez de qui je parle.",
     textPosition: 'right', // Ilyem is on the right
     background: 'bar',
+    voice: "high",
     charactersOnScreen: {
       left: "serveuse",
       leftMood: "sourire_cig",
@@ -146,10 +154,6 @@ const script: DialogueLine[] = [
       leftFlip: false,
       rightFlip: false
     },
-    // callback: () => {
-    //   const game = new Game();
-    //   game.start();
-    // }
   },
 ];
 

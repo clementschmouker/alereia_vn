@@ -19,6 +19,7 @@ const script : DialogueLine[] = [
           duration: 3000,
         },
         music: 'audio/scene6.mp3',
+        loopMusic: true,
     },
     {
       id: "twist1",
@@ -56,6 +57,10 @@ const script : DialogueLine[] = [
       text: "J'adore, j'ai même sorti le popcorn ! Très beau jeu d'acteur d'ailleurs, je dois dire que tu m'as surpris.",
       textPosition: 'center', // ??? is not on screen
       background: 'noir',
+      charactersOnScreen: {
+        left: "",
+        right: "",
+      },
     },
     {
       id: "twist4",
@@ -76,7 +81,7 @@ const script : DialogueLine[] = [
       id: "twist5",
       name: "Sanjevan",
       text: "Évidemment que ça a marché, tu me connais. Fais quand même attention à toi gamin... Et ne les tape pas trop fort, ils ont l'air morts de trouille les pauvres.",
-      textPosition: 'center', // Sanjevan is not on screen
+      textPosition: 'right', // Sanjevan is not on screen
       background: 'impasse',
       charactersOnScreen: {
         left: "mechants",
@@ -91,14 +96,12 @@ const script : DialogueLine[] = [
       id: "twist6",
       name: "",
       text: "*Vangva dépose son sac à dos*",
-      textPosition: 'center', // No speaker
       background: 'noir',
     },
     {
       id: "twist7",
       name: "",
       text: "*Il en sort sa matraque*",
-      textPosition: 'center', // No speaker
       background: 'noir',
     },
     {

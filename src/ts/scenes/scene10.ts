@@ -11,6 +11,7 @@ const script : DialogueLine[] = [
           duration: 3000,
         },
         music: 'audio/scene101.mp3',
+        loopMusic: true,
     },
     {
       id: "fin1",
@@ -369,7 +370,7 @@ const script : DialogueLine[] = [
    {
       id: "fin25",
       name: "Ira",
-      text: "C'est la dernière fois que je joue les appâts ! Je savais bien que ce serait un plan foireux...",
+      text: "C'est la dernière fois que je joue les appâts ! Je savais bien que ce serait un plan foireux... (en plus je me sens tout nu sans ma barbe...)",
       textPosition: 'left', // Ira is on the left
       background: 'impasse',
       charactersOnScreen: {

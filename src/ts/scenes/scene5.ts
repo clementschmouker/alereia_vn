@@ -8,9 +8,9 @@ const script : DialogueLine[] = [
         background: 'bar',
         charactersOnScreen: {
           left: "serveuse",
-          leftMood: "satisfaite",
+          leftMood: "satisfaite_cig",
           right: "ilyem",
-          rightMood: "etonnee",
+          rightMood: "surprise_cig",
           leftFlip: false,
           rightFlip: false
         },

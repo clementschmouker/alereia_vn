@@ -89,7 +89,7 @@ class Game {
         this.controls = new OrbitControls(this.camera, this.renderer.domElement);
 
         // Player
-        const startingPlayerPosition = new THREE.Vector3(-58, 0.5, -7.15);
+        const startingPlayerPosition = new THREE.Vector3(-50, 0.5, -7.15);
         this.player = new Player(startingPlayerPosition);
         this.scene.add(this.player.mesh);
 

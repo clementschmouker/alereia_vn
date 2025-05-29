@@ -10,6 +10,11 @@ const script : DialogueLine[] = [
           easing: FadeTransitionType.easeIn,
           duration: 3000,
         },
+        charactersOnScreen: {
+        left: "",
+        right: "",
+        middle: "",
+      },
     },
     {
       id: "supercherie1",
@@ -20,10 +25,7 @@ const script : DialogueLine[] = [
       charactersOnScreen: {
         left: "mechants",
         leftMood: "menace",
-        right: "mechants",
-        rightMood: "moqueur",
         leftFlip: false,
-        rightFlip: true,
         middle: "ira",
         middleMood: "stresse",
         middleFlip: false,
@@ -34,6 +36,11 @@ const script : DialogueLine[] = [
       name: "",
       text: "*Un Nodiste immobilise Ira*",
       background: 'noir',
+      charactersOnScreen: {
+        left: "",
+        right: "",
+        middle: "",
+      },
     },
     {
       id: "supercherie2",
@@ -43,10 +50,7 @@ const script : DialogueLine[] = [
       charactersOnScreen: {
         left: "mechants",
         leftMood: "menace",
-        right: "mechants",
-        rightMood: "menace",
         leftFlip: false,
-        rightFlip: true,
         middle: "ira",
         middleMood: "secache",
         middleFlip: false,
@@ -60,10 +64,7 @@ const script : DialogueLine[] = [
       charactersOnScreen: {
         left: "mechants",
         leftMood: "peur",
-        right: "mechants",
-        rightMood: "fache",
         leftFlip: false,
-        rightFlip: true,
         middle: "ira",
         middleMood: "secache_panique",
         middleFlip: false,
@@ -78,6 +79,11 @@ const script : DialogueLine[] = [
           easing: FadeTransitionType.easeIn,
           duration: 3000,
         },
+        charactersOnScreen: {
+        left: "",
+        right: "",
+        middle: "",
+      },
     },
     {
       id: "supercherie3",
@@ -87,10 +93,7 @@ const script : DialogueLine[] = [
       charactersOnScreen: {
         left: "mechants",
         leftMood: "peur",
-        right: "mechants",
-        rightMood: "fache",
         leftFlip: false,
-        rightFlip: true,
         middle: "ira",
         middleMood: "etonne",
         middleFlip: false,
@@ -104,10 +107,7 @@ const script : DialogueLine[] = [
       charactersOnScreen: {
         left: "mechants",
         leftMood: "peur",
-        right: "mechants",
-        rightMood: "fache",
         leftFlip: false,
-        rightFlip: true,
         middle: "ira",
         middleMood: "etonne",
         middleFlip: false,
@@ -122,12 +122,9 @@ const script : DialogueLine[] = [
       charactersOnScreen: {
         left: "mechants",
         leftMood: "peur",
-        right: "mechants",
-        rightMood: "fache",
         leftFlip: false,
-        rightFlip: true,
         middle: "ira",
-        middleMood: "etonne",
+        middleMood: "moqueur",
         middleFlip: false,
       },
     },

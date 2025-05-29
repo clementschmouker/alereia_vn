@@ -209,7 +209,7 @@ const script : DialogueLine[] = [
       },
     },
     {
-      id: "impasse10",
+      id: "impasse11",
       name: "Vangva",
       text: "? (*on entend un bruit de pas pressés*)",
       textPosition: 'right', // Vangva is on the right

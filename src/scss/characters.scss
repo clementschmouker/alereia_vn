@@ -15,8 +15,8 @@
 .character-slot {
     position: absolute;
     bottom: 0;
-    height: 64.81%;
-    width: 36.45%;
+    height: 100%;
+    width: 50%;
     background-size: contain;
     background-repeat: no-repeat;
     display: flex;
@@ -31,11 +31,11 @@
 }
   
 #left-character {
-    left: 10%;
+    left: 0%;
 }
  
 #right-character {
-    right: 10%;
+    right: 0%;
 }
 
 #middle-character {

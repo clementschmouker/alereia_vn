@@ -57,6 +57,7 @@ export const goBackButton = document.querySelector("#go-back");
 
 export const startScreen = document.querySelector("#start-screen") as HTMLDivElement;
 export const startButton = document.querySelector("#start-button") as HTMLButtonElement;
+export const videoAccueil = document.getElementById('videoAccueil') as HTMLDivElement;
 export const gameScreen = document.querySelector("#game") as HTMLDivElement;
 
 

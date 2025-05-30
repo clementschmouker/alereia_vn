@@ -5,13 +5,28 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-image: url('./images/accueil.webp');
-    background-repeat: no-repeat;
-    background-size: cover;
 
     &.hidden {
         display: none;
     }
+
+    #videoAccueil {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        width: 100vw;
+        height: 100vh;
+        }
+
+        /* Add some content at the bottom of the video/page */
+        .content {
+        position: fixed;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        color: #f1f1f1;
+        width: 100%;
+        padding: 20px;
+        }
 
     .start-screen__container {
         position: absolute;
@@ -30,9 +45,15 @@
         width: 900px;
     }
 
+    p:hover {
+        transform: scale(1.3);
+        transition: ease-in-out 0.2s;
+    }
+
     #start-button {
-        position: relative;
-        margin-top: 2rem;
+        position: absolute;
+        margin-top: 35rem;
+        //margin-right: -55rem;
         padding: 6rem;
         padding-top: 2rem;
         padding-bottom: 1rem;
@@ -42,7 +63,7 @@
         border-width: 20px;
         border-image: url('./images/dialogbubble-black.svg') 20 fill;
         cursor: pointer;
-        font-size: 1.8rem;
+        font-size: 2rem;
         font-family: 'Tablon';
 
         .cyan, .magenta {
@@ -65,6 +86,62 @@
                 top: 20px;
                 background: magenta;
             }
+        }
+    }
+
+    .glitch {
+
+    &:before,
+    &:after{
+        content: 'DÉMARRER';
+        opacity: 0.8;
+        position: absolute;
+        top:5px;
+        left:5px;
+    }
+    &:before{
+        color: #0ff;
+        z-index: -1;
+    }
+    &:after{
+        color: #f0f;
+        z-index: -2;
+    }
+    &:hover {
+            &:before {
+                animation: glitch .5s cubic-bezier(.25, .46, .45, .94) both infinite
+            }
+            &:after {
+                animation: glitch .3s cubic-bezier(.25, .46, .45, .94) reverse both infinite
+            }
+        }
+    }
+
+    @keyframes glitch {
+        0% {
+            -webkit-transform: translate(0);
+            transform: translate(0)
+        }
+        20% {
+            -webkit-transform: translate(-5px, 5px);
+            transform: translate(-5px, 5px);
+            transform: skewX(10deg);
+        }
+        40% {
+            -webkit-transform: translate(-5px, -5px);
+            transform: translate(-5px, -5px);
+        }
+        60% {
+            -webkit-transform: translate(5px, 5px);
+            transform: translate(5px, 5px)
+        }
+        80% {
+            -webkit-transform: translate(5px, -5px);
+            transform: translate(5px, -5px)
+        }
+        to {
+            -webkit-transform: translate(0);
+            transform: translate(0)
         }
     }
 }

@@ -10,6 +10,10 @@ const script : DialogueLine[] = [
           easing: FadeTransitionType.easeIn,
           duration: 3000,
         },
+        charactersOnScreen: {
+          left: "",
+          right: "",
+      },
     },
     {
       id: "toit1",
@@ -20,10 +24,6 @@ const script : DialogueLine[] = [
       },
       name: "",
       text: "",
-      charactersOnScreen: {
-        left: "",
-        right: "",
-      },
     },
     {
       id: "toit2",
@@ -52,7 +52,7 @@ const script : DialogueLine[] = [
       background: 'syel_leve_yeux',
     },
     {
-      id: "toit7",
+      id: "toit5",
       name: "",
       background: 'noir',
       backgroundVideo: 'yeuxSyel',
@@ -62,17 +62,13 @@ const script : DialogueLine[] = [
       }
     },
     {
-      id: "toit8",
+      id: "toit6",
       name: "Syel",
       text: "<i> Ça devrait lui suffire... Ensuite, Prisme fera le reste.</i>",
       textPosition: 'center', 
       style: "thinking",
       background: 'syel_blase',
-      backgroundTransition: {
-        easing: FadeTransitionType.easeIn,
-        duration: 3000,
-      },
-    },
+    },  
 ];
 
 export default script;

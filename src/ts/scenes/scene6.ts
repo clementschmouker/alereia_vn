@@ -74,7 +74,7 @@ const script : DialogueLine[] = [
         left: "mechants",
         leftMood: "peur",
         right: "vava",
-        rightMood: "se_moque",
+        rightMood: "met_ecouteurs",
         leftFlip: false,
         rightFlip: false
       },
@@ -156,6 +156,7 @@ const script : DialogueLine[] = [
       text: "Mais vous savez... Je ne suis pas <i>seul</i>...",
       textPosition: 'right', // Vangva is on the right
       background: 'impasse',
+      style: 'speech',
       charactersOnScreen: {
         left: "mechants",
         leftMood: "menace",

@@ -1,17 +1,14 @@
-import { DialogueLine, FadeTransitionType } from "../types";
+import { DialogueLine } from "../types";
 
 const script : DialogueLine[] = [
     {
         id: "impasse", // Unique ID for this line
         name: "Vangva",
         text: "Une impasse...",
-        background: 'impasse',
         style: 'thinking',
+        textPosition: 'right',
+        background: 'impasse',
         stopGame: true,
-        backgroundTransition: {
-          easing: FadeTransitionType.easeIn,
-          duration: 3000,
-        },
         charactersOnScreen: {
           right: "vava",
           rightMood: "regard_froid",
@@ -34,7 +31,8 @@ const script : DialogueLine[] = [
         right: "vava",
         rightMood: "regard_froid",
         leftFlip: false,
-        rightFlip: false
+        rightFlip: false,
+        abruptFlip: true
       },
     },
     {
@@ -220,7 +218,7 @@ const script : DialogueLine[] = [
     {
       id: "impasse11",
       name: "Vangva",
-      text: "? (*on entend un bruit de pas pressés*)",
+      text: "... ? (*on entend un bruit de pas pressés*)",
       textPosition: 'right', // Vangva is on the right
       background: 'impasse',
       charactersOnScreen: {
@@ -243,7 +241,8 @@ const script : DialogueLine[] = [
         right: "",
         middle: "ira",
         middleMood: "stresse",
-        middleFlip: false
+        middleFlip: true,
+        abruptFlip: true
       },
     },
     {
@@ -257,7 +256,7 @@ const script : DialogueLine[] = [
         leftMood: "peur",
         right: "vava",
         rightMood: "choque",
-        leftFlip: true,
+        leftFlip: false,
         rightFlip: true
       },
     },
@@ -272,14 +271,16 @@ const script : DialogueLine[] = [
         leftMood: "moqueur",
         right: "vava",
         rightMood: "panique",
-        leftFlip: true,
-        rightFlip: false
+        leftFlip: false,
+        rightFlip: true
       },
     },
     {
-      id: "impasse15",
-      name: "",
-      text: "*On voit 'Syel' qui hésite, et qui s'enfuit",
+      id: "impasse15.0",
+      name: "Syel",
+      text: "Ah...",
+      textPosition: 'center',
+      style: "speech",
       background: 'impasse3',
       charactersOnScreen: {
         left: "",
@@ -287,6 +288,20 @@ const script : DialogueLine[] = [
         middle: "ira",
         middleMood: "secache_panique",
         middleFlip: false
+      },
+    },
+    {
+      id: "impasse15",
+      name: "",
+      text: "",
+      background: 'impasse3',
+      charactersOnScreen: {
+        left: "",
+        right: "",
+        middle: "ira",
+        middleMood: "secache_panique",
+        middleFlip: false,
+        middleLeave: true
       },
     },
     {
@@ -301,20 +316,6 @@ const script : DialogueLine[] = [
         right: "vava",
         rightMood: "choque",
         leftFlip: true,
-        rightFlip: false
-      },
-    },
-    {
-      id: "impasse17",
-      name: "",
-      text: "*La moitié des Nodistes part*",
-      background: 'impasse',
-      charactersOnScreen: {
-        left: "mechants",
-        leftMood: "moqueur",
-        right: "vava",
-        rightMood: "pense",
-        leftFlip: false,
         rightFlip: false
       },
     },

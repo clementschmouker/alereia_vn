@@ -1,7 +1,15 @@
 import { DialogueLine } from "../types";
 
 const script : DialogueLine[] = [
-    {
+      {
+      id: "3js",
+      name: "",
+      text: "",
+      charactersOnScreen: {
+        left: ""
+      },
+    },  
+  {
       id: "3js1",
       name: "Vangva",
       text: "<i>Mmh...</i>",
@@ -18,7 +26,9 @@ const script : DialogueLine[] = [
     {
       id: "3js2",
       name: "",
-      text: "*une mosaïque d'yeux regarde son sprite*",
+      overlay: ['images/yeux1.webp', 'images/yeux2.webp', 'images/yeux3.webp'],
+      nextLineId: '3js2.1',
+      pauseGame: true,
       charactersOnScreen: {
         left: "",
       },
@@ -30,6 +40,7 @@ const script : DialogueLine[] = [
       charactersOnScreen: {
         left: "vava",
         leftMood: "alerte_tel",
+        leftFlip: true,
       },
     },
     {
@@ -109,7 +120,8 @@ const script : DialogueLine[] = [
         left: "vava",
         leftMood: "regard_froid",
         leftFlip: true,
-        rightFlip: false
+        rightFlip: false,
+        abruptFlip: true
       },
     },
     {

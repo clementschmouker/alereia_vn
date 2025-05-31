@@ -33,7 +33,8 @@ const script : DialogueLine[] = [
         right: "ilyem",
         rightMood: "fachee",
         leftFlip: false,
-        rightFlip: false
+        rightFlip: false,
+        rightAttack: true
       },
     },
     {
@@ -57,7 +58,7 @@ const script : DialogueLine[] = [
     {
       id: "bagarre4",
       name: "N.O.D.E.",
-      text: "... Ah... *elle a l'air très effrayée*",
+      text: "... Ah...",
       textPosition: 'left', // N.O.D.E. is on the left
       background: 'coutal',
     },
@@ -101,27 +102,27 @@ const script : DialogueLine[] = [
       name: "Ilyem",
       text: "Elle est grande, c'est une Nevari comme moi et elle a des cheveux orange. Retourne toute ta Mémoire s'il le faut, mais c'est impossible que tu ne saches pas qui elle est, puisque vous l'avez enlevée !",
       textPosition: 'right', // Ilyem is on the right
-      background: 'coutal',
+      background: 'coutal_2',
     },
     {
       id: "bagarre11",
       name: "N.O.D.E.",
       text: "Je jure... Je jure que je n'en sais rien...",
       textPosition: 'left', // N.O.D.E. is on the left
-      background: 'coutal',
+      background: 'coutal_2',
 
     },
     {
       id: "bagarre12",
       name: "Ilyem",
       text: "Je... Je suis désolée, je... Alors, ce... ce n'est pas vous... ?",
-      textPosition: 'right', // Ilyem is on the right
+      textPosition: 'center', // Ilyem is on the right
       background: 'bar',
       charactersOnScreen: {
         left: "serveuse",
         leftMood: "mefiante",
-        right: "ilyem",
-        rightMood: "etonnee",
+        middle: "ilyem",
+        middleMood: "etonnee",
         leftFlip: false,
         rightFlip: false
       },

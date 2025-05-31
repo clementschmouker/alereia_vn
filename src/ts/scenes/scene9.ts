@@ -4,7 +4,7 @@ const script : DialogueLine[] = [
     {
         id: "supercherie", // Unique ID for this line
         name: "",
-        text: "*cinematique, Ira court dans les rues. Soudain il est encerclé*",
+        text: "*Ira court dans les rues. Soudain il est encerclé*",
         background: 'noir',
         backgroundTransition: {
           easing: FadeTransitionType.easeIn,
@@ -14,7 +14,6 @@ const script : DialogueLine[] = [
         left: "",
         right: "",
         middle: "",
-        abruptFlip: true,
       },
     },
     {
@@ -27,9 +26,10 @@ const script : DialogueLine[] = [
         left: "mechants",
         leftMood: "menace",
         leftFlip: false,
-        middle: "ira",
-        middleMood: "stresse",
-        middleFlip: false,
+        right: "ira",
+        rightMood: "stresse",
+        rightFlip: true,
+        abruptFlip: true
       },
     },
     {
@@ -48,6 +48,8 @@ const script : DialogueLine[] = [
       name: "N.O.D.E.",
       text: "Ne t'en fais pas, Syel ! Bientôt, tu...",
       background: 'rues',
+      textPosition: 'left',
+      style: 'speech',
       charactersOnScreen: {
         left: "mechants",
         leftMood: "menace",
@@ -55,6 +57,7 @@ const script : DialogueLine[] = [
         middle: "ira",
         middleMood: "secache",
         middleFlip: false,
+        abruptFlip: true
       },
     },
     {
@@ -62,24 +65,22 @@ const script : DialogueLine[] = [
       name: "N.O.D.E.",
       text: "... Quoi ?!",
       background: 'rues',
+      textPosition: 'left',
+      style: 'speech',
       charactersOnScreen: {
         left: "mechants",
         leftMood: "peur",
         leftFlip: false,
         middle: "ira",
         middleMood: "secache_panique",
-        middleFlip: false,
+        middleFlip: true,
       },
     },
     {
         id: "supercherie2.1",
         name: "",
-        text: "*cinématique, on soulève la casquette d'Ira, on voit enfin son visage*",
+        text: "*On soulève la casquette d'Ira, on voit enfin son visage*",
         background: 'noir',
-        backgroundTransition: {
-          easing: FadeTransitionType.easeIn,
-          duration: 3000,
-        },
         charactersOnScreen: {
         left: "",
         right: "",
@@ -91,19 +92,23 @@ const script : DialogueLine[] = [
       name: "N.O.D.E.",
       text: "Tes yeux... ils ne sont pas bleus ! Mais tu n'es pas...",
       background: 'rues',
+      textPosition: 'left',
+      style: 'speech',
       charactersOnScreen: {
         left: "mechants",
         leftMood: "peur",
         leftFlip: false,
         middle: "ira",
         middleMood: "embete_before",
-        middleFlip: false,
+        middleFlip: true,
       },
     },
     {
       id: "supercherie3.5",
       name: "N.O.D.E.",
       text: "T'es le frère jumeau ?!",
+      textPosition: 'left',
+      style: 'speech',
       background: 'rues',
       charactersOnScreen: {
         left: "mechants",
@@ -111,13 +116,14 @@ const script : DialogueLine[] = [
         leftFlip: false,
         middle: "ira",
         middleMood: "embete_before",
-        middleFlip: false,
+        middleFlip: true,
       },
     },
     {
       id: "supercherie4",
       name: "Ira",
       text: "Si tu voyais ta tête, mec...",
+      style: 'speech',
       textPosition: 'center', // Ira is in the middle
       background: 'rues',
       charactersOnScreen: {
@@ -126,7 +132,7 @@ const script : DialogueLine[] = [
         leftFlip: false,
         middle: "ira",
         middleMood: "moqueur",
-        middleFlip: false,
+        middleFlip: true,
       },
     },
 ];

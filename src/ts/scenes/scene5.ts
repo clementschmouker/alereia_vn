@@ -17,7 +17,7 @@ const script : DialogueLine[] = [
         },
         backgroundTransition: {
           easing: FadeTransitionType.easeIn,
-          duration: 3000,
+          duration: 1500,
         },
         textPosition: 'right', // Ilyem is on the right
     },
@@ -132,13 +132,14 @@ const script : DialogueLine[] = [
       text: "Syel nous aidera à atteindre la Paix que nous recherchons tous.",
       textPosition: 'left', // N.O.D.E. is on the left
       background: 'noir',
+      isNotOverUi: true,
     },
     {
       id: "cinematiquefuite1",
       name: "N.O.D.E.",
       text: "Quant à Vangva, il est le plus grand frein à nos plans. L'idéal serait d'en faire l'un des nôtres pour profiter de sa force... sinon, nous n'aurons pas d'autre choix que de l'éliminer.",
-      textPosition: 'left', // N.O.D.E. is on the left
       background: 'impasse',
+      isNotOverUi: true,
       charactersOnScreen: {
         left: "mechants",
         leftMood: "menace",

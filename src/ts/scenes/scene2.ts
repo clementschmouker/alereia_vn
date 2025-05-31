@@ -18,7 +18,7 @@ const script : DialogueLine[] = [
         abruptFlip: true,
       },
     },
-      {
+      /*{
       id: "gare000",
       name: "Vangva",
       text: "<i>...</i>",
@@ -35,7 +35,7 @@ const script : DialogueLine[] = [
         middleMood: "pense",
         middleFlip: false,
       },
-    },
+    },*/
     {
       id: "gare00",
       name: "Vangva",
@@ -48,6 +48,7 @@ const script : DialogueLine[] = [
         middle: "vava",
         middleMood: "pense",
         middleFlip: true,
+        abruptFlip: true,
       },
     },
     {
@@ -103,7 +104,7 @@ const script : DialogueLine[] = [
       charactersOnScreen: {
         middle: "vava",
         middleMood: "pense",
-        middleFlip: false,
+        middleFlip: true,
       },
     },
     {
@@ -117,6 +118,7 @@ const script : DialogueLine[] = [
       charactersOnScreen: {
         middle: "vava",
         middleMood: "pense_tel",
+        middleFlip: true,
       },
     },
     {
@@ -384,7 +386,6 @@ const script : DialogueLine[] = [
       text: "Syel et Vangva, ils sont de retour à Brissa. La ville est grande et ne dort jamais, ils comptent sur la foule pour rester discrets.",
       textPosition: 'right', // Ilyem is on the right
       voice: "high",
-      isNotOverUi: true,
       startGame: true,
       pauseGame: true,
       charactersOnScreen: {
@@ -404,7 +405,6 @@ const script : DialogueLine[] = [
       text: "Je vois. Ça me semble crédible.",
       textPosition: 'left', 
       voice: "medium",
-      isNotOverUi: true,
       charactersOnScreen: {
         left: "serveuse",
         leftMood: "sourire_cig",
@@ -420,7 +420,6 @@ const script : DialogueLine[] = [
       text: "Ils ont voyagé en train, séparément pour ne pas être aperçus. Je pense, à l'heure qu'il est, que Vangva doit se trouver quelque part dans le quartier de la gare.",
       textPosition: 'right', 
       voice: "high",
-      isNotOverUi: true,
       charactersOnScreen: {
         left: "serveuse",
         leftMood: "sourire_cig",
@@ -436,7 +435,6 @@ const script : DialogueLine[] = [
       text: "*elle rigole*",
       textPosition: 'left', 
       voice: "medium",
-      isNotOverUi: true,
       charactersOnScreen: {
         left: "serveuse",
         leftMood: "satisfaite_cig",
@@ -452,7 +450,6 @@ const script : DialogueLine[] = [
       text: "Merci pour ta collaboration. C'est bon. On l'a déjà repéré.",
       textPosition: 'left', 
       voice: "medium",
-      isNotOverUi: true,
       charactersOnScreen: {
         left: "serveuse",
         leftMood: "satisfaite_cig",

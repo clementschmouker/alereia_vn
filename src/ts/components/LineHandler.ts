@@ -131,6 +131,8 @@ export default class LineHandler {
         mood?: string,
         flip?: boolean,
         abruptFlip?: boolean,
+        leave?: boolean,
+        attack?: boolean,
     ) => {
         const current = this.currentCharacters[position];
         const shouldUpdate = current.name !== name || current.mood !== mood || current.flip !== flip;
@@ -139,6 +141,15 @@ export default class LineHandler {
             container.classList.remove('smoothFlip');
         } else {
             container.classList.add('smoothFlip');
+        }
+        
+        container.classList.remove('leaving', 'attack');
+        if (leave) {
+            container.classList.add('leaving');
+        }
+
+        if (attack) {
+            container.classList.add('attack');
         }
     
         if (!name) {
@@ -461,11 +472,16 @@ export default class LineHandler {
                     rightFlip,
                     middleFlip,
                     abruptFlip,
+                    leftLeave,
+                    middleLeave,
+                    rightLeave,
+                    leftAttack,
+                    rightAttack,
                 } = line.charactersOnScreen;
     
-                this.updateCharacterImage(leftCharacter, "left", left, leftMood, leftFlip, abruptFlip);
-                this.updateCharacterImage(rightCharacter, "right", right, rightMood, rightFlip, abruptFlip);
-                this.updateCharacterImage(middleCharacter, "middle", middle, middleMood, middleFlip, abruptFlip);
+                this.updateCharacterImage(leftCharacter, "left", left, leftMood, leftFlip, abruptFlip, leftLeave, leftAttack);
+                this.updateCharacterImage(rightCharacter, "right", right, rightMood, rightFlip, abruptFlip, rightLeave, rightAttack);
+                this.updateCharacterImage(middleCharacter, "middle", middle, middleMood, middleFlip, abruptFlip, middleLeave);
             } else {
                 leftCharacter.innerHTML = "";
                 rightCharacter.innerHTML = "";

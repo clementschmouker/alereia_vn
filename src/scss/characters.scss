@@ -24,10 +24,10 @@
     justify-content: center;
     background-position: center bottom;
 
-    transition: all .3s ease, transform 0s ease;
+    transition: all .3s ease, transform 0s ease, left 1s ease, right 1s ease;
 
     &.smoothFlip {
-        transition: all .3s ease;
+        transition: all .3s ease, left 1s ease, right 1s ease;
     }
 
     &.flipped {
@@ -37,10 +37,28 @@
   
 #left-character {
     left: 0%;
+
+    &.leaving {
+        left: -100%;
+    }
+
+    &.attack {
+        left: 50%;
+        z-index: 1000000;
+    }
 }
  
 #right-character {
     right: 0%;
+
+    &.leaving {
+        right: -100%;
+    }
+
+    &.attack {
+        right: 50%;
+        z-index: 1000000;
+    }
 }
 
 #middle-character {
@@ -49,6 +67,10 @@
     
     &.flipped {
         transform: translateX(-50%) scaleX(-1);
+    }
+
+    &.leaving {
+        left: -150%;
     }
 }
   

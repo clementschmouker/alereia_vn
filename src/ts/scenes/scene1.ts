@@ -26,7 +26,7 @@ const script: DialogueLine[] = [
       right: "ilyem",
       rightMood: "bras_hesite",
       leftFlip: false,
-      rightFlip: false
+      rightFlip: false,
     },
   },
   {
@@ -59,7 +59,7 @@ const script: DialogueLine[] = [
       right: "ilyem",
       rightMood: "bras_hesite",
       leftFlip: false,
-      rightFlip: false
+      rightFlip: false,
     },
   },
   {
@@ -75,7 +75,7 @@ const script: DialogueLine[] = [
       right: "ilyem",
       rightMood: "bras_fuyant",
       leftFlip: false,
-      rightFlip: false
+      rightFlip: false,
     },
   },
   {

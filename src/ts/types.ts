@@ -80,6 +80,11 @@ interface DialogueLine {
       leftFlip?: boolean;
       rightFlip?: boolean;
       middleFlip?: boolean;
+      leftLeave?: boolean;
+      rightLeave?: boolean;
+      middleLeave?: boolean;
+      leftAttack?: boolean;
+      rightAttack?: boolean;
       abruptFlip?: boolean;
     };
     choices?: {

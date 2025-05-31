@@ -11,7 +11,10 @@
 	padding: 0;
 
 	&.thinking {
-		font-style: italic;
+
+		#dialogue {
+			font-style: italic;
+		}
 
 		.comic-bubble__tail {
 			width: 70px;
@@ -172,14 +175,15 @@
 #name {
 	display: none;
 	position: absolute;
-	top: -120px;
-	left: -75px;
+	top: -70px;
+	left: -30px;
 	font-weight: bold;
 	font-size: 2rem;
 	margin-bottom: 5px;
 	text-transform: uppercase;
 	color: #f9d342;
 	padding: 1rem;
+	background: black;
 }
 
 #name.displayed {

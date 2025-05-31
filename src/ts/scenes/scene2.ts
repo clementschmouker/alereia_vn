@@ -25,7 +25,7 @@ const script : DialogueLine[] = [
       style: 'thinking',
       backgroundTransition: {
         easing: FadeTransitionType.easeIn,
-        duration: 3000,
+        duration: 300,
       },
       textPosition: 'center', // Vangva is on the left
       background: 'gare',

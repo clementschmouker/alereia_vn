@@ -16,6 +16,11 @@ const script: DialogueLine[] = [
         nextLineId: 'restart-game',
     },
     {
+      id: 'eyes',
+      overlay: ['images/yeux1.webp', 'images/yeux2.webp', 'images/yeux3.webp'],
+      noNextLine: true,
+    },
+    {
         id: 'endgame',
         text: "Une impasse...",
         stopGame: true,

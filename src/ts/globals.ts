@@ -60,7 +60,7 @@ export const startButton = document.querySelector("#start-button") as HTMLButton
 export const videoAccueil = document.getElementById('videoAccueil') as HTMLVideoElement;
 export const gameScreen = document.querySelector("#game") as HTMLDivElement;
 
-
+export const overlayElement = document.querySelector('#overlay') as HTMLDivElement;
 
 export const game = new Game();
 export const lineHandler = new LineHandler(script);

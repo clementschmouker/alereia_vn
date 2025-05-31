@@ -34,6 +34,7 @@ interface DialogueLine {
     text?: string;
     style?: 'speech' | 'thinking' | 'phone';
     textPosition?: 'right' | 'left' | 'center' | 'narrator' | 'none';
+    overlay?: string[];
     dontSave?: boolean,
     video?: string;
     isNotOverUi?: boolean;

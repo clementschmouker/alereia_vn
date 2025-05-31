@@ -20,6 +20,7 @@ import {
     audioChannelSound,
     audioChannelVoice,
     goBackButton,
+    overlayElement,
 } from "../globals";
 
 import { DialogueLine, SmartphoneMessage } from "../types";
@@ -542,6 +543,30 @@ export default class LineHandler {
         }
         if (!line?.dontSave) {
             this.previousLines[this.currentLineIndex] = this.currentLineId;
+        }
+
+        if(line?.overlay) {
+            if (Array.isArray(line.overlay)) {
+                let index = 0;
+                const overlayImages = line.overlay.map((src) => {
+                    const overlayImg = document.createElement('img');
+                    overlayImg.src = src;
+                    overlayImg.classList.add('overlay-image');
+                    overlayImg.style.display = 'none'; // Initially hide all images
+                    overlayElement?.appendChild(overlayImg);
+                    return overlayImg;
+                });
+
+                overlayImages[0].style.display = 'block'; // Show the first image immediately
+                const interval = setInterval(() => {
+                    overlayImages.forEach((img, i) => {
+                        img.style.display = i === index ? 'block' : 'none'; // Show the current image, hide others
+                    });
+                    index = (index + 1) % overlayImages.length; // Loop infinitely
+                }, 500);
+            }
+        } else {
+            overlayElement!.innerHTML = ""; // Clear the overlay element
         }
     }
 }

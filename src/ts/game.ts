@@ -8,6 +8,7 @@ import Player from './components/player';
 import Trigger from './components/trigger';
 
 import triggersList from './triggersList';
+import { audioChannelSound } from './globals';
 
 
 const solidify = (mesh: THREE.Mesh) => {
@@ -81,7 +82,7 @@ class Game {
         this.controls = new OrbitControls(this.camera, this.renderer.domElement);
 
         // Player
-        const startingPlayerPosition = new THREE.Vector3(-50, 0.5, -7);
+        const startingPlayerPosition = new THREE.Vector3(-50, 0.5, -7.15);
         this.player = new Player(startingPlayerPosition);
         this.scene.add(this.player.mesh);
 
@@ -195,6 +196,12 @@ class Game {
                     this.player.loop([0, 1, 2, 3, 4, 5, 6, 7], 0.8);
                 }
                 this.player.isRunning = true;
+                if (audioChannelSound.paused) {
+                    audioChannelSound.src = 'audio/walk/walk.wav';
+                    audioChannelSound.currentTime = 0;
+                    audioChannelSound.loop = true;
+                    audioChannelSound.play();
+                }
             }
             if (event.key === 'ArrowLeft' && this.paused === false && this.stoped === false) {
                 this.player.direction = -1;
@@ -203,6 +210,12 @@ class Game {
                     this.player.loop([0, 1, 2, 3, 4, 5, 6, 7], 0.8);
                 }
                 this.player.isRunning = true;
+                if (audioChannelSound.paused) {
+                    audioChannelSound.src = 'audio/walk/walk.wav';
+                    audioChannelSound.currentTime = 0;
+                    audioChannelSound.loop = true;
+                    audioChannelSound.play();
+                }
             }
         });
 
@@ -211,6 +224,10 @@ class Game {
                 this.player.direction = 0;
                 this.player.loop([8, 9, 10, 11, 12, 13, 14, 15], 0.8);
                 this.player.isRunning = false;
+                audioChannelSound.pause();
+                audioChannelSound.src = '';
+                audioChannelSound.loop = false;
+                audioChannelSound.currentTime = 0;
             }
         })
 

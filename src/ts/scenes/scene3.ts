@@ -70,11 +70,7 @@ const script : DialogueLine[] = [
     },
     {
       id: "3js6",
-      name: "",
-      charactersOnScreen: {
-        left: "",
-      },
-      text: "*la mosaïque d'yeux réapparait*",
+      overlay: ['images/yeux1.webp', 'images/yeux2.webp', 'images/yeux3.webp'],
     },
     {
       id: "3js7",
@@ -100,11 +96,15 @@ const script : DialogueLine[] = [
     },
     {
       id: "3js9",
+      overlay: ['images/yeux1.webp', 'images/yeux2.webp', 'images/yeux3.webp'],
+      nextLineId: '3js9.5',
+      pauseGame: true,
+    },
+    {
+      id: "3js9.5",
       name: "Vangva",
       text: "<i>Ils sont derrière moi...</i>",
       textPosition: 'left', // Vangva is on the left
-      nextLineId: '3js10',
-      pauseGame: true,
       charactersOnScreen: {
         left: "vava",
         leftMood: "regard_froid",

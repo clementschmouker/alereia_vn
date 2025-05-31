@@ -197,7 +197,7 @@ class Game {
                 }
                 this.player.isRunning = true;
                 if (audioChannelSound.paused) {
-                    audioChannelSound.src = 'audio/walk/walk.wav';
+                    audioChannelSound.src = 'audio/bruitages/course.mp3';
                     audioChannelSound.currentTime = 0;
                     audioChannelSound.loop = true;
                     audioChannelSound.play();
@@ -211,7 +211,7 @@ class Game {
                 }
                 this.player.isRunning = true;
                 if (audioChannelSound.paused) {
-                    audioChannelSound.src = 'audio/walk/walk.wav';
+                    audioChannelSound.src = 'audio/bruitages/course.mp3';
                     audioChannelSound.currentTime = 0;
                     audioChannelSound.loop = true;
                     audioChannelSound.play();

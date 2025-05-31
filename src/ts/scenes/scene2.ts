@@ -413,10 +413,8 @@ const script : DialogueLine[] = [
     },
     {
       id: "gare6",
-      name: "N.O.D.E.",
-      text: "*elle rigole*",
-      textPosition: 'left', 
       voice: "medium",
+      sound: "audio/bruitages/rire_femme.mp3",
       charactersOnScreen: {
         left: "serveuse",
         leftMood: "satisfaite_cig",

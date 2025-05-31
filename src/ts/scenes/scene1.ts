@@ -137,6 +137,7 @@ const script: DialogueLine[] = [
       leftFlip: false,
       rightFlip: false
     },
+    sound: "audio/bruitages/briquet.mp3"
   },
   {
     id: "start7",

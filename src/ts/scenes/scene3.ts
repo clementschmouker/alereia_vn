@@ -35,8 +35,7 @@ const script : DialogueLine[] = [
     },
     {
       id: "3js2.1",
-      name: "",
-      text: "*son téléphone sonne*",
+      sound: "audio/bruitages/phone.mp3",
       charactersOnScreen: {
         left: "vava",
         leftMood: "alerte_tel",
@@ -46,8 +45,19 @@ const script : DialogueLine[] = [
     {
       id: "3js3",
       name: "Vangva",
-      text: "Syel, c'est toi ? Tu vas bien ? Où es-tu ? *l'image se pause quelques secondes, on entend la voix de Syel qui répond en giberish*",
+      text: "Syel, c'est toi ? Tu vas bien ? Où es-tu ?",
       textPosition: 'left',
+      voice: "medium",
+      charactersOnScreen: {
+        left: "vava",
+        leftMood: "au_tel_ouvert",
+        leftFlip: false,
+        rightFlip: false
+      },
+    },
+    {
+      id: "3js3.2",
+      sound: "audio/bruitages/gibberish1.mp3",
       voice: "medium",
       charactersOnScreen: {
         left: "vava",
@@ -59,9 +69,20 @@ const script : DialogueLine[] = [
     {
       id: "3js4",
       name: "Vangva",
-      text: "Ça marche. J'arrive bientôt, juste le temps de vérifier quelque chose... Quoi qu'il arrive, ne te montre surtout pas, d'accord ? *même courte pause*",
+      text: "Ça marche. J'arrive bientôt, juste le temps de vérifier quelque chose... Quoi qu'il arrive, ne te montre surtout pas, d'accord ?",
       textPosition: 'left', // Vangva is on the left
       voice: "medium",
+      charactersOnScreen: {
+        left: "vava",
+        leftMood: "au_tel_ferme",
+        leftFlip: false,
+        rightFlip: false
+      },
+    },
+    {
+      id: "3js4.7",
+      voice: "medium",
+      sound: "audio/bruitages/gibberish2.mp3",
       charactersOnScreen: {
         left: "vava",
         leftMood: "au_tel_ferme",

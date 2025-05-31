@@ -3,12 +3,18 @@ import { DialogueLine, FadeTransitionType } from "../types";
 const script : DialogueLine[] = [
     {
         id: "impasse", // Unique ID for this line
-        name: "",
-        text: "",
+        name: "Vangva",
+        text: "Une impasse...",
         background: 'impasse',
+        style: 'thinking',
         backgroundTransition: {
           easing: FadeTransitionType.easeIn,
           duration: 3000,
+        },
+        charactersOnScreen: {
+          right: "vava",
+          rightMood: "regard_froid",
+          rightFlip: false
         },
         music: 'audio/scene4.mp3',
         loopMusic: true,
@@ -19,12 +25,13 @@ const script : DialogueLine[] = [
       text: "Tiens... Tu n'es pas né à Brissa, toi ? C'est quand même malheureux de connaître aussi mal sa propre ville.",
       textPosition: 'left', // N.O.D.E. is on the left
       background: 'impasse',
+      style: 'speech',
       charactersOnScreen: {
         left: "mechants",
         leftMood: "moqueur",
         right: "vava",
         rightMood: "regard_froid",
-        leftFlip: true,
+        leftFlip: false,
         rightFlip: false
       },
     },

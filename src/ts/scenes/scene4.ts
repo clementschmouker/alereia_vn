@@ -7,6 +7,7 @@ const script : DialogueLine[] = [
         text: "Une impasse...",
         style: 'thinking',
         textPosition: 'right',
+        voice: "medium",
         background: 'impasse',
         stopGame: true,
         charactersOnScreen: {
@@ -21,7 +22,8 @@ const script : DialogueLine[] = [
     {
       id: "impasse0",
       name: "N.O.D.E.",
-      text: "Tiens... Tu n'es pas né à Brissa, toi ? C'est quand même malheureux de connaître aussi mal sa propre ville.",
+      voice: "low",
+      text: "Tiens... T'es pas né à Brissa, toi ? C'est quand même malheureux de connaître aussi mal sa propre ville.",
       textPosition: 'left', // N.O.D.E. is on the left
       background: 'impasse',
       style: 'speech',
@@ -38,6 +40,7 @@ const script : DialogueLine[] = [
     {
       id: "impasse1",
       name: "Vangva",
+      voice: "medium",
       text: "...",
       textPosition: 'right', // Vangva is on the right
       background: 'impasse',
@@ -53,6 +56,7 @@ const script : DialogueLine[] = [
     {
       id: "impasse2",
       name: "N.O.D.E.",
+      voice: "low",
       text: "Peu importe. Tu sais ce qu'on cherche, Vangva. Ou plutôt, <i>qui</i> on cherche.",
       textPosition: 'left', // N.O.D.E. is on the left
       background: 'impasse',
@@ -68,7 +72,8 @@ const script : DialogueLine[] = [
     {
       id: "impasse2.0",
       name: "N.O.D.E.",
-      text: "On a entendu ta conversation au téléphone, on sait que tu t'apprêtes à le retrouver... rappelle-toi, on a des yeux et des oreilles partout. ",
+      voice: "low",
+      text: "On a entendu ta conversation au téléphone, on sait que tu t'apprêtes à le retrouver... tu le sais, qu'on a des yeux et des oreilles partout. ",
       textPosition: 'left', // N.O.D.E. is on the left
       background: 'impasse',
       charactersOnScreen: {
@@ -83,6 +88,7 @@ const script : DialogueLine[] = [
     {
       id: "impasse2.1",
       name: "N.O.D.E.",
+      voice: "low",
       text: "Il te suffit juste de nous dire où il se trouve et on te laissera partir indemne.",
       textPosition: 'left', // N.O.D.E. is on the left
       background: 'impasse',
@@ -98,7 +104,8 @@ const script : DialogueLine[] = [
     {
       id: "impasse3",
       name: "Vangva",
-      text: "Vous pensez vraiment me faire peur ? Je suis un soldat d'élite, et vous, vous semblez brandir un couteau pour la première fois de votre vie.",
+      voice: "medium",
+      text: "Vous pensez vraiment me faire peur ? Je dois vous rappeler que je suis un soldat d'élite ? Alors que vous, ça a l'air d'être la première fois que vous menacez quelqu'un avec une arme.",
       textPosition: 'right', // Vangva is on the right
       background: 'impasse',
       charactersOnScreen: {
@@ -113,7 +120,8 @@ const script : DialogueLine[] = [
     {
       id: "impasse4",
       name: "N.O.D.E.",
-      text: "C'est vrai, tu es plus fort que nous.",
+      voice: "low",
+      text: "C'est vrai, t'es plus fort que nous.",
       textPosition: 'left', // N.O.D.E. is on the left
       background: 'impasse',
       charactersOnScreen: {
@@ -128,6 +136,7 @@ const script : DialogueLine[] = [
     {
       id: "impasse5",
       name: "N.O.D.E.",
+      voice: "low",
       text: "Mais nous, on est plus nombreux. Et surtout capables d'appeler du renfort sans même avoir besoin d'ouvrir la bouche.",
       textPosition: 'left', // N.O.D.E. is on the left
       background: 'impasse',
@@ -143,7 +152,8 @@ const script : DialogueLine[] = [
     {
       id: "impasse6",
       name: "N.O.D.E.",
-      text: "Alors oui, tu peux faire le fier ! Mais peu importe tes pouvoirs, il restera toujours au moins l'un d'entre nous debout pour t'arrêter...",
+      voice: "low",
+      text: "Alors ouais, fais le fier ! Mais peu importe tes pouvoirs, il restera toujours au moins l'un d'entre nous debout pour t'arrêter... Ah ah...",
       textPosition: 'left', // N.O.D.E. is on the left
       background: 'impasse',
       charactersOnScreen: {
@@ -159,6 +169,7 @@ const script : DialogueLine[] = [
       id: "impasse7",
       name: "Vangva",
       text: "...",
+      voice: "medium",
       textPosition: 'right', // Vangva is on the right
       background: 'impasse',
       charactersOnScreen: {
@@ -173,7 +184,8 @@ const script : DialogueLine[] = [
     {
       id: "impasse8",
       name: "N.O.D.E.",
-      text: "Tu sais, si tu nous disais juste où se trouve Syel...",
+      voice: "low",
+      text: "Tu sais, si tu nous disais juste où se trouve Syel... Ce serait plus facile...",
       textPosition: 'left', // N.O.D.E. is on the left
       background: 'impasse',
       charactersOnScreen: {
@@ -188,6 +200,7 @@ const script : DialogueLine[] = [
     {
       id: "impasse9",
       name: "Vangva",
+      voice: "medium",
       text: "...",
       textPosition: 'right', // Vangva is on the right
       background: 'impasse',
@@ -203,6 +216,7 @@ const script : DialogueLine[] = [
     {
       id: "impasse10",
       name: "Vangva",
+      voice: "medium",
       text: "Franchement, il va falloir plus que ça pour m'impressionner...",
       textPosition: 'right', // Vangva is on the right
       background: 'impasse',
@@ -218,6 +232,7 @@ const script : DialogueLine[] = [
     {
       id: "impasse11",
       name: "Vangva",
+      voice: "medium",
       text: "... ? (*on entend un bruit de pas pressés*)",
       textPosition: 'right', // Vangva is on the right
       background: 'impasse',
@@ -234,6 +249,7 @@ const script : DialogueLine[] = [
       id: "impasse12",
       name: "???",
       text: "Vangva !!",
+      voice: "low",
       textPosition: 'center', // ??? is in the middle
       background: 'impasse3',
       charactersOnScreen: {
@@ -249,6 +265,7 @@ const script : DialogueLine[] = [
       id: "impasse13",
       name: "Vangva",
       text: "Syel !",
+      voice: "medium",
       textPosition: 'right', // Vangva is on the right
       background: 'impasse',
       charactersOnScreen: {
@@ -263,6 +280,7 @@ const script : DialogueLine[] = [
     {
       id: "impasse14",
       name: "Vangva",
+      voice: "medium",
       text: "Idiot ! Je t'avais dit de rester caché !! Va-t'en !!",
       textPosition: 'right', // Vangva is on the right
       background: 'impasse',
@@ -278,6 +296,7 @@ const script : DialogueLine[] = [
     {
       id: "impasse15.0",
       name: "Syel",
+      voice: "low",
       text: "Ah...",
       textPosition: 'center',
       style: "speech",
@@ -307,7 +326,8 @@ const script : DialogueLine[] = [
     {
       id: "impasse16",
       name: "N.O.D.E.",
-      text: "Suivez-le !! Ne le laissez pas s'échapper !!",
+      voice: "low",
+      text: "Une chance pareille, c'est inespéré ! Suivez-le !! Ne le laissez pas s'échapper !!",
       textPosition: 'left', // N.O.D.E. is on the left
       background: 'impasse',
       charactersOnScreen: {
@@ -321,6 +341,7 @@ const script : DialogueLine[] = [
     },
     {
       id: "impasse18",
+      voice: "low",
       name: "N.O.D.E.",
       text: "Vangva... On te ralentira le plus longtemps possible. Peu importe la raclée qu'on va se prendre...",
       textPosition: 'left', // N.O.D.E. is on the left

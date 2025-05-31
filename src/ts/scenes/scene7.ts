@@ -28,6 +28,7 @@ const script : DialogueLine[] = [
     {
       id: "toit2",
       name: "Syel",
+      voice: "high",
       text: "<i>Il a raison. C'est trop facile...</i>",
       textPosition: 'center', 
       style: "thinking",
@@ -45,6 +46,7 @@ const script : DialogueLine[] = [
     },
     {
       id: "toit4",
+      voice: "high",
       name: "Syel",
       text: "<i> Il commence à faire froid... et c'est mon frère qui a ma veste. Bouclons cette affaire rapidement. Je me sens un peu fatigué... </i>",
       textPosition: 'center',
@@ -64,6 +66,7 @@ const script : DialogueLine[] = [
     {
       id: "toit6",
       name: "Syel",
+      voice: "high",
       text: "<i> Ça devrait lui suffire... Ensuite, Prisme fera le reste.</i>",
       textPosition: 'center', 
       style: "thinking",

@@ -18,24 +18,6 @@ const script : DialogueLine[] = [
         abruptFlip: true,
       },
     },
-      /*{
-      id: "gare000",
-      name: "Vangva",
-      text: "<i>...</i>",
-      style: 'thinking',
-      backgroundTransition: {
-        easing: FadeTransitionType.easeIn,
-        duration: 300,
-      },
-      textPosition: 'center', // Vangva is on the left
-      background: 'gare',
-      voice: "medium",
-      charactersOnScreen: {
-        middle: "vava",
-        middleMood: "pense",
-        middleFlip: false,
-      },
-    },*/
     {
       id: "gare00",
       name: "Vangva",
@@ -417,7 +399,7 @@ const script : DialogueLine[] = [
     {
       id: "gare5",
       name: "Ilyem",
-      text: "Ils ont voyagé en train, séparément pour ne pas être aperçus. Je pense, à l'heure qu'il est, que Vangva doit se trouver quelque part dans le quartier de la gare.",
+      text: "Ils ont voyagé en train, séparément pour ne pas être aperçus. À cette heure-ci, je pense que Vangva doit se trouver quelque part dans le quartier de la gare.",
       textPosition: 'right', 
       voice: "high",
       charactersOnScreen: {

@@ -128,7 +128,6 @@ const script: DialogueLine[] = [
   {
     id: "start6.1",
     text: "",
-    textPosition: 'narrator', // No speaker, narrator position
     background: 'bar',
     charactersOnScreen: {
       left: "serveuse",

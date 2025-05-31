@@ -19,7 +19,8 @@ const script : DialogueLine[] = [
     {
       id: "supercherie1",
       name: "N.O.D.E.",
-      text: "On te tient ! Frères et soeurs, mobilisez-vous, ce n'est plus le moment de se cacher ! Notre priorité est de l'emmener en lieu sûr !",
+      voice: "low",
+      text: "On te tient ! Frères et soeurs, ce n'est plus le moment de se cacher ! Notre priorité est de l'emmener en lieu sûr !",
       textPosition: 'left', // N.O.D.E. is on the left
       background: 'rues',
       charactersOnScreen: {
@@ -48,6 +49,7 @@ const script : DialogueLine[] = [
       name: "N.O.D.E.",
       text: "Ne t'en fais pas, Syel ! Bientôt, tu...",
       background: 'rues',
+      voice: "low",
       textPosition: 'left',
       style: 'speech',
       charactersOnScreen: {
@@ -63,6 +65,7 @@ const script : DialogueLine[] = [
     {
       id: "supercherie2.0",
       name: "N.O.D.E.",
+      voice: "low",
       text: "... Quoi ?!",
       background: 'rues',
       textPosition: 'left',
@@ -90,6 +93,7 @@ const script : DialogueLine[] = [
     {
       id: "supercherie3",
       name: "N.O.D.E.",
+      voice: "low",
       text: "Tes yeux... ils ne sont pas bleus ! Mais tu n'es pas...",
       background: 'rues',
       textPosition: 'left',
@@ -106,6 +110,7 @@ const script : DialogueLine[] = [
     {
       id: "supercherie3.5",
       name: "N.O.D.E.",
+      voice: "low",
       text: "T'es le frère jumeau ?!",
       textPosition: 'left',
       style: 'speech',
@@ -122,6 +127,7 @@ const script : DialogueLine[] = [
     {
       id: "supercherie4",
       name: "Ira",
+      voice: "low",
       text: "Si tu voyais ta tête, mec...",
       style: 'speech',
       textPosition: 'center', // Ira is in the middle

@@ -4,6 +4,7 @@ const script : DialogueLine[] = [
     {
         id: "twist", // Unique ID for this line
         name: "Vangva",
+        voice: "medium",
         text: "...",
         background: 'impasse',
         charactersOnScreen: {
@@ -25,6 +26,7 @@ const script : DialogueLine[] = [
     {
       id: "twist1",
       name: "N.O.D.E.",
+      voice: "low",
       text: "Ça suffit ! T'es en train de te payer notre tête ?!",
       textPosition: 'left', // N.O.D.E. is on the left
       background: 'impasse',
@@ -40,6 +42,7 @@ const script : DialogueLine[] = [
     {
       id: "twist2",
       name: "Vangva",
+      voice: "medium",
       text: "J'espère que tu profites bien du spectacle depuis ton bureau.",
       textPosition: 'right', // Vangva is on the right
       background: 'impasse',
@@ -55,6 +58,7 @@ const script : DialogueLine[] = [
     {
       id: "twist3",
       name: "???",
+      voice: "low",
       text: "J'adore, j'ai même sorti le popcorn ! Très beau jeu d'acteur d'ailleurs, je dois dire que tu m'as surpris.",
       textPosition: 'center', // ??? is not on screen
       background: 'noir',
@@ -66,6 +70,7 @@ const script : DialogueLine[] = [
     },
     {
       id: "twist4",
+      voice: "medium",
       name: "Vangva",
       text: "Merci... Je t'avoue que je ne m'attendais pas à ce que ton plan marche aussi bien, Sanji. C'était presque trop facile.",
       textPosition: 'right', // Vangva is on the right
@@ -82,6 +87,7 @@ const script : DialogueLine[] = [
     {
       id: "twist5",
       name: "Sanjevan",
+      voice: "low",
       text: "Évidemment que ça a marché, tu me connais. Fais quand même attention à toi gamin... Et ne les tape pas trop fort, ils ont l'air morts de trouille les pauvres.",
       textPosition: 'right', // Sanjevan is not on screen
       background: 'impasse',
@@ -98,6 +104,7 @@ const script : DialogueLine[] = [
     {
       id: "twist8",
       name: "Vangva",
+      voice: "medium",
       text: "Désolé, je vous ai fait attendre.",
       textPosition: 'right', // Vangva is on the right
       background: 'impasse',
@@ -113,7 +120,8 @@ const script : DialogueLine[] = [
     {
       id: "twist9",
       name: "N.O.D.E.",
-      text: "Arrête de faire le malin !! Notre nombre est peut-être réduit, mais tu n'en restes pas moins seul face à cinq personnes !",
+      voice: "low",
+      text: "Arrête de faire le malin !! Notre nombre est peut-être réduit, mais tu es quand même seul face à quatre personnes !",
       textPosition: 'left', // N.O.D.E. is on the left
       background: 'impasse',
       charactersOnScreen: {
@@ -129,6 +137,7 @@ const script : DialogueLine[] = [
       id: "twist10",
       name: "Vangva",
       text: "Seul ?",
+      voice: "medium",
       textPosition: 'right', // Vangva is on the right
       background: 'impasse',
       charactersOnScreen: {
@@ -153,7 +162,8 @@ const script : DialogueLine[] = [
     {
       id: "twist11",
       name: "Vangva",
-      text: "Mais vous savez... Je ne suis pas <i>seul</i>...",
+      voice: "medium",
+      text: "Qui vous a dit que j'étais <i>seul</i>... ?",
       textPosition: 'right', // Vangva is on the right
       background: 'impasse',
       style: 'speech',

@@ -48,6 +48,7 @@ const script : DialogueLine[] = [
       name: "Vangva",
       text: "Syel, c'est toi ? Tu vas bien ? Où es-tu ? *l'image se pause quelques secondes, on entend la voix de Syel qui répond en giberish*",
       textPosition: 'left',
+      voice: "medium",
       charactersOnScreen: {
         left: "vava",
         leftMood: "au_tel_ouvert",
@@ -60,6 +61,7 @@ const script : DialogueLine[] = [
       name: "Vangva",
       text: "Ça marche. J'arrive bientôt, juste le temps de vérifier quelque chose... Quoi qu'il arrive, ne te montre surtout pas, d'accord ? *même courte pause*",
       textPosition: 'left', // Vangva is on the left
+      voice: "medium",
       charactersOnScreen: {
         left: "vava",
         leftMood: "au_tel_ferme",
@@ -72,6 +74,7 @@ const script : DialogueLine[] = [
       name: "Vangva",
       text: "Parfait. Sois prudent... À tout de suite.",
       textPosition: 'left', // Vangva is on the left
+      voice: "medium",
       charactersOnScreen: {
         left: "vava",
         leftMood: "au_tel_ouvert",
@@ -87,6 +90,7 @@ const script : DialogueLine[] = [
       id: "3js7",
       name: "Vangva",
       text: "<i>Je ferais mieux de ne pas rester ici.</i>",
+      voice: "medium",
       textPosition: 'left', // Vangva is on the left
       charactersOnScreen: {
         left: "vava",
@@ -115,6 +119,7 @@ const script : DialogueLine[] = [
       id: "3js9.5",
       name: "Vangva",
       text: "<i>Ils sont derrière moi...</i>",
+      voice: "medium",
       textPosition: 'left', // Vangva is on the left
       charactersOnScreen: {
         left: "vava",

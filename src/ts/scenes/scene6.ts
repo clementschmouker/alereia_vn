@@ -154,9 +154,12 @@ const script : DialogueLine[] = [
     {
       id: "cineyeux",
       name: "",
-      text: "*Cinématique, Vangva ferme les yeux. Quand il les rouvre, son oeil glitch*",
-      textPosition: 'center', // No speaker
       background: 'noir',
+      backgroundVideo: 'yeuxVa',
+      charactersOnScreen: {
+        left: '',
+        right: '',
+      }
     },
     {
       id: "twist11",

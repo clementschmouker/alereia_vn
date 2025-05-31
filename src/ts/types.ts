@@ -38,6 +38,7 @@ interface DialogueLine {
     video?: string;
     isNotOverUi?: boolean;
     background?: string;
+    timer?: number;
     smartphone?: boolean;
     smartphoneMessages?: SmartphoneMessage[];
     smartphoneChoices?: {

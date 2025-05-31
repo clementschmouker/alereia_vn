@@ -23,6 +23,7 @@ const DEFAULT_STARTING_LINE_ID = "start"; // Ici tu change l'ID que tu veux pour
 startButton?.addEventListener("click", () => {
     startScreen.classList.add("hidden");
     videoAccueil.pause();
+    videoAccueil.volume = 0;
     videoAccueil.currentTime = 0;
     gameScreen.classList.remove("hidden");
     lineHandler.showLine(DEFAULT_STARTING_LINE_ID);
@@ -71,11 +72,13 @@ smartPhoneCloseElem.addEventListener('click', () => {
 
 
 dialogueBox.addEventListener("click", () => {
-    lineHandler.skipLine();
+    if (lineHandler.canSkipLine) {
+        lineHandler.skipLine();
+    }
 });
 
 document.addEventListener("keydown", (event) => {
-    if (event.key === " ") {
+    if (event.key === " " && lineHandler.canSkipLine) {
         event.preventDefault();
         lineHandler.skipLine();
     }

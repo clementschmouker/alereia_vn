@@ -5,6 +5,7 @@ const script : DialogueLine[] = [
       id: "gare", // Unique ID for this line
       text: "",
       background: 'vue',
+      timer: 3000,
       backgroundTransition: {
         easing: FadeTransitionType.easeIn,
         duration: 3000,

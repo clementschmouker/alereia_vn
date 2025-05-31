@@ -28,6 +28,7 @@ export default class LineHandler {
     canSkipSmartphone: boolean = false;
     isWritting: boolean = false;
     canPassScreen: boolean = true;
+    canSkipLine: boolean = true;
     previousLines: string[] = [];
     currentLineIndex: number = 0;
     currentLineId: string = '';
@@ -249,6 +250,15 @@ export default class LineHandler {
 
     showLine = (id: string, backward: boolean = false) => {
         const line = this.findLineById(id);
+        this.canSkipLine = false;
+        if (line?.timer && line?.timer > 0) {
+            console.log('TIMER');
+            setTimeout(() => {
+                this.canSkipLine = true;
+            }, line.timer)
+        } else {
+            this.canSkipLine = true;
+        }
 
         if (line && !line.textPosition) {
             line.textPosition = "narrator";
@@ -438,6 +448,7 @@ export default class LineHandler {
                 backgroundVideo.src = `videos/${line.backgroundVideo}.mp4`;
                 backgroundVideo.autoplay = true;
                 backgroundVideo.playsInline = true;
+                backgroundVideo.play();
                 backgroundVideo.addEventListener("ended", () => {
                     this.canPassScreen = true;
                     const nextLineId = this.getNextLineId();

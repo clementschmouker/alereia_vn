@@ -32,8 +32,8 @@ const triggersList: Trigger[] = [
         }
     },
     {
-        // position: 13,
-        position: -40,
+        position: 13,
+        // position: -40,
         action: () => {
             console.log('third trigger');
             lineHandler.showLine('impasse');

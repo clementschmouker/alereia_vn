@@ -32,14 +32,20 @@ class Player {
         const planeGeometry = new THREE.PlaneGeometry(this.size.x, this.size.y);
         const material = new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 0 });
 
-        this.spriteMap = new THREE.TextureLoader().load('images/vangvasprite/spritevangva.png');
-        this.spriteMap.magFilter = THREE.NearestFilter;
+        this.spriteMap = new THREE.TextureLoader().load('images/vangvasprite/spritevangva.png', (texture) => {
+            texture.colorSpace = THREE.SRGBColorSpace;
+            texture.generateMipmaps = true;
+        });
+        this.spriteMap.magFilter = THREE.LinearFilter;
+        this.spriteMap.minFilter = THREE.LinearMipMapLinearFilter;
         this.spriteMap.repeat.set(1/this.tileHoriz, 1/this.tileVert);
+        this.spriteMap.antialias = true;
 
 
         const spriteMaterial = new THREE.SpriteMaterial({
             map: this.spriteMap,
-            blending: THREE.NormalBlending
+            transparent: true,
+            alphaTest: 0.01,
         });
         const sprite = new THREE.Sprite(spriteMaterial);
         this.loop([8, 9, 10, 11, 12, 13, 14, 15], 0.8);

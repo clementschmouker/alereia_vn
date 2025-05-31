@@ -63,7 +63,8 @@ class Game {
         document.querySelector('#game-container')?.appendChild(this.renderer.domElement);
         this.renderer.domElement.id = 'game-canvas';
         this.renderer.shadowMap.enabled = true;
-        this.renderer.shadowMap.type = THREE.PCFSoftShadowMap; // or PCFShadowMap
+        this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        this.renderer.toneMapping = THREE.NoToneMapping;
         this.paused = false;
         this.stoped = true;
         this.triggers = [];
@@ -76,20 +77,11 @@ class Game {
         this.raycaster = new THREE.Raycaster();
         this.collidableObjects = [];
 
-        // Lighting
-        const Dirlight = new THREE.DirectionalLight(0xffffff, 1);
-        const light = new THREE.AmbientLight(0xffffff, 0.1);
-        light.position.y = 10;
-        Dirlight.position.set(5, 10, 7.5);
-        this.scene.add(light);
-        this.scene.add(Dirlight);
-
-
         // Controls
         this.controls = new OrbitControls(this.camera, this.renderer.domElement);
 
         // Player
-        const startingPlayerPosition = new THREE.Vector3(-50, 0.5, -7.15);
+        const startingPlayerPosition = new THREE.Vector3(-50, 0.5, -7);
         this.player = new Player(startingPlayerPosition);
         this.scene.add(this.player.mesh);
 

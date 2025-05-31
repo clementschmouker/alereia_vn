@@ -136,11 +136,16 @@ const script : DialogueLine[] = [
     },
     {
       id: "cinematiquefuite",
+      background: 'course2',
+      isNotOverUi: true,
+    },
+    {
+      id: "cinematiquefuite2",
       name: "N.O.D.E.",
       voice: "medium",
       text: "Syel nous aidera à atteindre la Paix que nous recherchons tous.",
       textPosition: 'left', // N.O.D.E. is on the left
-      background: 'noir',
+      background: 'course2',
       isNotOverUi: true,
     },
     {

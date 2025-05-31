@@ -85,6 +85,7 @@ const script : DialogueLine[] = [
       text: "Évidemment que ça a marché, tu me connais. Fais quand même attention à toi gamin... Et ne les tape pas trop fort, ils ont l'air morts de trouille les pauvres.",
       textPosition: 'right', // Sanjevan is not on screen
       background: 'impasse',
+      style:"phone",
       charactersOnScreen: {
         left: "mechants",
         leftMood: "peur",
@@ -93,18 +94,6 @@ const script : DialogueLine[] = [
         leftFlip: false,
         rightFlip: false
       },
-    },
-    {
-      id: "twist6",
-      name: "",
-      text: "*Vangva dépose son sac à dos*",
-      background: 'noir',
-    },
-    {
-      id: "twist7",
-      name: "",
-      text: "*Il en sort sa matraque*",
-      background: 'noir',
     },
     {
       id: "twist8",

@@ -42,34 +42,24 @@ const script : DialogueLine[] = [
       name: "",
       text: "",
       background: 'syel_leve_yeux',
-      backgroundTransition: {
-        easing: FadeTransitionType.easeIn,
-        duration: 3000,
-      },
     },
     {
       id: "toit4",
       name: "Syel",
-      text: "<i> Il va bientôt pleuvoir... et c'est mon frère qui a ma veste. Bouclons cette affaire rapidement. Je me sens un peu fatigué... </i>",
+      text: "<i> Il commence à faire froid... et c'est mon frère qui a ma veste. Bouclons cette affaire rapidement. Je me sens un peu fatigué... </i>",
       textPosition: 'center', 
       style: "thinking",
       background: 'syel_leve_yeux',
     },
     {
-      id: "toit6",
-      name: "",
-      text: "*vue d'en haut de Vangva qui va taper sur les pauvres Nodistes*",
-      background: 'noir',
-      backgroundTransition: {
-        easing: FadeTransitionType.easeIn,
-        duration: 3000,
-      },
-    },
-    {
       id: "toit7",
       name: "",
-      text: "*cinématique, visage de Syel. Il prend une inspiration, puis ses yeux brillent et glitchent comme Va*",
       background: 'noir',
+      backgroundVideo: 'yeuxSyel',
+      charactersOnScreen: {
+        left: '',
+        right: '',
+      }
     },
     {
       id: "toit8",

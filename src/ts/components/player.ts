@@ -13,7 +13,7 @@ class Player {
     public facingDirection: 1 | -1;
     private currentSpriteTile = 0;
     private tileHoriz = 8;
-    private tileVert = 1;
+    private tileVert = 2;
     private spriteOffsetX: number = 0;
     private spriteOffsetY: number = 0;
     private spriteMap: any;
@@ -24,21 +24,25 @@ class Player {
 
     constructor(startingPosition: THREE.Vector3 = new THREE.Vector3(0, 0.5, -7.15)) {
         this.position = startingPosition.clone();
-        this.size = new THREE.Vector3(1, 1, 1);
+        this.size = new THREE.Vector3(1, 0.9, 1);
         this.direction = 0;
         this.facingDirection = 1;
         this.speed = 0.2;
 
         const planeGeometry = new THREE.PlaneGeometry(this.size.x, this.size.y);
-        const material = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0 });
+        const material = new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 0 });
 
-        this.spriteMap = new THREE.TextureLoader().load('images/vangvasprite/spritecourse.png');
+        this.spriteMap = new THREE.TextureLoader().load('images/vangvasprite/spritevangva.png');
         this.spriteMap.magFilter = THREE.NearestFilter;
         this.spriteMap.repeat.set(1/this.tileHoriz, 1/this.tileVert);
 
 
-        const spriteMaterial = new THREE.SpriteMaterial({map: this.spriteMap});
+        const spriteMaterial = new THREE.SpriteMaterial({
+            map: this.spriteMap,
+            blending: THREE.NormalBlending
+        });
         const sprite = new THREE.Sprite(spriteMaterial);
+        this.loop([8, 9, 10, 11, 12, 13, 14, 15], 0.8);
 
 
         this.mesh = new THREE.Mesh(planeGeometry, material);

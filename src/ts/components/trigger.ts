@@ -19,7 +19,7 @@ class Trigger {
         this.stays = stays;
 
         const geometry = new THREE.BoxGeometry(size.x, size.y, size.z);
-        const material = new THREE.MeshBasicMaterial({ color: 0xff0000, transparent: true, opacity: debug ? 0.5 : 0 });
+        const material = new THREE.MeshStandardMaterial({ color: 0xff0000, transparent: true, opacity: debug ? 0.5 : 0, depthWrite: false });
         this.mesh = new THREE.Mesh(geometry, material);
         this.mesh.position.copy(this.position);
     }

@@ -537,6 +537,15 @@ const script : DialogueLine[] = [
         rightFlip: false,
       },
     },
+    {
+      id: "fin35",
+      backgroundVideo: "MET UNE PUTAIN DE VIDEO",
+      charactersOnScreen: {
+        middle: '',
+        left: '',
+        right: '',
+      }
+    }
 ];
 
 export default script;

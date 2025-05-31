@@ -12,7 +12,8 @@ const script : DialogueLine[] = [
           right: "ilyem",
           rightMood: "surprise_cig",
           leftFlip: false,
-          rightFlip: false
+          rightFlip: false,
+          abruptFlip: true,
         },
         backgroundTransition: {
           easing: FadeTransitionType.easeIn,

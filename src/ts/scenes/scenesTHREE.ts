@@ -17,7 +17,9 @@ const script: DialogueLine[] = [
     },
     {
         id: 'endgame',
+        text: "Une impasse...",
         stopGame: true,
+        pauseGame: true,
         nextLineId: 'impasse',
         background: 'impasse',
     },

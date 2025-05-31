@@ -13,7 +13,8 @@ const script : DialogueLine[] = [
           right: "ilyem",
           rightMood: "fachee",
           leftFlip: false,
-          rightFlip: false
+          rightFlip: false,
+          abruptFlip: true,
         },
         backgroundTransition: {
           easing: FadeTransitionType.easeIn,

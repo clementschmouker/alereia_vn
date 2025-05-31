@@ -93,7 +93,7 @@ class Game {
         this.player = new Player(startingPlayerPosition);
         this.scene.add(this.player.mesh);
 
-        this.player.loop([0], 1.5);
+        this.player.loop([8, 9, 10, 11, 12, 13, 14, 15], 1.5);
 
         // Triggers
         triggersList.forEach(triggerData => {
@@ -196,7 +196,7 @@ class Game {
         });
 
         addEventListener('keydown', (event) => {
-            if (event.key === 'ArrowRight') {
+            if (event.key === 'ArrowRight' && this.paused === false && this.stoped === false) {
                 this.player.direction = 1;
                 this.player.facingDirection = 1;
                 if (this.player.isRunning === false) {
@@ -204,7 +204,7 @@ class Game {
                 }
                 this.player.isRunning = true;
             }
-            if (event.key === 'ArrowLeft') {
+            if (event.key === 'ArrowLeft' && this.paused === false && this.stoped === false) {
                 this.player.direction = -1;
                 this.player.facingDirection = -1;
                 if (this.player.isRunning === false) {
@@ -217,7 +217,7 @@ class Game {
         addEventListener('keyup', (event) => {
             if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
                 this.player.direction = 0;
-                this.player.loop([0, 1], 0.8);
+                this.player.loop([8, 9, 10, 11, 12, 13, 14, 15], 0.8);
                 this.player.isRunning = false;
             }
         })

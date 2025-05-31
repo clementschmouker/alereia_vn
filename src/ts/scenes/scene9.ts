@@ -14,6 +14,7 @@ const script : DialogueLine[] = [
         left: "",
         right: "",
         middle: "",
+        abruptFlip: true,
       },
     },
     {

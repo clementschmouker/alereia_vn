@@ -12,7 +12,8 @@ const script : DialogueLine[] = [
           right: "vava",
           rightMood: "moqueur",
           leftFlip: false,
-          rightFlip: false
+          rightFlip: false,
+          abruptFlip: true,
         },
         backgroundTransition: {
           easing: FadeTransitionType.easeIn,

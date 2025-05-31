@@ -21,12 +21,10 @@ import '../scss/main.scss';
 
 const DEFAULT_STARTING_LINE_ID = "start"; // Ici tu change l'ID que tu veux pour commencer
 
-
 startButton?.addEventListener("click", () => {
     startScreen.classList.add("hidden");
-    //videoAccueil.pause();
-    //videoAccueil.removeAttribute('src'); // empty source
-    //videoAccueil.load();
+    videoAccueil.pause();
+    videoAccueil.currentTime = 0;
     gameScreen.classList.remove("hidden");
     lineHandler.showLine(DEFAULT_STARTING_LINE_ID);
 });
@@ -51,7 +49,7 @@ skipVideo?.addEventListener("click", () => {
 });
 
 goBackButton?.addEventListener("click", () => {
-    if (lineHandler.previousLines.length <= 1) return;
+    if (lineHandler.previousLines.length <= 2) return;
     lineHandler.showLine(lineHandler.previousLines[lineHandler.currentLineIndex - 1], true);
 });
 
@@ -78,7 +76,7 @@ dialogueBox.addEventListener("click", () => {
 });
 
 document.addEventListener("keydown", (event) => {
-    if (event.key === " " && (!game.stoped || !game.paused)) {
+    if (event.key === " ") {
         event.preventDefault();
         lineHandler.skipLine();
     }

@@ -7,6 +7,7 @@ const script : DialogueLine[] = [
         text: "Une impasse...",
         background: 'impasse',
         style: 'thinking',
+        stopGame: true,
         backgroundTransition: {
           easing: FadeTransitionType.easeIn,
           duration: 3000,
@@ -14,7 +15,8 @@ const script : DialogueLine[] = [
         charactersOnScreen: {
           right: "vava",
           rightMood: "regard_froid",
-          rightFlip: false
+          rightFlip: false,
+          abruptFlip: true,
         },
         music: 'audio/scene4.mp3',
         loopMusic: true,

@@ -36,7 +36,7 @@ interface DialogueLine {
     textPosition?: 'right' | 'left' | 'center' | 'narrator' | 'none';
     dontSave?: boolean,
     video?: string;
-    isOverUi?: boolean;
+    isNotOverUi?: boolean;
     background?: string;
     smartphone?: boolean;
     smartphoneMessages?: SmartphoneMessage[];
@@ -80,6 +80,7 @@ interface DialogueLine {
       leftFlip?: boolean;
       rightFlip?: boolean;
       middleFlip?: boolean;
+      abruptFlip?: boolean;
     };
     choices?: {
       text: string;

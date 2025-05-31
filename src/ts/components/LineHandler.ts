@@ -106,7 +106,7 @@ export default class LineHandler {
     
     stopTyping = (event: KeyboardEvent) => {
         event.preventDefault();
-        if ((event.key === " " || event.target === goBackButton) && this.typingInterval && (!game.stoped || !game.paused)) {
+        if ((event.key === " " || event.target === goBackButton) && this.typingInterval) {
             this.clearTyping();
             dialogueElem.innerHTML = this.currentLineText;
             document.removeEventListener("keydown", this.stopTyping);
@@ -129,10 +129,17 @@ export default class LineHandler {
         position: "left" | "right" | "middle",
         name?: string,
         mood?: string,
-        flip?: boolean
+        flip?: boolean,
+        abruptFlip?: boolean,
     ) => {
         const current = this.currentCharacters[position];
         const shouldUpdate = current.name !== name || current.mood !== mood || current.flip !== flip;
+
+        if (abruptFlip) {
+            container.classList.remove('smoothFlip');
+        } else {
+            container.classList.add('smoothFlip');
+        }
     
         if (!name) {
             container.style.backgroundImage = "";
@@ -152,6 +159,7 @@ export default class LineHandler {
             this.currentCharacters[position] = { name, mood: mood || "", flip: !!flip };
             container.style.backgroundImage = `url(${newSrc})`;
             if (flip) { container.classList.add('flipped') }
+            else { container.classList.remove('flipped') }
         };
     }
     
@@ -220,7 +228,7 @@ export default class LineHandler {
     skipLine = () => {
         const currentLine = this.findLineById(this.currentLineId);
     
-        if (!currentLine?.backgroundVideo && !this.isWritting && this.canSkipSmartphone && (game.stoped || game.paused)) {
+        if (!currentLine?.backgroundVideo && !this.isWritting && this.canSkipSmartphone) {
             const nextLineId = this.getNextLineId();
             if (nextLineId && !currentLine?.noNextLine) {
                 this.showLine(nextLineId);
@@ -435,10 +443,10 @@ export default class LineHandler {
                 backgroundVideo.src = "";
             }
     
-            if (line.isOverUi) {
-                document.querySelector('#characters')?.classList.add('over');
-            } else {
+            if (line.isNotOverUi) {
                 document.querySelector('#characters')?.classList.remove('over');
+            } else {
+                document.querySelector('#characters')?.classList.add('over');
             }
     
             if (line.charactersOnScreen) {
@@ -452,11 +460,12 @@ export default class LineHandler {
                     leftFlip,
                     rightFlip,
                     middleFlip,
+                    abruptFlip,
                 } = line.charactersOnScreen;
     
-                this.updateCharacterImage(leftCharacter, "left", left, leftMood, leftFlip);
-                this.updateCharacterImage(rightCharacter, "right", right, rightMood, rightFlip);
-                this.updateCharacterImage(middleCharacter, "middle", middle, middleMood, middleFlip);
+                this.updateCharacterImage(leftCharacter, "left", left, leftMood, leftFlip, abruptFlip);
+                this.updateCharacterImage(rightCharacter, "right", right, rightMood, rightFlip, abruptFlip);
+                this.updateCharacterImage(middleCharacter, "middle", middle, middleMood, middleFlip, abruptFlip);
             } else {
                 leftCharacter.innerHTML = "";
                 rightCharacter.innerHTML = "";

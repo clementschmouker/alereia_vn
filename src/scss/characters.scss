@@ -22,8 +22,13 @@
     display: flex;
     align-items: flex-end;
     justify-content: center;
+    background-position: center bottom;
 
-    transition: all .3s ease;
+    transition: all .3s ease, transform 0s ease;
+
+    &.smoothFlip {
+        transition: all .3s ease;
+    }
 
     &.flipped {
         transform: scaleX(-1);

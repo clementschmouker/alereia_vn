@@ -12,6 +12,7 @@ const script : DialogueLine[] = [
         left: "vava",
         leftMood: "alerte_tel",
         leftFlip: true,
+        abruptFlip: true,
       },
     },
     {
@@ -90,6 +91,7 @@ const script : DialogueLine[] = [
     {
       id: "gare8",
       unpauseGame: true,
+      noNextLine: true,
       textPosition: 'none',
       charactersOnScreen: {
           left: "",

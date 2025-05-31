@@ -47,7 +47,7 @@ const script : DialogueLine[] = [
       id: "toit4",
       name: "Syel",
       text: "<i> Il commence à faire froid... et c'est mon frère qui a ma veste. Bouclons cette affaire rapidement. Je me sens un peu fatigué... </i>",
-      textPosition: 'center', 
+      textPosition: 'center',
       style: "thinking",
       background: 'syel_leve_yeux',
     },

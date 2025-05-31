@@ -401,9 +401,7 @@ export default class LineHandler {
             });
         }
     
-        if (this.canPassScreen) {
-            let video = document.getElementById("background-video");
-    
+        if (this.canPassScreen) {    
             if (!line) {
                 console.error("Line not found:", id);
                 return;
@@ -460,10 +458,12 @@ export default class LineHandler {
                         }
                     }
                 });
-            } else if (video) {
+            } else if (backgroundVideo) {
                 this.canPassScreen = true;
-                skipVideo?.classList.add("hidden");
                 backgroundVideo.src = "";
+                backgroundVideo.autoplay = true;
+                backgroundVideo.playsInline = true;
+                skipVideo?.classList.add("hidden");
             }
     
             if (line.isNotOverUi) {

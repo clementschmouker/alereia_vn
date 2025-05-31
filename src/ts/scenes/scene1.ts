@@ -17,8 +17,8 @@ const script: DialogueLine[] = [
     id: "start0", // Unique ID for this line
     name: "Ilyem",
     text: "Alors, voilà... Je...",
-    voice: "high",
     textPosition: 'right', // Ilyem is on the right
+    voice: "high",
     background: 'bar',
     charactersOnScreen: {
       left: "serveuse",
@@ -49,6 +49,7 @@ const script: DialogueLine[] = [
     id: "start2",
     name: "Ilyem",
     text: "Je pense que ce monde de feu et de sang est voué à disparaître...",
+    style: 'thinking',
     textPosition: 'right', // Ilyem is on the right
     background: 'bar',
     voice: "high",

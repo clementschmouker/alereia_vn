@@ -295,7 +295,7 @@ export default class LineHandler {
         } else {
             this.canSkipSmartphone = true;
             smartPhoneElement.classList.remove('visible');
-            dialogueBox.classList.remove("left", "right", "narrator", "center", "thinking", "speech");
+            dialogueBox.classList.remove("left", "right", "narrator", "center", "thinking", "speech", "phone");
             dialogueBox.classList.add(line?.textPosition as string);
             dialogueBox.classList.add(line?.style as string);
         }

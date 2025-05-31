@@ -58,6 +58,7 @@ const script : DialogueLine[] = [
       text: "J'adore, j'ai même sorti le popcorn ! Très beau jeu d'acteur d'ailleurs, je dois dire que tu m'as surpris.",
       textPosition: 'center', // ??? is not on screen
       background: 'noir',
+      style: 'phone',
       charactersOnScreen: {
         left: "",
         right: "",

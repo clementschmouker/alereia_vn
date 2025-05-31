@@ -32,7 +32,7 @@ interface DialogueLine {
     id: string;
     name?: string;
     text?: string;
-    style?: 'speech' | 'thinking';
+    style?: 'speech' | 'thinking' | 'phone';
     textPosition?: 'right' | 'left' | 'center' | 'narrator' | 'none';
     dontSave?: boolean,
     video?: string;

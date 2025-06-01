@@ -45,7 +45,8 @@ export const smartPhoneMessagesListElem = document.querySelector('.smartphone__s
 export const smartPhoneWrittingElem = document.querySelector('.smartphone__screen__writting') as HTMLDivElement;
 export const smartPhoneContentElem = document.querySelector('.smartphone__screen__content') as HTMLDivElement;
 export const smartPhoneWrittingBarElem = document.querySelector('.smartphone__screen__writting-bar') as HTMLDivElement;
-export const smartPhoneCloseElem = document.querySelector('#smartphone-close') as HTMLDivElement;
+export const smartphoneCloseElemText = document.querySelector('.close-phone') as HTMLDivElement;
+export const smartphoneWrittingElemText = document.querySelector('.write-message') as HTMLDivElement;
 
 export const audioChannelSound = document.querySelector("#audio-channel--sound") as HTMLAudioElement;
 export const audioChannelMusic = document.querySelector("#audio-channel--music") as HTMLAudioElement;
@@ -54,6 +55,7 @@ export const audioChannelVoice = document.querySelector("#audio-channel--voice")
 export const unmuteButton = document.querySelector("#mute-sound");
 export const skipVideo = document.querySelector("#skip-video");
 export const goBackButton = document.querySelector("#go-back");
+export const controlsButton = document.querySelector('#controls');
 
 export const startScreen = document.querySelector("#start-screen") as HTMLDivElement;
 export const startButton = document.querySelector("#start-button") as HTMLButtonElement;
@@ -61,6 +63,14 @@ export const videoAccueil = document.getElementById('videoAccueil') as HTMLVideo
 export const gameScreen = document.querySelector("#game") as HTMLDivElement;
 
 export const overlayElement = document.querySelector('#overlay') as HTMLDivElement;
+export const overlayControlsElement = document.querySelector('#controls-overlay') as HTMLDivElement;
+export const overlayControlsContentElement = document.querySelector('.controls-overlay__content') as HTMLDivElement;
 
 export const game = new Game();
 export const lineHandler = new LineHandler(script);
+
+export let isControlVisible: boolean = false;
+
+export const setControlVisible = (value: boolean) => {
+    isControlVisible = value;
+}

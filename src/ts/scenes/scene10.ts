@@ -566,7 +566,11 @@ const script : DialogueLine[] = [
         middle: '',
         left: '',
         right: '',
-      }
+      },
+    },
+    {
+      id: 'fin36',
+      endGame: true,
     }
 ];
 

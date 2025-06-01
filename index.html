@@ -49,9 +49,27 @@
             <audio id="audio-channel--music"></audio>
             <audio id="audio-channel--sound"></audio>
             <audio id="audio-channel--voice"></audio>
-
+            <div id="controls-overlay">
+                <div class="controls-overlay__content">
+                    <ul class="controls-list">
+                        <li class="controls-list__element">
+                            <img class="key-icon" src="images/keyboard-arrow-left.svg" alt="fleche gauche" />
+                            <p>La flèche gauche permet de déplacer le personnage vers la gauche</p>
+                        </li>
+                        <li class="controls-list__element">
+                            <img class="key-icon" src="images/keyboard-arrow-right.svg" alt="fleche droite" />
+                            <p>La flèche droite permet de déplacer le personnage vers la droite</p>
+                        </li>
+                        <li class="controls-list__element">
+                            <img class="key-icon space" src="images/keyboard-space.svg" alt="Barre espace" />
+                            <p>La barre espace permet de passer les dialogues</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
             <button id="mute-sound">Unmute sound</button>
             <button id="skip-video">Skip Video</button>
+            <button id="controls">Controls</button>
             <button id="go-back">Back</button>
 
             <div class="view-bar bottom-bar"></div>
@@ -64,7 +82,8 @@
                         <div class="smartphone__screen__writting hidden">...</div>
                         <div class="smartphone__screen__writting-bar blinking">
                             <div class="arrow"></div>
-                            <p>Ecrivez un message...</p>
+                            <p class="write-message">Ecrivez un message...</p>
+                            <p class="close-phone hidden">Fermer le téléphone</p>
                         </div>
                     </div>
                     <div class="smartphone__screen__bottom-bar">
@@ -73,7 +92,6 @@
                         <div class="button-triangle"></div>
                     </div>
                 </div>
-                <button id="smartphone-close" class="hidden">Fermer le téléphone</button>
             </div>
         </div>
         <div id="overlay"></div>

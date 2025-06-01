@@ -6,7 +6,6 @@ import {
     dialogueBox,
     choiceWrapper,
     smartPhoneWrittingElem,
-    smartPhoneCloseElem,
     leftCharacter,
     rightCharacter,
     middleCharacter,
@@ -21,6 +20,13 @@ import {
     audioChannelVoice,
     goBackButton,
     overlayElement,
+    smartphoneWrittingElemText,
+    smartphoneCloseElemText,
+    setControlVisible,
+    overlayControlsElement,
+    startScreen,
+    videoAccueil,
+    gameScreen,
 } from "../globals";
 
 import { DialogueLine, SmartphoneMessage } from "../types";
@@ -266,12 +272,21 @@ export default class LineHandler {
 
     showLine = (id: string, backward: boolean = false) => {
         const line = this.findLineById(id);
-        console.log(line?.sound);
+        if (line?.endGame) {
+            startScreen.classList.remove("hidden");
+            videoAccueil.play();
+            videoAccueil.volume = 1;
+            videoAccueil.currentTime = 0;
+            gameScreen.classList.add("hidden");
+            return;
+        }
         this.currentLine = line;
         this.canSkipLine = false;
         if (line?.timer && line?.timer > 0) {
             setTimeout(() => {
                 this.canSkipLine = true;
+                const nextId = this.getNextLineId();
+                this.showLine(nextId as string);
             }, line.timer)
         } else {
             this.canSkipLine = true;
@@ -412,7 +427,10 @@ export default class LineHandler {
                                     }
     
                                     if (index === response.messages.length - 1) {
-                                        smartPhoneCloseElem.classList.remove('hidden');
+                                        // smartPhoneCloseElem.classList.remove('hidden');
+                                        // @TODO switch message
+                                        smartphoneWrittingElemText.classList.add('hidden');
+                                        smartphoneCloseElemText.classList.remove('hidden');
                                     }
                                 }, 2000 * (index + 1));
                             });
@@ -590,6 +608,14 @@ export default class LineHandler {
         } else {
             clearInterval(this.overlayInterval as NodeJS.Timeout);
             overlayElement!.innerHTML = ""; // Clear the overlay element
+        }
+
+        if (line?.id === "start0") {
+            console.log('setting visible');
+            setControlVisible(true);
+            overlayControlsElement.classList.add('visible');
+            this.canSkipLine = false;
+            console.log(this.canSkipLine);
         }
     }
 }

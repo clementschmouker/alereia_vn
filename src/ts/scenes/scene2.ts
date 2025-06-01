@@ -5,10 +5,10 @@ const script : DialogueLine[] = [
       id: "gare", // Unique ID for this line
       text: "",
       background: 'vue',
-      timer: 3000,
+      timer: 4000,
       backgroundTransition: {
         easing: FadeTransitionType.easeIn,
-        duration: 3000,
+        duration: 1500,
       },
       music: 'audio/scene2.mp3',
       sound: "audio/bruitages/vent.mp3",

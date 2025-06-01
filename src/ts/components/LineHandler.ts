@@ -35,6 +35,7 @@ export default class LineHandler {
     currentLineId: string = '';
     currentLineText: string = '';
     typingInterval: NodeJS.Timeout | null = null;
+    overlayInterval: NodeJS.Timeout | null = null;
     script: any[];
     currentCharacters = {
         left: { name: "", mood: "", flip: false },
@@ -251,6 +252,7 @@ export default class LineHandler {
 
     showLine = (id: string, backward: boolean = false) => {
         const line = this.findLineById(id);
+        console.log(line);
         this.canSkipLine = false;
         if (line?.timer && line?.timer > 0) {
             console.log('TIMER');
@@ -558,7 +560,7 @@ export default class LineHandler {
                 });
 
                 overlayImages[0].style.display = 'block'; // Show the first image immediately
-                const interval = setInterval(() => {
+                this.overlayInterval = setInterval(() => {
                     overlayImages.forEach((img, i) => {
                         img.style.display = i === index ? 'block' : 'none'; // Show the current image, hide others
                     });
@@ -566,6 +568,7 @@ export default class LineHandler {
                 }, 500);
             }
         } else {
+            clearInterval(this.overlayInterval as NodeJS.Timeout);
             overlayElement!.innerHTML = ""; // Clear the overlay element
         }
     }

@@ -152,9 +152,8 @@ const script : DialogueLine[] = [
     },
     {
       id: "3js10",
-      name: "",
-      text: "",
       unpauseGame: true,
+      noNextLine: true,
       charactersOnScreen: {
         left: "",
       },

@@ -4,8 +4,9 @@ const script : DialogueLine[] = [
     {
         id: "fin", // Unique ID for this line
         name: "",
-        text: "*De retour chez les autres. Les Nodistes sont au tapis et des soldats de Prisme sont déjà en train de les embarquer. Syel rejoint Vangva en descendant par l'escalier de secours.*",
+        text: "*De retour chez les autres. Les Nodistes sont au tapis et des soldats de Prisme sont déjà en train de les embarquer. Syel rejoint Vangva en descendant par l'échelle de l'escalier de secours.*",
         background: 'noir',
+        sound: "audio/bruitages/echelle.mp3",
         backgroundTransition: {
           easing: FadeTransitionType.easeIn,
           duration: 3000,

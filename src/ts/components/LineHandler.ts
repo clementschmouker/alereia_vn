@@ -65,13 +65,15 @@ export default class LineHandler {
         let index = 0;
         this.isWritting = true;
         this.typingInterval = setInterval(() => {
-            audioChannelVoice.pause();
             if (index % 3 === 0) {
                 let randomizedStart = Math.floor(Math.random() * 3) + 1;
                 audioChannelVoice.src = `audio/voices/${voice}/voice${randomizedStart}.wav`;
                 audioChannelVoice.currentTime = 0;
                 audioChannelVoice.volume = 1;
-                audioChannelVoice.play();
+                audioChannelVoice.load(); // Ensure the audio is loaded before playing
+                audioChannelVoice.play().catch((err) => {
+                    console.error("Failed to play audio:", err);
+                });
             }
             if (index < text.length) {
                 const char = text[index];
@@ -156,7 +158,7 @@ export default class LineHandler {
             container.classList.add('attack');
         }
     
-        if (!name) {
+        if (!name || name === '') {
             container.style.backgroundImage = "";
             this.currentCharacters[position] = { name: "", mood: "", flip: false };
             return;
@@ -512,10 +514,11 @@ export default class LineHandler {
                     middle: { name: "", mood: "", flip: false },
                 };
             }
+
+            audioChannelSound.pause();
     
             if (line.sound) {
                 if (audioChannelSound) {
-                    audioChannelSound.pause();
                     while (audioChannelSound.firstChild) {
                         audioChannelSound.removeChild(audioChannelSound.firstChild);
                     }

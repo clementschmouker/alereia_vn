@@ -7,6 +7,7 @@ const script : DialogueLine[] = [
         text: "Vous êtes vraiment impressionnants... La vitesse à laquelle vous les avez retrouvés est effrayante !",
         background: 'bar',
         voice: "high",
+        sound: "audio/bruitages/rire_femme.mp3",
         charactersOnScreen: {
           left: "serveuse",
           leftMood: "satisfaite_cig",
@@ -138,6 +139,7 @@ const script : DialogueLine[] = [
       id: "cinematiquefuite",
       background: 'course2',
       isNotOverUi: true,
+      sound: "audio/bruitages/course_ira.mp3",
     },
     {
       id: "cinematiquefuite2",
@@ -147,6 +149,7 @@ const script : DialogueLine[] = [
       textPosition: 'left', // N.O.D.E. is on the left
       background: 'course2',
       isNotOverUi: true,
+      sound: "audio/bruitages/course_ira.mp3",
     },
     {
       id: "cinematiquefuite1",

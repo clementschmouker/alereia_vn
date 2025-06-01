@@ -19,7 +19,7 @@ const script : DialogueLine[] = [
         },
         backgroundTransition: {
           easing: FadeTransitionType.easeIn,
-          duration: 3000,
+          duration: 1500,
         },
     },
     {
@@ -43,6 +43,10 @@ const script : DialogueLine[] = [
       id: "bagarre2",
       name: "Ilyem",
       voice: "high",
+      backgroundTransition: {
+          easing: FadeTransitionType.easeIn,
+          duration: 300,
+        },
       text: "Si tu cries, je n'hésiterai pas à le planter dans ta gorge ! Et je te préviens, s'il m'arrive quoi que ce soit, Prisme nous surveille en ce moment-même.",
       textPosition: 'right', // Ilyem is on the right
       textHeight: 'bottom',
@@ -122,6 +126,10 @@ const script : DialogueLine[] = [
       text: "Elle est grande, c'est une Nevari comme moi et elle a des cheveux orange. Retourne toute ta Mémoire s'il le faut, mais c'est impossible que tu ne saches pas qui elle est, puisque vous l'avez enlevée !",
       textPosition: 'right', // Ilyem is on the right
       textHeight: 'bottom',
+      backgroundTransition: {
+          easing: FadeTransitionType.easeIn,
+          duration: 300,
+        },
       background: 'coutal_2',
     },
     {

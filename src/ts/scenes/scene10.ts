@@ -65,7 +65,6 @@ const script : DialogueLine[] = [
       id: "fin3.1",
       text: "...",
       background: 'impasse2',
-      isNotOverUi: true,
       charactersOnScreen: {
         left: "syel",
         leftMood: "attend",
@@ -132,7 +131,6 @@ const script : DialogueLine[] = [
     {
       id: "fin8",
       text: "...",
-      isNotOverUi: true,
       background: 'impasse2',
       charactersOnScreen: {
         right: "vava",
@@ -157,7 +155,7 @@ const script : DialogueLine[] = [
     },
     {
       id: "fin11",
-      text: "*le téléphone sonne brusquement*",
+      sound: "audio/bruitages/phone.mp3",
       background: 'impasse2',
       charactersOnScreen: {
         right: "vava",
@@ -352,6 +350,7 @@ const script : DialogueLine[] = [
       id: "fin24",
       name: "Ira",
       voice: "low",
+      sound: "audio/bruitages/grumble.mp3",
       text: "Putain... Il m'a pas loupé ce con !",
       textPosition: 'right',
       background: 'impasse2',

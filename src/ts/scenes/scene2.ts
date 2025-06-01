@@ -11,6 +11,7 @@ const script : DialogueLine[] = [
         duration: 3000,
       },
       music: 'audio/scene2.mp3',
+      sound: "audio/bruitages/vent.mp3",
       loopMusic: true,
       charactersOnScreen: {
         left: "",
@@ -367,6 +368,7 @@ const script : DialogueLine[] = [
       name: "Ilyem",
       text: "Syel et Vangva, ils sont de retour à Brissa. La ville est grande et ne dort jamais, ils comptent sur la foule pour rester discrets.",
       textPosition: 'right', // Ilyem is on the right
+      textHeight: 'bottom',
       voice: "high",
       startGame: true,
       pauseGame: true,
@@ -385,6 +387,7 @@ const script : DialogueLine[] = [
       id: "gare4",
       name: "N.O.D.E.",
       text: "Je vois. Ça me semble crédible.",
+      textHeight: 'bottom',
       textPosition: 'left', 
       voice: "medium",
       charactersOnScreen: {
@@ -401,6 +404,7 @@ const script : DialogueLine[] = [
       name: "Ilyem",
       text: "Ils ont voyagé en train, séparément pour ne pas être aperçus. À cette heure-ci, je pense que Vangva doit se trouver quelque part dans le quartier de la gare.",
       textPosition: 'right', 
+      textHeight: 'bottom',
       voice: "high",
       charactersOnScreen: {
         left: "serveuse",
@@ -413,7 +417,7 @@ const script : DialogueLine[] = [
     },
     {
       id: "gare6",
-      voice: "medium",
+      //voice: "medium",
       sound: "audio/bruitages/rire_femme.mp3",
       charactersOnScreen: {
         left: "serveuse",
@@ -429,6 +433,7 @@ const script : DialogueLine[] = [
       name: "N.O.D.E.",
       text: "Merci pour ta collaboration. C'est bon. On l'a déjà repéré.",
       textPosition: 'left', 
+      textHeight: 'bottom',
       voice: "medium",
       charactersOnScreen: {
         left: "serveuse",

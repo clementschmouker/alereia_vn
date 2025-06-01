@@ -2,28 +2,20 @@ import { DialogueLine, FadeTransitionType } from "../types";
 
 const script : DialogueLine[] = [
     {
-        id: "toit", // Unique ID for this line
-        name: "",
-        text: "",
-        background: 'noir',
-        backgroundTransition: {
-          easing: FadeTransitionType.easeIn,
-          duration: 300,
-        },
+      id: "toit1",
+      background: 'syel_vue',
+      name: "",
+      text: "",
+      timer: 3000,
+      backgroundTransition: {
+        easing: FadeTransitionType.easeIn,
+        duration: 3000,
+      },
         charactersOnScreen: {
           left: "",
           right: "",
       },
-    },
-    {
-      id: "toit1",
-      background: 'syel_vue',
-      backgroundTransition: {
-        easing: FadeTransitionType.easeIn,
-        duration: 300,
-      },
-      name: "",
-      text: "",
+      sound: "audio/bruitages/vent.mp3",
     },
     {
       id: "toit2",
@@ -33,6 +25,7 @@ const script : DialogueLine[] = [
       textPosition: 'center', 
       style: "thinking",
       background: 'syel_blase',
+      sound: "audio/bruitages/vent.mp3",
       backgroundTransition: {
         easing: FadeTransitionType.easeIn,
         duration: 300,
@@ -42,7 +35,12 @@ const script : DialogueLine[] = [
       id: "toit3",
       name: "",
       text: "",
+      backgroundTransition: {
+          easing: FadeTransitionType.easeIn,
+          duration: 300,
+        },
       background: 'syel_leve_yeux',
+      sound: "audio/bruitages/vent.mp3",
     },
     {
       id: "toit4",
@@ -52,6 +50,7 @@ const script : DialogueLine[] = [
       textPosition: 'center',
       style: "thinking",
       background: 'syel_leve_yeux',
+      sound: "audio/bruitages/vent.mp3",
     },
     {
       id: "toit5",
@@ -72,6 +71,7 @@ const script : DialogueLine[] = [
       textPosition: 'center', 
       style: "thinking",
       background: 'syel_blase',
+      sound: "audio/bruitages/vent.mp3",
     },  
 ];
 

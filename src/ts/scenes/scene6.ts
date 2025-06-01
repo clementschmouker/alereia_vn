@@ -106,6 +106,7 @@ const script : DialogueLine[] = [
       name: "Vangva",
       voice: "medium",
       text: "Désolé, je vous ai fait attendre.",
+      sound: "audio/bruitages/matraque.mp3",
       textPosition: 'right', // Vangva is on the right
       background: 'impasse',
       charactersOnScreen: {

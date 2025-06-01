@@ -6,6 +6,7 @@ const script: DialogueLine[] = [
         name: "Vangva",
         text: "<i>Je n'ai pas besoin de retourner à la gare...</i>",
         style: 'thinking',
+        voice: "medium",
         pauseGame: true,
         dontSave: true,
         charactersOnScreen: {

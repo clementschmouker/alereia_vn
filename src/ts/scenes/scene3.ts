@@ -1,14 +1,6 @@
 import { DialogueLine } from "../types";
 
 const script : DialogueLine[] = [
-      {
-      id: "3js",
-      name: "",
-      text: "",
-      charactersOnScreen: {
-        left: ""
-      },
-    },  
   {
       id: "3js1",
       name: "Vangva",
@@ -58,7 +50,6 @@ const script : DialogueLine[] = [
     {
       id: "3js3.2",
       sound: "audio/bruitages/gibberish1.mp3",
-      voice: "medium",
       charactersOnScreen: {
         left: "vava",
         leftMood: "au_tel_ouvert",
@@ -81,7 +72,6 @@ const script : DialogueLine[] = [
     },
     {
       id: "3js4.7",
-      voice: "medium",
       sound: "audio/bruitages/gibberish2.mp3",
       charactersOnScreen: {
         left: "vava",

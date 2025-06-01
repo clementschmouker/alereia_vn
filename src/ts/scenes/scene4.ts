@@ -23,6 +23,7 @@ const script : DialogueLine[] = [
       id: "impasse0",
       name: "N.O.D.E.",
       voice: "low",
+      sound: "audio/bruitages/rire_mechant.mp3",
       text: "Tiens... T'es pas né à Brissa, toi ? C'est quand même malheureux de connaître aussi mal sa propre ville.",
       textPosition: 'left', // N.O.D.E. is on the left
       background: 'impasse',
@@ -233,7 +234,8 @@ const script : DialogueLine[] = [
       id: "impasse11",
       name: "Vangva",
       voice: "medium",
-      text: "... ? (*on entend un bruit de pas pressés*)",
+      text: "... ?",
+      sound: "audio/bruitages/gaspIra.mp3",
       textPosition: 'right', // Vangva is on the right
       background: 'impasse',
       charactersOnScreen: {

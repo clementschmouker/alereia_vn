@@ -611,11 +611,9 @@ export default class LineHandler {
         }
 
         if (line?.id === "start0") {
-            console.log('setting visible');
             setControlVisible(true);
             overlayControlsElement.classList.add('visible');
             this.canSkipLine = false;
-            console.log(this.canSkipLine);
         }
     }
 }

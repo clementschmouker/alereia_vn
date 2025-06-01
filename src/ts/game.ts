@@ -247,6 +247,7 @@ class Game {
 
     animate = () => {
         requestAnimationFrame(this.animate);
+        this.renderer.setSize(window.innerWidth, window.innerHeight);
         this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         this.controls.update();
         let deltaTime = this.clock.getDelta();

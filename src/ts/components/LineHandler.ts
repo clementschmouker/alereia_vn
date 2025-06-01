@@ -443,7 +443,7 @@ export default class LineHandler {
             });
         }
     
-        if (this.canPassScreen) {    
+        if (this.canPassScreen) {
             if (!line) {
                 console.error("Line not found:", id);
                 return;
@@ -542,16 +542,15 @@ export default class LineHandler {
             }
 
             audioChannelSound.pause();
+            audioChannelSound.currentTime = 0;
     
             if (line.sound) {
                 if (audioChannelSound) {
                     while (audioChannelSound.firstChild) {
                         audioChannelSound.removeChild(audioChannelSound.firstChild);
                     }
-                    const audioFile = document.createElement("source");
                     audioChannelSound.currentTime = 0;
-                    audioFile.src = line.sound;
-                    audioChannelSound.appendChild(audioFile);
+                    audioChannelSound.src = line.sound;
                     audioChannelSound.load(); // Ensure the new source is loaded
                     audioChannelSound.play();
                 }

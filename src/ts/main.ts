@@ -23,7 +23,7 @@ import {
 
 import '../scss/main.scss';
 
-const DEFAULT_STARTING_LINE_ID = "start"; // Ici tu change l'ID que tu veux pour commencer
+const DEFAULT_STARTING_LINE_ID = "gare3"; // Ici tu change l'ID que tu veux pour commencer
 
 startButton?.addEventListener("click", () => {
     startScreen.classList.add("hidden");

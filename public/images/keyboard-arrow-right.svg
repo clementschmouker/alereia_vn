@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Calque_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 500 500">
+  <!-- Generator: Adobe Illustrator 29.3.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 151)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: none;
+        stroke: #000;
+        stroke-miterlimit: 10;
+        stroke-width: 12px;
+      }
+
+      .st1 {
+        fill: #fff;
+      }
+
+      .st2 {
+        display: none;
+      }
+    </style>
+  </defs>
+  <rect class="st2" width="500" height="500"/>
+  <path class="st1" d="M43.8,199.1l42.7-103.2c1.2-2.9,4.1-4.8,7.2-4.8h314.2c3.2,0,6.1,2,7.3,4.9l40.9,103.2c2,5.1-1.8,10.7-7.3,10.7H51c-5.6,0-9.4-5.7-7.2-10.8Z"/>
+  <path class="st1" d="M465.7,353.5H34.1c-4.5,0-8.2-3.6-8.2-8.2l13.8-108.1c0-4.5,3.7-8.2,8.2-8.2h404.7c4.5,0,8.2,3.6,8.2,8.2l13.1,108.1c0,4.5-3.6,8.2-8.2,8.2Z"/>
+  <line class="st0" x1="166.2" y1="143.3" x2="360.7" y2="143.3"/>
+  <line class="st0" x1="307.9" y1="116.5" x2="360.7" y2="143.3"/>
+  <line class="st0" x1="307.7" y1="168.9" x2="360.7" y2="143.3"/>
+  <rect class="st1" x="107" y="74" width="25.5" height="25.5"/>
+  <rect class="st1" x="132.5" y="65" width="11.7" height="11.8"/>
+  <rect class="st1" x="138.4" y="37" width="11.6" height="4"/>
+  <rect class="st1" x="179" y="41" width="9" height="9"/>
+  <rect class="st1" x="119.7" y="22" width="3.1" height="3.1"/>
+  <rect class="st1" x="222" y="76.8" width="13" height="22.8"/>
+  <rect class="st1" x="235" y="41" width="27" height="16"/>
+  <rect class="st1" x="222" y="22" width="6.5" height="6.5"/>
+  <rect class="st1" x="166.2" y="76.8" width="14.8" height="18.2"/>
+  <rect class="st1" x="283" y="76.8" width="45" height="31.2"/>
+  <rect class="st1" x="312" y="28.5" width="22.3" height="22.3"/>
+  <rect class="st1" x="349" y="37" width="11.7" height="4"/>
+  <rect class="st1" x="297" y="15" width="4" height="4"/>
+  <rect class="st1" x="375" y="81" width="16" height="24"/>
+  <rect class="st1" x="43.1" y="353.5" width="42.7" height="42.7"/>
+  <rect class="st1" x="119.7" y="402" width="2.3" height="6"/>
+  <rect class="st1" x="97" y="426" width="13.5" height="13.5"/>
+  <rect class="st1" x="64.5" y="432.8" width="6.5" height="20.2"/>
+  <rect class="st1" x="173.6" y="367" width="29.2" height="29.2"/>
+  <rect class="st1" x="179" y="432.8" width="34" height="25.2"/>
+  <rect class="st1" x="254" y="367" width="20" height="20"/>
+  <rect class="st1" x="283" y="412" width="33" height="32"/>
+  <rect class="st1" x="254" y="416" width="4" height="7"/>
+  <rect class="st1" x="334.2" y="367" width="20" height="20"/>
+  <rect class="st1" x="354.2" y="346" width="59.8" height="29"/>
+  <rect class="st1" x="448" y="367" width="20" height="20"/>
+  <rect class="st1" x="439" y="396.2" width="9" height="15.8"/>
+  <rect class="st1" x="405" y="423" width="5" height="16.5"/>
+  <rect class="st1" x="334.2" y="419.5" width="9.8" height="9.5"/>
+</svg>

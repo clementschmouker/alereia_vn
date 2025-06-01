@@ -96,6 +96,7 @@ interface DialogueLine {
     }[];
     nextLineId?: string;
     noNextLine?: boolean;
+    endGame?: boolean;
 };
 
 export { FadeTransitionType };

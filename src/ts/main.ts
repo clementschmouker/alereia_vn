@@ -1,6 +1,5 @@
 import { 
     dialogueBox,
-    smartPhoneCloseElem,
     backgroundElem,
     skipVideo,
     backgroundVideo,
@@ -13,7 +12,13 @@ import {
     gameScreen,
     unmuteButton,smartPhoneWrittingBarElem,
     lineHandler,
-    videoAccueil
+    videoAccueil,
+    smartphoneCloseElemText,
+    controlsButton,
+    overlayControlsElement,
+    isControlVisible,
+    setControlVisible,
+    game
 } from "./globals";
 
 import '../scss/main.scss';
@@ -62,7 +67,7 @@ smartPhoneWrittingBarElem.addEventListener('click', () => {
     smartPhoneWrittingBarElem.classList.remove('blinking');
 });
 
-smartPhoneCloseElem.addEventListener('click', () => {
+smartphoneCloseElemText.addEventListener('click', () => {
     const nextLineId = lineHandler.getNextLineId();
     const currentLine = lineHandler.findLineById(lineHandler.currentLineId);
     if (nextLineId && !currentLine?.noNextLine) {
@@ -84,7 +89,29 @@ document.addEventListener("keydown", (event) => {
     }
 });
 
+controlsButton?.addEventListener('click', () => {
+    overlayControlsElement.classList.toggle('visible');
+    setControlVisible(!isControlVisible)
+    lineHandler.canSkipLine = !isControlVisible;
+    if (!game.paused && isControlVisible) {
+        game.pause();
+    }
+    if (game.paused && !isControlVisible) {
+        game.play();
+    }
+});
 
+overlayControlsElement?.addEventListener('click', () => {
+    overlayControlsElement.classList.toggle('visible');
+    setControlVisible(!isControlVisible)
+    lineHandler.canSkipLine = !isControlVisible;
+    if (!game.paused && isControlVisible) {
+        game.pause();
+    }
+    if (game.paused && !isControlVisible) {
+        game.play();
+    }
+});
 
 // document.addEventListener("mousemove", (event) => {
 //     const { clientX, clientY } = event;

@@ -278,6 +278,9 @@ export default class LineHandler {
             videoAccueil.volume = 1;
             videoAccueil.currentTime = 0;
             gameScreen.classList.add("hidden");
+            audioChannelMusic.pause();
+            audioChannelSound.pause();
+            audioChannelVoice.pause();
             return;
         }
         this.currentLine = line;

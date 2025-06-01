@@ -4,7 +4,7 @@ const script: DialogueLine[] = [
   {
     id: "start", // Unique ID for this line
     text: "",
-    backgroundVideo: 'Intro',
+    backgroundVideo: 'cine_intro',
     charactersOnScreen: {
       left: "",
       right: "",

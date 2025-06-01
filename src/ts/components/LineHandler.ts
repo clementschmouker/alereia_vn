@@ -280,6 +280,10 @@ export default class LineHandler {
         if (line && !line.textPosition) {
             line.textPosition = "narrator";
         }
+
+        if (line && !line.textHeight) {
+            line.textHeight = 'normal';
+        }
     
         if (line?.startGame) {
             game.start();
@@ -333,9 +337,10 @@ export default class LineHandler {
         } else {
             this.canSkipSmartphone = true;
             smartPhoneElement.classList.remove('visible');
-            dialogueBox.classList.remove("left", "right", "narrator", "center", "thinking", "speech", "phone");
+            dialogueBox.classList.remove("left", "right", "narrator", "center", "thinking", "speech", "phone", "bottom");
             dialogueBox.classList.add(line?.textPosition as string);
             dialogueBox.classList.add(line?.style as string);
+            dialogueBox.classList.add(line?.textHeight as string);
         }
 
         choiceWrapper!.innerHTML = "";

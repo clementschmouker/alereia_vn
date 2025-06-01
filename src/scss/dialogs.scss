@@ -104,6 +104,17 @@
 	transform: translateY(50%);
 }
 
+#dialogue-box.bottom {
+	bottom: 20% !important;
+
+	.comic-bubble__tail {
+		bottom: auto;
+		top: -3rem;
+		transform: scaleY(-1);
+	}
+
+}
+
 #dialogue-box.left {
 	display: block;
 	bottom: 64.81%;
@@ -114,6 +125,11 @@
 #dialogue-box.left .comic-bubble__tail {
 	left: 20%;
 	transform: translateX(-50%) scaleX(-1);
+}
+
+#dialogue-box.left.bottom .comic-bubble__tail {
+	left: 40%;
+	transform: translateX(-50%) scale(-1);
 }
 
 #dialogue-box.center .comic-bubble__tail {

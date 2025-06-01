@@ -8,7 +8,7 @@ const script : DialogueLine[] = [
         background: 'noir',
         backgroundTransition: {
           easing: FadeTransitionType.easeIn,
-          duration: 3000,
+          duration: 300,
         },
         charactersOnScreen: {
           left: "",
@@ -20,7 +20,7 @@ const script : DialogueLine[] = [
       background: 'syel_vue',
       backgroundTransition: {
         easing: FadeTransitionType.easeIn,
-        duration: 3000,
+        duration: 300,
       },
       name: "",
       text: "",
@@ -35,7 +35,7 @@ const script : DialogueLine[] = [
       background: 'syel_blase',
       backgroundTransition: {
         easing: FadeTransitionType.easeIn,
-        duration: 3000,
+        duration: 300,
       },
     },
     {
@@ -58,6 +58,7 @@ const script : DialogueLine[] = [
       name: "",
       background: 'noir',
       backgroundVideo: 'yeuxSyel',
+      nextLineId: 'toit6',
       charactersOnScreen: {
         left: '',
         right: '',

@@ -37,6 +37,7 @@ export default class LineHandler {
     typingInterval: NodeJS.Timeout | null = null;
     overlayInterval: NodeJS.Timeout | null = null;
     script: any[];
+    currentLine: DialogueLine | undefined = undefined;
     currentCharacters = {
         left: { name: "", mood: "", flip: false },
         right: { name: "", mood: "", flip: false },
@@ -250,12 +251,23 @@ export default class LineHandler {
         }
     };
 
+    goNextLineAfterVideo = () => {
+        this.canPassScreen = true;
+        const nextLineId = this.getNextLineId();
+        if (nextLineId) {
+            this.currentLineId = nextLineId;
+            if (!this.currentLine?.noNextLine) {
+                this.showLine(nextLineId);
+            }
+        }
+    }
+
     showLine = (id: string, backward: boolean = false) => {
         const line = this.findLineById(id);
-        console.log(line);
+        console.log(line?.sound);
+        this.currentLine = line;
         this.canSkipLine = false;
         if (line?.timer && line?.timer > 0) {
-            console.log('TIMER');
             setTimeout(() => {
                 this.canSkipLine = true;
             }, line.timer)
@@ -442,6 +454,8 @@ export default class LineHandler {
             } else {
                 backgroundElem.style.backgroundImage = "";
             }
+
+            backgroundVideo.removeEventListener('ended', this.goNextLineAfterVideo);
     
             if (line.backgroundVideo && backgroundVideo) {
                 this.canPassScreen = false;
@@ -450,16 +464,7 @@ export default class LineHandler {
                 backgroundVideo.autoplay = true;
                 backgroundVideo.playsInline = true;
                 backgroundVideo.play();
-                backgroundVideo.addEventListener("ended", () => {
-                    this.canPassScreen = true;
-                    const nextLineId = this.getNextLineId();
-                    if (nextLineId) {
-                        this.currentLineId = nextLineId;
-                        if (!line.noNextLine) {
-                            this.showLine(nextLineId);
-                        }
-                    }
-                });
+                backgroundVideo.addEventListener("ended", this.goNextLineAfterVideo);
             } else if (backgroundVideo) {
                 this.canPassScreen = true;
                 backgroundVideo.src = "";
@@ -511,12 +516,19 @@ export default class LineHandler {
             if (line.sound) {
                 if (audioChannelSound) {
                     audioChannelSound.pause();
-                    audioChannelSound.currentTime = 0;
-                    audioChannelSound.innerHTML = "";
+                    while (audioChannelSound.firstChild) {
+                        audioChannelSound.removeChild(audioChannelSound.firstChild);
+                    }
                     const audioFile = document.createElement("source");
+                    audioChannelSound.currentTime = 0;
                     audioFile.src = line.sound;
                     audioChannelSound.appendChild(audioFile);
+                    audioChannelSound.load(); // Ensure the new source is loaded
                     audioChannelSound.play();
+                }
+            } else {
+                while (audioChannelSound.firstChild) {
+                    audioChannelSound.removeChild(audioChannelSound.firstChild);
                 }
             }
     

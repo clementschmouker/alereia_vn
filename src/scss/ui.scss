@@ -176,3 +176,25 @@
         height: 100%;
     }
 }
+
+#end-button {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    bottom: 10%;
+    left: 50%;
+    cursor: pointer;
+
+    padding-top: 0.8rem;
+    text-transform: uppercase;
+    background: transparent;
+    color: white;
+    border-width: 20px;
+    border-image: url('./images/dialogbubble-black.svg') 20 fill;
+
+    transform: translateX(-50%);
+
+    &.visible {
+        display: block;
+    }
+}

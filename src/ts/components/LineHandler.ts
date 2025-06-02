@@ -24,9 +24,7 @@ import {
     smartphoneCloseElemText,
     setControlVisible,
     overlayControlsElement,
-    startScreen,
-    videoAccueil,
-    gameScreen,
+    endButton,
 } from "../globals";
 
 import { DialogueLine, SmartphoneMessage } from "../types";
@@ -272,17 +270,7 @@ export default class LineHandler {
 
     showLine = (id: string, backward: boolean = false) => {
         const line = this.findLineById(id);
-        if (line?.endGame) {
-            startScreen.classList.remove("hidden");
-            videoAccueil.play();
-            videoAccueil.volume = 1;
-            videoAccueil.currentTime = 0;
-            gameScreen.classList.add("hidden");
-            audioChannelMusic.pause();
-            audioChannelSound.pause();
-            audioChannelVoice.pause();
-            return;
-        }
+        console.log(line);
         this.currentLine = line;
         this.canSkipLine = false;
         if (line?.timer && line?.timer > 0) {
@@ -487,12 +475,21 @@ export default class LineHandler {
     
             if (line.backgroundVideo && backgroundVideo) {
                 this.canPassScreen = false;
-                skipVideo?.classList.remove("hidden");
                 backgroundVideo.src = `videos/${line.backgroundVideo}.mp4`;
                 backgroundVideo.autoplay = true;
                 backgroundVideo.playsInline = true;
                 backgroundVideo.play();
-                backgroundVideo.addEventListener("ended", this.goNextLineAfterVideo);
+                if (!line?.endVideo) {
+                    skipVideo?.classList.remove("hidden");
+                    backgroundVideo.addEventListener("ended", this.goNextLineAfterVideo);
+                } else {
+                    skipVideo?.classList.add('hidden');
+                    audioChannelMusic.loop = false;
+                    endButton.classList.add('visible');
+                    backgroundVideo.addEventListener('ended', () => {
+                        backgroundVideo.pause();
+                    });
+                }
             } else if (backgroundVideo) {
                 this.canPassScreen = true;
                 backgroundVideo.src = "";

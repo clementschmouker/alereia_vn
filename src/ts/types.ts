@@ -97,6 +97,7 @@ interface DialogueLine {
     nextLineId?: string;
     noNextLine?: boolean;
     endGame?: boolean;
+    endVideo?: boolean;
 };
 
 export { FadeTransitionType };

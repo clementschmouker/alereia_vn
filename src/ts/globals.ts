@@ -61,6 +61,7 @@ export const startScreen = document.querySelector("#start-screen") as HTMLDivEle
 export const startButton = document.querySelector("#start-button") as HTMLButtonElement;
 export const videoAccueil = document.getElementById('videoAccueil') as HTMLVideoElement;
 export const gameScreen = document.querySelector("#game") as HTMLDivElement;
+export const endButton = document.querySelector('#end-button') as HTMLButtonElement;
 
 export const overlayElement = document.querySelector('#overlay') as HTMLDivElement;
 export const overlayControlsElement = document.querySelector('#controls-overlay') as HTMLDivElement;

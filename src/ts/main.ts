@@ -18,7 +18,8 @@ import {
     overlayControlsElement,
     isControlVisible,
     setControlVisible,
-    game
+    game,
+    endButton
 } from "./globals";
 
 import '../scss/main.scss';
@@ -112,6 +113,10 @@ overlayControlsElement?.addEventListener('click', () => {
         game.play();
     }
 });
+
+endButton?.addEventListener('click', () => {
+    location.reload();
+})
 
 // document.addEventListener("mousemove", (event) => {
 //     const { clientX, clientY } = event;

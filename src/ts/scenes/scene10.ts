@@ -563,16 +563,13 @@ const script : DialogueLine[] = [
     {
       id: "fin35",
       backgroundVideo: "Outro",
+      endVideo: true,
       charactersOnScreen: {
         middle: '',
         left: '',
         right: '',
       },
     },
-    {
-      id: 'fin36',
-      endGame: true,
-    }
 ];
 
 export default script;

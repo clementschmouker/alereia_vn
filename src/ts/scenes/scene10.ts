@@ -562,7 +562,7 @@ const script : DialogueLine[] = [
     },
     {
       id: "fin35",
-      backgroundVideo: "Intro",
+      backgroundVideo: "Outro",
       charactersOnScreen: {
         middle: '',
         left: '',

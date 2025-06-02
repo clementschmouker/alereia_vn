@@ -5,7 +5,7 @@ const script : DialogueLine[] = [
       id: "gare", // Unique ID for this line
       text: "",
       background: 'vue',
-      timer: 4000,
+      timer: 5000,
       backgroundTransition: {
         easing: FadeTransitionType.easeIn,
         duration: 1500,
@@ -444,6 +444,9 @@ const script : DialogueLine[] = [
         rightFlip: false
       },
     },
+    {
+      id: "gare8",
+    }
 ];
 
 export default script;

@@ -42,6 +42,7 @@ export default class LineHandler {
     overlayInterval: NodeJS.Timeout | null = null;
     script: any[];
     currentLine: DialogueLine | undefined = undefined;
+    fadeToNextLine: boolean = false;
     currentCharacters = {
         left: { name: "", mood: "", flip: false },
         right: { name: "", mood: "", flip: false },
@@ -270,7 +271,7 @@ export default class LineHandler {
 
     showLine = (id: string, backward: boolean = false) => {
         const line = this.findLineById(id);
-        console.log(line);
+        this.fadeToNextLine = line?.fadeToNextLine || false;
         this.currentLine = line;
         this.canSkipLine = false;
         if (line?.timer && line?.timer > 0) {

@@ -39,6 +39,7 @@ export const middleCharacter = document.getElementById("middle-character")!;
 export const backgroundElem = document.getElementById("background")!;
 export const backgroundVideo = document.querySelector("#background-video") as HTMLVideoElement;
 export const characterNameElement = document.getElementById("name")!;
+export const vnGameWrapper = document.querySelector("#game") as HTMLDivElement;
 
 export const smartPhoneElement = document.getElementById("smartphone")!;
 export const smartPhoneMessagesListElem = document.querySelector('.smartphone__screen__messages') as HTMLUListElement;

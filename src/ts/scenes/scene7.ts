@@ -6,10 +6,10 @@ const script : DialogueLine[] = [
       background: 'syel_vue',
       name: "",
       text: "",
-      timer: 3000,
+      timer: 5000,
       backgroundTransition: {
         easing: FadeTransitionType.easeIn,
-        duration: 3000,
+        duration: 300,
       },
         charactersOnScreen: {
           left: "",

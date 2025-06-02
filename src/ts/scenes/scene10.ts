@@ -561,6 +561,16 @@ const script : DialogueLine[] = [
       },
     },
     {
+      id: 'fin34.5',
+      fadeToNextLine: true,
+      background: 'impasse2',
+      charactersOnScreen: {
+        right: '',
+        left: '',
+        middle: '',
+      }
+    },
+    {
       id: "fin35",
       backgroundVideo: "Outro",
       endVideo: true,

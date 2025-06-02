@@ -19,7 +19,8 @@ import {
     isControlVisible,
     setControlVisible,
     game,
-    endButton
+    endButton,
+    vnGameWrapper
 } from "./globals";
 
 import '../scss/main.scss';
@@ -86,7 +87,15 @@ dialogueBox.addEventListener("click", () => {
 document.addEventListener("keydown", (event) => {
     if (event.key === " " && lineHandler.canSkipLine) {
         event.preventDefault();
-        lineHandler.skipLine();
+        if (lineHandler.fadeToNextLine) {
+            vnGameWrapper.classList.add('faded-out');
+            setTimeout(() => {
+                lineHandler.skipLine();
+                vnGameWrapper.classList.remove('faded-out');
+            }, 1500);
+        } else {
+            lineHandler.skipLine();
+        }
     }
 });
 

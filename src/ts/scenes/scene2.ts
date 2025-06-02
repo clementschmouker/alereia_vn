@@ -445,7 +445,12 @@ const script : DialogueLine[] = [
       },
     },
     {
-      id: "gare8",
+      id: "gare8.5",
+      charactersOnScreen: {
+        left: '',
+        right: '',
+        middle: '',
+      }
     }
 ];
 
